@@ -1,0 +1,18 @@
+{
+  "name": "timeshift_planet",
+  "title": "Timeshift Planet",
+  "description": "Timeshift Planet",
+  "author": "snouz",
+  "homepage": "https://github.com/snouz/timeshift_planet",
+  "version": "0.1.0",
+  "factorio_version": "2.0",
+  "dependencies": [
+    "base",
+    "space-age",
+    "Moshine",
+    "thinking_brain",
+    "matter_printer",
+    "Cloning-vat-building"
+  ],
+  "space_travel_required": true
+}
