@@ -1,17 +1,18 @@
 planet_name = "timeshift"
 icons = "__timeshift_planet__/graphics/icons/"
 entity = "__timeshift_planet__/graphics/entity/"
-technology = "__timeshift_planet__/graphics/technology/"
+techicons = "__timeshift_planet__/graphics/technology/"
 
-require "prototypes.terrain"
-require "prototypes.decoratives"
---require "prototypes.resources"
-require "prototypes.planet"
---require "prototypes.music"
+
+
+require "prototypes_planet.hidden_beacon"
+require "prototypes_planet.terrain"
+require "prototypes_planet.decoratives"
+require "prototypes_planet.planet"
+
+
+
 require "prototypes.technology"
 require "prototypes.items_recipes"
 require "prototypes.nano_forge"
-require "prototypes.hidden_beacon"
---require "prototypes.fluid"
---require "prototypes.recipes"
---require "prototypes.entities"
+require "prototypes.life_simulator"
