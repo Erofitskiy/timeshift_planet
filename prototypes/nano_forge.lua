@@ -16,7 +16,7 @@ data:extend(
     name = "nano_forge",
     icon = icons .. "nano_forge.png",
     subgroup = "timeshift-production-machine",
-    order = "a",
+    order = "c[nano_forge]",
     inventory_move_sound = item_sounds.mechanical_inventory_move,
     pick_sound = item_sounds.mechanical_inventory_pickup,
     drop_sound = item_sounds.mechanical_inventory_move,
@@ -37,6 +37,10 @@ data:extend(
     results = {{type = "item", name = "nano_forge", amount = 1}},
     allow_productivity = false,
     enabled = false,
+  },
+  {
+    type = "recipe-category",
+    name = "nano_forge"
   },
 
 

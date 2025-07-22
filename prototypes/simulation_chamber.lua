@@ -16,7 +16,7 @@ data:extend(
     name = "simulation_chamber",
     icon = icons .. "simulation_chamber.png",
     subgroup = "timeshift-production-machine",
-    order = "a",
+    order = "d[simulation_chamber]",
     inventory_move_sound = item_sounds.mechanical_inventory_move,
     pick_sound = item_sounds.mechanical_inventory_pickup,
     drop_sound = item_sounds.mechanical_inventory_move,
@@ -32,6 +32,7 @@ data:extend(
     ingredients =
     {
       {type = "item", name = "assembling-machine-3", amount = 1},
+      -- TOADD core 10
     },
     --surface_conditions = {{ property = "moshine-exclusive", min = 1, max = 1}},
     results = {{type = "item", name = "simulation_chamber", amount = 1}},
@@ -62,7 +63,7 @@ data:extend(
   --module_slots = 3,
   allowed_effects = {"speed", "pollution", "quality"},
   source_inventory_size = 1,
-  result_inventory_size = 8,
+  result_inventory_size = 6,
 
   graphics_set =
   {
@@ -174,7 +175,7 @@ data:extend(
   crafting_categories = {"simulation_chamber"},
   fluid_boxes =
   {
-    {
+    --[[{
       production_type = "input",
       pipe_covers = pipecoverspictures(),
       volume = 1000,
@@ -186,7 +187,7 @@ data:extend(
           position = {-1, -1}
         }
       }
-    },
+    },]]
     --[[{
       production_type = "input",
       pipe_covers = pipecoverspictures(),
@@ -200,6 +201,7 @@ data:extend(
         }
       }
     },]]
+    --[[
     {
       production_type = "output",
       pipe_covers = pipecoverspictures(),
@@ -212,7 +214,8 @@ data:extend(
           position = {-1, 1}
         }
       }
-    },--[[
+    },]]
+    --[[
     {
       production_type = "output",
       pipe_covers = pipecoverspictures(),
