@@ -13,28 +13,28 @@ data:extend(
 {
   {
     type = "item",
-    name = "life_simulator",
-    icon = icons .. "life_simulator.png",
+    name = "simulation_chamber",
+    icon = icons .. "simulation_chamber.png",
     subgroup = "timeshift-production-machine",
     order = "a",
     inventory_move_sound = item_sounds.mechanical_inventory_move,
     pick_sound = item_sounds.mechanical_inventory_pickup,
     drop_sound = item_sounds.mechanical_inventory_move,
-    place_result = "life_simulator",
+    place_result = "simulation_chamber",
     stack_size = 10,
     default_import_location = planet_name,
     weight = 100 * kg
   },
   {
     type = "recipe",
-    name = "life_simulator",
+    name = "simulation_chamber",
     energy_required = 1,
     ingredients =
     {
       {type = "item", name = "assembling-machine-3", amount = 1},
     },
     --surface_conditions = {{ property = "moshine-exclusive", min = 1, max = 1}},
-    results = {{type = "item", name = "life_simulator", amount = 1}},
+    results = {{type = "item", name = "simulation_chamber", amount = 1}},
     allow_productivity = false,
     enabled = false,
   },
@@ -43,12 +43,12 @@ data:extend(
 
 
 {
-  type = "assembling-machine",
-  name = "life_simulator",
-  icon = icons .. "life_simulator.png",
+  type = "furnace",
+  name = "simulation_chamber",
+  icon = icons .. "simulation_chamber.png",
   flags = {"placeable-neutral","placeable-player", "player-creation"},
-  minable = {mining_time = 0.2, result = "life_simulator"},
-  fast_replaceable_group = "life_simulator",
+  minable = {mining_time = 0.2, result = "simulation_chamber"},
+  fast_replaceable_group = "simulation_chamber",
   max_health = 300,
   corpse = "chemical-plant-remnants",
   dying_explosion = "chemical-plant-explosion",
@@ -59,8 +59,10 @@ data:extend(
   selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
   damaged_trigger_effect = hit_effects.entity(),
   drawing_box_vertical_extension = 0.4,
-  module_slots = 3,
-  allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"},
+  --module_slots = 3,
+  allowed_effects = {"speed", "pollution", "quality"},
+  source_inventory_size = 1,
+  result_inventory_size = 8,
 
   graphics_set =
   {
@@ -169,7 +171,7 @@ data:extend(
     emissions_per_minute = { pollution = 4 }
   },
   energy_usage = "210kW",
-  crafting_categories = {"life_simulator"},
+  crafting_categories = {"simulation_chamber"},
   fluid_boxes =
   {
     {
@@ -185,7 +187,7 @@ data:extend(
         }
       }
     },
-    {
+    --[[{
       production_type = "input",
       pipe_covers = pipecoverspictures(),
       volume = 1000,
@@ -197,7 +199,7 @@ data:extend(
           position = {1, -1}
         }
       }
-    },
+    },]]
     {
       production_type = "output",
       pipe_covers = pipecoverspictures(),
@@ -210,7 +212,7 @@ data:extend(
           position = {-1, 1}
         }
       }
-    },
+    },--[[
     {
       production_type = "output",
       pipe_covers = pipecoverspictures(),
@@ -223,7 +225,7 @@ data:extend(
           position = {1, 1}
         }
       }
-    }
+    }]]
   },
   water_reflection =
   {

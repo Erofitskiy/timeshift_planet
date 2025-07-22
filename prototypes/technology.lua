@@ -118,14 +118,14 @@ data:extend({
 
   {
     type = "technology",
-    name = "timeshift_life_simulator",
-    icon = techicons .. "timeshift_life_simulator.png",
+    name = "timeshift_simulation_chamber",
+    icon = techicons .. "timeshift_simulation_chamber.png",
     icon_size = 256,
     effects =
     {
       {
         type = "unlock-recipe",
-        recipe = "life_simulator"
+        recipe = "simulation_chamber"
       },
     },
     prerequisites = {"matter_printer-technology", "timeshift_dna_manipulation"},
@@ -147,7 +147,7 @@ data:extend({
 -- table.insert(data.raw["technology"]["cloning-vat-technology"].prerequisites, "moshine-tech-ai-tier-2")
 --end
 if data.raw["technology"]["thinking-brain-technology"] then
-  table.insert(data.raw["technology"]["thinking-brain-technology"].prerequisites, "timeshift_life_simulator")
+  table.insert(data.raw["technology"]["thinking-brain-technology"].prerequisites, "timeshift_simulation_chamber")
 end
 if data.raw["technology"]["matter_printer-technology"] then
   table.insert(data.raw["technology"]["matter_printer-technology"].prerequisites, "timeshift_advanced_optics")
