@@ -18,9 +18,3 @@ require "prototypes.items_recipes"
 require "prototypes.simulation_chamber"
 require "prototypes.compatibility"
 
-
-
-
-if data.raw["agricultural-tower"]["processing-grid"] and data.raw["agricultural-tower"]["processing-grid"].accepted_seeds then
-	table.insert(data.raw["agricultural-tower"]["processing-grid"].accepted_seeds, "datacell-dna-raw")
-end

@@ -62,7 +62,6 @@ data:extend({
 
 
 -- NUTRIENTS FLUID
---[[
   {
     type = "fluid",
     name = "nutrients_fluid_goo",
@@ -92,7 +91,6 @@ data:extend({
     enabled = false,
   },
 
-]]
 
 
 
@@ -412,6 +410,63 @@ data:extend({
       }
     },
     map_color = {255, 255, 255},
+  },
+
+
+
+  -- Brains
+
+
+
+  {
+    type = "item",
+    name = "jar_brain_average",
+    icon = icons .. "jar_brain_average.png",
+    subgroup = "timeshift-processes",
+    order = "aaa",
+    inventory_move_sound = item_sounds.resource_inventory_move,
+    pick_sound = item_sounds.resource_inventory_pickup,
+    drop_sound = item_sounds.resource_inventory_move,
+    stack_size = 1,
+    default_import_location = "timeshift",
+    random_tint_color = item_tints.iron_rust,
+    spoil_ticks = 2 * minutes,
+    spoil_result = "spoilage",
+    weight = 10*kg,
+  },
+
+  {
+    type = "item",
+    name = "jar_brain_genius",
+    icon = icons .. "jar_brain_genius.png",
+    subgroup = "timeshift-processes",
+    order = "aaa",
+    inventory_move_sound = item_sounds.resource_inventory_move,
+    pick_sound = item_sounds.resource_inventory_pickup,
+    drop_sound = item_sounds.resource_inventory_move,
+    stack_size = 1,
+    default_import_location = "timeshift",
+    random_tint_color = item_tints.iron_rust,
+    spoil_ticks = 2 * minutes,
+    spoil_result = "spoilage",
+    weight = 10*kg,
+  },
+  {
+    type = "recipe",
+    name = "jar_brains_recipe",
+    icon = icons .. "jar_brains_recipe.png",
+    category = "simulation_chamber",
+    energy_required = 60,
+    ingredients = {
+      {type = "item", name = "viable_embryo", amount = 1},
+    },
+    results = 
+    {
+      {type = "item", name = "jar_brain_genius", amount = 1, probability = 0.01},
+      {type = "item", name = "jar_brain_average", amount = 1, probability = 0.99},
+    },
+    allow_productivity = true,
+    enabled = false,
   },
 
 

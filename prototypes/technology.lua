@@ -181,10 +181,10 @@ data:extend({
     icon_size = 256,
     effects =
     {
-      --{
-       -- type = "unlock-recipe",
-       -- recipe = "simulation_chamber"
-      --},
+      {
+        type = "unlock-recipe",
+        recipe = "jar_brains_recipe"
+      },
     },
     prerequisites = {"timeshift_simulation_chamber", "matter_printer-technology"},
     unit =
