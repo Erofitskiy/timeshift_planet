@@ -11,14 +11,14 @@ data:extend({
     type = "beacon",
     name = "hidden_beacon",
     icon = "__base__/graphics/icons/beacon.png",
-    flags = {"placeable-neutral", "not-upgradable"},
+    flags = {"placeable-neutral", "not-upgradable", "not-blueprintable", "hide-alt-info", "not-flammable", "no-automated-item-removal", "no-automated-item-insertion", "no-copy-paste", "not-selectable-in-game"},
     is_military_target = false,
     --minable = {},
     --fast_replaceable_group = "beacon",
     max_health = 200000,
     corpse = "beacon-remnants",
     dying_explosion = "beacon-explosion",
-    collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
+    collision_box = {{0, 0}, {0, 0}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     collision_mask = {layers={}, not_colliding_with_itself=true},
     damaged_trigger_effect = hit_effects.entity(),
@@ -26,46 +26,45 @@ data:extend({
     allowed_effects = {"consumption", "speed", "pollution"},
     graphics_set = {
       module_icons_suppressed = true,
-
       animation_progress = 1,
-
       module_tint_mode = "mix", -- "single-module"
       no_modules_tint = {1, 0, 0},
       random_animation_offset = true,
-
       apply_module_tint = "secondary",
-
       -- light = { shift = {0, 0}, color = {1, 1, 1}, intensity = 1, size = 3 },
       animation_list =
       {
         {
-          render_layer = "floor-mechanics",
+          render_layer = "smoke",
           always_draw = true,
           animation =
           {
             layers =
             {
               {
-                filename = "__base__/graphics/entity/beacon/beacon-bottom.png",
-                width = 212,
-                height = 192,
-                scale = 0.1,
-                shift = util.by_pixel(0.5, 1),
+                filename = entity .. "hidden_beacon/hidden_beacon.png",
+                width = 180,
+                height = 202,
+                scale = 0.5,
+                line_length = 4,
+                frame_count = 16,
+                animation_speed = 0.1,
+                shift = util.by_pixel(0, 0),
                 draw_as_glow = true,
                 blend_mode = "additive",
               },
-              {
+              --[[{
                 filename = "__base__/graphics/entity/beacon/beacon-shadow.png",
                 width = 244,
                 height = 176,
                 scale = 0.1,
                 draw_as_shadow = true,
                 shift = util.by_pixel(12.5, 0.5)
-              }
+              }]]
             }
           }
         },
-        {
+        --[[{
           render_layer = "object",
           apply_tint = false, -- light doesn't get tinted
           always_draw = false,
@@ -82,7 +81,7 @@ data:extend({
             draw_as_light = true,
             blend_mode = "additive"
           }
-        }
+        }]]
       },
     },
     autoplace = resource_autoplace.resource_autoplace_settings
@@ -116,10 +115,12 @@ data:extend({
     {
       sound =
       {
-        variations = sound_variations("__base__/sound/beacon", 2, 0.3),
-        audible_distance_modifier = 0.33,
+        filename = sounds .. "fast_forward1.wav",
+        volume = 0.1,
+        --variations = sound_variations("__base__/sound/beacon", 1, 0.1),
+        audible_distance_modifier = 0.3,
       },
-      max_sounds_per_prototype = 3
+      max_sounds_per_prototype = 1
     },
     distribution_effectivity = 1,
     distribution_effectivity_bonus_per_quality_level = 0.2,
@@ -153,14 +154,14 @@ data:extend({
     inventory_move_sound = item_sounds.module_inventory_move,
     pick_sound = item_sounds.module_inventory_pickup,
     drop_sound = item_sounds.module_inventory_move,
-    stack_size = 50,
+    stack_size = 1,
     weight = 20 * kg,
-    effect = {speed = 1, consumption = 1},
-    beacon_tint =
-    {
-      primary = {0.441, 0.714, 1.000, 1.000}, -- #70b6ffff
-      secondary = {0.388, 0.976, 1.000, 1.000}, -- #63f8ffff
-    },
+    effect = {speed = 2, consumption = 2, pollution = 2, quality},
+    --beacon_tint =
+    --{
+    --  primary = {0.441, 0.714, 1.000, 1.000}, -- #70b6ffff
+    --  secondary = {0.388, 0.976, 1.000, 1.000}, -- #63f8ffff
+    --},
     art_style = "vanilla",
     requires_beacon_alt_mode = false
   },

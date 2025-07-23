@@ -7,7 +7,7 @@ local hit_effects = require("__base__.prototypes.entity.hit-effects")
 
 local sounds = require("__base__.prototypes.entity.sounds")
 local item_sounds = require("__base__.prototypes.item_sounds")
-
+local ent_size = 6
 
 data:extend(
 {
@@ -50,6 +50,7 @@ data:extend(
 {
   type = "furnace",
   name = "simulation_chamber",
+  cant_insert_at_source_message_key = "inventory-restriction.cant-be-simulated",
   icon = icons .. "simulation_chamber.png",
   flags = {"placeable-neutral","placeable-player", "player-creation"},
   minable = {mining_time = 0.2, result = "simulation_chamber"},
@@ -60,14 +61,15 @@ data:extend(
   icon_draw_specification = {shift = {0, -0.3}},
   circuit_wire_max_distance = assembling_machine_circuit_wire_max_distance,
   circuit_connector = circuit_connector_definitions["chemical-plant"],
-  collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
-  selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+  collision_box = {{-(ent_size/2 -0.3), -(ent_size/2 -0.3)}, {(ent_size/2 -0.3), (ent_size/2 -0.3)}},
+  selection_box = {{-ent_size/2, -ent_size/2}, {ent_size/2, ent_size/2}},
   damaged_trigger_effect = hit_effects.entity(),
   drawing_box_vertical_extension = 0.4,
   --module_slots = 3,
   allowed_effects = {"speed", "pollution", "quality"},
   source_inventory_size = 1,
   result_inventory_size = 6,
+  crafting_speed = 0.1,
 
   graphics_set =
   {
@@ -75,6 +77,16 @@ data:extend(
     {
       layers =
       {
+        {
+          filename = entity .. "simulation_chamber/simulation_chamber_base.png",
+          width = 640,
+          height = 640,
+          --frame_count = 1,
+          --line_length = 1,
+          --shift = util.by_pixel(0.5, -9),
+          scale = 0.5
+        },
+        --[[
         {
           filename = "__base__/graphics/entity/chemical-plant/chemical-plant.png",
           width = 220,
@@ -93,6 +105,7 @@ data:extend(
           draw_as_shadow = true,
           scale = 0.5
         }
+        ]]
       }
     },
     working_visualisations =
@@ -101,62 +114,52 @@ data:extend(
         apply_recipe_tint = "primary",
         animation =
         {
-          filename = "__base__/graphics/entity/chemical-plant/chemical-plant-liquid-north.png",
-          frame_count = 24,
-          line_length = 6,
-          width = 66,
-          height = 44,
-          shift = util.by_pixel(23, 15),
-          scale = 0.5
+          filename = entity .. "simulation_chamber/layer1.png",
+          width = 640,
+          height = 640,
+          --frame_count = 1,
+          --line_length = 1,
+          scale = 0.5,
+          --blend_mode = "multiplicative-with-alpha",
         },
       },
       {
         apply_recipe_tint = "secondary",
         animation =
         {
-          filename = "__base__/graphics/entity/chemical-plant/chemical-plant-foam-north.png",
-          frame_count = 24,
-          line_length = 6,
-          width = 62,
-          height = 42,
-          shift = util.by_pixel(24, 15),
-          scale = 0.5
+          filename = entity .. "simulation_chamber/layer2.png",
+          width = 640,
+          height = 640,
+          --frame_count = 1,
+          --line_length = 1,
+          scale = 0.5,
+          --blend_mode = "multiplicative-with-alpha",
+        },
+      },--[[
+      {
+        apply_recipe_tint = "tertiary",
+        animation =
+        {
+          filename = entity .. "simulation_chamber/layer3.png",
+          width = 640,
+          height = 640,
+          --frame_count = 1,
+          --line_length = 1,
+          scale = 0.5,
         },
       },
       {
-        apply_recipe_tint = "tertiary",
-        fadeout = true,
-        constant_speed = true,
-        render_layer = "wires",
-        animation =
-        {
-          filename = "__base__/graphics/entity/chemical-plant/chemical-plant-smoke-outer.png",
-          frame_count = 47,
-          line_length = 16,
-          width = 90,
-          height = 188,
-          animation_speed = 0.5,
-          shift = util.by_pixel(-2, -40),
-          scale = 0.5
-        }
-      },
-      {
         apply_recipe_tint = "quaternary",
-        fadeout = true,
-        constant_speed = true,
-        render_layer = "wires",
         animation =
         {
-          filename = "__base__/graphics/entity/chemical-plant/chemical-plant-smoke-inner.png",
-          frame_count = 47,
-          line_length = 16,
-          width = 40,
-          height = 84,
-          animation_speed = 0.5,
-          shift = util.by_pixel(0, -14),
-          scale = 0.5
-        }
-      }
+          filename = entity .. "simulation_chamber/layer4.png",
+          width = 640,
+          height = 640,
+          --frame_count = 1,
+          --line_length = 1,
+          scale = 0.5,
+        },
+      },]]
     }
   },
   impact_category = "metal-large",
@@ -168,7 +171,6 @@ data:extend(
     fade_in_ticks = 4,
     fade_out_ticks = 20
   },
-  crafting_speed = 1,
   energy_source =
   {
     type = "electric",

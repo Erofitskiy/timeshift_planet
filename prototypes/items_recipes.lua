@@ -135,9 +135,10 @@ data:extend({
     category = "cloning",
     energy_required = 10,
     ingredients = {
-      {type = "item", name = "hard-drive", amount = 1},
+      --{type = "item", name = "hard-drive", amount = 1},
       {type = "item", name = "uranium-235", amount = 1},
       {type = "item", name = "bioflux", amount = 1},
+      {type = "item", name = "datacell-dna-sequenced", amount = 1}
       --TODO add DNA source
     },
     results = 
@@ -255,8 +256,6 @@ data:extend({
     energy_required = 10,
     ingredients = {
       {type = "item", name = "early_embryo", amount = 1},
-      {type = "item", name = "datacell-dna-sequenced", amount = 1}
-      --TODO add DNA source
     },
     results = 
     {
@@ -265,6 +264,12 @@ data:extend({
     },
     allow_productivity = false,
     enabled = false,
+    crafting_machine_tint = {
+      primary = {r = 1, g = 1, b = 1, a = 1}, -- #ffa342ff
+      secondary = {r = 0, g = 0, b = 0, a = 0}, -- #ffb85fff
+      tertiary = {r = 0, g = 0, b = 0, a = 0}, -- #d9a892ff
+      quaternary = {r = 0, g = 0, b = 0, a = 0}, -- #ff7e45ff
+    },
   },
 
 
@@ -467,6 +472,12 @@ data:extend({
     },
     allow_productivity = true,
     enabled = false,
+    crafting_machine_tint = {
+      primary = {r = 0, g = 0, b = 0, a = 0}, -- #ffa342ff
+      secondary = {r = 1, g = 1, b = 1, a = 1}, -- #ffb85fff
+      tertiary = {r = 0, g = 0, b = 0, a = 0}, -- #d9a892ff
+      quaternary = {r = 0, g = 0, b = 0, a = 0}, -- #ff7e45ff
+    },
   },
 
 
