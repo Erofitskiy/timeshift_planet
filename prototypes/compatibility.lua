@@ -30,7 +30,7 @@ if data.raw.recipe["thinking-brain"] then
     {type = "item", name = "processing-unit", amount = 10},
     {type = "item", name = "low-density-structure", amount = 5},
     {type = "item", name = "ai-tier-10", amount = 1},
-    {type = "item", name = "jar_brain_genius", amount = 1},
+    {type = "item", name = "human_body_3_genius", amount = 1},
     {type = "fluid", name = "nutrients_fluid_goo", amount = 150},
   }
 end

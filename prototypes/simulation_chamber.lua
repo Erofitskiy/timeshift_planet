@@ -135,7 +135,7 @@ data:extend(
           scale = 0.5,
           --blend_mode = "multiplicative-with-alpha",
         },
-      },--[[
+      },
       {
         apply_recipe_tint = "tertiary",
         animation =
@@ -159,7 +159,7 @@ data:extend(
           --line_length = 1,
           scale = 0.5,
         },
-      },]]
+      },
     }
   },
   impact_category = "metal-large",

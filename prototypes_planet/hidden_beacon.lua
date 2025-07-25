@@ -19,7 +19,7 @@ data:extend({
     corpse = "beacon-remnants",
     dying_explosion = "beacon-explosion",
     collision_box = {{0, 0}, {0, 0}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    selection_box = {{0, 0}, {0, 0}},
     collision_mask = {layers={}, not_colliding_with_itself=true},
     damaged_trigger_effect = hit_effects.entity(),
     drawing_box_vertical_extension = 0.7,

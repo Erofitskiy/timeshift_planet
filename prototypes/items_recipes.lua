@@ -126,48 +126,7 @@ data:extend({
 
 
 -- guided mutation
-  {
-    type = "recipe",
-    name = "early_embryo_recipe",
-    icon = icons .. "early_embryo_recipe.png",
-    subgroup = "timeshift-processes",
-    order = "aaa",
-    category = "cloning",
-    energy_required = 10,
-    ingredients = {
-      --{type = "item", name = "hard-drive", amount = 1},
-      {type = "item", name = "uranium-235", amount = 1},
-      {type = "item", name = "bioflux", amount = 1},
-      {type = "item", name = "datacell-dna-sequenced", amount = 1}
-      --TODO add DNA source
-    },
-    results = 
-    {
-      {type = "item", name = "datacell-dna-raw", amount = 1, probability = 1},
-      --{type = "item", name = "hard-drive", amount = 1, probability = 0.99}
-      {type = "item", name = "uranium-235", amount = 1, probability = 1},
-      {type = "item", name = "early_embryo", amount = 1, probability = 0.05},
-      {type = "item", name = "mutated_monster_egg", amount = 1, probability = 0.95},
-    },
-    allow_productivity = false,
-    enabled = false,
-  },
-  {
-    type = "item",
-    name = "early_embryo",
-    icon = icons .. "early_embryo.png",
-    subgroup = "timeshift-processes",
-    order = "aaa",
-    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
-    pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
-    drop_sound = space_age_item_sounds.agriculture_inventory_move,
-    stack_size = 50,
-    default_import_location = "timeshift",
-    random_tint_color = item_tints.iron_rust,
-    spoil_ticks = 5 * minute,
-    spoil_result = "spoilage",
-    weight = 5*kg
-  },
+  
   {
     type = "item",
     name = "mutated_monster_egg",
@@ -230,47 +189,6 @@ data:extend({
   },
 
 
-  {
-    type = "item",
-    name = "viable_embryo",
-    icon = icons .. "viable_embryo.png",
-    subgroup = "timeshift-processes",
-    order = "aaa",
-    inventory_move_sound = item_sounds.resource_inventory_move,
-    pick_sound = item_sounds.resource_inventory_pickup,
-    drop_sound = item_sounds.resource_inventory_move,
-    stack_size = 50,
-    default_import_location = "timeshift",
-    random_tint_color = item_tints.iron_rust,
-    weight = 10*kg
-  },
-
-
-  {
-    type = "recipe",
-    name = "viable_embryo_recipe",
-    icon = icons .. "viable_embryo_recipe.png",
-    subgroup = "timeshift-processes",
-    order = "aaa",
-    category = "simulation_chamber",
-    energy_required = 10,
-    ingredients = {
-      {type = "item", name = "early_embryo", amount = 1},
-    },
-    results = 
-    {
-      {type = "item", name = "viable_embryo", amount = 1, probability = 0.01},
-      {type = "item", name = "spoilage", amount = 1, probability = 1},
-    },
-    allow_productivity = false,
-    enabled = false,
-    crafting_machine_tint = {
-      primary = {r = 1, g = 1, b = 1, a = 1}, -- #ffa342ff
-      secondary = {r = 0, g = 0, b = 0, a = 0}, -- #ffb85fff
-      tertiary = {r = 0, g = 0, b = 0, a = 0}, -- #d9a892ff
-      quaternary = {r = 0, g = 0, b = 0, a = 0}, -- #ff7e45ff
-    },
-  },
 
 
 
@@ -419,66 +337,272 @@ data:extend({
 
 
 
+
+
+
+
+
   -- Brains
 
 
-
-  {
-    type = "item",
-    name = "jar_brain_average",
-    icon = icons .. "jar_brain_average.png",
-    subgroup = "timeshift-processes",
-    order = "aaa",
-    inventory_move_sound = item_sounds.resource_inventory_move,
-    pick_sound = item_sounds.resource_inventory_pickup,
-    drop_sound = item_sounds.resource_inventory_move,
-    stack_size = 1,
-    default_import_location = "timeshift",
-    random_tint_color = item_tints.iron_rust,
-    spoil_ticks = 2 * minutes,
-    spoil_result = "spoilage",
-    weight = 10*kg,
-  },
-
-  {
-    type = "item",
-    name = "jar_brain_genius",
-    icon = icons .. "jar_brain_genius.png",
-    subgroup = "timeshift-processes",
-    order = "aaa",
-    inventory_move_sound = item_sounds.resource_inventory_move,
-    pick_sound = item_sounds.resource_inventory_pickup,
-    drop_sound = item_sounds.resource_inventory_move,
-    stack_size = 1,
-    default_import_location = "timeshift",
-    random_tint_color = item_tints.iron_rust,
-    spoil_ticks = 2 * minutes,
-    spoil_result = "spoilage",
-    weight = 10*kg,
-  },
   {
     type = "recipe",
-    name = "jar_brains_recipe",
-    icon = icons .. "jar_brains_recipe.png",
-    category = "simulation_chamber",
-    energy_required = 60,
+    name = "human_body_0_recipe",
+    icon = icons .. "human_body_0_recipe.png",
+    subgroup = "timeshift-processes",
+    order = "aaa",
+    category = "cloning",
+    energy_required = 10,
     ingredients = {
-      {type = "item", name = "viable_embryo", amount = 1},
+      --{type = "item", name = "hard-drive", amount = 1},
+      {type = "item", name = "uranium-235", amount = 1},
+      {type = "item", name = "bioflux", amount = 1},
+      {type = "item", name = "datacell-dna-sequenced", amount = 1}
+      --TODO add DNA source
     },
     results = 
     {
-      {type = "item", name = "jar_brain_genius", amount = 1, probability = 0.01},
-      {type = "item", name = "jar_brain_average", amount = 1, probability = 0.99},
+      {type = "item", name = "datacell-dna-raw", amount = 1, probability = 1},
+      --{type = "item", name = "hard-drive", amount = 1, probability = 0.99}
+      {type = "item", name = "uranium-235", amount = 1, probability = 1},
+      {type = "item", name = "human_body_0", amount = 1, probability = 0.05},
+      {type = "item", name = "mutated_monster_egg", amount = 1, probability = 0.95},
+    },
+    allow_productivity = false,
+    enabled = false,
+  },
+  {
+    type = "item",
+    name = "human_body_0",
+    icon = icons .. "human_body_0.png",
+    subgroup = "timeshift-processes",
+    order = "aaa",
+    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
+    pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
+    drop_sound = space_age_item_sounds.agriculture_inventory_move,
+    stack_size = 50,
+    default_import_location = "timeshift",
+    random_tint_color = item_tints.iron_rust,
+    spoil_ticks = 1 * minute,
+    spoil_result = "spoilage",
+    weight = 15*kg
+  },
+
+
+
+
+  {
+    type = "recipe",
+    name = "human_body_1_recipe",
+    icon = icons .. "human_body_1_recipe.png",
+    subgroup = "timeshift-processes",
+    order = "aaa",
+    category = "simulation_chamber",
+    energy_required = 10,
+    ingredients = {
+      {type = "item", name = "human_body_0", amount = 1},
+    },
+    results = 
+    {
+      {type = "item", name = "human_body_1", amount = 1, probability = 0.1},
+      {type = "item", name = "spoilage", amount = 2, probability = 1},
+    },
+    allow_productivity = false,
+    enabled = false,
+    crafting_machine_tint = {
+      primary = {r = 1, g = 1, b = 1, a = 1}, -- #ffa342ff
+      secondary = {r = 0, g = 0, b = 0, a = 0}, -- #ffb85fff
+      tertiary = {r = 0, g = 0, b = 0, a = 0}, -- #d9a892ff
+      quaternary = {r = 0, g = 0, b = 0, a = 0}, -- #ff7e45ff
+    },
+  },
+  {
+    type = "item",
+    name = "human_body_1",
+    icon = icons .. "human_body_1.png",
+    subgroup = "timeshift-processes",
+    order = "aaa",
+    inventory_move_sound = item_sounds.resource_inventory_move,
+    pick_sound = item_sounds.resource_inventory_pickup,
+    drop_sound = item_sounds.resource_inventory_move,
+    stack_size = 1,
+    default_import_location = "timeshift",
+    random_tint_color = item_tints.iron_rust,
+    spoil_ticks = 1 * minute,
+    spoil_result = "spoilage",
+    weight = 15*kg
+  },
+
+
+  {
+    type = "recipe",
+    name = "human_body_2_recipe",
+    icon = icons .. "human_body_2_recipe.png",
+    category = "simulation_chamber",
+    energy_required = 60,
+    ingredients = {
+      {type = "item", name = "human_body_1", amount = 1},
+    },
+    results = 
+    {
+      {type = "item", name = "human_body_2", amount = 1, probability = 0.5},
+      {type = "item", name = "spoilage", amount = 1, probability = 0.5},
+    },
+    allow_productivity = true,
+    enabled = false,
+    crafting_machine_tint = {
+      primary = {r = 0, g = 0, b = 0, a = 0},
+      secondary = {r = 0, g = 0, b = 0, a = 0},
+      tertiary = {r = 1, g = 1, b = 1, a = 1},
+      quaternary = {r = 0, g = 0, b = 0, a = 0},
+    },
+  },
+  {
+    type = "item",
+    name = "human_body_2",
+    icon = icons .. "human_body_2.png",
+    subgroup = "timeshift-processes",
+    order = "aaa",
+    inventory_move_sound = item_sounds.resource_inventory_move,
+    pick_sound = item_sounds.resource_inventory_pickup,
+    drop_sound = item_sounds.resource_inventory_move,
+    stack_size = 1,
+    default_import_location = "timeshift",
+    random_tint_color = item_tints.iron_rust,
+    spoil_ticks = 2 * minutes,
+    spoil_result = "spoilage",
+    weight = 10*kg,
+  },
+
+  {
+    type = "recipe",
+    name = "human_body_3_recipe",
+    icon = icons .. "human_body_3_recipe.png",
+    category = "simulation_chamber",
+    energy_required = 60,
+    ingredients = {
+      {type = "item", name = "human_body_2", amount = 1},
+    },
+    results = 
+    {
+      {type = "item", name = "human_body_3_genius", amount = 1, probability = 0.1},
+      {type = "item", name = "human_body_3_dumb", amount = 1, probability = 0.9},
+    },
+    allow_productivity = true,
+    enabled = false,
+    crafting_machine_tint = {
+      primary = {r = 0, g = 0, b = 0, a = 0},
+      secondary = {r = 0, g = 0, b = 0, a = 0},
+      tertiary = {r = 0, g = 0, b = 0, a = 0},
+      quaternary = {r = 1, g = 1, b = 1, a = 1},
+    },
+  },
+
+  {
+    type = "item",
+    name = "human_body_3_genius",
+    icon = icons .. "human_body_3_genius.png",
+    subgroup = "timeshift-processes",
+    order = "aaa",
+    inventory_move_sound = item_sounds.resource_inventory_move,
+    pick_sound = item_sounds.resource_inventory_pickup,
+    drop_sound = item_sounds.resource_inventory_move,
+    stack_size = 1,
+    default_import_location = "timeshift",
+    random_tint_color = item_tints.iron_rust,
+    spoil_ticks = 2 * minutes,
+    spoil_result = "spoilage",
+    weight = 10*kg,
+  },
+  {
+    type = "item",
+    name = "human_body_3_dumb",
+    icon = icons .. "human_body_3_dumb.png",
+    subgroup = "timeshift-processes",
+    order = "aaa",
+    inventory_move_sound = item_sounds.resource_inventory_move,
+    pick_sound = item_sounds.resource_inventory_pickup,
+    drop_sound = item_sounds.resource_inventory_move,
+    stack_size = 1,
+    default_import_location = "timeshift",
+    random_tint_color = item_tints.iron_rust,
+    spoil_ticks = 2 * minutes,
+    spoil_result = "spoilage",
+    weight = 10*kg,
+  },
+  --[[
+  {
+    type = "item",
+    name = "human_body_3",
+    icon = icons .. "human_body_3.png",
+    subgroup = "timeshift-processes",
+    order = "aaa",
+    inventory_move_sound = item_sounds.resource_inventory_move,
+    pick_sound = item_sounds.resource_inventory_pickup,
+    drop_sound = item_sounds.resource_inventory_move,
+    stack_size = 1,
+    default_import_location = "timeshift",
+    random_tint_color = item_tints.iron_rust,
+    spoil_ticks = 2 * minutes,
+    spoil_result = "spoilage",
+    weight = 10*kg,
+  },
+
+  {
+    type = "recipe",
+    name = "human_body_4_recipe",
+    icon = icons .. "human_body_4_recipe.png",
+    category = "simulation_chamber",
+    energy_required = 60,
+    ingredients = {
+      {type = "item", name = "human_body_3", amount = 1},
+    },
+    results = 
+    {
+      {type = "item", name = "human_body_4_genius", amount = 1, probability = 0.1},
+      {type = "item", name = "human_body_4_dumb", amount = 1, probability = 0.9},
     },
     allow_productivity = true,
     enabled = false,
     crafting_machine_tint = {
       primary = {r = 0, g = 0, b = 0, a = 0}, -- #ffa342ff
-      secondary = {r = 1, g = 1, b = 1, a = 1}, -- #ffb85fff
+      secondary = {r = 0, g = 0, b = 0, a = 0}, -- #ffb85fff
       tertiary = {r = 0, g = 0, b = 0, a = 0}, -- #d9a892ff
-      quaternary = {r = 0, g = 0, b = 0, a = 0}, -- #ff7e45ff
+      quaternary = {r = 1, g = 1, b = 1, a = 1}, -- #ff7e45ff
     },
   },
+  {
+    type = "item",
+    name = "human_body_4_genius",
+    icon = icons .. "human_body_4_genius.png",
+    subgroup = "timeshift-processes",
+    order = "aaa",
+    inventory_move_sound = item_sounds.resource_inventory_move,
+    pick_sound = item_sounds.resource_inventory_pickup,
+    drop_sound = item_sounds.resource_inventory_move,
+    stack_size = 1,
+    default_import_location = "timeshift",
+    random_tint_color = item_tints.iron_rust,
+    spoil_ticks = 2 * minutes,
+    spoil_result = "spoilage",
+    weight = 10*kg,
+  },
+  {
+    type = "item",
+    name = "human_body_4_dumb",
+    icon = icons .. "human_body_4_dumb.png",
+    subgroup = "timeshift-processes",
+    order = "aaa",
+    inventory_move_sound = item_sounds.resource_inventory_move,
+    pick_sound = item_sounds.resource_inventory_pickup,
+    drop_sound = item_sounds.resource_inventory_move,
+    stack_size = 1,
+    default_import_location = "timeshift",
+    random_tint_color = item_tints.iron_rust,
+    spoil_ticks = 2 * minutes,
+    spoil_result = "spoilage",
+    weight = 10*kg,
+  },]]
 
 
 })

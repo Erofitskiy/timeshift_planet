@@ -130,7 +130,7 @@ data:extend({
       },
       {
         type = "unlock-recipe",
-        recipe = "early_embryo_recipe"
+        recipe = "human_body_0_recipe"
       },
     },
     prerequisites = {"timeshift_nano_tech", "cloning-vat-technology", "moshine-tech-processing-grid", "uranium-processing"},
@@ -158,10 +158,10 @@ data:extend({
       },
       {
         type = "unlock-recipe",
-        recipe = "viable_embryo_recipe"
+        recipe = "human_body_1_recipe"
       },
     },
-    prerequisites = {"timeshift_dna_manipulation"},
+    prerequisites = {"timeshift_dna_manipulation", "matter_printer-technology"},
     unit =
     {
       count = 50,
@@ -183,10 +183,14 @@ data:extend({
     {
       {
         type = "unlock-recipe",
-        recipe = "jar_brains_recipe"
+        recipe = "human_body_2_recipe"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "human_body_3_recipe"
       },
     },
-    prerequisites = {"timeshift_simulation_chamber", "matter_printer-technology"},
+    prerequisites = {"timeshift_simulation_chamber"},
     unit =
     {
       count = 50,
