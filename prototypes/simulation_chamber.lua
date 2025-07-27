@@ -79,8 +79,8 @@ data:extend(
       {
         {
           filename = entity .. "simulation_chamber/simulation_chamber_base.png",
-          width = 640,
-          height = 640,
+          width = 512,
+          height = 512,
           --frame_count = 1,
           --line_length = 1,
           --shift = util.by_pixel(0.5, -9),
@@ -111,16 +111,28 @@ data:extend(
     working_visualisations =
     {
       {
+        --apply_recipe_tint = "primary",
+        animation =
+        {
+          filename = entity .. "simulation_chamber/simulation_chamber_screen_anim.png",
+          width = 64,
+          height = 64,
+          frame_count = 255, -- max is 255
+          line_length = 32,
+          animation_speed = 0.04,
+          shift = util.by_pixel_hr(-128, -112),
+          scale = 0.5,
+          draw_as_glow = true,
+        },
+      },
+      {
         apply_recipe_tint = "primary",
         animation =
         {
           filename = entity .. "simulation_chamber/layer1.png",
-          width = 640,
-          height = 640,
-          --frame_count = 1,
-          --line_length = 1,
+          width = 512,
+          height = 512,
           scale = 0.5,
-          --blend_mode = "multiplicative-with-alpha",
         },
       },
       {
@@ -128,12 +140,9 @@ data:extend(
         animation =
         {
           filename = entity .. "simulation_chamber/layer2.png",
-          width = 640,
-          height = 640,
-          --frame_count = 1,
-          --line_length = 1,
+          width = 512,
+          height = 512,
           scale = 0.5,
-          --blend_mode = "multiplicative-with-alpha",
         },
       },
       {
@@ -141,10 +150,8 @@ data:extend(
         animation =
         {
           filename = entity .. "simulation_chamber/layer3.png",
-          width = 640,
-          height = 640,
-          --frame_count = 1,
-          --line_length = 1,
+          width = 512,
+          height = 512,
           scale = 0.5,
         },
       },
@@ -153,10 +160,8 @@ data:extend(
         animation =
         {
           filename = entity .. "simulation_chamber/layer4.png",
-          width = 640,
-          height = 640,
-          --frame_count = 1,
-          --line_length = 1,
+          width = 512,
+          height = 512,
           scale = 0.5,
         },
       },

@@ -116,7 +116,7 @@ data:extend({
       sound =
       {
         filename = sounds .. "fast_forward1.wav",
-        volume = 0.1,
+        volume = 0.8,
         --variations = sound_variations("__base__/sound/beacon", 1, 0.1),
         audible_distance_modifier = 0.3,
       },
