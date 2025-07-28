@@ -352,7 +352,7 @@ data:extend({
     subgroup = "timeshift-processes",
     order = "aaa",
     category = "cloning",
-    energy_required = 10,
+    energy_required = 600,
     ingredients = {
       --{type = "item", name = "hard-drive", amount = 1},
       {type = "item", name = "uranium-235", amount = 1},
@@ -398,7 +398,7 @@ data:extend({
     subgroup = "timeshift-processes",
     order = "aaa",
     category = "simulation_chamber",
-    energy_required = 10,
+    energy_required = 600,
     ingredients = {
       {type = "item", name = "human_body_0", amount = 1},
     },
@@ -439,7 +439,7 @@ data:extend({
     name = "human_body_2_recipe",
     icon = icons .. "human_body_2_recipe.png",
     category = "simulation_chamber",
-    energy_required = 60,
+    energy_required = 600,
     ingredients = {
       {type = "item", name = "human_body_1", amount = 1},
     },
@@ -479,7 +479,7 @@ data:extend({
     name = "human_body_3_recipe",
     icon = icons .. "human_body_3_recipe.png",
     category = "simulation_chamber",
-    energy_required = 60,
+    energy_required = 600,
     ingredients = {
       {type = "item", name = "human_body_2", amount = 1},
     },

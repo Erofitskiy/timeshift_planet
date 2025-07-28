@@ -84,7 +84,17 @@ data:extend(
           --frame_count = 1,
           --line_length = 1,
           --shift = util.by_pixel(0.5, -9),
-          scale = 0.5
+          scale = 0.5,
+        },
+        {
+          filename = entity .. "simulation_chamber/simulation_chamber_shadow.png",
+          width = 512,
+          height = 512,
+          --frame_count = 1,
+          --line_length = 1,
+          --shift = util.by_pixel(0.5, -9),
+          scale = 0.5,
+          draw_as_shadow = true,
         },
         --[[
         {
@@ -111,7 +121,6 @@ data:extend(
     working_visualisations =
     {
       {
-        --apply_recipe_tint = "primary",
         animation =
         {
           filename = entity .. "simulation_chamber/simulation_chamber_screen_anim.png",
@@ -119,10 +128,25 @@ data:extend(
           height = 64,
           frame_count = 255, -- max is 255
           line_length = 32,
-          animation_speed = 0.04,
+          animation_speed = 3,
           shift = util.by_pixel_hr(-128, -112),
           scale = 0.5,
           draw_as_glow = true,
+        },
+      },
+      {
+        animation =
+        {
+          filename = entity .. "simulation_chamber/simulation_chamber_glow.png",
+          width = 512,
+          height = 512,
+          --frame_count = 255, -- max is 255
+          --line_length = 32,
+          --animation_speed = 0.04,
+          --shift = util.by_pixel_hr(-128, -112),
+          scale = 0.5,
+          draw_as_glow = true,
+          blend_mode = "additive",
         },
       },
       {

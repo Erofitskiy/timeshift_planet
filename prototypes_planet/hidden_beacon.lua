@@ -10,7 +10,7 @@ data:extend({
   {
     type = "beacon",
     name = "hidden_beacon",
-    icon = "__base__/graphics/icons/beacon.png",
+    icon = icons .. "hidden_beacon.png",
     flags = {"placeable-neutral", "not-upgradable", "not-blueprintable", "hide-alt-info", "not-flammable", "no-automated-item-removal", "no-automated-item-insertion", "no-copy-paste", "not-selectable-in-game"},
     is_military_target = false,
     --minable = {},
@@ -143,7 +143,7 @@ data:extend({
     type = "module",
     name = "timeshift_module",
     localised_description = {"item-description.speed-module"},
-    icon = "__base__/graphics/icons/speed-module-2.png",
+    icon = icons .. "timeshift_module.png",
     subgroup = "module",
     hidden = true,
     hidden_in_factoriopedia = true,
@@ -156,7 +156,7 @@ data:extend({
     drop_sound = item_sounds.module_inventory_move,
     stack_size = 1,
     weight = 20 * kg,
-    effect = {speed = 2, consumption = 2, pollution = 2, quality},
+    effect = {speed = 3, consumption = 3, pollution = 3, quality = -0.2},
     --beacon_tint =
     --{
     --  primary = {0.441, 0.714, 1.000, 1.000}, -- #70b6ffff
