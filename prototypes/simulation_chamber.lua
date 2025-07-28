@@ -35,7 +35,7 @@ data:extend(
       {type = "item", name = "data-processor", amount = 1},
       {type = "item", name = "ai-tier-10", amount = 1},
       {type = "item", name = "cloning-vat", amount = 1},
-      {type = "fluid", name = "nutrients_fluid_goo", amount = 120},
+      {type = "fluid", name = "timeshift_nutrients_slurry", amount = 120},
       -- TOADD core 10
     },
     --surface_conditions = {{ property = "moshine-exclusive", min = 1, max = 1}},
@@ -128,7 +128,7 @@ data:extend(
           height = 64,
           frame_count = 255, -- max is 255
           line_length = 32,
-          animation_speed = 3,
+          animation_speed = 1,
           shift = util.by_pixel_hr(-128, -112),
           scale = 0.5,
           draw_as_glow = true,

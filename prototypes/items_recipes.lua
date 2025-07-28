@@ -82,8 +82,9 @@ data:extend({
     category = "organic-or-chemistry",
     energy_required = 1,
     ingredients = {
-      {type = "item", name = "nutrients", amount = 7},
-      {type = "item", name = "bioflux", amount = 1},
+      --{type = "item", name = "nutrients", amount = 7},
+      --{type = "item", name = "bioflux", amount = 1},
+      {type = "item", name = "timeshift_nutrients", amount = 1},
       {type = "fluid", name = "water", amount = 30},
     },
     results = {{type = "fluid", name = "nutrients_fluid_goo", amount = 1}},
@@ -92,6 +93,20 @@ data:extend({
   },
 
 
+  {
+    type = "item",
+    name = "timeshift_nutrients",
+    icon = icons .. "timeshift_nutrients.png",
+    subgroup = "timeshift-processes",
+    order = "aaa",
+    inventory_move_sound = item_sounds.resource_inventory_move,
+    pick_sound = item_sounds.resource_inventory_pickup,
+    drop_sound = item_sounds.resource_inventory_move,
+    stack_size = 50,
+    default_import_location = "timeshift",
+    random_tint_color = item_tints.iron_rust,
+    weight = 10*kg
+  },
 
 
 --[[ TEMPLATE

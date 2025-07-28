@@ -31,7 +31,7 @@ if data.raw.recipe["thinking-brain"] then
     {type = "item", name = "low-density-structure", amount = 5},
     {type = "item", name = "ai-tier-10", amount = 1},
     {type = "item", name = "human_body_3_genius", amount = 1},
-    {type = "fluid", name = "nutrients_fluid_goo", amount = 150},
+    {type = "fluid", name = "timeshift_nutrients_slurry", amount = 150},
   }
 end
 
@@ -44,7 +44,7 @@ if data.raw.recipe["cloning-vat"] then
     {type = "item", name = "biochamber", amount = 1},
     {type = "item", name = "processing-unit", amount = 1},
     {type = "item", name = "carbon-fiber", amount = 5},
-    {type = "fluid", name = "nutrients_fluid_goo", amount = 150},
+    {type = "fluid", name = "timeshift_nutrients_slurry", amount = 150},
   }
   data.raw.recipe["cloning-vat"].category = "crafting-with-fluid"
 end

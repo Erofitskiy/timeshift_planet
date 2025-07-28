@@ -14,6 +14,7 @@ require "prototypes_planet.planet"
 
 require "prototypes.technology"
 require "prototypes.items_recipes"
+require "prototypes.nutrients"
 --require "prototypes.nano_forge"
 require "prototypes.simulation_chamber"
 require "prototypes.compatibility"

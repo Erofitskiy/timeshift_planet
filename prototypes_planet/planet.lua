@@ -48,7 +48,7 @@ planet_map_gen.timeshift = function()
     },]]
     autoplace_controls =
     {
-      ["hidden_beacon"] = {},
+      ["timeshift_hidden_beacon"] = {},
       --["vulcanus_coal"] = {},
       --["sulfuric_acid_geyser"] = {},
       --["tungsten_ore"] = {},
@@ -138,7 +138,7 @@ planet_map_gen.timeshift = function()
       {
         settings =
         {
-          ["hidden_beacon"] = {},
+          ["timeshift_hidden_beacon"] = {},
           --["coal"] = {},
           --["calcite"] = {},
           --["sulfuric-acid-geyser"] = {},
@@ -159,30 +159,6 @@ planet_map_gen.timeshift = function()
   }
 end
 
-
---[[
-hidden_beacon = table.deepcopy(data.raw["beacon"]["beacon"])
-hidden_beacon.name = "hidden_beacon"
-hidden_beacon.autoplace = resource_autoplace.resource_autoplace_settings
-{
-  name = "hidden_beacon",
-  order = "a",
-  base_density = 10,
-  has_starting_area_placement = true,
-  regular_rq_factor_multiplier = 1.10,
-  starting_rq_factor_multiplier = 1.5,
-  candidate_spot_count = 22,
-  --tile_restriction = autoplace_parameters.tile_restriction
-}
-hidden_beacon.collision_mask = {layers={}, not_colliding_with_itself=true}
-
-hidden_beacon.collision_box = {{-0.1, -0.1}, {0.1, 0.1}}
-hidden_beacon.selection_box = {{-0.5, -0.5}, {0.5, 0.5}}
-
-data:extend({hidden_beacon})
-]]
-
-
 local planet_catalogue_vulcanus = require("__space-age__.prototypes.planet.procession-catalogue-vulcanus")
 local effects = require("__core__.lualib.surface-render-parameter-effects")
 local asteroid_util = require("__space-age__.prototypes.planet.asteroid-spawn-definitions")
@@ -190,7 +166,7 @@ local asteroid_util = require("__space-age__.prototypes.planet.asteroid-spawn-de
 data:extend({
   {
     type = "autoplace-control",
-    name = "hidden_beacon",
+    name = "timeshift_hidden_beacon",
     --localised_name = {"", "[entity=iron-ore] ", {"entity-name.iron-ore"}},
     richness = true,
     order = "a-a",
