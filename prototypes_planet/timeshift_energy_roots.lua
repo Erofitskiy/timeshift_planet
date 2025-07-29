@@ -685,11 +685,7 @@ data:extend({
     dying_explosion = "laser-turret-explosion",
     energy_source =
     {
-      type = "electric",
-      buffer_capacity = "15MJ",
-      input_flow_limit = "7MW",
-      drain = "1MW",
-      usage_priority = "primary-input"
+      type = "void",
     },
     folded_animation = tesla_turret_rising({}),
     preparing_animation = tesla_turret_rising({}),
