@@ -61,52 +61,6 @@ data:extend({
 ]]
 
 
--- NUTRIENTS FLUID
-  {
-    type = "fluid",
-    name = "nutrients_fluid_goo",
-    icon = icons .. "nutrients_fluid_goo.png",
-    subgroup = "timeshift-processes",
-    default_temperature = 15,
-    max_temperature = 100,
-    heat_capacity = "0.2kJ",
-    base_color = {0.4, 0.4, 0.4},
-    flow_color = {0.4, 0.4, 0.4},
-    order = "a[fluid]-a[water]-c[nutrients_fluid_goo]",
-    gas_temperature = 15,
-    auto_barrel = false
-  },
-  {
-    type = "recipe",
-    name = "nutrients_fluid_goo",
-    category = "organic-or-chemistry",
-    energy_required = 1,
-    ingredients = {
-      --{type = "item", name = "nutrients", amount = 7},
-      --{type = "item", name = "bioflux", amount = 1},
-      {type = "item", name = "timeshift_nutrients", amount = 1},
-      {type = "fluid", name = "water", amount = 30},
-    },
-    results = {{type = "fluid", name = "nutrients_fluid_goo", amount = 1}},
-    allow_productivity = true,
-    enabled = false,
-  },
-
-
-  {
-    type = "item",
-    name = "timeshift_nutrients",
-    icon = icons .. "timeshift_nutrients.png",
-    subgroup = "timeshift-processes",
-    order = "aaa",
-    inventory_move_sound = item_sounds.resource_inventory_move,
-    pick_sound = item_sounds.resource_inventory_pickup,
-    drop_sound = item_sounds.resource_inventory_move,
-    stack_size = 50,
-    default_import_location = "timeshift",
-    random_tint_color = item_tints.iron_rust,
-    weight = 10*kg
-  },
 
 
 --[[ TEMPLATE

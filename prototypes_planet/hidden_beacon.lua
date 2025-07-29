@@ -132,7 +132,7 @@ data:extend({
     {
       {inventory_index = defines.inventory.beacon_modules, shift = {0, 0}, multi_row_initial_height_modifier = -0.3, max_icons_per_row = 2}
     },
-    map_color = {1, 1, 0, 0.7},
+    map_color = {1, 1, 0},
   },
 
 

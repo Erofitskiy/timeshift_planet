@@ -2,7 +2,6 @@ local resource_autoplace = require("resource-autoplace")
 resource_autoplace.initialize_patch_set("hidden_beacon", true)
 
 
-
 local planet_map_gen = require("__space-age__/prototypes/planet/planet-map-gen")
 
 local tile_trigger_effects = require("__space-age__.prototypes.tile.tile-trigger-effects")
@@ -139,6 +138,7 @@ planet_map_gen.timeshift = function()
         settings =
         {
           ["timeshift_hidden_beacon"] = {},
+          ["timeshift_energy_roots"] = {},
           --["coal"] = {},
           --["calcite"] = {},
           --["sulfuric-acid-geyser"] = {},
@@ -214,6 +214,7 @@ data:extend({
     magnitude = 0.65,
     label_orientation = 0.35,
 
+    pollutant_type = "timeshift_energy_roots_pollution",
     --gravity_pull = 10,
     --distance = 11,
     --orientation = 0.1,
@@ -329,4 +330,5 @@ data:extend({
     length = 3000,
     asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus)
   },]]
+
 })
