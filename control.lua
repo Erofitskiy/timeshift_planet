@@ -22,6 +22,8 @@ script.on_event(defines.events.on_chunk_generated, function(event)
                 table.insert(storage.timeshift_generators, {
                     entity = entity,
                 })
+                local rand = math.random(0, 1)
+                if rand == 0 then entity.direction = defines.direction.north else entity.direction = defines.direction.east end
             end
         end
     end
@@ -92,6 +94,7 @@ script.on_nth_tick(seconds_interval * 60, function()
                     force = entity.force
                 }
                 turret.force = game.forces.enemy
+                
             end
         end
     end

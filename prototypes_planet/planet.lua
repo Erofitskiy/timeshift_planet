@@ -214,7 +214,7 @@ data:extend({
     magnitude = 0.65,
     label_orientation = 0.35,
 
-    pollutant_type = "timeshift_energy_roots_pollution",
+    --pollutant_type = "timeshift_energy_roots_pollution",
     --gravity_pull = 10,
     --distance = 11,
     --orientation = 0.1,
