@@ -35,9 +35,9 @@ if data.raw.recipe["thinking-brain"] then
   }
 end
 
-if data.raw.technology["cloning-vat-technology"] then
-	table.insert(data.raw.technology["cloning-vat-technology"].effects, {type = "unlock-recipe", recipe = "cloning-vat"})
-end
+--if data.raw.technology["cloning-vat-technology"] then
+--	table.insert(data.raw.technology["cloning-vat-technology"].effects, {type = "unlock-recipe", recipe = "cloning-vat"})
+--end
 
 if data.raw.recipe["cloning-vat"] then
 	data.raw.recipe["cloning-vat"].ingredients = {

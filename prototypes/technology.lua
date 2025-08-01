@@ -29,8 +29,8 @@ data:extend({
   },
   {
     type = "technology",
-    name = "timeshift_advanced_optics",
-    icon = techicons .. "timeshift_advanced_optics.png",
+    name = "timeshift_advanced_optics_nanotech",
+    icon = techicons .. "timeshift_advanced_optics_nanotech.png",
     icon_size = 256,
     effects =
     {
@@ -44,7 +44,7 @@ data:extend({
     }
   },
 
-
+--[[
   {
     type = "technology",
     name = "timeshift_nano_tech",
@@ -64,7 +64,7 @@ data:extend({
       },
       time = 60
     }
-  },
+  },]]
 --[[
   {
     type = "technology",
@@ -133,7 +133,7 @@ data:extend({
         recipe = "human_body_0_recipe"
       },
     },
-    prerequisites = {"timeshift_nano_tech", "cloning-vat-technology", "moshine-tech-processing-grid", "uranium-processing"},
+    prerequisites = {"timeshift_advanced_optics_nanotech", "cloning-vat-technology", "moshine-tech-processing-grid", "uranium-processing"},
     unit =
     {
       count = 50,
@@ -212,5 +212,5 @@ if data.raw["technology"]["thinking-brain-technology"] then
   data.raw["technology"]["thinking-brain-technology"].prerequisites = {"timeshift_simulation_matrix"}
 end
 if data.raw["technology"]["matter_printer-technology"] then
-  table.insert(data.raw["technology"]["matter_printer-technology"].prerequisites, "timeshift_advanced_optics")
+  table.insert(data.raw["technology"]["matter_printer-technology"].prerequisites, "timeshift_advanced_optics_nanotech")
 end
