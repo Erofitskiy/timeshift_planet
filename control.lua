@@ -1,4 +1,5 @@
 local seconds_interval = 15
+local number_of_turret_vars = 2
 
 
 script.on_event(defines.events.on_chunk_generated, function(event)
@@ -51,7 +52,7 @@ end
 
 local function try_place_or_force_clear_turret(surface, center)
     local maxradius = 20
-    local pos = try_place_from_radius(surface, center, 2, maxradius, "timeshift_energy_roots_tesla_turret")
+    local pos = try_place_from_radius(surface, center, 2, maxradius, "timeshift_energy_roots_tesla_turret_1")
     if pos then
         return pos
     else
@@ -64,7 +65,7 @@ local function try_place_or_force_clear_turret(surface, center)
 
         -- Filter out protected types
         for _, entity in pairs(candidates) do
-            if entity.valid and entity.name ~= "timeshift_energy_roots" and entity.name ~= "timeshift_energy_roots_tesla_turret" and entity.name ~= "character" then
+            if entity.valid and entity.name ~= "timeshift_energy_roots" and not string.find(entity.name, "timeshift_energy_roots_tesla_turret") and entity.name ~= "character" then
                 local pos = entity.position
                 entity.destroy({do_cliff_correction = true, raise_destroy = true})
                 --return pos
@@ -86,15 +87,14 @@ script.on_nth_tick(seconds_interval * 60, function()
         elseif entity.energy_generated_last_tick and entity.energy_generated_last_tick > 10 then
             local surface = entity.surface
             local pos = try_place_or_force_clear_turret(surface, entity.position)
-
             if pos then
+                local turrNum = math.random(1, number_of_turret_vars)
                 local turret = surface.create_entity{
-                    name = "timeshift_energy_roots_tesla_turret",
+                    name = "timeshift_energy_roots_tesla_turret_" .. turrNum,
                     position = pos,
                     force = entity.force
                 }
                 turret.force = game.forces.enemy
-                
             end
         end
     end

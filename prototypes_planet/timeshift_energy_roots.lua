@@ -24,6 +24,7 @@ local sounds = require ("__base__.prototypes.entity.sounds")
 local hit_effects = require ("__base__.prototypes.entity.hit-effects")
 local simulations = require("__base__.prototypes.factoriopedia-simulations")
 
+require("__space-age__.prototypes.entity.beams")
 
 require("circuit-connector-sprites")
 local sounds = require("__base__.prototypes.entity.sounds")
@@ -51,7 +52,7 @@ data:extend({
   {
     type = "generator",
     name = "timeshift_energy_roots",
-    icon = "__base__/graphics/icons/steam-engine.png",
+    icon = icons .. "timeshift_energy_roots.png",
     flags = {"placeable-neutral","player-creation"},
     --minable = {mining_time = 0.3, result = "steam-engine"},
     max_health = 400000,
@@ -105,7 +106,7 @@ data:extend({
       layers =
       {
         {
-          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_base.png",
+          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_1_base.png",
           width = 320,
           height = 320,
           repeat_count = 1,
@@ -113,7 +114,7 @@ data:extend({
           scale = 0.5,
         },
         {
-          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_shadow.png",
+          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_1_shadow.png",
           width = 320,
           height = 320,
           repeat_count = 1,
@@ -122,7 +123,7 @@ data:extend({
           draw_as_shadow = true,
         },
         {
-          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_glow.png",
+          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_1_glow.png",
           width = 320,
           height = 320,
           repeat_count = 1,
@@ -137,7 +138,7 @@ data:extend({
       layers =
       {
         {
-          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_base.png",
+          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_2_base.png",
           width = 320,
           height = 320,
           repeat_count = 1,
@@ -145,7 +146,7 @@ data:extend({
           scale = 0.5,
         },
         {
-          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_shadow.png",
+          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_2_shadow.png",
           width = 320,
           height = 320,
           repeat_count = 1,
@@ -154,7 +155,7 @@ data:extend({
           draw_as_shadow = true,
         },
         {
-          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_glow.png",
+          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_2_glow.png",
           width = 320,
           height = 320,
           repeat_count = 1,
@@ -209,154 +210,223 @@ data:extend({
     map_color = {1, 1, 0},
   },
 
+})
 
-  {
-    type = "electric-turret",
-    name = "timeshift_energy_roots_tesla_turret",
-    icon = icons .. "timeshift_energy_roots_tesla_turret.png",
-    flags = {"placeable-player", "placeable-enemy"},
-    --minable = {mining_time = 0.5, result = "tesla-turret"},
-    --fast_replaceable_group = "tesla-turret",
-    max_health = 750,
-    collision_box = {{-0.2, -0.2 }, {0.2, 0.2}},
-    selection_box = {{-0.5, -0.5 }, {0.5, 0.5}},
-    collision_mask = {layers={item=true, object=true, player=true, water_tile=true, is_object=true, is_lower_object=true}},
-    damaged_trigger_effect = hit_effects.entity(),
-    start_attacking_only_when_can_shoot = true,
-    rotation_speed = 0.001,
-    preparing_speed = 0.7,
-    folding_speed = 0.7,
-    ending_attack_speed = 1 / (30 + 1), -- Must be clocked to the beam duration so the face light turns off at the right time
-    --circuit_connector = circuit_connector_definitions["tesla-turret"], -- TODO: generate points for tesla-turret
-    --circuit_wire_max_distance = default_circuit_wire_max_distance,
-    --open_sound = sounds.turret_open,
-    --close_sound = sounds.turret_close,
-    working_sound =
+
+local function make_energy_roots_tesla_turret(num, seq)
+  data:extend({
     {
-      sound = {filename = "__space-age__/sound/entity/tesla-turret/tesla-turret-base.ogg", volume = 0.3},
-      use_doppler_shift = false,
-      fade_in_ticks = 4,
-      fade_out_ticks = 20,
-    },
-    --preparing_sound = space_age_sounds.tesla_turret_activate,
-    --folding_sound = space_age_sounds.tesla_turret_deactivate,
-    --rotating_sound = space_age_sounds.tesla_turret_rotate,
-    corpse = "tesla-turret-remnants",
-    dying_explosion = "laser-turret-explosion",
-    energy_source =
-    {
-      type = "void",
-    },
-    folded_animation = emptyturretanim,
-    --preparing_animation = tesla_turret_rising({}),
-    --prepared_animation = tesla_turret_ready({}),
-    --ending_attack_animation = tesla_turret_cooldown({}),
-    --folding_animation = tesla_turret_rising({run_mode = "backward"}),
-    --energy_glow_animation = laser_turret_shooting_glow(),
-    --resource_indicator_animation = tesla_turret_LED(),
-    glow_light_intensity = 0.5, -- defaults to 0
-    graphics_set =
-    {
-      base_visualisation =
+      type = "electric-turret",
+      name = "timeshift_energy_roots_tesla_turret_" .. num,
+      icon = icons .. "timeshift_energy_roots_tesla_turret.png",
+      localised_name = {"entity-name.timeshift_energy_roots_tesla_turret"},
+      flags = {"placeable-player", "placeable-enemy"},
+      max_health = 750,
+      collision_box = {{-0.2, -0.2 }, {0.2, 0.2}},
+      selection_box = {{-0.5, -0.5 }, {0.5, 0.5}},
+      collision_mask = {layers={item=true, object=true, player=true, water_tile=true, is_object=true, is_lower_object=true}},
+      damaged_trigger_effect = hit_effects.entity(),
+      start_attacking_only_when_can_shoot = true,
+      rotation_speed = 0.001,
+      preparing_speed = 0.7,
+      folding_speed = 0.7,
+      ending_attack_speed = 1 / (30 + 1),
+      working_sound =
       {
+        sound = {filename = "__space-age__/sound/entity/tesla-turret/tesla-turret-base.ogg", volume = 0.3},
+        use_doppler_shift = false,
+        fade_in_ticks = 4,
+        fade_out_ticks = 20,
+      },
+      corpse = "timeshift_energy_roots_tesla_turret_remnants_" .. num,
+      dying_explosion = "laser-turret-explosion",
+      energy_source = {type = "void"},
+      folded_animation = emptyturretanim,
+      glow_light_intensity = 0.5,
+      random_animation_offset = true,
+      graphics_set =
+      {
+        base_visualisation =
         {
-          animation =
           {
-            layers =
+            animation =
             {
+              layers =
               {
-                filename = entity .. "timeshift_energy_roots/cell-1.png",
-                size = 128,
-                frame_count = 1,
-                repeat_count = 30,
-                scale = 0.5,
-                animation_speed = 0.5,
-              },
-              {
-                filename = entity .. "timeshift_energy_roots/cell-1-glow.png",
-                size = 128,
-                frame_count = 1,
-                repeat_count = 30,
-                scale = 0.5,
-                animation_speed = 0.5,
-                draw_as_glow = true,
-                blend_mode = "additive",
-              },
+                {
+                  filename = entity .. "timeshift_energy_roots/cell_" .. num .. ".png",
+                  size = 128,
+                  frame_count = 1,
+                  repeat_count = 30,
+                  scale = 0.5,
+                  animation_speed = 0.1,
+                },
+                {
+                  filename = entity .. "timeshift_energy_roots/cell_glow.png",
+                  size = 128,
+                  frame_count = 8,
+                  line_length = 8,
+                  frame_sequence = seq,
+                  scale = 0.5,
+                  animation_speed = 0.1,
+                  draw_as_glow = true,
+                  blend_mode = "additive",
+                },
+              }
             }
-          }
-        },
-      }
-    },
+          },
+        }
+      },
 
-    resistances =
-    {
-      {type = "electric", percent = 100},
-      {type = "laser", percent = 99},
-      {type = "acid", percent = 90},
-      {type = "physical", percent = 10},
-      {type = "impact", percent = 10},
-      {type = "explosion", percent = 10},
-      {type = "fire", percent = 0},
-    },
-    attack_parameters =
-    {
-      type = "beam",
-      cooldown = 120,
-      range = 10, --30
-      range_mode = "center-to-bounding-box",
-      fire_penalty = 0.9,
-      source_direction_count = 64,
-      source_offset = {0, 0}, -- {0, -0.55},
-      ammo_category = "tesla",
-      ammo_type =
+      resistances =
       {
-        energy_consumption = "0J",
-        action =
+        {type = "electric", percent = 100},
+        {type = "laser", percent = 99},
+        {type = "acid", percent = 90},
+        {type = "physical", percent = 10},
+        {type = "impact", percent = 10},
+        {type = "explosion", percent = 10},
+        {type = "fire", percent = 0},
+      },
+      attack_parameters =
+      {
+        type = "beam",
+        cooldown = 120,
+        range = 10, --30
+        range_mode = "center-to-bounding-box",
+        fire_penalty = 0.9,
+        source_direction_count = 64,
+        source_offset = {0, 0}, -- {0, -0.55},
+        ammo_category = "tesla",
+        ammo_type =
         {
-          type = "direct",
-          action_delivery =
+          energy_consumption = "0J",
+          action =
           {
-            type = "instant",
-            target_effects =
+            type = "direct",
+            action_delivery =
             {
-              -- Chain effect must go first in case the beam kills the target
+              type = "instant",
+              target_effects =
               {
-                type = "nested-result",
-                action =
+                -- Chain effect must go first in case the beam kills the target
                 {
-                  type = "direct",
-                  action_delivery =
+                  type = "nested-result",
+                  action =
                   {
-                    type = "chain",
-                    chain = "chain-tesla-turret-chain",
+                    type = "direct",
+                    action_delivery =
+                    {
+                      type = "chain",
+                      chain = "chain-energy_roots_tesla_turret-chain",
+                    }
                   }
-                }
-              },
-              {
-                type = "nested-result",
-                action =
+                },
                 {
-                  type = "direct",
-                  action_delivery =
+                  type = "nested-result",
+                  action =
                   {
-                    type = "beam",
-                    beam = "chain-tesla-turret-beam-start",
-                    max_length = 10, --40
-                    duration = 10, --30
-                    add_to_shooter = false,
-                    destroy_with_source_or_target = false,
-                    source_offset = {0, 0}, --{0, -2.6}
+                    type = "direct",
+                    action_delivery =
+                    {
+                      type = "beam",
+                      beam = "chain-energy_roots_tesla_turret-beam-start",
+                      max_length = 10, --40
+                      duration = 10, --30
+                      add_to_shooter = false,
+                      destroy_with_source_or_target = false,
+                      source_offset = {0, 0}, --{0, -2.6}
+                    }
                   }
                 }
               }
             }
           }
         }
-      }
+      },
+      call_for_help_radius = 10,
     },
-    call_for_help_radius = 10,
-  },
 
 
 
+    {
+      type = "corpse",
+      name = "timeshift_energy_roots_tesla_turret_remnants_" .. num,
+      icon = icons .. "timeshift_energy_roots_tesla_turret_remnants.png",
+      localised_name = {"entity-name.timeshift_energy_roots_tesla_turret_remnants"},
+      flags = {"placeable-neutral", "not-on-map"},
+      hidden_in_factoriopedia = true,
+      subgroup = "defensive-structure-remnants",
+      order = "a-c-a",
+      selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+      tile_width = 1,
+      tile_height = 1,
+      selectable_in_game = false,
+      time_before_removed = 60 * 60 * 5, -- 5 minutes
+      expires = false,
+      final_render_layer = "remnants",
+      remove_on_tile_placement = false,
+      animation = 
+      {
+        filename = entity .. "timeshift_energy_roots/cell_" .. num .. "_remnants.png",
+        size = 128,
+        scale = 0.5,
+      },
+    },
+
+  })
+end
+
+make_energy_roots_tesla_turret(1, {1,1,2,1,1,1,1,1,4,1,1,1,1,3,1,1,7,1,1,1,6,1,1,1,1,5,1,1,8,1})
+make_energy_roots_tesla_turret(2, {2,1,1,1,1,1,4,1,1,1,1,3,1,1,7,1,1,1,6,1,1,1,1,5,1,1,8,1,1,1})
+
+
+
+
+
+
+
+
+
+
+local function make_tesla_chain_lightning_chain(name, beam_name, max_jumps, jump_range, fork_chance, fork_chance_per_quality, beam_duration)
+  return {
+    name = name,
+    type = "chain-active-trigger",
+    max_jumps = max_jumps,
+    max_range_per_jump = jump_range,
+    jump_delay_ticks = 6,
+    fork_chance = fork_chance,
+    fork_chance_increase_per_quality_level = fork_chance_per_quality,
+    action =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "beam",
+        beam = beam_name,
+        max_length = jump_range + 0.5,
+        duration = beam_duration,
+        add_to_shooter = false,
+        destroy_with_source_or_target = false,
+        source_offset = {0, 0}, -- should match beam's target_offset
+      },
+    },
+  }
+end
+
+data:extend(
+{
+  make_tesla_chain_lightning_chain("chain-energy_roots_tesla_turret-chain", "chain-energy_roots_tesla_turret-beam-bounce", 4, 6, 0.03, 0.03, 4),
 })
+
+
+local function make_chain_tesla_beams(start_name, bounce_name, sound, damage)
+  data:extend(
+  {
+    make_tesla_beam(start_name, sound, damage),
+    make_tesla_beam_chain(bounce_name, sound, damage)
+  })
+end
+
+make_chain_tesla_beams("chain-energy_roots_tesla_turret-beam-start", "chain-energy_roots_tesla_turret-beam-bounce", true, 10)
