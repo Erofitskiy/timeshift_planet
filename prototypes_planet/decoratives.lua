@@ -99,21 +99,10 @@ local function dec_shallow_cliff_collision()
 end
 
 
-local rockpics = {}
-for num = 1, 27 do
-  table.insert(rockpics,
-  {
-    filename = decora .. "big-volcanic-rock/big-volcanic-rock-" .. num .. ".png",
-    width = 256,
-    height = 256,
-    scale = 0.5,
-  })
-end
 
-
-local bigrockpics = {}
-for num = 1, 17 do
-  table.insert(bigrockpics,
+local hugerockpics = {}
+for num = 1, 28 do
+  table.insert(hugerockpics,
   {
     filename = decora .. "huge-volcanic-rock/huge-volcanic-rock-" .. num .. ".png",
     width = 320,
@@ -122,6 +111,16 @@ for num = 1, 17 do
   })
 end
 
+local bigrockpics = {}
+for num = 1, 27 do
+  table.insert(bigrockpics,
+  {
+    filename = decora .. "big-volcanic-rock/big-volcanic-rock-" .. num .. ".png",
+    width = 256,
+    height = 256,
+    scale = 0.5,
+  })
+end
 
 local mediumrocks = {}
 for num = 1, 12 do
@@ -179,7 +178,7 @@ data:extend({
       order = "a[landscape]-c[rock]-a[huge]",
       probability_expression = "vulcanus_rock_huge"
     },
-    pictures = bigrockpics,
+    pictures = hugerockpics,
   },
 
   {
@@ -222,7 +221,7 @@ data:extend({
     count_as_rock_for_filtered_deconstruction = true,
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
     impact_category = "stone",
-    pictures = rockpics,
+    pictures = bigrockpics,
   },
 
 
