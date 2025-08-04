@@ -84,13 +84,89 @@ data:extend({
     fluid_box =
     {
       volume = 200,
-      pipe_covers = pipecoverspictures(),
+      pipe_picture = {
+        north =
+        {
+          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots-pipe-N.png",
+          priority = "extra-high",
+          width = 128,
+          height = 128,
+          shift = util.by_pixel(0, 32),
+          scale = 0.5
+        },
+        east =
+        {
+          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots-pipe-E.png",
+          priority = "extra-high",
+          width = 128,
+          height = 128,
+          shift = util.by_pixel(-32, 0),
+          scale = 0.5
+        },
+        south =
+        {
+          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots-pipe-S.png",
+          priority = "extra-high",
+          width = 128,
+          height = 128,
+          shift = util.by_pixel(0, -32),
+          scale = 0.5
+        },
+        west =
+        {
+          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots-pipe-W.png",
+          priority = "extra-high",
+          width = 128,
+          height = 128,
+          shift = util.by_pixel(32, 0),
+          scale = 0.5
+        }
+      },
+      --[[pipe_picture = {
+        north =
+        {
+          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots-pipe-N.png",
+          priority = "extra-high",
+          width = 128,
+          height = 128,
+          shift = util.by_pixel(0, 64),
+          scale = 0.5
+        },
+        east =
+        {
+          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots-pipe-E.png",
+          priority = "extra-high",
+          width = 128,
+          height = 128,
+          shift = util.by_pixel(-64, 0),
+          scale = 0.5
+        },
+        south =
+        {
+          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots-pipe-S.png",
+          priority = "extra-high",
+          width = 128,
+          height = 128,
+          shift = util.by_pixel(0, -64),
+          scale = 0.5
+        },
+        west =
+        {
+          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots-pipe-W.png",
+          priority = "extra-high",
+          width = 128,
+          height = 128,
+          shift = util.by_pixel(64, 0),
+          scale = 0.5
+        }
+      },]]
+      always_draw_covers = false,
       pipe_connections =
       {
-        { flow_direction = "input-output", direction = defines.direction.north, position = {0, -1} },
-        { flow_direction = "input-output", direction = defines.direction.east, position = {1, 0} },
-        { flow_direction = "input-output", direction = defines.direction.south, position = {0, 1} },
-        { flow_direction = "input-output", direction = defines.direction.west, position = {-1, 0} },
+        { flow_direction = "input", direction = defines.direction.north, position = {0, -1} },
+        { flow_direction = "input", direction = defines.direction.east, position = {1, 0} },
+        { flow_direction = "input", direction = defines.direction.south, position = {0, 1} },
+        { flow_direction = "input", direction = defines.direction.west, position = {-1, 0} },
       },
       production_type = "input",
       filter = "timeshift_nutrients_slurry",
@@ -259,7 +335,7 @@ local function make_energy_roots_tesla_turret(num, seq)
                   frame_count = 1,
                   repeat_count = 30,
                   scale = 0.5,
-                  animation_speed = 0.1,
+                  animation_speed = 0.2,
                 },
                 {
                   filename = entity .. "timeshift_energy_roots/cell_glow.png",
@@ -268,7 +344,7 @@ local function make_energy_roots_tesla_turret(num, seq)
                   line_length = 8,
                   frame_sequence = seq,
                   scale = 0.5,
-                  animation_speed = 0.1,
+                  animation_speed = 0.2,
                   draw_as_glow = true,
                   blend_mode = "additive",
                 },

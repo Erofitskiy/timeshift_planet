@@ -143,8 +143,8 @@ planet_map_gen.timeshift = function()
           --["calcite"] = {},
           --["sulfuric-acid-geyser"] = {},
           --["tungsten-ore"] = {},
-          ["huge-volcanic-rock"] = {},
-          ["big-volcanic-rock"] = {},
+          ["timeshiftplanet-huge-volcanic-rock"] = {},
+          ["timeshiftplanet-big-volcanic-rock"] = {},
           ["crater-cliff"] = {},
           --["vulcanus-chimney"] = {},
           --["vulcanus-chimney-faded"] = {},
@@ -288,6 +288,7 @@ data:extend({
         --{0.55, "__space-age__/graphics/lut/vulcanus-2-night.png"},
         --{0.80, "__space-age__/graphics/lut/vulcanus-1-day.png"},
         {0.0, "__timeshift_planet__/graphics/lut/identity-lut.png"},
+        {0.5, "__core__/graphics/color_luts/lut-night.png"},
       },
 
       terrain_tint_effect =

@@ -1,4 +1,4 @@
-local decora = "__timeshift_planet__/graphics/decorative"
+local decora = "__timeshift_planet__/graphics/decorative/"
 local hit_effects = require ("__base__.prototypes.entity.hit-effects")
 local base_sounds = require ("__base__.prototypes.entity.sounds")
 local base_tile_sounds = require("__base__/prototypes/tile/tile-sounds")
@@ -8,6 +8,41 @@ local decorative_trigger_effects = require("__base__.prototypes.decorative.decor
 local decal_tile_layer = 255
 local decal_opacity_over_water = 0.4
 local water_decal_opacity_over_water = 0.7
+
+function get_decal_pictures_withglow(file_path, size_class, image_size, amount, tint, tint_as_overlay, scale)
+  local pictures  = {}
+  tint_as_overlay = tint_as_overlay or false
+  tint = tint or {1, 1, 1}
+  for i = 1, amount do
+    table.insert(pictures,
+      {
+        layers =
+        {
+          {
+            filename = file_path .. size_class .. string.format("%02i", i) .. ".png",
+            priority = base_decorative_sprite_priority,
+            width = image_size,
+            height = image_size,
+            scale = 0.5 * (scale or 1),
+            tint_as_overlay = tint_as_overlay,
+            tint = tint
+          },
+          {
+            filename = file_path .. size_class .. string.format("%02i", i) .. "-glow.png",
+            priority = base_decorative_sprite_priority,
+            width = image_size,
+            height = image_size,
+            scale = 0.5 * (scale or 1),
+            tint_as_overlay = tint_as_overlay,
+            tint = tint,
+            draw_as_light = true,
+            blend_mode = "additive",
+          },
+        },
+      })
+  end
+  return pictures
+end
 
 
 local function combine_tint(table_1, table_2)
@@ -24,7 +59,8 @@ local brown_carpet_tint = {1,.9,1}
 local red_pita_tint = {.8,.75,.75}
 local tintable_rock_tint = {0.2588, 0.2788, 0.2588}
 local sulfur_rock_tint = {0.788, 0.627, 0.167} --{0.968, 0.807, 0.247}
-local tungsten_rock_tint = {.7,.7,.7}
+--local tungsten_rock_tint = {.7,.7,.7}
+local tungsten_rock_tint = {1,1,1}
 
 green_hairy_tint = combine_tint(vulcanus_base_tint, green_hairy_tint)
 brown_hairy_tint = combine_tint(vulcanus_base_tint, brown_hairy_tint)
@@ -62,7 +98,157 @@ local function dec_shallow_cliff_collision()
   return {layers={doodad=true, water_tile=true, cliff=true}, not_colliding_with_itself=true}
 end
 
+
+local rockpics = {}
+for num = 1, 27 do
+  table.insert(rockpics,
+  {
+    filename = decora .. "big-volcanic-rock/big-volcanic-rock-" .. num .. ".png",
+    width = 256,
+    height = 256,
+    scale = 0.5,
+  })
+end
+
+
+local bigrockpics = {}
+for num = 1, 17 do
+  table.insert(bigrockpics,
+  {
+    filename = decora .. "huge-volcanic-rock/huge-volcanic-rock-" .. num .. ".png",
+    width = 320,
+    height = 256,
+    scale = 0.5,
+  })
+end
+
+
+local mediumrocks = {}
+for num = 1, 12 do
+  table.insert(mediumrocks,
+  {
+    filename = decora .. "medium-volcanic-rock/medium-volcanic-rock-" .. num .. ".png",
+    width = 128,
+    height = 128,
+    scale = 0.5,
+  })
+end
+
+
+
+
 data:extend({
+
+  {
+    name = "timeshiftplanet-huge-volcanic-rock",
+    type = "simple-entity",
+    flags = {"placeable-neutral", "placeable-off-grid"},
+    icon = "__space-age__/graphics/icons/huge-volcanic-rock.png",
+    subgroup = "grass",
+    order = "b[decorative]-l[rock]-a[vulcanus]-b[huge-volcanic-rock]",
+    collision_box = {{-1.7, -1.3}, {1.7, 1.3}},
+    selection_box = {{-2, -1.5}, {2, 1.5}},
+    damaged_trigger_effect = hit_effects.rock(),
+    dying_trigger_effect = decorative_trigger_effects.huge_rock(),
+    minable =
+    {
+      mining_particle = "stone-particle",
+      mining_time = 3,
+      results =
+      {
+        {type = "item", name = "stone", amount_min = 6, amount_max = 18},
+        {type = "item", name = "iron-ore", amount_min = 9, amount_max = 27},
+        {type = "item", name = "copper-ore", amount_min = 6, amount_max = 18},
+        --{type = "item", name = "tungsten-ore", amount_min = 3, amount_max = 15}
+      },
+    },
+    map_color = {129, 105, 78},
+    count_as_rock_for_filtered_deconstruction = true,
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    impact_category = "stone",
+    render_layer = "object",
+    max_health = 2000,
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 100
+      }
+    },
+    autoplace = {
+      order = "a[landscape]-c[rock]-a[huge]",
+      probability_expression = "vulcanus_rock_huge"
+    },
+    pictures = bigrockpics,
+  },
+
+  {
+    name = "timeshiftplanet-big-volcanic-rock",
+    type = "simple-entity",
+    flags = {"placeable-neutral", "placeable-off-grid"},
+    icon = "__space-age__/graphics/icons/big-volcanic-rock.png",
+    subgroup = "grass",
+    order = "b[decorative]-l[rock]-a[vulcanus]-a[big-volcanic-rock]",
+    collision_box = {{-0.75, -0.75}, {0.75, 0.75}},
+    selection_box = {{-1.0, -1.0}, {1.0, 0.75}},
+    damaged_trigger_effect = hit_effects.rock(),
+    render_layer = "object",
+    max_health = 500,
+    autoplace = {
+      order = "a[landscape]-c[rock]-b[big]",
+      probability_expression = "vulcanus_rock_big"
+    },
+    dying_trigger_effect = decorative_trigger_effects.big_rock(),
+    minable =
+    {
+      mining_particle = "stone-particle",
+      mining_time = 2,
+      results =
+      {
+        {type = "item", name = "stone", amount_min = 2, amount_max = 12},
+        {type = "item", name = "iron-ore", amount_min = 5, amount_max = 9},
+        {type = "item", name = "copper-ore", amount_min = 3, amount_max = 7},
+        --{type = "item", name = "tungsten-ore", amount_min = 2, amount_max = 8}
+      }
+    },
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 100
+      }
+    },
+    map_color = {129, 105, 78},
+    count_as_rock_for_filtered_deconstruction = true,
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    impact_category = "stone",
+    pictures = rockpics,
+  },
+
+
+
+  {
+    name = "timeshiftplanet-medium-volcanic-rock",
+    type = "optimized-decorative",
+    order = "b[decorative]-l[rock]-c[medium]",
+    collision_box = {{-1.1, -1.1}, {1.1, 1.1}},
+    render_layer = "decorative",
+    walking_sound = space_age_tile_sounds.walking.rocky_stone({modifiers = volume_multiplier("main-menu", 1.5)}),
+    autoplace = {
+      order = "d[ground-surface]-i[rock]-a[medium]",
+      probability_expression = "vulcanus_rock_medium"
+    },
+    trigger_effect = decorative_trigger_effects.medium_rock(),
+    pictures = mediumrocks,
+  },
+
+
+
+
+
+
+
+
   {
     name = "timeshiftplanet-vulcanus-rock-decal-large",
     type = "optimized-decorative",
@@ -75,7 +261,7 @@ data:extend({
       order = "d[ground-surface]-f[cracked-rock]-b[cold]",
       probability_expression = "vulcanus_rock_decal_large"
     },
-    pictures = get_decal_pictures(decora .. "/vulcanus-rock-decal/vulcanus-rock-decal-", "large-", 256, 5)
+    pictures = get_decal_pictures(decora .. "vulcanus-rock-decal/vulcanus-rock-decal-", "large-", 256, 5)
   },
   {
     name = "timeshiftplanet-vulcanus-crack-decal-large",
@@ -90,7 +276,7 @@ data:extend({
       order = "d[ground-surface]-g[cracks]-b[cold]-a[large]",
       probability_expression = "vulcanus_crack_decal_large"
     },
-    pictures = get_decal_pictures(decora .. "/vulcanus-cracks-cold/vulcanus-cracks-cold-", "huge-", 256, 20)
+    pictures = get_decal_pictures(decora .. "vulcanus-cracks-cold/vulcanus-cracks-cold-", "huge-", 256, 20)
   },
   {
     name = "timeshiftplanet-vulcanus-crack-decal-huge-warm",
@@ -106,7 +292,7 @@ data:extend({
       order = "d[ground-surface]-g[cracks]-a[warm]-a[large]",
       probability_expression = "vulcanus_crack_decal_huge_warm"
     },
-    pictures = get_decal_pictures(decora .. "/vulcanus-cracks/vulcanus-cracks-hot-", "huge-", 256, 20)
+    pictures = get_decal_pictures_withglow(decora .. "vulcanus-cracks/vulcanus-cracks-hot-", "huge-", 256, 20)
   },
 
 
@@ -126,7 +312,7 @@ data:extend({
     pictures =
     {
         {
-          filename = decora .. "/small-volcanic-rock/small-volcanic-rock-01.png",
+          filename = decora .. "small-volcanic-rock/small-volcanic-rock-01.png",
           priority = base_decorative_sprite_priority,
           width = 51,
           height = 37,
@@ -136,7 +322,7 @@ data:extend({
           shift = {0.0546875, 0.117188}
         },
         {
-          filename = decora .. "/small-volcanic-rock/small-volcanic-rock-02.png",
+          filename = decora .. "small-volcanic-rock/small-volcanic-rock-02.png",
           priority = base_decorative_sprite_priority,
           width = 52,
           height = 35,
@@ -146,7 +332,7 @@ data:extend({
           shift = {0.0390625, 0.078125}
         },
         {
-          filename = decora .. "/small-volcanic-rock/small-volcanic-rock-03.png",
+          filename = decora .. "small-volcanic-rock/small-volcanic-rock-03.png",
           priority = base_decorative_sprite_priority,
           width = 46,
           height = 42,
@@ -156,7 +342,7 @@ data:extend({
           shift = {-0.0078125, 0.148438}
         },
         {
-          filename = decora .. "/small-volcanic-rock/small-volcanic-rock-04.png",
+          filename = decora .. "small-volcanic-rock/small-volcanic-rock-04.png",
           priority = base_decorative_sprite_priority,
           width = 53,
           height = 33,
@@ -166,7 +352,7 @@ data:extend({
           shift = {0.0234375, 0.15625}
         },
         {
-          filename = decora .. "/small-volcanic-rock/small-volcanic-rock-05.png",
+          filename = decora .. "small-volcanic-rock/small-volcanic-rock-05.png",
           priority = base_decorative_sprite_priority,
           width = 47,
           height = 46,
@@ -176,7 +362,7 @@ data:extend({
           shift = {0.0390625, 0.140625}
         },
         {
-          filename = decora .. "/small-volcanic-rock/small-volcanic-rock-06.png",
+          filename = decora .. "small-volcanic-rock/small-volcanic-rock-06.png",
           priority = base_decorative_sprite_priority,
           width = 62,
           height = 41,
@@ -186,7 +372,7 @@ data:extend({
           shift = {-0.03125, 0.09375}
         },
         {
-          filename = decora .. "/small-volcanic-rock/small-volcanic-rock-07.png",
+          filename = decora .. "small-volcanic-rock/small-volcanic-rock-07.png",
           priority = base_decorative_sprite_priority,
           width = 64,
           height = 36,
@@ -196,7 +382,7 @@ data:extend({
           shift = {-0.015625, 0.0703125}
         },
         {
-          filename = decora .. "/small-volcanic-rock/small-volcanic-rock-08.png",
+          filename = decora .. "small-volcanic-rock/small-volcanic-rock-08.png",
           priority = base_decorative_sprite_priority,
           width = 65,
           height = 31,
@@ -206,7 +392,7 @@ data:extend({
           shift = {-0.71875, -0.164062}
         },
         {
-          filename = decora .. "/small-volcanic-rock/small-volcanic-rock-09.png",
+          filename = decora .. "small-volcanic-rock/small-volcanic-rock-09.png",
           priority = base_decorative_sprite_priority,
           width = 46,
           height = 34,
@@ -216,7 +402,7 @@ data:extend({
           shift = {-0.0859375, 0.101562}
         },
         {
-          filename = decora .. "/small-volcanic-rock/small-volcanic-rock-10.png",
+          filename = decora .. "small-volcanic-rock/small-volcanic-rock-10.png",
           priority = base_decorative_sprite_priority,
           width = 48,
           height = 34,
@@ -226,7 +412,7 @@ data:extend({
           shift = {0.0078125, 0.125}
         },
         {
-          filename = decora .. "/small-volcanic-rock/small-volcanic-rock-11.png",
+          filename = decora .. "small-volcanic-rock/small-volcanic-rock-11.png",
           priority = base_decorative_sprite_priority,
           width = 51,
           height = 33,
@@ -236,7 +422,7 @@ data:extend({
           shift = {-0.0859375, 0.078125}
         },
         {
-          filename = decora .. "/small-volcanic-rock/small-volcanic-rock-12.png",
+          filename = decora .. "small-volcanic-rock/small-volcanic-rock-12.png",
           priority = base_decorative_sprite_priority,
           width = 47,
           height = 39,
@@ -246,7 +432,7 @@ data:extend({
           shift = {0.078125, 0.117188}
         },
         {
-          filename = decora .. "/small-volcanic-rock/small-volcanic-rock-13.png",
+          filename = decora .. "small-volcanic-rock/small-volcanic-rock-13.png",
           priority = base_decorative_sprite_priority,
           width = 43,
           height = 33,
@@ -256,7 +442,7 @@ data:extend({
           shift = {0, 0.09375}
         },
         {
-          filename = decora .. "/small-volcanic-rock/small-volcanic-rock-14.png",
+          filename = decora .. "small-volcanic-rock/small-volcanic-rock-14.png",
           priority = base_decorative_sprite_priority,
           width = 43,
           height = 30,
@@ -266,7 +452,7 @@ data:extend({
           shift = {0.046875, 0.140625}
         },
         {
-          filename = decora .. "/small-volcanic-rock/small-volcanic-rock-15.png",
+          filename = decora .. "small-volcanic-rock/small-volcanic-rock-15.png",
           priority = base_decorative_sprite_priority,
           width = 41,
           height = 37,
@@ -276,7 +462,7 @@ data:extend({
           shift = {0, 0.140625}
         },
         {
-          filename = decora .. "/small-volcanic-rock/small-volcanic-rock-16.png",
+          filename = decora .. "small-volcanic-rock/small-volcanic-rock-16.png",
           priority = base_decorative_sprite_priority,
           width = 46,
           height = 33,
@@ -305,7 +491,7 @@ data:extend({
     pictures =
     {
       {
-        filename =  decora .. "/tiny-volcanic-rock/tiny-volcanic-rock-01.png",
+        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-01.png",
         priority = base_decorative_sprite_priority,
         width =  29,
         height =  21,
@@ -315,7 +501,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "/tiny-volcanic-rock/tiny-volcanic-rock-02.png",
+        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-02.png",
         priority = base_decorative_sprite_priority,
         width =  30,
         height =  19,
@@ -325,7 +511,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "/tiny-volcanic-rock/tiny-volcanic-rock-03.png",
+        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-03.png",
         priority = base_decorative_sprite_priority,
         width =  29,
         height =  24,
@@ -335,7 +521,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "/tiny-volcanic-rock/tiny-volcanic-rock-04.png",
+        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-04.png",
         priority = base_decorative_sprite_priority,
         width =  32,
         height =  20,
@@ -345,7 +531,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "/tiny-volcanic-rock/tiny-volcanic-rock-05.png",
+        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-05.png",
         priority = base_decorative_sprite_priority,
         width =  29,
         height =  25,
@@ -355,7 +541,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "/tiny-volcanic-rock/tiny-volcanic-rock-06.png",
+        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-06.png",
         priority = base_decorative_sprite_priority,
         width =  36,
         height =  24,
@@ -365,7 +551,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "/tiny-volcanic-rock/tiny-volcanic-rock-07.png",
+        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-07.png",
         priority = base_decorative_sprite_priority,
         width =  78,
         height =  34,
@@ -375,7 +561,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "/tiny-volcanic-rock/tiny-volcanic-rock-08.png",
+        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-08.png",
         priority = base_decorative_sprite_priority,
         width =  35,
         height =  19,
@@ -385,7 +571,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "/tiny-volcanic-rock/tiny-volcanic-rock-09.png",
+        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-09.png",
         priority = base_decorative_sprite_priority,
         width =  28,
         height =  20,
@@ -395,7 +581,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "/tiny-volcanic-rock/tiny-volcanic-rock-10.png",
+        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-10.png",
         priority = base_decorative_sprite_priority,
         width =  29,
         height =  20,
@@ -405,7 +591,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "/tiny-volcanic-rock/tiny-volcanic-rock-11.png",
+        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-11.png",
         priority = base_decorative_sprite_priority,
         width =  29,
         height =  20,
@@ -415,7 +601,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "/tiny-volcanic-rock/tiny-volcanic-rock-12.png",
+        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-12.png",
         priority = base_decorative_sprite_priority,
         width =  29,
         height =  22,
@@ -425,7 +611,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "/tiny-volcanic-rock/tiny-volcanic-rock-13.png",
+        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-13.png",
         priority = base_decorative_sprite_priority,
         width =  27,
         height =  19,
@@ -435,7 +621,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "/tiny-volcanic-rock/tiny-volcanic-rock-14.png",
+        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-14.png",
         priority = base_decorative_sprite_priority,
         width =  27,
         height =  19,
@@ -445,7 +631,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "/tiny-volcanic-rock/tiny-volcanic-rock-15.png",
+        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-15.png",
         priority = base_decorative_sprite_priority,
         width =  26,
         height =  22,
@@ -455,7 +641,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "/tiny-volcanic-rock/tiny-volcanic-rock-16.png",
+        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-16.png",
         priority = base_decorative_sprite_priority,
         width =  27,
         height =  20,
@@ -467,142 +653,6 @@ data:extend({
     }
   },
 
-  {
-    name = "timeshiftplanet-medium-volcanic-rock",
-    type = "optimized-decorative",
-    order = "b[decorative]-l[rock]-c[medium]",
-    collision_box = {{-1.1, -1.1}, {1.1, 1.1}},
-    render_layer = "decorative",
-    walking_sound = space_age_tile_sounds.walking.rocky_stone({modifiers = volume_multiplier("main-menu", 1.5)}),
-    autoplace = {
-      order = "d[ground-surface]-i[rock]-a[medium]",
-      probability_expression = "vulcanus_rock_medium"
-    },
-    trigger_effect = decorative_trigger_effects.medium_rock(),
-    pictures =
-    {
-      {
-        filename = decora .. "/medium-volcanic-rock/medium-volcanic-rock-01.png",
-        priority = base_decorative_sprite_priority,
-        width = 89,
-        height = 63,
-        tint_as_overlay = true,
-        tint = tintable_rock_tint,
-        scale = 0.5,
-        shift = {0.078125, 0.109375}
-      },
-      {
-        filename = decora .. "/medium-volcanic-rock/medium-volcanic-rock-02.png",
-        priority = base_decorative_sprite_priority,
-        width = 77,
-        height = 66,
-        tint_as_overlay = true,
-        tint = tintable_rock_tint,
-        scale = 0.5,
-        shift = {0.015625, 0.132812}
-      },
-      {
-        filename = decora .. "/medium-volcanic-rock/medium-volcanic-rock-03.png",
-        priority = base_decorative_sprite_priority,
-        width = 92,
-        height = 63,
-        tint_as_overlay = true,
-        tint = tintable_rock_tint,
-        scale = 0.5,
-        shift = {0.148438, 0.179688}
-      },
-      {
-        filename = decora .. "/medium-volcanic-rock/medium-volcanic-rock-04.png",
-        priority = base_decorative_sprite_priority,
-        width = 91,
-        height = 59,
-        tint_as_overlay = true,
-        tint = tintable_rock_tint,
-        scale = 0.5,
-        shift = {-0.0078125, 0.1875}
-      },
-      {
-        filename = decora .. "/medium-volcanic-rock/medium-volcanic-rock-05.png",
-        priority = base_decorative_sprite_priority,
-        width = 104,
-        height = 72,
-        tint_as_overlay = true,
-        tint = tintable_rock_tint,
-        scale = 0.5,
-        shift = {0.203125, 0.179688}
-      },
-      {
-        filename = decora .. "/medium-volcanic-rock/medium-volcanic-rock-06.png",
-        priority = base_decorative_sprite_priority,
-        width = 83,
-        height = 82,
-        tint_as_overlay = true,
-        tint = tintable_rock_tint,
-        scale = 0.5,
-        shift = {0.015625, 0.21875}
-      },
-      {
-        filename = decora .. "/medium-volcanic-rock/medium-volcanic-rock-07.png",
-        priority = base_decorative_sprite_priority,
-        width = 111,
-        height = 65,
-        tint_as_overlay = true,
-        tint = tintable_rock_tint,
-        scale = 0.5,
-        shift = {0.0625, 0.3125}
-      },
-      {
-        filename = decora .. "/medium-volcanic-rock/medium-volcanic-rock-08.png",
-        priority = base_decorative_sprite_priority,
-        width = 79,
-        height = 81,
-        tint_as_overlay = true,
-        tint = tintable_rock_tint,
-        scale = 0.5,
-        shift = {0.109375, 0.148438}
-      },
-      {
-        filename = decora .. "/medium-volcanic-rock/medium-volcanic-rock-09.png",
-        priority = base_decorative_sprite_priority,
-        width = 98,
-        height = 56,
-        tint_as_overlay = true,
-        tint = tintable_rock_tint,
-        scale = 0.5,
-        shift = {0.015625, 0.140625}
-      },
-      {
-        filename = decora .. "/medium-volcanic-rock/medium-volcanic-rock-10.png",
-        priority = base_decorative_sprite_priority,
-        width = 91,
-        height = 68,
-        tint_as_overlay = true,
-        tint = tintable_rock_tint,
-        scale = 0.5,
-        shift = {0, 0.132812}
-      },
-      {
-        filename = decora .. "/medium-volcanic-rock/medium-volcanic-rock-11.png",
-        priority = base_decorative_sprite_priority,
-        width = 105,
-        height = 71,
-        tint_as_overlay = true,
-        tint = tintable_rock_tint,
-        scale = 0.5,
-        shift = {-0.0234375, 0.125}
-      },
-      {
-        filename = decora .. "/medium-volcanic-rock/medium-volcanic-rock-12.png",
-        priority = base_decorative_sprite_priority,
-        width = 78,
-        height = 80,
-        tint_as_overlay = true,
-        tint = tintable_rock_tint,
-        scale = 0.5,
-        shift = {0.078125, -0.015625}
-      }
-    }
-  },
   --- ROCK CLUSTERS
   {
     name = "timeshiftplanet-tiny-rock-cluster",
@@ -618,7 +668,7 @@ data:extend({
       placement_density = 2,
       probability_expression = "vulcanus_rock_cluster"
     },
-    pictures = get_decal_pictures(decora .. "/tiny-volcanic-rock-cluster/tiny-volcanic-rock-cluster-", "", 128, 8,tintable_rock_tint,true)
+    pictures = get_decal_pictures(decora .. "tiny-volcanic-rock-cluster/tiny-volcanic-rock-cluster-", "", 128, 8,tintable_rock_tint,true)
   },
 
 
@@ -658,84 +708,84 @@ data:extend({
     {
       --lightDecal
       {
-        filename = decora .. "/barnacles-decal/barnacles-decal-00.png",
+        filename = decora .. "barnacles-decal/barnacles-decal-00.png",
         width = 400,
         height = 299,
         shift = util.by_pixel(4.5, -2.25),
         scale = 0.5
       },
       {
-        filename = decora .. "/barnacles-decal/barnacles-decal-01.png",
+        filename = decora .. "barnacles-decal/barnacles-decal-01.png",
         width = 419,
         height = 320,
         shift = util.by_pixel(-0.75, 2),
         scale = 0.5
       },
       {
-        filename = decora .. "/barnacles-decal/barnacles-decal-02.png",
+        filename = decora .. "barnacles-decal/barnacles-decal-02.png",
         width = 417,
         height = 287,
         shift = util.by_pixel(-1.25, 1.25),
         scale = 0.5
       },
       {
-        filename = decora .. "/barnacles-decal/barnacles-decal-03.png",
+        filename = decora .. "barnacles-decal/barnacles-decal-03.png",
         width = 421,
         height = 298,
         shift = util.by_pixel(-0.25, 5.5),
         scale = 0.5
       },
       {
-        filename = decora .. "/barnacles-decal/barnacles-decal-04.png",
+        filename = decora .. "barnacles-decal/barnacles-decal-04.png",
         width = 396,
         height = 302,
         shift = util.by_pixel(6, 4),
         scale = 0.5
       },
       {
-        filename = decora .. "/barnacles-decal/barnacles-decal-05.png",
+        filename = decora .. "barnacles-decal/barnacles-decal-05.png",
         width = 408,
         height = 295,
         shift = util.by_pixel(-2.5, 7.75),
         scale = 0.5
       },
       {
-        filename = decora .. "/barnacles-decal/barnacles-decal-06.png",
+        filename = decora .. "barnacles-decal/barnacles-decal-06.png",
         width = 417,
         height = 317,
         shift = util.by_pixel(-1.25, 3.25),
         scale = 0.5
       },
       {
-        filename = decora .. "/barnacles-decal/barnacles-decal-07.png",
+        filename = decora .. "barnacles-decal/barnacles-decal-07.png",
         width = 419,
         height = 312,
         shift = util.by_pixel(0.75, 2.5),
         scale = 0.5
       },
       {
-        filename = decora .. "/barnacles-decal/barnacles-decal-08.png",
+        filename = decora .. "barnacles-decal/barnacles-decal-08.png",
         width = 413,
         height = 317,
         shift = util.by_pixel(-2.25, 2.25),
         scale = 0.5
       },
       {
-        filename = decora .. "/barnacles-decal/barnacles-decal-09.png",
+        filename = decora .. "barnacles-decal/barnacles-decal-09.png",
         width = 403,
         height = 310,
         shift = util.by_pixel(0.25, 1.5),
         scale = 0.5
       },
       {
-        filename = decora .. "/barnacles-decal/barnacles-decal-10.png",
+        filename = decora .. "barnacles-decal/barnacles-decal-10.png",
         width = 411,
         height = 307,
         shift = util.by_pixel(-0.75, 1.75),
         scale = 0.5
       },
       {
-        filename = decora .. "/barnacles-decal/barnacles-decal-11.png",
+        filename = decora .. "barnacles-decal/barnacles-decal-11.png",
         width = 421,
         height = 295,
         shift = util.by_pixel(-0.25, -0.75),
@@ -758,7 +808,7 @@ data:extend({
       placement_density = 3,
       probability_expression = "grpi(0.6) + gleba_select(gleba_green_cup - clamp(gleba_decorative_knockout, 0, 1), 0.2, 2, 0.2, 0, 1)"
     },
-    pictures = util.spritesheets_to_pictures({{path = decora .. "/green-cup/green-cup", frame_count = 84}}),
+    pictures = util.spritesheets_to_pictures({{path = decora .. "green-cup/green-cup", frame_count = 84}}),
   },
 
 
@@ -775,7 +825,7 @@ data:extend({
       placement_density = 4,
       probability_expression = "grpi(0.6) + gleba_select(gleba_barnacle_solo - 0.5 * clamp(gleba_decorative_knockout, 0, 1), 0.6, 2, 0.1, 0, 1)"
     },
-    pictures = util.spritesheets_to_pictures({{path = decora .. "/barney/barney", frame_count = 75}}),
+    pictures = util.spritesheets_to_pictures({{path = decora .. "barney/barney", frame_count = 75}}),
     
   },
 
