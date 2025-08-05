@@ -78,13 +78,13 @@ data:extend({
       }
     },
     --fast_replaceable_group = "steam-engine",
-    collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
-    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    collision_box = {{-3.2, -3.2}, {3.2, 3.2}},
+    selection_box = {{-3.5, -3.5}, {3.5, 3.5}},
     damaged_trigger_effect = hit_effects.entity(),
     fluid_box =
     {
       volume = 200,
-      pipe_picture = {
+      --[[pipe_picture = {
         north =
         {
           filename = entity .. "timeshift_energy_roots/timeshift_energy_roots-pipe-N.png",
@@ -121,7 +121,7 @@ data:extend({
           shift = util.by_pixel(32, 0),
           scale = 0.5
         }
-      },
+      },]]
       --[[pipe_picture = {
         north =
         {
@@ -163,10 +163,10 @@ data:extend({
       always_draw_covers = false,
       pipe_connections =
       {
-        { flow_direction = "input", direction = defines.direction.north, position = {0, -1} },
-        { flow_direction = "input", direction = defines.direction.east, position = {1, 0} },
-        { flow_direction = "input", direction = defines.direction.south, position = {0, 1} },
-        { flow_direction = "input", direction = defines.direction.west, position = {-1, 0} },
+        { flow_direction = "input", direction = defines.direction.north, position = {0, -3} },
+        { flow_direction = "input", direction = defines.direction.east, position = {3, 0} },
+        { flow_direction = "input", direction = defines.direction.south, position = {0, 3} },
+        { flow_direction = "input", direction = defines.direction.west, position = {-3, 0} },
       },
       production_type = "input",
       filter = "timeshift_nutrients_slurry",
@@ -183,16 +183,16 @@ data:extend({
       {
         {
           filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_1_base.png",
-          width = 320,
-          height = 320,
+          width = 704,
+          height = 704,
           repeat_count = 1,
           line_length = 1,
           scale = 0.5,
         },
         {
           filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_1_shadow.png",
-          width = 320,
-          height = 320,
+          width = 704,
+          height = 704,
           repeat_count = 1,
           line_length = 1,
           scale = 0.5,
@@ -200,12 +200,13 @@ data:extend({
         },
         {
           filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_1_glow.png",
-          width = 320,
-          height = 320,
+          width = 704,
+          height = 704,
           repeat_count = 1,
           line_length = 1,
           scale = 0.5,
           draw_as_glow = true,
+          blend_mode = "additive",
         },
       }
     },
@@ -215,16 +216,16 @@ data:extend({
       {
         {
           filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_2_base.png",
-          width = 320,
-          height = 320,
+          width = 704,
+          height = 704,
           repeat_count = 1,
           line_length = 1,
           scale = 0.5,
         },
         {
           filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_2_shadow.png",
-          width = 320,
-          height = 320,
+          width = 704,
+          height = 704,
           repeat_count = 1,
           line_length = 1,
           scale = 0.5,
@@ -232,12 +233,13 @@ data:extend({
         },
         {
           filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_2_glow.png",
-          width = 320,
-          height = 320,
+          width = 704,
+          height = 704,
           repeat_count = 1,
           line_length = 1,
           scale = 0.5,
           draw_as_glow = true,
+          blend_mode = "additive",
         },
       }
     },
@@ -444,7 +446,9 @@ local function make_energy_roots_tesla_turret(num, seq)
       remove_on_tile_placement = false,
       animation = 
       {
-        filename = entity .. "timeshift_energy_roots/cell_" .. num .. "_remnants.png",
+        filename = entity .. "timeshift_energy_roots/cell_" .. num .. ".png",
+        tint = {.6,.6,.6,.6},
+        --filename = entity .. "timeshift_energy_roots/cell_" .. num .. "_remnants.png",
         size = 128,
         scale = 0.5,
       },
@@ -455,10 +459,12 @@ end
 
 make_energy_roots_tesla_turret(1, {1,1,2,1,1,1,1,1,4,1,1,1,1,3,1,1,7,1,1,1,6,1,1,1,1,5,1,1,8,1})
 make_energy_roots_tesla_turret(2, {2,1,1,1,1,1,4,1,1,1,1,3,1,1,7,1,1,1,6,1,1,1,1,5,1,1,8,1,1,1})
-
-
-
-
+make_energy_roots_tesla_turret(3, {1,1,2,1,1,1,1,1,4,1,1,1,1,3,1,1,7,1,1,1,6,1,1,1,1,5,1,1,8,1})
+make_energy_roots_tesla_turret(4, {2,1,1,1,1,1,4,1,1,1,1,3,1,1,7,1,1,1,6,1,1,1,1,5,1,1,8,1,1,1})
+make_energy_roots_tesla_turret(5, {1,1,2,1,1,1,1,1,4,1,1,1,1,3,1,1,7,1,1,1,6,1,1,1,1,5,1,1,8,1})
+make_energy_roots_tesla_turret(6, {2,1,1,1,1,1,4,1,1,1,1,3,1,1,7,1,1,1,6,1,1,1,1,5,1,1,8,1,1,1})
+make_energy_roots_tesla_turret(7, {1,1,2,1,1,1,1,1,4,1,1,1,1,3,1,1,7,1,1,1,6,1,1,1,1,5,1,1,8,1})
+make_energy_roots_tesla_turret(8, {2,1,1,1,1,1,4,1,1,1,1,3,1,1,7,1,1,1,6,1,1,1,1,5,1,1,8,1,1,1})
 
 
 

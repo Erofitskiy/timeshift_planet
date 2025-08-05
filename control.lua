@@ -1,5 +1,5 @@
 local seconds_interval = 15
-local number_of_turret_vars = 2
+local number_of_turret_vars = 8
 
 
 script.on_event(defines.events.on_chunk_generated, function(event)
