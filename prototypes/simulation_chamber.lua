@@ -265,7 +265,7 @@ data:extend(
       }
     }]]
   },
-  water_reflection =
+  --[[water_reflection =
   {
     pictures =
     {
@@ -279,6 +279,6 @@ data:extend(
     },
     rotate = false,
     orientation_to_variation = true
-  }
+  }]]
 },
 })

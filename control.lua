@@ -18,6 +18,30 @@ script.on_event(defines.events.on_chunk_generated, function(event)
                 else
                     log("Could not insert timeshift_module into timeshift_beacon at position " .. serpent.line(entity.position))
                 end
+
+                --Replace by custom tile
+                surface.set_tiles({ {name = "timeshiftplanet_hidden_beacon_tile", position = entity.position} })
+
+                --Remove decoratives
+                local decos = surface.find_entities_filtered{ position = entity.position, type = "simple-entity" }
+                
+                for _, deco in pairs(decos) do
+                    if deco.valid then
+                        deco.destroy()
+                    end
+                end
+
+
+                local decos = surface.find_entities_filtered{ position = entity.position, type = "cliff" }
+                for _, deco in pairs(decos) do
+                    if deco.valid then
+                        deco.destroy({do_cliff_correction = true})
+                    end
+                end
+
+
+                surface.destroy_decoratives{ position = entity.position }
+
             elseif entity.name == "timeshift_energy_roots" then
                 if not storage.timeshift_generators then storage.timeshift_generators = {} end
                 table.insert(storage.timeshift_generators, {

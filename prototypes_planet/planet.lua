@@ -192,13 +192,6 @@ data:extend({
     hidden_in_factoriopedia = true,
     hidden = true,
   },
-  {
-    type = "surface-property",
-    name = "moshine-exclusive",
-    default_value = 0,
-    hidden_in_factoriopedia = true,
-    hidden = true,
-  },
 
 
   {
@@ -237,7 +230,7 @@ data:extend({
     procession_graphic_catalogue = planet_catalogue_vulcanus,
     surface_properties =
     {
-      ["day-night-cycle"] = 1.5 * minute,
+      ["day-night-cycle"] = 0.5 * minute,
       ["magnetic-field"] = 25,
       ["solar-power"] = 400,
       pressure = 4000,
@@ -287,8 +280,10 @@ data:extend({
         --{0.45, "__space-age__/graphics/lut/vulcanus-2-night.png"},
         --{0.55, "__space-age__/graphics/lut/vulcanus-2-night.png"},
         --{0.80, "__space-age__/graphics/lut/vulcanus-1-day.png"},
-        {0.0, "__timeshift_planet__/graphics/lut/identity-lut.png"},
-        {0.5, "__core__/graphics/color_luts/lut-night.png"},
+        --{0.0, "__timeshift_planet__/graphics/lut/identity-lut.png"},
+        --{0.5, "__core__/graphics/color_luts/lut-night.png"},
+        {0.0, "__timeshift_planet__/graphics/lut/timeshift-day-lut.png"},
+        {0.5, "__timeshift_planet__/graphics/lut/timeshift-night-lut.png"},
       },
 
       terrain_tint_effect =

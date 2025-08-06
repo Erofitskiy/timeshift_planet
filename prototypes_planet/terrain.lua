@@ -13,6 +13,40 @@ local tile_spritesheet_layout = tile_graphics.tile_spritesheet_layout
 local tile_lightening = 28
 vulcanus_tile_offset = 40
 
+local function transition_masks()
+  return {
+    mask_spritesheet = "__base__/graphics/terrain/masks/transition-1.png",
+    mask_layout =
+    {
+      scale = 0.5,
+      inner_corner =
+      {
+        count = 8,
+      },
+      outer_corner =
+      {
+        count = 8,
+        x = 64*9
+      },
+      side =
+      {
+        count = 8,
+        x = 64*9*2
+      },
+      u_transition =
+      {
+        count = 1,
+        x = 64*9*3
+      },
+      o_transition =
+      {
+        count = 1,
+        x = 64*9*4
+      }
+    }
+  }
+end
+
 local lava_to_out_of_map_transition =
 {
   to_tiles = out_of_map_tile_type_names,
@@ -180,6 +214,16 @@ local lava_stone_transitions_between_transitions =
 
 --define ranges for all tilesets. Having these as thier own expressions helps with debugging and also modifying things like decorative placement
 data:extend({
+
+  {
+    type = "item-subgroup",
+    name = "timeshift-tiles",
+    group = "tiles",
+    order = "ka-timeshift"
+  },
+
+
+
   {
     type = "noise-expression",
     name = "vulcanus_metal_tile",
@@ -353,7 +397,7 @@ data:extend({
   {
     type = "tile",
     name = "timeshiftplanet-volcanic-jagged-ground",
-    subgroup = "vulcanus-tiles",
+    subgroup = "timeshift-tiles",
     order = "a-k",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -376,7 +420,7 @@ data:extend({
     walking_sound = tile_sounds.walking.rocky_stone({}),
     landing_steps_sound = tile_sounds.landing.rock,
     driving_sound = base_tile_sounds.driving.stone,
-    map_color = {r = tile_lightening+ 30, g = tile_lightening+ 30, b = tile_lightening+ 20},
+    map_color = {49,42,32},
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 2,
     absorptions_per_second = tile_pollution.lava,
@@ -386,7 +430,7 @@ data:extend({
   {
     type = "tile",
     name = "timeshiftplanet-volcanic-cracks-hot",
-    subgroup = "vulcanus-tiles",
+    subgroup = "timeshift-tiles",
     order = "a-c",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -410,7 +454,7 @@ data:extend({
     walking_sound = tile_sounds.walking.warm_stone,
     landing_steps_sound = tile_sounds.landing.rock,
     driving_sound = base_tile_sounds.driving.stone,
-    map_color = {r = tile_lightening+ 30, g = tile_lightening+ 5, b = tile_lightening+ -5}, -- changed from (32 32 32) to satisfy TerrainColorsVersusResourceColors test
+    map_color = {100,133,23},
     walking_speed_modifier = .6,
     vehicle_friction_modifier = 1,
     absorptions_per_second = tile_pollution.lava,
@@ -418,7 +462,7 @@ data:extend({
   {
     type = "tile",
     name = "timeshiftplanet-volcanic-cracks-warm",
-    subgroup = "vulcanus-tiles",
+    subgroup = "timeshift-tiles",
     order = "a-d",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -442,7 +486,7 @@ data:extend({
     walking_sound = tile_sounds.walking.warm_stone,
     landing_steps_sound = tile_sounds.landing.rock,
     driving_sound = base_tile_sounds.driving.stone,
-    map_color = {r = tile_lightening+ 30, g = tile_lightening+ 10, b = tile_lightening+ 5},
+    map_color = {62,67,48},
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
     absorptions_per_second = tile_pollution.lava
@@ -451,7 +495,7 @@ data:extend({
   {
     type = "tile",
     name = "timeshiftplanet-volcanic-cracks",
-    subgroup = "vulcanus-tiles",
+    subgroup = "timeshift-tiles",
     order = "a-e",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -474,7 +518,7 @@ data:extend({
     walking_sound = tile_sounds.walking.rocky_stone({}),
     landing_steps_sound = tile_sounds.landing.rock,
     driving_sound = base_tile_sounds.driving.stone,
-    map_color = {r = tile_lightening+ 15, g = tile_lightening+ 14, b = tile_lightening+ 15},
+    map_color = {104,125,69},
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
     absorptions_per_second = tile_pollution.lava
@@ -483,7 +527,7 @@ data:extend({
   {
     type = "tile",
     name = "timeshiftplanet-volcanic-folds-flat",
-    subgroup = "vulcanus-tiles",
+    subgroup = "timeshift-tiles",
     order = "a-j",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -506,7 +550,7 @@ data:extend({
     walking_sound = tile_sounds.walking.rugged_stone({}),
     landing_steps_sound = tile_sounds.landing.rock,
     driving_sound = base_tile_sounds.driving.stone,
-    map_color = {r =tile_lightening+ 16, g = tile_lightening+ 15, b = tile_lightening+ 16}, -- changed from (8 7 8) to satisfy TerrainColorsVersusResourceColors test
+    map_color = {59,59,48},
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 2,
     absorptions_per_second = tile_pollution.lava
@@ -516,7 +560,7 @@ data:extend({
   {
     type = "tile",
     name = "timeshiftplanet-volcanic-ash-light",
-    subgroup = "vulcanus-tiles",
+    subgroup = "timeshift-tiles",
     order = "a-o",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -539,7 +583,7 @@ data:extend({
     walking_sound = tile_sounds.walking.soft_sand({}),
     landing_steps_sound = tile_sounds.landing.sand,
     driving_sound = base_tile_sounds.driving.sand,
-    map_color = {r = tile_lightening+ 25, g = tile_lightening+ 25, b = tile_lightening+ 25}, -- changed from (30 30 30) to satisfy TerrainColorsVersusResourceColors test
+    map_color = {61,62,58}, -- changed from (30 30 30) to satisfy TerrainColorsVersusResourceColors test
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
     absorptions_per_second = tile_pollution.lava,
@@ -550,7 +594,7 @@ data:extend({
   {
     type = "tile",
     name = "timeshiftplanet-volcanic-ash-dark",
-    subgroup = "vulcanus-tiles",
+    subgroup = "timeshift-tiles",
     order = "a-p",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -573,7 +617,7 @@ data:extend({
     walking_sound = tile_sounds.walking.soft_sand({}),
     landing_steps_sound = tile_sounds.landing.sand,
     driving_sound = base_tile_sounds.driving.sand,
-    map_color = {r = tile_lightening+ 25, g = tile_lightening+ 25, b = tile_lightening+ 25}, -- changed from (30 30 30) to satisfy TerrainColorsVersusResourceColors test
+    map_color = {68,72,65},
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
     absorptions_per_second = tile_pollution.lava,
@@ -585,7 +629,7 @@ data:extend({
   {
     type = "tile",
     name = "timeshiftplanet-volcanic-ash-flats",
-    subgroup = "vulcanus-tiles",
+    subgroup = "timeshift-tiles",
     order = "a-o",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -608,7 +652,7 @@ data:extend({
     walking_sound = tile_sounds.walking.soft_sand({}),
     landing_steps_sound = tile_sounds.landing.sand,
     driving_sound = base_tile_sounds.driving.sand,
-    map_color = {r = tile_lightening+ 25, g = tile_lightening+ 25, b = tile_lightening+ 25}, -- changed from (30 30 30) to satisfy TerrainColorsVersusResourceColors test
+    map_color = {54,52,52},
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
     absorptions_per_second = tile_pollution.lava,
@@ -620,7 +664,7 @@ data:extend({
   {
     type = "tile",
     name = "timeshiftplanet-volcanic-pumice-stones",
-    subgroup = "vulcanus-tiles",
+    subgroup = "timeshift-tiles",
     order = "a-n",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -643,7 +687,7 @@ data:extend({
     walking_sound = tile_sounds.walking.rocky_stone({}),
     landing_steps_sound = tile_sounds.landing.rock,
     driving_sound = base_tile_sounds.driving.stone,
-    map_color = {r = tile_lightening+ 18, g = tile_lightening+ 18, b = tile_lightening+ 18}, -- changed from (32 32 32) to satisfy TerrainColorsVersusResourceColors test
+    map_color = {43,43,37},
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
     absorptions_per_second = tile_pollution.lava
@@ -652,7 +696,7 @@ data:extend({
   {
     type = "tile",
     name = "timeshiftplanet-volcanic-smooth-stone",
-    subgroup = "vulcanus-tiles",
+    subgroup = "timeshift-tiles",
     order = "a-g",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -675,7 +719,7 @@ data:extend({
     walking_sound = tile_sounds.walking.rocky_stone({}),
     landing_steps_sound = tile_sounds.landing.rock,
     driving_sound = base_tile_sounds.driving.stone,
-    map_color = {r = tile_lightening+ 22, g = tile_lightening+ 22, b = tile_lightening+ 30}, -- changed from (32 32 32) to satisfy TerrainColorsVersusResourceColors test
+    map_color = {40,38,36},
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
     absorptions_per_second = tile_pollution.lava
@@ -685,7 +729,7 @@ data:extend({
   {
     type = "tile",
     name = "timeshiftplanet-volcanic-smooth-stone-warm",
-    subgroup = "vulcanus-tiles",
+    subgroup = "timeshift-tiles",
     order = "a-f",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -710,7 +754,7 @@ data:extend({
     walking_sound = tile_sounds.walking.warm_stone,
     landing_steps_sound = tile_sounds.landing.rock,
     driving_sound = base_tile_sounds.driving.stone,
-    map_color = {r = tile_lightening+ 26, g = tile_lightening+ 22, b = tile_lightening+ 22}, -- changed from (32 32 32) to satisfy TerrainColorsVersusResourceColors test
+    map_color = {90,103,32}, -- changed from (32 32 32) to satisfy TerrainColorsVersusResourceColors test
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
     absorptions_per_second = tile_pollution.lava,
@@ -719,7 +763,7 @@ data:extend({
   {
     type = "tile",
     name = "timeshiftplanet-volcanic-ash-cracks",
-    subgroup = "vulcanus-tiles",
+    subgroup = "timeshift-tiles",
     order = "a-r",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -742,7 +786,7 @@ data:extend({
     walking_sound = tile_sounds.walking.rugged_stone({}),
     landing_steps_sound = tile_sounds.landing.rock,
     driving_sound = base_tile_sounds.driving.stone,
-    map_color = {r = tile_lightening+ 39, g = tile_lightening+ 39, b = tile_lightening+ 39}, -- changed from (32 32 32) to satisfy TerrainColorsVersusResourceColors test
+    map_color = {113,113,71},
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
     absorptions_per_second = tile_pollution.lava
@@ -750,7 +794,7 @@ data:extend({
   {
     type = "tile",
     name = "timeshiftplanet-volcanic-folds",
-    subgroup = "vulcanus-tiles",
+    subgroup = "timeshift-tiles",
     order = "a-i",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -773,7 +817,7 @@ data:extend({
     walking_sound = tile_sounds.walking.rugged_stone({}),
     landing_steps_sound = tile_sounds.landing.rock,
     driving_sound = base_tile_sounds.driving.stone,
-    map_color = {r = tile_lightening+ 15, g = tile_lightening+ 15, b = tile_lightening+ 15}, -- changed from (2 2 2) to satisfy TerrainColorsVersusResourceColors test
+    map_color = {29,33,27}, -- changed from (2 2 2) to satisfy TerrainColorsVersusResourceColors test
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 2,
     absorptions_per_second = tile_pollution.lava,
@@ -781,7 +825,7 @@ data:extend({
   {
     type = "tile",
     name = "timeshiftplanet-volcanic-folds-warm",
-    subgroup = "vulcanus-tiles",
+    subgroup = "timeshift-tiles",
     order = "a-h",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -805,7 +849,7 @@ data:extend({
     walking_sound = tile_sounds.walking.rocky_stone({}),
     landing_steps_sound = tile_sounds.landing.rock,
     driving_sound = base_tile_sounds.driving.stone,
-    map_color = {r = tile_lightening+ 37, g = tile_lightening+ 17, b = tile_lightening+ 17},
+    map_color = {45,48,29},
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
     absorptions_per_second = tile_pollution.lava,
@@ -813,7 +857,7 @@ data:extend({
   {
     type = "tile",
     name = "timeshiftplanet-volcanic-soil-dark",
-    subgroup = "vulcanus-tiles",
+    subgroup = "timeshift-tiles",
     order = "a-l",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -837,7 +881,7 @@ data:extend({
     walking_sound = tile_sounds.walking.soft_sand({}),
     landing_steps_sound = tile_sounds.landing.sand,
     driving_sound = base_tile_sounds.driving.sand,
-    map_color = {r = tile_lightening+ 20, g = tile_lightening+ 23, b = tile_lightening+ 15},
+    map_color = {69,73,66},
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
     absorptions_per_second = tile_pollution.lava,
@@ -845,7 +889,7 @@ data:extend({
   {
     type = "tile",
     name = "timeshiftplanet-volcanic-soil-light",
-    subgroup = "vulcanus-tiles",
+    subgroup = "timeshift-tiles",
     order = "a-m",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -869,15 +913,16 @@ data:extend({
     walking_sound = tile_sounds.walking.soft_sand({}),
     landing_steps_sound = tile_sounds.landing.sand,
     driving_sound = base_tile_sounds.driving.sand,
-    map_color = {r = tile_lightening+ 30, g = tile_lightening+ 20, b = tile_lightening+ 15},
+    map_color = {62,62,59},
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
     absorptions_per_second = tile_pollution.lava,
   },
+
   {
     type = "tile",
     name = "timeshiftplanet-volcanic-ash-soil",
-    subgroup = "vulcanus-tiles",
+    subgroup = "timeshift-tiles",
     order = "a-q",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -900,10 +945,10 @@ data:extend({
     walking_sound = tile_sounds.walking.soft_sand({}),
     landing_steps_sound = tile_sounds.landing.sand,
     driving_sound = base_tile_sounds.driving.sand,
-    map_color = {r = tile_lightening+ 20, g = tile_lightening+ 20, b = tile_lightening+ 15},
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
     absorptions_per_second = tile_pollution.lava,
+    map_color = {52,56,49},
   },
 
 })
@@ -921,7 +966,7 @@ data:extend({
     type = "tile",
     name = "timeshiftplanet-midland-turquoise-bark",
     order = "c[gleba-land-tiles]-a[midland-turquoise-bark]",
-    subgroup = "gleba-tiles",
+    subgroup = "timeshift-tiles",
     collision_mask = tile_collision_masks.ground(),
     layer = gleba_tile_offset + 11,
     sprite_usage_surface = "gleba",
@@ -941,7 +986,7 @@ data:extend({
     transitions_between_transitions = lava_stone_transitions_between_transitions,
     walking_sound = tile_sounds.walking.soft_bark,
     landing_steps_sound = tile_sounds.landing.bark,
-    map_color={46, 68, 48},
+    map_color={69, 82, 58},
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
     absorptions_per_second = tile_pollution.gleba,
@@ -951,7 +996,7 @@ data:extend({
     type = "tile",
     name = "timeshiftplanet-midland-turquoise-bark-2",
     order = "c[gleba-land-tiles]-a[midland-turquoise-bark]",
-    subgroup = "gleba-tiles",
+    subgroup = "timeshift-tiles",
     collision_mask = tile_collision_masks.ground(),
     layer = gleba_tile_offset + 10,
     sprite_usage_surface = "gleba",
@@ -971,12 +1016,14 @@ data:extend({
     transitions_between_transitions = lava_stone_transitions_between_transitions,
     walking_sound = tile_sounds.walking.soft_bark,
     landing_steps_sound = tile_sounds.landing.bark,
-    map_color={46, 68, 48},
+    map_color={86, 87, 56},
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
     absorptions_per_second = tile_pollution.gleba,
     trigger_effect = tile_trigger_effects.dirt_2_trigger_effect()
   },
+
+
   {
     type = "tile-effect",
     name = "timeshiftplanet-wetland-grey",
@@ -995,16 +1042,16 @@ data:extend({
         {
           filename = terrain .. "wetland-dead-skin-shader.png",
           width = 512 * 4,
-          height = 512 * 2
+          height = 512 * 4
         }
       },
       texture_variations_columns = 1,
       texture_variations_rows = 1,
       secondary_texture_variations_columns = 4,
-      secondary_texture_variations_rows = 2,
+      secondary_texture_variations_rows = 4,
 
 
-      animation_speed = 1.5,
+      animation_speed = 3.5,
       animation_scale = { 0.8, 0.8 },
       tick_scale = 6,
 
@@ -1025,7 +1072,7 @@ data:extend({
     type = "tile",
     name = "timeshiftplanet-wetland-dead-skin",
     order = "b[wetland]-d[wetland-dead-skin]",
-    subgroup = "gleba-water-tiles",
+    subgroup = "timeshift-tiles",
     collision_mask = tile_collision_masks.shallow_water(),
     autoplace = {probability_expression = "gleba_shallows_aux_2 + 2 * min(gleba_select(gleba_aux, 0.3, 0.7, 0.005, 0, 1), gleba_rockpools_shallow)"},
     lowland_fog = true,
@@ -1034,7 +1081,6 @@ data:extend({
     --effect_color_secondary = { 76, 70, 79 },
     effect_color = { 57, 58, 173 },
     effect_color_secondary = { 76, 70, 179 },
-    map_color = {r = 46, g = 45, b = 151},
     particle_tints = tile_graphics.gleba_shallow_water_particle_tints,
     layer = 7,
     layer_group = "water-overlay",
@@ -1068,19 +1114,20 @@ data:extend({
     default_cover_tile = "landfill",
     fluid = "water",
     absorptions_per_second = tile_pollution.gleba_water,
+    map_color = {65,65,220},
   },
   {
     type = "tile",
     name = "timeshiftplanet-wetland-light-dead-skin",
     order = "b[wetland]-c[wetland-light-dead-skin]",
-    subgroup = "gleba-water-tiles",
+    subgroup = "timeshift-tiles",
     collision_mask = tile_collision_masks.shallow_water(),
     autoplace = {probability_expression = "gleba_shallows_edge_aux_2 + 2 * min(gleba_select(gleba_aux, 0.3, 0.7, 0.005, 0, 1), gleba_rockpools_shallow)"},
     lowland_fog = true,
     effect = "timeshiftplanet-wetland-grey",
     effect_color = { 78, 75, 186 },
     effect_color_secondary = { 76, 70, 179 },
-    map_color = {r = 51, g = 50, b = 156},
+    --map_color = {r = 51, g = 50, b = 156},
     particle_tints = tile_graphics.gleba_shallow_water_particle_tints,
     layer = 7,
     layer_group = "water-overlay",
@@ -1114,12 +1161,13 @@ data:extend({
     default_cover_tile = "landfill",
     fluid = "water",
     absorptions_per_second = tile_pollution.gleba_water,
+    map_color = {70,70,221},
   },
   {
     type = "tile",
     name = "timeshiftplanet-midland-cracked-lichen-dark",
     order = "c[gleba-land-tiles]-a[midland-yellow-crust]",
-    subgroup = "gleba-tiles",
+    subgroup = "timeshift-tiles",
     collision_mask = tile_collision_masks.ground(),
     layer_group = "ground-natural",
     layer = gleba_tile_offset,
@@ -1140,11 +1188,112 @@ data:extend({
     transitions_between_transitions = lava_stone_transitions_between_transitions,
     walking_sound = tile_sounds.walking.soft_bark,
     landing_steps_sound = tile_sounds.landing.bark,
-    map_color={61, 57, 30},
+    map_color={69, 63, 45},
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
     absorptions_per_second = tile_pollution.gleba,
     trigger_effect = tile_trigger_effects.dirt_2_trigger_effect()
+  },
+
+
+
+
+
+  {
+    type = "tile-effect",
+    name = "timeshiftplanet_hidden_beacon_tile_effect",
+    shader = "water",
+    water =
+    {
+      shader_variation = "oil",
+      textures =
+      {
+        {
+          filename = terrain .. "oilNoise.png",
+          width = 512,
+          height = 512
+        },
+        {
+          filename = terrain .. "oil-ocean-deep-shader.png",
+          width = 512 * 4,
+          height = 512 * 2
+        },
+        --gradient map for thin film effect
+        {
+          filename = terrain .. "oilGradient.png",
+          width = 512,
+          height = 32
+        },
+        --specular highligts
+        {
+          filename = terrain .. "oil-ocean-deep-spec.png",
+          width = 512 * 4,
+          height = 512 * 2
+        },
+      },
+      texture_variations_columns = 1,
+      texture_variations_rows = 1,
+      secondary_texture_variations_columns = 4,
+      secondary_texture_variations_rows = 2,
+
+      specular_lightness = { 3, 3, 3 },
+      foam_color = {100,124,71},--647c47 --{140,60,60}, -- #4e3838ff,
+      foam_color_multiplier = 0.1,
+
+      animation_speed = 1.500,
+      animation_scale = {3, 3},
+
+      dark_threshold = {2.000, 2.000},
+      reflection_threshold = {5.00, 5.00},
+      specular_threshold = {0.000, 0.000},
+      tick_scale = 1.000,
+
+      near_zoom = 0.063,
+      far_zoom = 0.063,
+    }
+  },
+
+
+
+
+  {
+    type = "tile",
+    name = "timeshiftplanet_hidden_beacon_tile",
+    order = "c[artificial]-d[machinery]",
+    subgroup = "timeshift-tiles",
+    collision_mask = tile_collision_masks.ground(),
+    --autoplace = { probability_expression = "fulgora_tile_ruin_machinery" },
+    layer = 12,
+    --map_color={0, 0, 255},
+    --vehicle_friction_modifier = 4,
+    --absorptions_per_second = tile_pollution.fulgora,
+    --sprite_usage_surface = "timeshift",
+    effect = "timeshiftplanet_hidden_beacon_tile_effect",
+    --effect_is_opaque = false,
+    --effect_color = {1,1,1,0.3},
+    variants =
+    {
+      transition = transition_masks(),
+      material_background =
+      {
+        picture = terrain .. "timeshiftplanet_hidden_beacon_tile.png",
+        line_length = 4,
+        count = 16,
+        scale = 0.5
+      },
+      material_texture_width_in_tiles = 10,
+      material_texture_height_in_tiles = 7
+    },
+    transitions = fulgora_rock_sand_transitions,
+    transitions_between_transitions = fulgora_sand_transitions_between_transitions,
+    walking_sound = tile_sounds.walking.scraps,
+    landing_steps_sound = tile_sounds.landing.scraps,
+    driving_sound = tile_sounds.driving.metal_rock,
+    scorch_mark_color = {r = 0.3, g = 0.3, b = 0.3, a = 1.000},
+    trigger_effect = tile_trigger_effects.sand_trigger_effect(),
+    walking_speed_modifier = 3,
+    vehicle_friction_modifier = 0.3,
+    map_color={33, 0, 37},
   },
 
 })

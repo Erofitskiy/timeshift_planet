@@ -133,6 +133,17 @@ for num = 1, 12 do
   })
 end
 
+local rocksdecals = {}
+for num = 1, 27 do
+  table.insert(rocksdecals,
+  {
+    filename = decora .. "big-volcanic-rock-decal/big-volcanic-rock-" .. num .. ".png",
+    width = 256,
+    height = 256,
+    scale = 0.5,
+  })
+end
+
 
 
 
@@ -142,7 +153,7 @@ data:extend({
     name = "timeshiftplanet-huge-volcanic-rock",
     type = "simple-entity",
     flags = {"placeable-neutral", "placeable-off-grid"},
-    icon = "__space-age__/graphics/icons/huge-volcanic-rock.png",
+    icon = icons .. "timeshiftplanet-huge-volcanic-rock.png",
     subgroup = "grass",
     order = "b[decorative]-l[rock]-a[vulcanus]-b[huge-volcanic-rock]",
     collision_box = {{-1.7, -1.3}, {1.7, 1.3}},
@@ -161,7 +172,7 @@ data:extend({
         --{type = "item", name = "tungsten-ore", amount_min = 3, amount_max = 15}
       },
     },
-    map_color = {129, 105, 78},
+    map_color = {137, 118, 95},
     count_as_rock_for_filtered_deconstruction = true,
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
     impact_category = "stone",
@@ -185,7 +196,7 @@ data:extend({
     name = "timeshiftplanet-big-volcanic-rock",
     type = "simple-entity",
     flags = {"placeable-neutral", "placeable-off-grid"},
-    icon = "__space-age__/graphics/icons/big-volcanic-rock.png",
+    icon = icons .. "timeshiftplanet-big-volcanic-rock.png",
     subgroup = "grass",
     order = "b[decorative]-l[rock]-a[vulcanus]-a[big-volcanic-rock]",
     collision_box = {{-0.75, -0.75}, {0.75, 0.75}},
@@ -217,7 +228,7 @@ data:extend({
         percent = 100
       }
     },
-    map_color = {129, 105, 78},
+    map_color = {137, 118, 95},
     count_as_rock_for_filtered_deconstruction = true,
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
     impact_category = "stone",
@@ -276,6 +287,7 @@ data:extend({
       probability_expression = "vulcanus_crack_decal_large"
     },
     pictures = get_decal_pictures(decora .. "vulcanus-cracks-cold/vulcanus-cracks-cold-", "huge-", 256, 20)
+    --pictures = rocksdecals,
   },
   {
     name = "timeshiftplanet-vulcanus-crack-decal-huge-warm",
@@ -794,6 +806,22 @@ data:extend({
   },
 
   {
+    name = "timeshiftplanet-solo-barnacle",
+    type = "optimized-decorative",
+    order = "b[cover]-b[yellow-lichen]-a[7]",
+    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    collision_mask = dec_shallow_cliff_collision(),
+    walking_sound = base_tile_sounds.walking.plant,
+    render_layer = "object",
+    autoplace = {
+      placement_density = 4,
+      probability_expression = "grpi(0.6) + gleba_select(gleba_barnacle_solo - 0.5 * clamp(gleba_decorative_knockout, 0, 1), 0.6, 2, 0.1, 0, 1)"
+    },
+    pictures = util.spritesheets_to_pictures({{path = decora .. "barney/barney", frame_count = 75}}),
+    
+  },
+
+  {
     name = "timeshiftplanet-green-cup",
     type = "optimized-decorative",
     order = "XxX[decorative]-a[grass]-b[carpet]",
@@ -811,21 +839,5 @@ data:extend({
   },
 
 
-
-  {
-    name = "timeshiftplanet-solo-barnacle",
-    type = "optimized-decorative",
-    order = "b[cover]-b[yellow-lichen]-a[7]",
-    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
-    collision_mask = dec_shallow_cliff_collision(),
-    walking_sound = base_tile_sounds.walking.plant,
-    render_layer = "object",
-    autoplace = {
-      placement_density = 4,
-      probability_expression = "grpi(0.6) + gleba_select(gleba_barnacle_solo - 0.5 * clamp(gleba_decorative_knockout, 0, 1), 0.6, 2, 0.1, 0, 1)"
-    },
-    pictures = util.spritesheets_to_pictures({{path = decora .. "barney/barney", frame_count = 75}}),
-    
-  },
 
 })
