@@ -146,6 +146,7 @@ planet_map_gen.timeshift = function()
           ["timeshiftplanet-huge-volcanic-rock"] = {},
           ["timeshiftplanet-big-volcanic-rock"] = {},
           ["crater-cliff"] = {},
+          ["timeshift_nutrients_plant"] = {},
           --["vulcanus-chimney"] = {},
           --["vulcanus-chimney-faded"] = {},
           --["vulcanus-chimney-cold"] = {},
@@ -212,7 +213,7 @@ data:extend({
     --distance = 11,
     --orientation = 0.1,
     --magnitude = 1.5,
-    order = "b[vulcanus]",
+    order = "f[panglia]",
     subgroup = "planets",
     map_gen_settings = planet_map_gen.timeshift(),
     pollutant_type = nil,
@@ -233,7 +234,7 @@ data:extend({
       ["day-night-cycle"] = 0.5 * minute,
       ["magnetic-field"] = 25,
       ["solar-power"] = 400,
-      pressure = 4000,
+      pressure = 1400, --must be 1000 >< 2000 for agricultural tower
       gravity = 40
     },
     asteroid_spawn_influence = 1,
