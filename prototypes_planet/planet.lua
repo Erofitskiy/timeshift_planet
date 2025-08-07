@@ -231,7 +231,7 @@ data:extend({
     procession_graphic_catalogue = planet_catalogue_vulcanus,
     surface_properties =
     {
-      ["day-night-cycle"] = 0.5 * minute,
+      ["day-night-cycle"] = 5 * minute,
       ["magnetic-field"] = 25,
       ["solar-power"] = 400,
       pressure = 1400, --must be 1000 >< 2000 for agricultural tower

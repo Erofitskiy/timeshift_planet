@@ -1,5 +1,7 @@
 --require("__space-age__.prototypes.entity.plants")
 
+require("__base__.prototypes.particles")
+
 local item_sounds = require("__base__.prototypes.item_sounds")
 local item_tints = require("__base__.prototypes.item-tints")
 local space_age_item_sounds = require("__space-age__.prototypes.item_sounds")
@@ -9,7 +11,6 @@ local minutes = 60 * seconds
 
 
 local particle_animations = require("__base__.prototypes.particle-animations")
-
 
 local function gleba_tree_variations(name, variation_count, per_row, scale_multiplier, width, height, shift, reflection_shift)
   variation_count = variation_count or 5
@@ -21,11 +22,6 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
   local reflection_shift = reflection_shift or util.by_pixel(52, 80)
   local shift = shift or util.by_pixel(52, -40)
  -- local reflection_shift = {shift[0], shift[1]} --or util.by_pixel(52, 40)
-
-  local sap_particle = "jellystem-leaf-particle"
-  local jellystem_particle = "jellystem-branch-particle"
-
-
   for i = 1, variation_count do
     local x = ((i - 1) % per_row) * width
     local y = math.floor((i-1)/per_row) * height
@@ -33,7 +29,7 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
       trunk = {
         filename = entity .. "plant/"..name.."/"..name.."-trunk.png",
         flags = { "mipmap" },
-        surface = "gleba",
+        --surface = "timeshift",
         width = width,
         height = height,
         x = x,
@@ -43,20 +39,39 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
         scale = 0.33 * scale_multiplier
       },
       leaves = {
-        filename = entity .. "plant/"..name.."/"..name.."-harvest.png",
-        flags = { "mipmap" },
-        surface = "gleba",
-        width = width,
-        height = height,
-        x = x,
-        y = y,
-        frame_count = 1,
-        shift = shift,
-        scale = 0.33 * scale_multiplier
+        layers = {
+          {
+
+            filename = entity .. "plant/"..name.."/"..name.."-harvest.png",
+            flags = { "mipmap" },
+            --surface = "timeshift",
+            width = width,
+            height = height,
+            x = x,
+            y = y,
+            frame_count = 1,
+            shift = shift,
+            scale = 0.33 * scale_multiplier,
+          },
+          {
+            filename = entity .. "plant/"..name.."/"..name.."-harvest.png",
+            flags = { "mipmap" },
+            --surface = "timeshift",
+            width = width,
+            height = height,
+            x = x,
+            y = y,
+            frame_count = 1,
+            shift = shift,
+            scale = 0.33 * scale_multiplier,
+            draw_as_light = true,
+            tint = {255,255,255,64}
+          }
+        }
       },
       normal = {
         filename = entity .. "plant/"..name.."/"..name.."-normal.png",
-        surface = "gleba",
+        --surface = "timeshift",
         width = width,
         height = height,
         x = x,
@@ -70,7 +85,7 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
         lines_per_file = 1,
         line_length = 1,
         flags = { "mipmap", "shadow" },
-        surface = "gleba",
+        --surface = "timeshift",
         filenames =
         {
           entity .. "plant/"..name.."/"..name.."-harvest-shadow.png",
@@ -91,7 +106,7 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
         pictures = {
         filename = entity .. "plant/"..name.."/"..name.."-effect-map.png",
         --flags = { "mipmap" },
-        surface = "gleba",
+        --surface = "timeshift",
         width = width,
         height = height,
         x = x,
@@ -117,7 +132,7 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
 
     variation.leaf_generation = {
       type = "create-particle",
-      particle_name = "jellystem-leaf-particle",
+      particle_name = "timeshiftplanet-jellystem-leaf-particle",
       offset_deviation =
       {
         {-0.8, -1.2},
@@ -144,7 +159,7 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
 
     variation.branch_generation = {
       type = "create-particle",
-      particle_name = "jellystem-branch-particle",
+      particle_name = "timeshiftplanet-jellystem-branch-particle",
       offset_deviation = {{-0.65, -1}, {0.65, 1}},
       initial_height = 1.7,
       initial_height_deviation = 0.8,
@@ -167,10 +182,204 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
 end
 
 
+local make_particle = function(params)
+
+  if not params then error("No params given to make_particle function") end
+  local name = params.name or error("No name given")
+
+  local ended_in_water_trigger_effect = params.ended_in_water_trigger_effect
+  if params.ended_in_water_trigger_effect == false then
+    ended_in_water_trigger_effect = nil
+  end
+
+  local particle =
+  {
+
+    type = "optimized-particle",
+    name = name,
+
+    life_time = params.life_time or (60 * 15),
+    fade_away_duration = params.fade_away_duration,
+
+    render_layer = params.render_layer or "projectile",
+    render_layer_when_on_ground = params.render_layer_when_on_ground or "corpse",
+
+    regular_trigger_effect_frequency = params.regular_trigger_effect_frequency or 2,
+    regular_trigger_effect = params.regular_trigger_effect,
+    ended_in_water_trigger_effect = ended_in_water_trigger_effect,
+
+    pictures = params.pictures,
+    shadows = params.shadows,
+    draw_shadow_when_on_ground = params.draw_shadow_when_on_ground,
+
+    movement_modifier_when_on_ground = params.movement_modifier_when_on_ground,
+    movement_modifier = params.movement_modifier,
+    vertical_acceleration = params.vertical_acceleration,
+
+    mining_particle_frame_speed = params.mining_particle_frame_speed,
+
+  }
+
+  return particle
+
+end
+
+local get_timeshift_tree_crop_particle_pictures = function(options)
+  local options = options or {}
+  return
+  {
+    sheet =
+    {
+      filename =  "__space-age__/graphics/particle/gleba-tree-particle/gleba-crop-particle.png",
+      priority = "extra-high",
+      width = 38,
+      height = 38,
+      frame_count = 16,
+      animation_speed = 0.5,
+      variation_count = 10,
+      tint = options.tint,
+      tint_as_overlay = options.tint_as_overlay,
+      shift = {0.0, 0.0},
+      --shift = util.add_shift(util.by_pixel( 0.0, 0.0), options.shift),
+      scale = 0.5 * (options.scale or 1),
+      draw_as_glow = true,
+    }
+  }
+end
+
+local get_timeshift_tree_sap_particle_pictures = function(options)
+  local options = options or {}
+  return
+  {
+    sheet =
+    {
+      filename = "__space-age__/graphics/particle/gleba-tree-particle/gleba-tree-sap-particle.png",
+      line_length = 12,
+      width = 32,
+      height = 24,
+      frame_count = 12,
+      variation_count = 7,
+      tint = options.tint,
+      tint_as_overlay = options.tint_as_overlay,
+      draw_as_glow = true,
+      shift = util.add_shift(util.by_pixel(0,0.5), options.shift),
+      scale = 0.3 * (options.scale or 1),
+    }
+  }
+end
 
 
+local particle_ended_in_water_trigger_effect = function()
+  return
+  {
+    type = "create-particle",
+    repeat_count = 5,
+    repeat_count_deviation = 4,
+    probability = 0.2,
+    affects_target = false,
+    show_in_tooltip = false,
+    particle_name = "tintable-water-particle",
+    apply_tile_tint = "secondary",
+    offsets = { { 0, 0 } },
+    offset_deviation = { { -0.2969, -0.2969 }, { 0.2969, 0.2969 } },
+    initial_height = 0.1,
+    initial_height_deviation = 0.5,
+    initial_vertical_speed = 0.06,
+    initial_vertical_speed_deviation = 0.069,
+    speed_from_center = 0.02,
+    speed_from_center_deviation = 0.05,
+    frame_speed = 1,
+    frame_speed_deviation = 0,
+    tail_length = 9,
+    tail_length_deviation = 8,
+    tail_width = 1
+  }
+end
+
+local gleba_tree_red_sap_trigger_effect = function()
+  return
+  {
+    {
+      type = "create-particle",
+      probability = 0.5,
+      affects_target = false,
+      show_in_tooltip = false,
+      particle_name = "timeshiftplanet-gleba-tree-sap-particle-trigger-red",
+      offset_deviation = { { -0.02, -0.02 }, { 0.02, 0.02 } },
+      initial_height = 0,
+      initial_height_deviation = 0.01,
+      initial_vertical_speed = 0,
+      initial_vertical_speed_deviation = 0.00,
+      speed_from_center = 0.01,
+      speed_from_center_deviation = 0.02,
+      frame_speed = 1,
+      frame_speed_deviation = 0,
+      tail_length = 2,
+      tail_length_deviation = 1,
+      tail_width = 4,
+      only_when_visible = true
+    }
+  }
+end
 
 
+data:extend({
+  make_particle
+  {
+    name = "timeshiftplanet-jellystem-leaf-particle",
+    life_time = 120,
+    --pictures = get_timeshift_tree_sap_particle_pictures({tint = {162,45,72,255}, tint_as_overlay = true, scale = 0.95}), --#a22d48
+    --pictures = get_timeshift_tree_sap_particle_pictures({tint = {46,163,134,255}, tint_as_overlay = true, scale = 0.95}), --#2ea386
+    pictures = get_timeshift_tree_sap_particle_pictures({tint = {46, 145, 163,255}, tint_as_overlay = true, scale = 0.95}), --#2ea386
+    shadows =  get_timeshift_tree_sap_particle_pictures({tint = {0,0,0}, shift = util.by_pixel (1,0), scale = 0.95}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
+    render_layer_when_on_ground = "lower-object-above-shadow",
+    render_layer = "higher-object-under"
+  },
+
+  make_particle
+  {
+    name = "timeshiftplanet-jellystem-branch-particle",
+    life_time = 120,
+    --pictures = get_timeshift_tree_crop_particle_pictures({tint = {161,100,120,255}, tint_as_overlay = true, scale = 1.2}), --#a16478
+    --pictures = get_timeshift_tree_crop_particle_pictures({tint = {100,161,145,255}, tint_as_overlay = true, scale = 1.2}), --#64a191
+    pictures = get_timeshift_tree_crop_particle_pictures({tint = {100, 151, 161,255}, tint_as_overlay = true, scale = 1.2}), --#64a191
+    shadows =  get_timeshift_tree_crop_particle_pictures({tint = {0,0,0}, shift = util.by_pixel (1,0), scale = 1.2}),
+    regular_trigger_effect_frequency = 4,
+    regular_trigger_effect = gleba_tree_red_sap_trigger_effect(),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
+    render_layer_when_on_ground = "lower-object-above-shadow",
+    render_layer = "higher-object-above"
+  },
+
+  make_particle
+  {
+    name = "timeshiftplanet-jellystem-mining-particle",
+    life_time = 120,
+    --pictures = get_timeshift_tree_crop_particle_pictures({tint = {161,100,120,255}, tint_as_overlay = true, scale = 0.5}), --#a16478
+    --pictures = get_timeshift_tree_crop_particle_pictures({tint = {100,161,145,255}, tint_as_overlay = true, scale = 0.5}), --#64a191
+    pictures = get_timeshift_tree_crop_particle_pictures({tint = {100, 151, 161,255}, tint_as_overlay = true, scale = 0.5}), --#64a191
+    shadows =  get_timeshift_tree_crop_particle_pictures({tint = {0,0,0}, shift = util.by_pixel (1,0), scale = 0.5}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
+    render_layer_when_on_ground = "lower-object-above-shadow"
+  },
+
+  make_particle
+  {
+    name = "timeshiftplanet-gleba-tree-sap-particle-trigger-red",
+    life_time = 60,
+    --pictures = get_timeshift_tree_sap_particle_pictures({tint = {107,36,31,255}, tint_as_overlay = true, scale = 0.8}), --#6b241f
+    --pictures = get_timeshift_tree_sap_particle_pictures({tint = {31,07,88,255}, tint_as_overlay = true, scale = 0.8}), --#1f6b58
+    pictures = get_timeshift_tree_sap_particle_pictures({tint = {7, 77, 89,255}, tint_as_overlay = true, scale = 0.8}), --#1f6b58
+    shadows =  get_timeshift_tree_sap_particle_pictures({tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.8}),
+    draw_shadow_when_on_ground = false,
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
+    movement_modifier_when_on_ground = 0,
+    render_layer = "higher-object-under"
+  },
+})
 
 
 
@@ -200,6 +409,8 @@ data:extend({
     fuel_category = "timeshift_nutrients",
     plant_result = "timeshift_nutrients_plant",
     place_result = "timeshift_nutrients_plant",
+    spoil_ticks = 25 * minute,
+    spoil_result = "spoilage",
     weight = 10*kg
   },
   {
@@ -248,7 +459,7 @@ plant.name = "timeshift_nutrients_plant"
 plant.icon = icons .. "timeshift_nutrients_plant.png"
 plant.minable =
 {
-  mining_particle = "jellystem-mining-particle",
+  mining_particle = "timeshiftplanet-jellystem-mining-particle",
   mining_time = 0.5,
   results = {{type = "item", name = "timeshift_nutrients", amount = 2}},
 }
@@ -270,7 +481,24 @@ plant.autoplace =
   }
 }
 plant.variations = gleba_tree_variations("jellystem", 8, 4, 1.3, 640, 560, util.by_pixel(52, -73))
+
+plant.colors = {
+  {r = 255, g = 255, b =  255},
+  {r = 240, g = 240, b =  255},
+  {r = 220, g = 240, b =  255},
+  {r = 220, g = 245, b =  240},
+  {r = 235, g = 230, b =  255},
+  {r = 230, g = 225, b =  240},
+  {r = 225, g = 230, b =  235}
+}
+
+plant.agricultural_tower_tint =
+{
+  primary = {122, 226, 245, 255}, -- #eac1f5ff
+  secondary = {109, 169, 181,255}, -- #885289ff
+}
 plant.growth_ticks = 2 * minutes
+plant.map_color = {45,207,235,230}
 
 data:extend({plant})
 
