@@ -150,7 +150,7 @@ end
 data:extend({
 
   {
-    name = "timeshiftplanet-huge-volcanic-rock",
+    name = "timeshiftplanet-huge-volcanic-rock", --raxinite
     type = "simple-entity",
     flags = {"placeable-neutral", "placeable-off-grid"},
     icon = icons .. "timeshiftplanet-huge-volcanic-rock.png",
@@ -163,18 +163,17 @@ data:extend({
     minable =
     {
       mining_particle = "stone-particle",
-      mining_time = 3,
+      mining_time = 2,
       results =
       {
-        {type = "item", name = "stone", amount_min = 6, amount_max = 18},
-        {type = "item", name = "iron-ore", amount_min = 9, amount_max = 27},
-        {type = "item", name = "copper-ore", amount_min = 6, amount_max = 18},
-        --{type = "item", name = "tungsten-ore", amount_min = 3, amount_max = 15}
+        {type = "item", name = "raxinite", amount_min = 22, amount_max = 45},
+        {type = "item", name = "iron-ore", amount_min = 0, amount_max = 10},
+        {type = "item", name = "copper-ore", amount_min = 0, amount_max = 8},
       },
     },
     map_color = {137, 118, 95},
     count_as_rock_for_filtered_deconstruction = true,
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    mined_sound = sound_variations(sounds .. "raxinite", 8, 0.7),
     impact_category = "stone",
     render_layer = "object",
     max_health = 2000,
@@ -193,7 +192,7 @@ data:extend({
   },
 
   {
-    name = "timeshiftplanet-big-volcanic-rock",
+    name = "timeshiftplanet-big-volcanic-rock", --raxinite
     type = "simple-entity",
     flags = {"placeable-neutral", "placeable-off-grid"},
     icon = icons .. "timeshiftplanet-big-volcanic-rock.png",
@@ -212,12 +211,12 @@ data:extend({
     minable =
     {
       mining_particle = "stone-particle",
-      mining_time = 2,
+      mining_time = 1,
       results =
       {
-        {type = "item", name = "stone", amount_min = 2, amount_max = 12},
-        {type = "item", name = "iron-ore", amount_min = 5, amount_max = 9},
-        {type = "item", name = "copper-ore", amount_min = 3, amount_max = 7},
+        {type = "item", name = "raxinite", amount_min = 12, amount_max = 30},
+        {type = "item", name = "iron-ore", amount_min = 0, amount_max = 7},
+        {type = "item", name = "copper-ore", amount_min = 0, amount_max = 5},
         --{type = "item", name = "tungsten-ore", amount_min = 2, amount_max = 8}
       }
     },
@@ -230,7 +229,7 @@ data:extend({
     },
     map_color = {137, 118, 95},
     count_as_rock_for_filtered_deconstruction = true,
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    mined_sound = sound_variations(sounds .. "raxinite", 8, 0.7),
     impact_category = "stone",
     pictures = bigrockpics,
   },

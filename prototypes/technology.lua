@@ -44,6 +44,26 @@ data:extend({
     }
   },
 
+  {
+    type = "technology",
+    name = "timeshift_nutrients_slurry",
+    icon = techicons .. "timeshift_nutrients_slurry.png",
+    icon_size = 256,
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "timeshift_nutrients_slurry"
+      },
+    },
+    prerequisites = {"agriculture"},
+    research_trigger =
+    {
+      type = "mine-entity",
+      entity = "timeshift_nutrients_plant"
+    }
+  },
+
 --[[
   {
     type = "technology",
@@ -205,9 +225,10 @@ data:extend({
 
 
 
---if data.raw["technology"]["cloning-vat-technology"] then
--- table.insert(data.raw["technology"]["cloning-vat-technology"].prerequisites, "moshine-tech-ai-tier-2")
---end
+if data.raw["technology"]["cloning-vat-technology"] then
+ table.insert(data.raw["technology"]["cloning-vat-technology"].prerequisites, "timeshift_nutrients_slurry")
+ table.insert(data.raw["technology"]["timeshift_simulation_chamber"].prerequisites, "cloning-vat-technology")
+end
 if data.raw["technology"]["thinking-brain-technology"] then
   data.raw["technology"]["thinking-brain-technology"].prerequisites = {"timeshift_simulation_matrix"}
 end

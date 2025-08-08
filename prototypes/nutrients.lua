@@ -27,16 +27,35 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
     local y = math.floor((i-1)/per_row) * height
     local variation = {
       trunk = {
-        filename = entity .. "plant/"..name.."/"..name.."-trunk.png",
-        flags = { "mipmap" },
-        --surface = "timeshift",
-        width = width,
-        height = height,
-        x = x,
-        y = y,
-        frame_count = 1,
-        shift = shift,
-        scale = 0.33 * scale_multiplier
+        layers = {
+          {
+
+            filename = entity .. "plant/"..name.."/"..name.."-trunk.png",
+            flags = { "mipmap" },
+            --surface = "timeshift",
+            width = width,
+            height = height,
+            x = x,
+            y = y,
+            frame_count = 1,
+            shift = shift,
+            scale = 0.33 * scale_multiplier
+          },
+          {
+            filename = entity .. "plant/"..name.."/"..name.."-harvest.png",
+            flags = { "mipmap" },
+            --surface = "timeshift",
+            width = width,
+            height = height,
+            x = x,
+            y = y,
+            frame_count = 1,
+            shift = shift,
+            scale = 0.33 * scale_multiplier,
+            draw_as_light = true,
+            tint = {255,255,255,64}
+          }
+        }
       },
       leaves = {
         layers = {
@@ -70,15 +89,33 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
         }
       },
       normal = {
-        filename = entity .. "plant/"..name.."/"..name.."-normal.png",
-        --surface = "timeshift",
-        width = width,
-        height = height,
-        x = x,
-        y = y,
-        frame_count = 1,
-        shift = shift,
-        scale = 0.33 * scale_multiplier
+        layers = {
+          {
+            filename = entity .. "plant/"..name.."/"..name.."-normal.png",
+            --surface = "timeshift",
+            width = width,
+            height = height,
+            x = x,
+            y = y,
+            frame_count = 1,
+            shift = shift,
+            scale = 0.33 * scale_multiplier
+          },
+          {
+            filename = entity .. "plant/"..name.."/"..name.."-harvest.png",
+            flags = { "mipmap" },
+            --surface = "timeshift",
+            width = width,
+            height = height,
+            x = x,
+            y = y,
+            frame_count = 1,
+            shift = shift,
+            scale = 0.33 * scale_multiplier,
+            draw_as_light = true,
+            tint = {255,255,255,64}
+          }
+        }
       },
       shadow = {
         frame_count = 2,
@@ -373,7 +410,7 @@ data:extend({
     --pictures = get_timeshift_tree_sap_particle_pictures({tint = {107,36,31,255}, tint_as_overlay = true, scale = 0.8}), --#6b241f
     --pictures = get_timeshift_tree_sap_particle_pictures({tint = {31,07,88,255}, tint_as_overlay = true, scale = 0.8}), --#1f6b58
     pictures = get_timeshift_tree_sap_particle_pictures({tint = {7, 77, 89,255}, tint_as_overlay = true, scale = 0.8}), --#1f6b58
-    shadows =  get_timeshift_tree_sap_particle_pictures({tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.8}),
+    shadows =  get_timeshift_tree_sap_particle_pictures({tint = {0,0,0}, shift = util.by_pixel (1,0), scale = 0.8}),
     draw_shadow_when_on_ground = false,
     ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     movement_modifier_when_on_ground = 0,
@@ -411,7 +448,82 @@ data:extend({
     place_result = "timeshift_nutrients_plant",
     spoil_ticks = 25 * minute,
     spoil_result = "spoilage",
-    weight = 10*kg
+    weight = 10*kg,
+    pictures =
+    {
+      {
+        layers =
+        {
+          {
+            size = 64,
+            filename = icons .. "timeshift_nutrients.png",
+            scale = 0.5,
+          },
+          {
+            draw_as_light = true,
+            blend_mode = "additive",
+            size = 64,
+            filename = icons .. "timeshift_nutrients_light.png",
+            scale = 0.5,
+            tint = {0.3, 0.3, 0.3, 0.3}
+          }
+        }
+      },
+      {
+        layers =
+        {
+          {
+            size = 64,
+            filename = icons .. "timeshift_nutrients_2.png",
+            scale = 0.5,
+          },
+          {
+            draw_as_light = true,
+            blend_mode = "additive",
+            size = 64,
+            filename = icons .. "timeshift_nutrients_light_2.png",
+            scale = 0.5,
+            tint = {0.3, 0.3, 0.3, 0.3}
+          }
+        }
+      },
+      {
+        layers =
+        {
+          {
+            size = 64,
+            filename = icons .. "timeshift_nutrients_3.png",
+            scale = 0.5,
+          },
+          {
+            draw_as_light = true,
+            blend_mode = "additive",
+            size = 64,
+            filename = icons .. "timeshift_nutrients_light_3.png",
+            scale = 0.5,
+            tint = {0.3, 0.3, 0.3, 0.3}
+          }
+        }
+      },
+      {
+        layers =
+        {
+          {
+            size = 64,
+            filename = icons .. "timeshift_nutrients_4.png",
+            scale = 0.5,
+          },
+          {
+            draw_as_light = true,
+            blend_mode = "additive",
+            size = 64,
+            filename = icons .. "timeshift_nutrients_light_4.png",
+            scale = 0.5,
+            tint = {0.3, 0.3, 0.3, 0.3}
+          }
+        }
+      },
+    },
   },
   {
     type = "fuel-category",
@@ -461,7 +573,7 @@ plant.minable =
 {
   mining_particle = "timeshiftplanet-jellystem-mining-particle",
   mining_time = 0.5,
-  results = {{type = "item", name = "timeshift_nutrients", amount = 2}},
+  results = {{type = "item", name = "timeshift_nutrients", amount_min = 1, amount_max = 4}},
 }
 plant.autoplace = 
 {

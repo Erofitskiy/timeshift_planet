@@ -212,7 +212,6 @@ data:extend({
     drop_sound = item_sounds.resource_inventory_move,
     stack_size = 50,
     default_import_location = "timeshift",
-    random_tint_color = item_tints.iron_rust,
     weight = 10*kg
   },
 
@@ -308,6 +307,26 @@ data:extend({
 
 
 
+  {
+    type = "item",
+    name = "raxinite",
+    icon = icons .. "raxinite-1.png",
+    subgroup = "timeshift-processes",
+    order = "aaa",
+    inventory_move_sound = item_sounds.metal_barrel_inventory_move,
+    pick_sound = item_sounds.metal_barrel_inventory_pickup,
+    drop_sound = item_sounds.metal_barrel_inventory_move,
+    stack_size = 50,
+    default_import_location = "timeshift",
+    random_tint_color = { 1.0, 0.83, 0.7, 1.0 },
+    weight = 20*kg,
+    pictures =
+    {
+      {size = 64, filename = icons .. "raxinite-1.png", scale = 0.5},
+      {size = 64, filename = icons .. "raxinite-2.png", scale = 0.5},
+      {size = 64, filename = icons .. "raxinite-3.png", scale = 0.5},
+    },
+  },
 
 
 
