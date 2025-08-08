@@ -232,25 +232,25 @@ data:extend({
     surface_properties =
     {
       ["day-night-cycle"] = 5 * minute,
-      ["magnetic-field"] = 25,
-      ["solar-power"] = 400,
+      ["magnetic-field"] = 56,
+      ["solar-power"] = 80,
       pressure = 1400, --must be 1000 >< 2000 for agricultural tower
-      gravity = 40
+      gravity = 14
     },
     asteroid_spawn_influence = 1,
-    asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+    asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba, 0.9),
     persistent_ambient_sounds =
     {
-      base_ambience = {filename = "__space-age__/sound/wind/base-wind-vulcanus.ogg", volume = 0.8},
-      wind = {filename = "__space-age__/sound/wind/wind-vulcanus.ogg", volume = 0.8},
+      base_ambience = {filename = sounds .. "timeshift_ambiance_klankbeeld.ogg", volume = 0.8},
+      --[[wind = {filename = "__space-age__/sound/wind/wind-vulcanus.ogg", volume = 0.8},
       crossfade =
       {
         order = {"wind", "base_ambience"},
         curve_type = "cosine",
         from = {control = 0.35, volume_percentage = 0.0},
         to = {control = 2, volume_percentage = 100.0}
-      },
-      semi_persistent =
+      },]]
+      --[[semi_persistent =
       {
         {
           sound = {variations = sound_variations("__space-age__/sound/world/semi-persistent/distant-rumble", 3, 0.5)},
@@ -262,7 +262,7 @@ data:extend({
           delay_mean_seconds = 15,
           delay_variance_seconds = 7.0
         }
-      }
+      }]]
     },
     surface_render_parameters =
     {

@@ -1,45 +1,58 @@
-local musicpath = "__Moshine-assets__/sound/ambient/moshine/"
-local vol = 1.2
+local musicpath = sounds .. "ambient/"
+local vol = 0.7
 
-data:extend(
-{
---- weight 10 is normal. The higher the number, the higher the probabilities to sound.
-
-  {
-    type = "ambient-sound",
-    name = "Anemoia_Diorite",
-    track_type = "hero-track",
-    planet = "moshine",
-    sound =
+function make_musictrack(name, type)
+  local track_type = type
+  if not track_type then track_type = "main-track" end
+  data:extend({
     {
-      filename = musicpath .. "Anemoia_Diorite.ogg",
-      volume = vol,
-    }
-  },
-  {
-    type = "ambient-sound",
-    name = "Anemoia_5.12a",
-    track_type = "interlude",
-    planet = "moshine",
-    sound =
-    {
-      filename = musicpath .. "Anemoia_5.12a.ogg",
-      volume = vol,
-    }
-  },
-  {
-    type = "ambient-sound",
-    name = "Anemoia_Emanate",
-    track_type = "main-track",
-    planet = "moshine",
-    sound =
-    {
-      filename = musicpath .. "Anemoia_Emanate.ogg",
-      volume = vol,
-    }
-  },
-})
+      type = "ambient-sound",
+      name = name,
+      track_type = track_type,
+      planet = "timeshift",
+      sound =
+      {
+        filename = musicpath .. name .. ".ogg",
+        volume = vol,
+      }
+    },
+  })
+end
 
 
---01 Serat - Nord Weg
---02 Serat - Atmo People      hero
+make_musictrack("mashup_Serat_Distant_Fields_Pablo_Enver_FF9_Branbal", "hero-track")
+
+make_musictrack("01_Serat_-_Flow_Sessions_-_Nord_Weg")
+make_musictrack("03_Serat_-_Flow_Sessions_-_Distant_Fields")
+make_musictrack("04_Serat_-_Flow_Sessions_-_Rapid_Waters")
+make_musictrack("06_Serat_-_Flow_Sessions_-_Son_of_the_Vampire")
+make_musictrack("07_Serat_-_Flow_Sessions_-_First_Snowy_Night")
+make_musictrack("08_Serat_-_Flow_Sessions_-_Images")
+make_musictrack("10_Serat_-_Flow_Sessions_-_Symphony_of_Stones")
+make_musictrack("11_Serat_-_Flow_Sessions_-_Fragile_Memories")
+make_musictrack("12_Serat_-_Flow_Sessions_-_Harfenzwischenspiel")
+make_musictrack("14_Serat_-_Flow_Sessions_-_Dark_Transmission")
+make_musictrack("15_Serat_-_Flow_Sessions_-_Emergence")
+make_musictrack("17_Serat_-_Flow_Sessions_-_Stargazing")
+
+make_musictrack("01_Blear_Moon_-_Town_Of_Two_Houses_-_These_Walls_Are_Talking", "interlude")
+make_musictrack("02_Blear_Moon_-_Town_Of_Two_Houses_-_Arctic_Fog", "interlude")
+make_musictrack("03_Blear_Moon_-_Town_Of_Two_Houses_-_Flekkefjord", "interlude")
+make_musictrack("04_Blear_Moon_-_Town_Of_Two_Houses_-_Boat_for_Sale", "interlude")
+make_musictrack("05_Blear_Moon_-_Town_Of_Two_Houses_-_Cold_Summer_Landscape", "interlude")
+make_musictrack("06_Blear_Moon_-_Town_Of_Two_Houses_-_Gean", "interlude")
+
+make_musictrack("01_Blear_Moon_-_Fallow_-_Anto")
+make_musictrack("02_Blear_Moon_-_Fallow_-_Backspace")
+make_musictrack("03_Blear_Moon_-_Fallow_-_Laps")
+make_musictrack("04_Blear_Moon_-_Fallow_-_Pill")
+make_musictrack("05_Blear_Moon_-_Fallow_-_Recalling")
+make_musictrack("06_Blear_Moon_-_Fallow_-_Certain_force")
+make_musictrack("07_Blear_Moon_-_Fallow_-_Sam")
+make_musictrack("08_Blear_Moon_-_Fallow_-_Must")
+make_musictrack("09_Blear_Moon_-_Fallow_-_Com")
+make_musictrack("10_Blear_Moon_-_Fallow_-_Chod")
+make_musictrack("11_Blear_Moon_-_Fallow_-_Dementia")
+
+--"hero-track"
+--"interlude"

@@ -10,6 +10,7 @@ require "prototypes_planet.terrain"
 require "prototypes_planet.decoratives"
 require "prototypes_planet.planet"
 require "prototypes_planet.timeshift_energy_roots"
+require "prototypes_planet.music"
 
 
 require "prototypes.technology"
