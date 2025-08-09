@@ -196,9 +196,17 @@ data:extend(
   close_sound = {filename = "__base__/sound/open-close/fluid-close.ogg", volume = 0.54},
   working_sound =
   {
-    sound = sound_variations("__base__/sound/chemical-plant", 3, 0.5),
-    fade_in_ticks = 4,
-    fade_out_ticks = 20
+    sound = {
+      filename = tssounds .. "simulation_chamber_working_sound.ogg",
+      volume = 0.7,
+    },
+    fade_in_ticks = 10,
+    fade_out_ticks = 40,
+    max_sounds_per_prototype = 4,
+    idle_sound = {
+      filename = tssounds .. "simulation_chamber_working_sound_idle.ogg",
+      volume = 0.7,
+    },
   },
   energy_source =
   {
