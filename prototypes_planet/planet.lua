@@ -242,14 +242,14 @@ data:extend({
     persistent_ambient_sounds =
     {
       base_ambience = {filename = sounds .. "timeshift_ambiance_klankbeeld.ogg", volume = 0.8},
-      --[[wind = {filename = "__space-age__/sound/wind/wind-vulcanus.ogg", volume = 0.8},
+      wind = {filename = sounds .. "atmosphere_timeshift.ogg", volume = 0.8},
       crossfade =
       {
         order = {"wind", "base_ambience"},
         curve_type = "cosine",
         from = {control = 0.35, volume_percentage = 0.0},
         to = {control = 2, volume_percentage = 100.0}
-      },]]
+      },
       --[[semi_persistent =
       {
         {
@@ -266,7 +266,23 @@ data:extend({
     },
     surface_render_parameters =
     {
-      fog = effects.default_fog_effect_properties(),
+      fog = {
+        shape_noise_texture =
+        {
+          filename = "__core__/graphics/clouds-noise.png",
+          size = 2048
+        },
+        detail_noise_texture =
+        {
+          filename = "__core__/graphics/clouds-detail-noise.png",
+          size = 2048
+        },
+        --color1 = {1.0, 0.8706, 0.302},
+        --color2 = {1.0, 0.8706, 0.2902},
+        color1 = {109, 179, 146},
+        color2 = {90, 176, 135},
+        tick_factor = 0.000005,
+      },
       -- clouds = effects.default_clouds_effect_properties(),
 
       -- Should be based on the default day/night times, ie

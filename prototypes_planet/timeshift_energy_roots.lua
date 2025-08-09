@@ -46,6 +46,38 @@ local emptyturretanim = {
   run_mode = "forward",
 }
 
+local multidir_anim = {
+  layers =
+  {
+    {
+      filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_1_base.png",
+      width = 704,
+      height = 704,
+      repeat_count = 1,
+      line_length = 1,
+      scale = 0.5,
+    },
+    {
+      filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_1_shadow.png",
+      width = 704,
+      height = 704,
+      repeat_count = 1,
+      line_length = 1,
+      scale = 0.5,
+      draw_as_shadow = true,
+    },
+    {
+      filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_1_glow.png",
+      width = 704,
+      height = 704,
+      repeat_count = 1,
+      line_length = 1,
+      scale = 0.5,
+      draw_as_glow = true,
+      blend_mode = "additive",
+    },
+  }
+}
 
 
 data:extend({
@@ -53,7 +85,7 @@ data:extend({
     type = "generator",
     name = "timeshift_energy_roots",
     icon = icons .. "timeshift_energy_roots.png",
-    flags = {"placeable-neutral","player-creation"},
+    flags = {"placeable-neutral","player-creation","not-deconstructable","not-blueprintable","not-flammable","no-automated-item-removal","no-copy-paste","not-upgradable","not-in-kill-statistics"},
     --minable = {mining_time = 0.3, result = "steam-engine"},
     max_health = 400000,
     corpse = "steam-engine-remnants",
@@ -66,7 +98,7 @@ data:extend({
     burns_fluid = true,
 
     maximum_temperature = 165,
-    resistances =
+    --[[resistances =
     {
       {
         type = "fire",
@@ -76,7 +108,7 @@ data:extend({
         type = "impact",
         percent = 30
       }
-    },
+    },]]
     --fast_replaceable_group = "steam-engine",
     collision_box = {{-3.2, -3.2}, {3.2, 3.2}},
     selection_box = {{-3.5, -3.5}, {3.5, 3.5}},
@@ -177,84 +209,20 @@ data:extend({
       type = "electric",
       usage_priority = "secondary-output",
     },
-    horizontal_animation =
-    {
-      layers =
-      {
-        {
-          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_1_base.png",
-          width = 704,
-          height = 704,
-          repeat_count = 1,
-          line_length = 1,
-          scale = 0.5,
-        },
-        {
-          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_1_shadow.png",
-          width = 704,
-          height = 704,
-          repeat_count = 1,
-          line_length = 1,
-          scale = 0.5,
-          draw_as_shadow = true,
-        },
-        {
-          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_1_glow.png",
-          width = 704,
-          height = 704,
-          repeat_count = 1,
-          line_length = 1,
-          scale = 0.5,
-          draw_as_glow = true,
-          blend_mode = "additive",
-        },
-      }
-    },
-    vertical_animation =
-    {
-      layers =
-      {
-        {
-          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_2_base.png",
-          width = 704,
-          height = 704,
-          repeat_count = 1,
-          line_length = 1,
-          scale = 0.5,
-        },
-        {
-          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_2_shadow.png",
-          width = 704,
-          height = 704,
-          repeat_count = 1,
-          line_length = 1,
-          scale = 0.5,
-          draw_as_shadow = true,
-        },
-        {
-          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_2_glow.png",
-          width = 704,
-          height = 704,
-          repeat_count = 1,
-          line_length = 1,
-          scale = 0.5,
-          draw_as_glow = true,
-          blend_mode = "additive",
-        },
-      }
-    },
-    --[[
+    horizontal_animation = multidir_anim,
+    vertical_animation = multidir_anim,
     smoke =
     {
       {
-        name = "light-smoke",
-        north_position = {0.9, 0.0},
-        east_position = {-2.0, -2.0},
-        frequency = 10 / 32,
-        starting_vertical_speed = 0.08,
-        starting_frame_deviation = 60
+        name = "energy_root_pseudosmoke",
+        north_position = {0,0}, --{0.9, 0.0},
+        east_position = {0,0},--{-2.0, -2.0},
+        frequency = 0.5 / 32,
+        starting_vertical_speed = 0, -- 0.08,
+        starting_frame_deviation = 60,
+        vertical_speed_slowdown = 0,
       }
-    },]]
+    },
     impact_category = "metal-large",
     open_sound = sounds.machine_open,
     close_sound = sounds.machine_close,
@@ -262,16 +230,16 @@ data:extend({
     {
       sound =
       {
-        filename = "__base__/sound/steam-engine-90bpm.ogg",
+        filename = tssounds .. "energy_root_sound.ogg",
         volume = 0.55,
-        speed_smoothing_window_size = 60,
+        speed_smoothing_window_size = 600,
         modifiers = volume_multiplier("tips-and-tricks", 1.1),
         audible_distance_modifier = 0.8,
       },
       match_speed_to_activity = true,
-      max_sounds_per_prototype = 3,
-      fade_in_ticks = 4,
-      fade_out_ticks = 20
+      max_sounds_per_prototype = 1,
+      fade_in_ticks = 300,
+      fade_out_ticks = 300
     },
     perceived_performance = {minimum = 0.25, performance_to_activity_rate = 2.0},
     autoplace = resource_autoplace.resource_autoplace_settings{
@@ -287,8 +255,57 @@ data:extend({
     },
     map_color = {1, 1, 0},
   },
+  {
+    type = "trivial-smoke",
+    name = "energy_root_pseudosmoke",
+    duration = 300,
+    fade_in_duration = 0,
+    fade_away_duration = 0,
+    spread_duration = 0,-- 120,
+    start_scale = 0.5,
+    end_scale = 0.5,
+    --start_scale = opts.start_scale or 0.20,
+    --end_scale = opts.end_scale or 1.0,
+    --color = opts.color,
+    color = {1,1,1,1},
+    movement_slow_down_factor = 0,
+    cyclic = true,
+    affected_by_wind = false,
+    animation =
+    {
+      filename = entity .. "fire-smoke/fire-smoke-glow.png",
+      flags = { "smoke" },
+      blend_mode = "additive",
+      line_length = 5,
+      width = 704,
+      height = 704,
+      frame_count = 25,
+      --shift = {-0.265625, 0.8125},
+      --priority = "high",
+      animation_speed = 0.1,
+      scale = 0.5,
+    },
+    glow_animation = nil --[[
+    {
+      filename = entity .. "fire-smoke/fire-smoke-glow.png",
+      flags = { "smoke" },
+      blend_mode = "additive",
+      line_length = 8,
+      width = 352,
+      height = 352,
+      frame_count = 64,
+      --shift = {-0.265625, 0.8125},
+      --priority = "high",
+      animation_speed = 0.25
+    },]]
+    --glow_fade_away_duration = 70,
+    --vertical_speed_slowdown = opts.vertical_speed_slowdown
+  }
 
 })
+
+
+
 
 
 local function make_energy_roots_tesla_turret(num, seq)

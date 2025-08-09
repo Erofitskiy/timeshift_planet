@@ -31,14 +31,12 @@ script.on_event(defines.events.on_chunk_generated, function(event)
                     end
                 end
 
-
                 local decos = surface.find_entities_filtered{ position = entity.position, type = "cliff" }
                 for _, deco in pairs(decos) do
                     if deco.valid then
                         deco.destroy({do_cliff_correction = true})
                     end
                 end
-
 
                 surface.destroy_decoratives{ position = entity.position }
 
@@ -47,8 +45,11 @@ script.on_event(defines.events.on_chunk_generated, function(event)
                 table.insert(storage.timeshift_generators, {
                     entity = entity,
                 })
-                local rand = math.random(0, 1)
-                if rand == 0 then entity.direction = defines.direction.north else entity.direction = defines.direction.east end
+                entity.minable_flag = false
+                entity.destructible = false
+                entity.rotatable = false
+                --local rand = math.random(0, 1)
+                --if rand == 0 then entity.direction = defines.direction.north else entity.direction = defines.direction.east end
             end
         end
     end
@@ -76,7 +77,7 @@ end
 
 local function try_place_or_force_clear_turret(surface, center)
     local maxradius = 20
-    local pos = try_place_from_radius(surface, center, 2, maxradius, "timeshift_energy_roots_tesla_turret_1")
+    local pos = try_place_from_radius(surface, center, 3, maxradius, "timeshift_energy_roots_tesla_turret_1")
     if pos then
         return pos
     else
