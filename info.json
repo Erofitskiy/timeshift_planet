@@ -9,6 +9,7 @@
   "dependencies": [
     "base",
     "space-age",
+    "timeshift_planet_assets",
     "Moshine",
     "thinking_brain",
     "matter_printer",

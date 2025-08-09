@@ -2,7 +2,7 @@ planet_name = "timeshift"
 icons = "__timeshift_planet__/graphics/icons/"
 entity = "__timeshift_planet__/graphics/entity/"
 techicons = "__timeshift_planet__/graphics/technology/"
-sounds = "__timeshift_planet__/sounds/"
+sounds = "__timeshift_planet_assets__/sounds/"
 
 
 require "prototypes_planet.hidden_beacon"

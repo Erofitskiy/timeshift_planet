@@ -1,4 +1,4 @@
-local decora = "__timeshift_planet__/graphics/decorative/"
+local decora = "__timeshift_planet_assets__/graphics/decorative/"
 local hit_effects = require ("__base__.prototypes.entity.hit-effects")
 local base_sounds = require ("__base__.prototypes.entity.sounds")
 local base_tile_sounds = require("__base__/prototypes/tile/tile-sounds")

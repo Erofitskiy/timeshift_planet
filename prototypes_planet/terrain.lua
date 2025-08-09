@@ -1,4 +1,4 @@
-local terrain = "__timeshift_planet__/graphics/terrain/"
+local terrain = "__timeshift_planet_assets__/graphics/terrain/"
 
 local tile_trigger_effects = require("__space-age__.prototypes.tile.tile-trigger-effects")
 local tile_pollution = require("__space-age__/prototypes/tile/tile-pollution-values")
