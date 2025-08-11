@@ -214,6 +214,20 @@ local lava_stone_transitions_between_transitions =
 
 --define ranges for all tilesets. Having these as thier own expressions helps with debugging and also modifying things like decorative placement
 data:extend({
+  scaled_cliff(
+    {
+      mod_name = "__timeshift_planet_assets__",
+      name = "cliff-timeshift",
+      map_color = {58, 48, 43}, --3a302b
+      suffix = "timeshift",
+      subfolder = "timeshift",
+      scale = 1.0,
+      has_lower_layer = false,
+      sprite_size_multiplier = 2,
+      --factoriopedia_simulation = simulations.factoriopedia_cliff_vulcanus
+    }
+  ),
+
 
   {
     type = "item-subgroup",

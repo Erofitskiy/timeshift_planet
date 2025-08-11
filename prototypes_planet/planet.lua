@@ -34,7 +34,7 @@ planet_map_gen.timeshift = function()
     },
     cliff_settings =
     {
-      name = "cliff-vulcanus",
+      name = "cliff-timeshift",
       cliff_elevation_interval = 170,
       cliff_elevation_0 = 0
     },
