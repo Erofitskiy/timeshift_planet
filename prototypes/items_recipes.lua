@@ -330,7 +330,7 @@ data:extend({
       {size = 64, filename = icons .. "panglia_panglite-6.png", scale = 0.5},
     },
   },
-  
+
   {
     type = "recipe",
     name = "panglia_panglite_multiplication",
@@ -341,6 +341,7 @@ data:extend({
     ingredients = {{type = "item", name = "panglia_panglite", amount = 1}},
     results = {{type="item", name="panglia_panglite", amount = 2}},
     allow_productivity = false,
+    show_amount_in_title = false,
   },
 
 

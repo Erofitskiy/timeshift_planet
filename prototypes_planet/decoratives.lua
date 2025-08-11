@@ -104,7 +104,7 @@ local hugerockpics = {}
 for num = 1, 28 do
   table.insert(hugerockpics,
   {
-    filename = decora .. "huge-volcanic-rock/huge-volcanic-rock-" .. num .. ".png",
+    filename = decora .. "huge-panglite-rock/huge-panglite-rock-" .. num .. ".png",
     width = 320,
     height = 256,
     scale = 0.5,
@@ -115,7 +115,7 @@ local bigrockpics = {}
 for num = 1, 27 do
   table.insert(bigrockpics,
   {
-    filename = decora .. "big-volcanic-rock/big-volcanic-rock-" .. num .. ".png",
+    filename = decora .. "big-panglite-rock/big-panglite-rock-" .. num .. ".png",
     width = 256,
     height = 256,
     scale = 0.5,
@@ -126,7 +126,7 @@ local mediumrocks = {}
 for num = 1, 12 do
   table.insert(mediumrocks,
   {
-    filename = decora .. "medium-volcanic-rock/medium-volcanic-rock-" .. num .. ".png",
+    filename = decora .. "medium-panglite-rock/medium-panglite-rock-" .. num .. ".png",
     width = 128,
     height = 128,
     scale = 0.5,
@@ -137,7 +137,7 @@ local rocksdecals = {}
 for num = 1, 27 do
   table.insert(rocksdecals,
   {
-    filename = decora .. "big-volcanic-rock-decal/big-volcanic-rock-" .. num .. ".png",
+    filename = decora .. "big-panglite-rock-decal/big-panglite-rock-" .. num .. ".png",
     width = 256,
     height = 256,
     scale = 0.5,
@@ -150,12 +150,12 @@ end
 data:extend({
 
   {
-    name = "panglia-huge-volcanic-rock", --panglite
+    name = "panglia-huge-panglite-rock", --panglite
     type = "simple-entity",
     flags = {"placeable-neutral", "placeable-off-grid"},
-    icon = icons .. "panglia-huge-volcanic-rock.png",
+    icon = icons .. "panglia-huge-panglite-rock.png",
     subgroup = "grass",
-    order = "b[decorative]-l[rock]-a[vulcanus]-b[huge-volcanic-rock]",
+    order = "b[decorative]-l[rock]-a[vulcanus]-b[huge-panglite-rock]",
     collision_box = {{-1.7, -1.3}, {1.7, 1.3}},
     selection_box = {{-2, -1.5}, {2, 1.5}},
     damaged_trigger_effect = hit_effects.rock(),
@@ -192,12 +192,12 @@ data:extend({
   },
 
   {
-    name = "panglia-big-volcanic-rock", --panglite
+    name = "panglia-big-panglite-rock", --panglite
     type = "simple-entity",
     flags = {"placeable-neutral", "placeable-off-grid"},
-    icon = icons .. "panglia-big-volcanic-rock.png",
+    icon = icons .. "panglia-big-panglite-rock.png",
     subgroup = "grass",
-    order = "b[decorative]-l[rock]-a[vulcanus]-a[big-volcanic-rock]",
+    order = "b[decorative]-l[rock]-a[vulcanus]-a[big-panglite-rock]",
     collision_box = {{-0.75, -0.75}, {0.75, 0.75}},
     selection_box = {{-1.0, -1.0}, {1.0, 0.75}},
     damaged_trigger_effect = hit_effects.rock(),
@@ -235,7 +235,7 @@ data:extend({
   },
 
   {
-    name = "panglia-medium-volcanic-rock",
+    name = "panglia-medium-panglite-rock",
     type = "optimized-decorative",
     order = "b[decorative]-l[rock]-c[medium]",
     collision_box = {{-1.1, -1.1}, {1.1, 1.1}},
@@ -299,7 +299,7 @@ data:extend({
 
 
   {
-    name = "panglia-small-volcanic-rock",
+    name = "panglia-small-panglite-rock",
     type = "optimized-decorative",
     order = "b[decorative]-l[rock]-d[small]",
     collision_box = {{-0.3, -0.3}, {0.3, 0.3}},
@@ -314,7 +314,7 @@ data:extend({
     pictures =
     {
         {
-          filename = decora .. "small-volcanic-rock/small-volcanic-rock-01.png",
+          filename = decora .. "small-panglite-rock/small-panglite-rock-01.png",
           priority = base_decorative_sprite_priority,
           width = 51,
           height = 37,
@@ -324,7 +324,7 @@ data:extend({
           shift = {0.0546875, 0.117188}
         },
         {
-          filename = decora .. "small-volcanic-rock/small-volcanic-rock-02.png",
+          filename = decora .. "small-panglite-rock/small-panglite-rock-02.png",
           priority = base_decorative_sprite_priority,
           width = 52,
           height = 35,
@@ -334,7 +334,7 @@ data:extend({
           shift = {0.0390625, 0.078125}
         },
         {
-          filename = decora .. "small-volcanic-rock/small-volcanic-rock-03.png",
+          filename = decora .. "small-panglite-rock/small-panglite-rock-03.png",
           priority = base_decorative_sprite_priority,
           width = 46,
           height = 42,
@@ -344,7 +344,7 @@ data:extend({
           shift = {-0.0078125, 0.148438}
         },
         {
-          filename = decora .. "small-volcanic-rock/small-volcanic-rock-04.png",
+          filename = decora .. "small-panglite-rock/small-panglite-rock-04.png",
           priority = base_decorative_sprite_priority,
           width = 53,
           height = 33,
@@ -354,7 +354,7 @@ data:extend({
           shift = {0.0234375, 0.15625}
         },
         {
-          filename = decora .. "small-volcanic-rock/small-volcanic-rock-05.png",
+          filename = decora .. "small-panglite-rock/small-panglite-rock-05.png",
           priority = base_decorative_sprite_priority,
           width = 47,
           height = 46,
@@ -364,7 +364,7 @@ data:extend({
           shift = {0.0390625, 0.140625}
         },
         {
-          filename = decora .. "small-volcanic-rock/small-volcanic-rock-06.png",
+          filename = decora .. "small-panglite-rock/small-panglite-rock-06.png",
           priority = base_decorative_sprite_priority,
           width = 62,
           height = 41,
@@ -374,7 +374,7 @@ data:extend({
           shift = {-0.03125, 0.09375}
         },
         {
-          filename = decora .. "small-volcanic-rock/small-volcanic-rock-07.png",
+          filename = decora .. "small-panglite-rock/small-panglite-rock-07.png",
           priority = base_decorative_sprite_priority,
           width = 64,
           height = 36,
@@ -384,7 +384,7 @@ data:extend({
           shift = {-0.015625, 0.0703125}
         },
         {
-          filename = decora .. "small-volcanic-rock/small-volcanic-rock-08.png",
+          filename = decora .. "small-panglite-rock/small-panglite-rock-08.png",
           priority = base_decorative_sprite_priority,
           width = 65,
           height = 31,
@@ -394,7 +394,7 @@ data:extend({
           shift = {-0.71875, -0.164062}
         },
         {
-          filename = decora .. "small-volcanic-rock/small-volcanic-rock-09.png",
+          filename = decora .. "small-panglite-rock/small-panglite-rock-09.png",
           priority = base_decorative_sprite_priority,
           width = 46,
           height = 34,
@@ -404,7 +404,7 @@ data:extend({
           shift = {-0.0859375, 0.101562}
         },
         {
-          filename = decora .. "small-volcanic-rock/small-volcanic-rock-10.png",
+          filename = decora .. "small-panglite-rock/small-panglite-rock-10.png",
           priority = base_decorative_sprite_priority,
           width = 48,
           height = 34,
@@ -414,7 +414,7 @@ data:extend({
           shift = {0.0078125, 0.125}
         },
         {
-          filename = decora .. "small-volcanic-rock/small-volcanic-rock-11.png",
+          filename = decora .. "small-panglite-rock/small-panglite-rock-11.png",
           priority = base_decorative_sprite_priority,
           width = 51,
           height = 33,
@@ -424,7 +424,7 @@ data:extend({
           shift = {-0.0859375, 0.078125}
         },
         {
-          filename = decora .. "small-volcanic-rock/small-volcanic-rock-12.png",
+          filename = decora .. "small-panglite-rock/small-panglite-rock-12.png",
           priority = base_decorative_sprite_priority,
           width = 47,
           height = 39,
@@ -434,7 +434,7 @@ data:extend({
           shift = {0.078125, 0.117188}
         },
         {
-          filename = decora .. "small-volcanic-rock/small-volcanic-rock-13.png",
+          filename = decora .. "small-panglite-rock/small-panglite-rock-13.png",
           priority = base_decorative_sprite_priority,
           width = 43,
           height = 33,
@@ -444,7 +444,7 @@ data:extend({
           shift = {0, 0.09375}
         },
         {
-          filename = decora .. "small-volcanic-rock/small-volcanic-rock-14.png",
+          filename = decora .. "small-panglite-rock/small-panglite-rock-14.png",
           priority = base_decorative_sprite_priority,
           width = 43,
           height = 30,
@@ -454,7 +454,7 @@ data:extend({
           shift = {0.046875, 0.140625}
         },
         {
-          filename = decora .. "small-volcanic-rock/small-volcanic-rock-15.png",
+          filename = decora .. "small-panglite-rock/small-panglite-rock-15.png",
           priority = base_decorative_sprite_priority,
           width = 41,
           height = 37,
@@ -464,7 +464,7 @@ data:extend({
           shift = {0, 0.140625}
         },
         {
-          filename = decora .. "small-volcanic-rock/small-volcanic-rock-16.png",
+          filename = decora .. "small-panglite-rock/small-panglite-rock-16.png",
           priority = base_decorative_sprite_priority,
           width = 46,
           height = 33,
@@ -477,7 +477,7 @@ data:extend({
   },
   --- TINY TINTABLE ROCKS
   {
-    name = "panglia-tiny-volcanic-rock",
+    name = "panglia-tiny-panglite-rock",
     type = "optimized-decorative",
     order = "b[decorative]-l[rock]-d[small]",
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
@@ -493,7 +493,7 @@ data:extend({
     pictures =
     {
       {
-        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-01.png",
+        filename =  decora .. "tiny-panglite-rock/tiny-panglite-rock-01.png",
         priority = base_decorative_sprite_priority,
         width =  29,
         height =  21,
@@ -503,7 +503,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-02.png",
+        filename =  decora .. "tiny-panglite-rock/tiny-panglite-rock-02.png",
         priority = base_decorative_sprite_priority,
         width =  30,
         height =  19,
@@ -513,7 +513,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-03.png",
+        filename =  decora .. "tiny-panglite-rock/tiny-panglite-rock-03.png",
         priority = base_decorative_sprite_priority,
         width =  29,
         height =  24,
@@ -523,7 +523,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-04.png",
+        filename =  decora .. "tiny-panglite-rock/tiny-panglite-rock-04.png",
         priority = base_decorative_sprite_priority,
         width =  32,
         height =  20,
@@ -533,7 +533,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-05.png",
+        filename =  decora .. "tiny-panglite-rock/tiny-panglite-rock-05.png",
         priority = base_decorative_sprite_priority,
         width =  29,
         height =  25,
@@ -543,7 +543,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-06.png",
+        filename =  decora .. "tiny-panglite-rock/tiny-panglite-rock-06.png",
         priority = base_decorative_sprite_priority,
         width =  36,
         height =  24,
@@ -553,7 +553,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-07.png",
+        filename =  decora .. "tiny-panglite-rock/tiny-panglite-rock-07.png",
         priority = base_decorative_sprite_priority,
         width =  78,
         height =  34,
@@ -563,7 +563,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-08.png",
+        filename =  decora .. "tiny-panglite-rock/tiny-panglite-rock-08.png",
         priority = base_decorative_sprite_priority,
         width =  35,
         height =  19,
@@ -573,7 +573,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-09.png",
+        filename =  decora .. "tiny-panglite-rock/tiny-panglite-rock-09.png",
         priority = base_decorative_sprite_priority,
         width =  28,
         height =  20,
@@ -583,7 +583,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-10.png",
+        filename =  decora .. "tiny-panglite-rock/tiny-panglite-rock-10.png",
         priority = base_decorative_sprite_priority,
         width =  29,
         height =  20,
@@ -593,7 +593,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-11.png",
+        filename =  decora .. "tiny-panglite-rock/tiny-panglite-rock-11.png",
         priority = base_decorative_sprite_priority,
         width =  29,
         height =  20,
@@ -603,7 +603,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-12.png",
+        filename =  decora .. "tiny-panglite-rock/tiny-panglite-rock-12.png",
         priority = base_decorative_sprite_priority,
         width =  29,
         height =  22,
@@ -613,7 +613,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-13.png",
+        filename =  decora .. "tiny-panglite-rock/tiny-panglite-rock-13.png",
         priority = base_decorative_sprite_priority,
         width =  27,
         height =  19,
@@ -623,7 +623,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-14.png",
+        filename =  decora .. "tiny-panglite-rock/tiny-panglite-rock-14.png",
         priority = base_decorative_sprite_priority,
         width =  27,
         height =  19,
@@ -633,7 +633,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-15.png",
+        filename =  decora .. "tiny-panglite-rock/tiny-panglite-rock-15.png",
         priority = base_decorative_sprite_priority,
         width =  26,
         height =  22,
@@ -643,7 +643,7 @@ data:extend({
         shift = {0.0, 0.0}
       },
       {
-        filename =  decora .. "tiny-volcanic-rock/tiny-volcanic-rock-16.png",
+        filename =  decora .. "tiny-panglite-rock/tiny-panglite-rock-16.png",
         priority = base_decorative_sprite_priority,
         width =  27,
         height =  20,
@@ -670,7 +670,7 @@ data:extend({
       placement_density = 2,
       probability_expression = "vulcanus_rock_cluster"
     },
-    pictures = get_decal_pictures(decora .. "tiny-volcanic-rock-cluster/tiny-volcanic-rock-cluster-", "", 128, 8,tintable_rock_tint,true)
+    pictures = get_decal_pictures(decora .. "tiny-panglite-rock-cluster/tiny-panglite-rock-cluster-", "", 128, 8,tintable_rock_tint,true)
   },
 
 

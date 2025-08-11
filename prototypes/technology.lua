@@ -29,6 +29,44 @@ data:extend({
   },
   {
     type = "technology",
+    name = "panglia_branbalite_slurry",
+    icon = techicons .. "panglia_branbalite_slurry.png",
+    icon_size = 256,
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "panglia_branbalite_slurry"
+      },
+    },
+    prerequisites = {"agriculture", "panglia_planet_discovery_panglia"},
+    research_trigger =
+    {
+      type = "mine-entity",
+      entity = "panglia_branbalite_plant"
+    }
+  },
+  {
+    type = "technology",
+    name = "panglia_panglite_multiplication",
+    icon = techicons .. "panglia_panglite_multiplication.png",
+    icon_size = 256,
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "panglia_panglite_multiplication"
+      },
+    },
+    prerequisites = {"panglia_planet_discovery_panglia"},
+    research_trigger =
+    {
+      type = "mine-entity",
+      entity = "panglia-huge-panglite-rock"
+    }
+  },
+  {
+    type = "technology",
     name = "panglia_advanced_optics_nanotech",
     icon = techicons .. "panglia_advanced_optics_nanotech.png",
     icon_size = 256,
@@ -44,25 +82,6 @@ data:extend({
     }
   },
 
-  {
-    type = "technology",
-    name = "panglia_branbalite_slurry",
-    icon = techicons .. "panglia_branbalite_slurry.png",
-    icon_size = 256,
-    effects =
-    {
-      {
-        type = "unlock-recipe",
-        recipe = "panglia_branbalite_slurry"
-      },
-    },
-    prerequisites = {"agriculture"},
-    research_trigger =
-    {
-      type = "mine-entity",
-      entity = "panglia_branbalite_plant"
-    }
-  },
 
 --[[
   {
