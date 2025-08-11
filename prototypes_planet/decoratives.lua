@@ -166,7 +166,7 @@ data:extend({
       mining_time = 2,
       results =
       {
-        {type = "item", name = "panglite", amount_min = 22, amount_max = 45},
+        {type = "item", name = "panglia_panglite", amount_min = 22, amount_max = 45},
         {type = "item", name = "iron-ore", amount_min = 0, amount_max = 10},
         {type = "item", name = "copper-ore", amount_min = 0, amount_max = 8},
       },
@@ -214,7 +214,7 @@ data:extend({
       mining_time = 1,
       results =
       {
-        {type = "item", name = "panglite", amount_min = 12, amount_max = 30},
+        {type = "item", name = "panglia_panglite", amount_min = 12, amount_max = 30},
         {type = "item", name = "iron-ore", amount_min = 0, amount_max = 7},
         {type = "item", name = "copper-ore", amount_min = 0, amount_max = 5},
         --{type = "item", name = "tungsten-ore", amount_min = 2, amount_max = 8}
@@ -234,8 +234,6 @@ data:extend({
     pictures = bigrockpics,
   },
 
-
-
   {
     name = "panglia-medium-volcanic-rock",
     type = "optimized-decorative",
@@ -250,12 +248,6 @@ data:extend({
     trigger_effect = decorative_trigger_effects.medium_rock(),
     pictures = mediumrocks,
   },
-
-
-
-
-
-
 
 
   {

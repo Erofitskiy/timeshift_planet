@@ -309,7 +309,7 @@ data:extend({
 
   {
     type = "item",
-    name = "panglite",
+    name = "panglia_panglite",
     icon = icons .. "panglia_panglite-1.png",
     subgroup = "panglia-processes",
     order = "aaa",
@@ -325,7 +325,22 @@ data:extend({
       {size = 64, filename = icons .. "panglia_panglite-1.png", scale = 0.5},
       {size = 64, filename = icons .. "panglia_panglite-2.png", scale = 0.5},
       {size = 64, filename = icons .. "panglia_panglite-3.png", scale = 0.5},
+      {size = 64, filename = icons .. "panglia_panglite-4.png", scale = 0.5},
+      {size = 64, filename = icons .. "panglia_panglite-5.png", scale = 0.5},
+      {size = 64, filename = icons .. "panglia_panglite-6.png", scale = 0.5},
     },
+  },
+  
+  {
+    type = "recipe",
+    name = "panglia_panglite_multiplication",
+    icon = icons .. "panglia_panglite_multiplication.png",
+    category = "smelting",
+    auto_recycle = false,
+    energy_required = 28,
+    ingredients = {{type = "item", name = "panglia_panglite", amount = 1}},
+    results = {{type="item", name="panglia_panglite", amount = 2}},
+    allow_productivity = false,
   },
 
 
