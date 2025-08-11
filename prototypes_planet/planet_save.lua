@@ -12,7 +12,7 @@ local tile_sounds = require("__space-age__/prototypes/tile/tile-sounds")
 local tile_graphics = require("__base__/prototypes/tile/tile-graphics")
 local tile_spritesheet_layout = tile_graphics.tile_spritesheet_layout
 
-planet_map_gen.timeshift = function()
+planet_map_gen.panglia = function()
   return
   {
     cliff_settings =
@@ -295,7 +295,7 @@ data:extend({
     label_orientation = 0.15,
     order = "c[gleba]",
     subgroup = "planets",
-    map_gen_settings = planet_map_gen.timeshift(),
+    map_gen_settings = planet_map_gen.panglia(),
     pollutant_type = "spores",
     solar_power_in_space = 200,
     platform_procession_set =

@@ -4,8 +4,8 @@
 data:extend({
   {
     type = "technology",
-    name = "timeshift_planet_discovery_timeshift",
-    icons = util.technology_icon_constant_planet(techicons .. "timeshift-tech-timeshift.png"),
+    name = "panglia_planet_discovery_panglia",
+    icons = util.technology_icon_constant_planet(techicons .. "panglia-tech-panglia.png"),
     icon_size = 256,
     essential = true,
     effects =
@@ -29,13 +29,13 @@ data:extend({
   },
   {
     type = "technology",
-    name = "timeshift_advanced_optics_nanotech",
-    icon = techicons .. "timeshift_advanced_optics_nanotech.png",
+    name = "panglia_advanced_optics_nanotech",
+    icon = techicons .. "panglia_advanced_optics_nanotech.png",
     icon_size = 256,
     effects =
     {
     },
-    prerequisites = {"timeshift_planet_discovery_timeshift", "planet-discovery-moshine"},
+    prerequisites = {"panglia_planet_discovery_panglia", "planet-discovery-moshine"},
     research_trigger =
     {
       type = "craft-item",
@@ -46,34 +46,34 @@ data:extend({
 
   {
     type = "technology",
-    name = "timeshift_branbalite_slurry",
-    icon = techicons .. "timeshift_branbalite_slurry.png",
+    name = "panglia_branbalite_slurry",
+    icon = techicons .. "panglia_branbalite_slurry.png",
     icon_size = 256,
     effects =
     {
       {
         type = "unlock-recipe",
-        recipe = "timeshift_branbalite_slurry"
+        recipe = "panglia_branbalite_slurry"
       },
     },
     prerequisites = {"agriculture"},
     research_trigger =
     {
       type = "mine-entity",
-      entity = "timeshift_branbalite_plant"
+      entity = "panglia_branbalite_plant"
     }
   },
 
 --[[
   {
     type = "technology",
-    name = "timeshift_nano_tech",
-    icon = techicons .. "timeshift_nano_tech.png",
+    name = "panglia_nano_tech",
+    icon = techicons .. "panglia_nano_tech.png",
     icon_size = 256,
     effects =
     {
     },
-    prerequisites = {"timeshift_advanced_optics"},
+    prerequisites = {"panglia_advanced_optics"},
 
     unit =
     {
@@ -88,8 +88,8 @@ data:extend({
 --[[
   {
     type = "technology",
-    name = "timeshift_nano_forge",
-    icon = techicons .. "timeshift_nano_forge.png",
+    name = "panglia_nano_forge",
+    icon = techicons .. "panglia_nano_forge.png",
     icon_size = 256,
     effects =
     {
@@ -98,7 +98,7 @@ data:extend({
         recipe = "nano_forge"
       },
     },
-    prerequisites = {"timeshift_nano_tech"},
+    prerequisites = {"panglia_nano_tech"},
 
     unit =
     {
@@ -114,8 +114,8 @@ data:extend({
 
   {
     type = "technology",
-    name = "timeshift_nanobots_hive",
-    icon = techicons .. "timeshift_nanobots_hive.png",
+    name = "panglia_nanobots_hive",
+    icon = techicons .. "panglia_nanobots_hive.png",
     icon_size = 256,
     effects =
     {
@@ -124,7 +124,7 @@ data:extend({
         recipe = "nanobots_hive"
       },
     },
-    prerequisites = {"timeshift_nano_forge"},
+    prerequisites = {"panglia_nano_forge"},
 
     unit =
     {
@@ -139,8 +139,8 @@ data:extend({
 ]]
   {
     type = "technology",
-    name = "timeshift_dna_manipulation",
-    icon = techicons .. "timeshift_dna_manipulation.png",
+    name = "panglia_dna_manipulation",
+    icon = techicons .. "panglia_dna_manipulation.png",
     icon_size = 256,
     effects =
     {
@@ -150,10 +150,10 @@ data:extend({
       },
       {
         type = "unlock-recipe",
-        recipe = "human_body_0_recipe"
+        recipe = "panglia_cloned_specimen_body_0_recipe"
       },
     },
-    prerequisites = {"timeshift_advanced_optics_nanotech", "cloning-vat-technology", "moshine-tech-processing-grid", "uranium-processing"},
+    prerequisites = {"panglia_advanced_optics_nanotech", "cloning-vat-technology", "moshine-tech-processing-grid", "uranium-processing"},
     unit =
     {
       count = 50,
@@ -167,8 +167,8 @@ data:extend({
 
   {
     type = "technology",
-    name = "timeshift_simulation_chamber",
-    icon = techicons .. "timeshift_simulation_chamber.png",
+    name = "panglia_simulation_chamber",
+    icon = techicons .. "panglia_simulation_chamber.png",
     icon_size = 256,
     effects =
     {
@@ -178,10 +178,10 @@ data:extend({
       },
       {
         type = "unlock-recipe",
-        recipe = "human_body_1_recipe"
+        recipe = "panglia_cloned_specimen_body_1_recipe"
       },
     },
-    prerequisites = {"timeshift_dna_manipulation", "matter_printer-technology"},
+    prerequisites = {"panglia_dna_manipulation", "matter_printer-technology"},
     unit =
     {
       count = 50,
@@ -196,21 +196,21 @@ data:extend({
 
   {
     type = "technology",
-    name = "timeshift_simulation_matrix",
-    icon = techicons .. "timeshift_simulation_matrix.png",
+    name = "panglia_simulation_matrix",
+    icon = techicons .. "panglia_simulation_matrix.png",
     icon_size = 256,
     effects =
     {
       {
         type = "unlock-recipe",
-        recipe = "human_body_2_recipe"
+        recipe = "panglia_cloned_specimen_body_2_recipe"
       },
       {
         type = "unlock-recipe",
-        recipe = "human_body_3_recipe"
+        recipe = "panglia_cloned_specimen_body_3_recipe"
       },
     },
-    prerequisites = {"timeshift_simulation_chamber"},
+    prerequisites = {"panglia_simulation_chamber"},
     unit =
     {
       count = 50,
@@ -226,12 +226,12 @@ data:extend({
 
 
 if data.raw["technology"]["cloning-vat-technology"] then
- table.insert(data.raw["technology"]["cloning-vat-technology"].prerequisites, "timeshift_branbalite_slurry")
- table.insert(data.raw["technology"]["timeshift_simulation_chamber"].prerequisites, "cloning-vat-technology")
+ table.insert(data.raw["technology"]["cloning-vat-technology"].prerequisites, "panglia_branbalite_slurry")
+ table.insert(data.raw["technology"]["panglia_simulation_chamber"].prerequisites, "cloning-vat-technology")
 end
 if data.raw["technology"]["thinking-brain-technology"] then
-  data.raw["technology"]["thinking-brain-technology"].prerequisites = {"timeshift_simulation_matrix"}
+  data.raw["technology"]["thinking-brain-technology"].prerequisites = {"panglia_simulation_matrix"}
 end
 if data.raw["technology"]["matter_printer-technology"] then
-  table.insert(data.raw["technology"]["matter_printer-technology"].prerequisites, "timeshift_advanced_optics_nanotech")
+  table.insert(data.raw["technology"]["matter_printer-technology"].prerequisites, "panglia_advanced_optics_nanotech")
 end

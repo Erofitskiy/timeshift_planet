@@ -1,4 +1,4 @@
-local terrain = "__timeshift_planet_assets__/graphics/terrain/"
+local terrain = "__panglia_planet_assets__/graphics/terrain/"
 
 local tile_trigger_effects = require("__space-age__.prototypes.tile.tile-trigger-effects")
 local tile_pollution = require("__space-age__/prototypes/tile/tile-pollution-values")
@@ -216,11 +216,11 @@ local lava_stone_transitions_between_transitions =
 data:extend({
   scaled_cliff(
     {
-      mod_name = "__timeshift_planet_assets__",
-      name = "cliff-timeshift",
+      mod_name = "__panglia_planet_assets__",
+      name = "cliff-panglia",
       map_color = {58, 48, 43}, --3a302b
-      suffix = "timeshift",
-      subfolder = "timeshift",
+      suffix = "panglia",
+      subfolder = "panglia",
       scale = 1.0,
       has_lower_layer = false,
       sprite_size_multiplier = 2,
@@ -231,9 +231,9 @@ data:extend({
 
   {
     type = "item-subgroup",
-    name = "timeshift-tiles",
+    name = "panglia-tiles",
     group = "tiles",
-    order = "ka-timeshift"
+    order = "ka-panglia"
   },
 
 
@@ -410,8 +410,8 @@ data:extend({
   ----------- CLIFF TILE
   {
     type = "tile",
-    name = "timeshiftplanet-volcanic-jagged-ground",
-    subgroup = "timeshift-tiles",
+    name = "panglia-volcanic-jagged-ground",
+    subgroup = "panglia-tiles",
     order = "a-k",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -443,8 +443,8 @@ data:extend({
   ----------- WARM CRACKS
   {
     type = "tile",
-    name = "timeshiftplanet-volcanic-cracks-hot",
-    subgroup = "timeshift-tiles",
+    name = "panglia-volcanic-cracks-hot",
+    subgroup = "panglia-tiles",
     order = "a-c",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -475,8 +475,8 @@ data:extend({
   },
   {
     type = "tile",
-    name = "timeshiftplanet-volcanic-cracks-warm",
-    subgroup = "timeshift-tiles",
+    name = "panglia-volcanic-cracks-warm",
+    subgroup = "panglia-tiles",
     order = "a-d",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -508,8 +508,8 @@ data:extend({
   ----------- COLD CRACKS
   {
     type = "tile",
-    name = "timeshiftplanet-volcanic-cracks",
-    subgroup = "timeshift-tiles",
+    name = "panglia-volcanic-cracks",
+    subgroup = "panglia-tiles",
     order = "a-e",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -540,8 +540,8 @@ data:extend({
   ----------- COLD LAVA FLAT
   {
     type = "tile",
-    name = "timeshiftplanet-volcanic-folds-flat",
-    subgroup = "timeshift-tiles",
+    name = "panglia-volcanic-folds-flat",
+    subgroup = "panglia-tiles",
     order = "a-j",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -573,8 +573,8 @@ data:extend({
   ----------- ASH SAND
   {
     type = "tile",
-    name = "timeshiftplanet-volcanic-ash-light",
-    subgroup = "timeshift-tiles",
+    name = "panglia-volcanic-ash-light",
+    subgroup = "panglia-tiles",
     order = "a-o",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -607,8 +607,8 @@ data:extend({
   },
   {
     type = "tile",
-    name = "timeshiftplanet-volcanic-ash-dark",
-    subgroup = "timeshift-tiles",
+    name = "panglia-volcanic-ash-dark",
+    subgroup = "panglia-tiles",
     order = "a-p",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -642,8 +642,8 @@ data:extend({
   ----------- ASH SAND
   {
     type = "tile",
-    name = "timeshiftplanet-volcanic-ash-flats",
-    subgroup = "timeshift-tiles",
+    name = "panglia-volcanic-ash-flats",
+    subgroup = "panglia-tiles",
     order = "a-o",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -677,8 +677,8 @@ data:extend({
   ----------- PUMICE
   {
     type = "tile",
-    name = "timeshiftplanet-volcanic-pumice-stones",
-    subgroup = "timeshift-tiles",
+    name = "panglia-volcanic-pumice-stones",
+    subgroup = "panglia-tiles",
     order = "a-n",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -709,8 +709,8 @@ data:extend({
   ----------- SMOOTH STONE
   {
     type = "tile",
-    name = "timeshiftplanet-volcanic-smooth-stone",
-    subgroup = "timeshift-tiles",
+    name = "panglia-volcanic-smooth-stone",
+    subgroup = "panglia-tiles",
     order = "a-g",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -742,8 +742,8 @@ data:extend({
   ----------- SMOOTH STONE WARM
   {
     type = "tile",
-    name = "timeshiftplanet-volcanic-smooth-stone-warm",
-    subgroup = "timeshift-tiles",
+    name = "panglia-volcanic-smooth-stone-warm",
+    subgroup = "panglia-tiles",
     order = "a-f",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -776,8 +776,8 @@ data:extend({
   },
   {
     type = "tile",
-    name = "timeshiftplanet-volcanic-ash-cracks",
-    subgroup = "timeshift-tiles",
+    name = "panglia-volcanic-ash-cracks",
+    subgroup = "panglia-tiles",
     order = "a-r",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -807,8 +807,8 @@ data:extend({
   },
   {
     type = "tile",
-    name = "timeshiftplanet-volcanic-folds",
-    subgroup = "timeshift-tiles",
+    name = "panglia-volcanic-folds",
+    subgroup = "panglia-tiles",
     order = "a-i",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -838,8 +838,8 @@ data:extend({
   },
   {
     type = "tile",
-    name = "timeshiftplanet-volcanic-folds-warm",
-    subgroup = "timeshift-tiles",
+    name = "panglia-volcanic-folds-warm",
+    subgroup = "panglia-tiles",
     order = "a-h",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -870,8 +870,8 @@ data:extend({
   },
   {
     type = "tile",
-    name = "timeshiftplanet-volcanic-soil-dark",
-    subgroup = "timeshift-tiles",
+    name = "panglia-volcanic-soil-dark",
+    subgroup = "panglia-tiles",
     order = "a-l",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -902,8 +902,8 @@ data:extend({
   },
   {
     type = "tile",
-    name = "timeshiftplanet-volcanic-soil-light",
-    subgroup = "timeshift-tiles",
+    name = "panglia-volcanic-soil-light",
+    subgroup = "panglia-tiles",
     order = "a-m",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -935,8 +935,8 @@ data:extend({
 
   {
     type = "tile",
-    name = "timeshiftplanet-volcanic-ash-soil",
-    subgroup = "timeshift-tiles",
+    name = "panglia-volcanic-ash-soil",
+    subgroup = "panglia-tiles",
     order = "a-q",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
@@ -978,9 +978,9 @@ data:extend({
 data:extend({
   {
     type = "tile",
-    name = "timeshiftplanet-midland-turquoise-bark",
+    name = "panglia-midland-turquoise-bark",
     order = "c[gleba-land-tiles]-a[midland-turquoise-bark]",
-    subgroup = "timeshift-tiles",
+    subgroup = "panglia-tiles",
     collision_mask = tile_collision_masks.ground(),
     layer = gleba_tile_offset + 11,
     sprite_usage_surface = "gleba",
@@ -1008,9 +1008,9 @@ data:extend({
   },
   {
     type = "tile",
-    name = "timeshiftplanet-midland-turquoise-bark-2",
+    name = "panglia-midland-turquoise-bark-2",
     order = "c[gleba-land-tiles]-a[midland-turquoise-bark]",
-    subgroup = "timeshift-tiles",
+    subgroup = "panglia-tiles",
     collision_mask = tile_collision_masks.ground(),
     layer = gleba_tile_offset + 10,
     sprite_usage_surface = "gleba",
@@ -1040,7 +1040,7 @@ data:extend({
 
   {
     type = "tile-effect",
-    name = "timeshiftplanet-wetland-grey",
+    name = "panglia-wetland-grey",
     shader = "water",
     water =
     {
@@ -1084,13 +1084,13 @@ data:extend({
 
   {
     type = "tile",
-    name = "timeshiftplanet-wetland-dead-skin",
+    name = "panglia-wetland-dead-skin",
     order = "b[wetland]-d[wetland-dead-skin]",
-    subgroup = "timeshift-tiles",
+    subgroup = "panglia-tiles",
     collision_mask = tile_collision_masks.shallow_water(),
     autoplace = {probability_expression = "gleba_shallows_aux_2 + 2 * min(gleba_select(gleba_aux, 0.3, 0.7, 0.005, 0, 1), gleba_rockpools_shallow)"},
     lowland_fog = true,
-    effect = "timeshiftplanet-wetland-grey",
+    effect = "panglia-wetland-grey",
     --effect_color = { 76, 70, 79 },
     --effect_color_secondary = { 76, 70, 79 },
     effect_color = { 57, 58, 173 },
@@ -1132,13 +1132,13 @@ data:extend({
   },
   {
     type = "tile",
-    name = "timeshiftplanet-wetland-light-dead-skin",
+    name = "panglia-wetland-light-dead-skin",
     order = "b[wetland]-c[wetland-light-dead-skin]",
-    subgroup = "timeshift-tiles",
+    subgroup = "panglia-tiles",
     collision_mask = tile_collision_masks.shallow_water(),
     autoplace = {probability_expression = "gleba_shallows_edge_aux_2 + 2 * min(gleba_select(gleba_aux, 0.3, 0.7, 0.005, 0, 1), gleba_rockpools_shallow)"},
     lowland_fog = true,
-    effect = "timeshiftplanet-wetland-grey",
+    effect = "panglia-wetland-grey",
     effect_color = { 78, 75, 186 },
     effect_color_secondary = { 76, 70, 179 },
     --map_color = {r = 51, g = 50, b = 156},
@@ -1179,9 +1179,9 @@ data:extend({
   },
   {
     type = "tile",
-    name = "timeshiftplanet-midland-cracked-lichen-dark",
+    name = "panglia-midland-cracked-lichen-dark",
     order = "c[gleba-land-tiles]-a[midland-yellow-crust]",
-    subgroup = "timeshift-tiles",
+    subgroup = "panglia-tiles",
     collision_mask = tile_collision_masks.ground(),
     layer_group = "ground-natural",
     layer = gleba_tile_offset,
@@ -1215,7 +1215,7 @@ data:extend({
 
   {
     type = "tile-effect",
-    name = "timeshiftplanet_hidden_beacon_tile_effect",
+    name = "panglia_hidden_beacon_tile_effect",
     shader = "water",
     water =
     {
@@ -1272,17 +1272,17 @@ data:extend({
 
   {
     type = "tile",
-    name = "timeshiftplanet_hidden_beacon_tile",
+    name = "panglia_hidden_beacon_tile",
     order = "c[artificial]-d[machinery]",
-    subgroup = "timeshift-tiles",
+    subgroup = "panglia-tiles",
     collision_mask = tile_collision_masks.ground(),
     --autoplace = { probability_expression = "fulgora_tile_ruin_machinery" },
     layer = 12,
     --map_color={0, 0, 255},
     --vehicle_friction_modifier = 4,
     --absorptions_per_second = tile_pollution.fulgora,
-    --sprite_usage_surface = "timeshift",
-    effect = "timeshiftplanet_hidden_beacon_tile_effect",
+    --sprite_usage_surface = "panglia",
+    effect = "panglia_hidden_beacon_tile_effect",
     --effect_is_opaque = false,
     --effect_color = {1,1,1,0.3},
     variants =
@@ -1290,7 +1290,7 @@ data:extend({
       transition = transition_masks(),
       material_background =
       {
-        picture = terrain .. "timeshiftplanet_hidden_beacon_tile.png",
+        picture = terrain .. "panglia_hidden_beacon_tile.png",
         line_length = 4,
         count = 16,
         scale = 0.5
@@ -1312,5 +1312,5 @@ data:extend({
 
 })
 
-table.insert(water_tile_type_names, "timeshiftplanet-wetland-light-dead-skin")
-table.insert(water_tile_type_names, "timeshiftplanet-wetland-dead-skin")
+table.insert(water_tile_type_names, "panglia-wetland-light-dead-skin")
+table.insert(water_tile_type_names, "panglia-wetland-dead-skin")

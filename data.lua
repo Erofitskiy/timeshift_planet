@@ -1,15 +1,15 @@
-planet_name = "timeshift"
-icons = "__timeshift_planet__/graphics/icons/"
-entity = "__timeshift_planet__/graphics/entity/"
-techicons = "__timeshift_planet__/graphics/technology/"
-sounds = "__timeshift_planet_assets__/sounds/"
-tssounds = "__timeshift_planet_assets__/sounds/"
+planet_name = "panglia"
+icons = "__panglia_planet__/graphics/icons/"
+entity = "__panglia_planet__/graphics/entity/"
+techicons = "__panglia_planet__/graphics/technology/"
+sounds = "__panglia_planet_assets__/sounds/"
+tssounds = "__panglia_planet_assets__/sounds/"
 
 require "prototypes_planet.hidden_beacon"
 require "prototypes_planet.terrain"
 require "prototypes_planet.decoratives"
 require "prototypes_planet.planet"
-require "prototypes_planet.timeshift_energy_roots"
+require "prototypes_planet.energy_roots"
 require "prototypes_planet.music"
 
 

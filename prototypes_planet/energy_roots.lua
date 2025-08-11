@@ -50,7 +50,7 @@ local multidir_anim = {
   layers =
   {
     {
-      filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_1_base.png",
+      filename = entity .. "panglia_energy_roots/panglia_energy_roots_1_base.png",
       width = 704,
       height = 704,
       repeat_count = 1,
@@ -58,7 +58,7 @@ local multidir_anim = {
       scale = 0.5,
     },
     {
-      filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_1_shadow.png",
+      filename = entity .. "panglia_energy_roots/panglia_energy_roots_1_shadow.png",
       width = 704,
       height = 704,
       repeat_count = 1,
@@ -67,7 +67,7 @@ local multidir_anim = {
       draw_as_shadow = true,
     },
     {
-      filename = entity .. "timeshift_energy_roots/timeshift_energy_roots_1_glow.png",
+      filename = entity .. "panglia_energy_roots/panglia_energy_roots_1_glow.png",
       width = 704,
       height = 704,
       repeat_count = 1,
@@ -83,8 +83,8 @@ local multidir_anim = {
 data:extend({
   {
     type = "generator",
-    name = "timeshift_energy_roots",
-    icon = icons .. "timeshift_energy_roots.png",
+    name = "panglia_energy_roots",
+    icon = icons .. "panglia_energy_roots.png",
     flags = {"placeable-neutral","player-creation","not-deconstructable","not-blueprintable","not-flammable","no-automated-item-removal","no-copy-paste","not-upgradable","not-in-kill-statistics"},
     --minable = {mining_time = 0.3, result = "steam-engine"},
     max_health = 400000,
@@ -119,7 +119,7 @@ data:extend({
       --[[pipe_picture = {
         north =
         {
-          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots-pipe-N.png",
+          filename = entity .. "panglia_energy_roots/panglia_energy_roots-pipe-N.png",
           priority = "extra-high",
           width = 128,
           height = 128,
@@ -128,7 +128,7 @@ data:extend({
         },
         east =
         {
-          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots-pipe-E.png",
+          filename = entity .. "panglia_energy_roots/panglia_energy_roots-pipe-E.png",
           priority = "extra-high",
           width = 128,
           height = 128,
@@ -137,7 +137,7 @@ data:extend({
         },
         south =
         {
-          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots-pipe-S.png",
+          filename = entity .. "panglia_energy_roots/panglia_energy_roots-pipe-S.png",
           priority = "extra-high",
           width = 128,
           height = 128,
@@ -146,7 +146,7 @@ data:extend({
         },
         west =
         {
-          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots-pipe-W.png",
+          filename = entity .. "panglia_energy_roots/panglia_energy_roots-pipe-W.png",
           priority = "extra-high",
           width = 128,
           height = 128,
@@ -157,7 +157,7 @@ data:extend({
       --[[pipe_picture = {
         north =
         {
-          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots-pipe-N.png",
+          filename = entity .. "panglia_energy_roots/panglia_energy_roots-pipe-N.png",
           priority = "extra-high",
           width = 128,
           height = 128,
@@ -166,7 +166,7 @@ data:extend({
         },
         east =
         {
-          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots-pipe-E.png",
+          filename = entity .. "panglia_energy_roots/panglia_energy_roots-pipe-E.png",
           priority = "extra-high",
           width = 128,
           height = 128,
@@ -175,7 +175,7 @@ data:extend({
         },
         south =
         {
-          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots-pipe-S.png",
+          filename = entity .. "panglia_energy_roots/panglia_energy_roots-pipe-S.png",
           priority = "extra-high",
           width = 128,
           height = 128,
@@ -184,7 +184,7 @@ data:extend({
         },
         west =
         {
-          filename = entity .. "timeshift_energy_roots/timeshift_energy_roots-pipe-W.png",
+          filename = entity .. "panglia_energy_roots/panglia_energy_roots-pipe-W.png",
           priority = "extra-high",
           width = 128,
           height = 128,
@@ -201,7 +201,7 @@ data:extend({
         { flow_direction = "input", direction = defines.direction.west, position = {-3, 0} },
       },
       production_type = "input",
-      filter = "timeshift_branbalite_slurry",
+      filter = "panglia_branbalite_slurry",
       minimum_temperature = 0,
     },
     energy_source =
@@ -243,7 +243,7 @@ data:extend({
     },
     perceived_performance = {minimum = 0.25, performance_to_activity_rate = 2.0},
     autoplace = resource_autoplace.resource_autoplace_settings{
-      name = "timeshift_energy_roots",
+      name = "panglia_energy_roots",
       order = "c", -- Other resources are "b"; oil won't get placed if something else is already there.
       base_density = 3,
       base_spots_per_km2 = 30,
@@ -312,9 +312,9 @@ local function make_energy_roots_tesla_turret(num, seq)
   data:extend({
     {
       type = "electric-turret",
-      name = "timeshift_energy_roots_tesla_turret_" .. num,
-      icon = icons .. "timeshift_energy_roots_tesla_turret.png",
-      localised_name = {"entity-name.timeshift_energy_roots_tesla_turret"},
+      name = "panglia_energy_roots_tesla_turret_" .. num,
+      icon = icons .. "panglia_energy_roots_tesla_turret.png",
+      localised_name = {"entity-name.panglia_energy_roots_tesla_turret"},
       flags = {"placeable-player", "placeable-enemy"},
       max_health = 750,
       collision_box = {{-0.2, -0.2 }, {0.2, 0.2}},
@@ -333,7 +333,7 @@ local function make_energy_roots_tesla_turret(num, seq)
         fade_in_ticks = 4,
         fade_out_ticks = 20,
       },
-      corpse = "timeshift_energy_roots_tesla_turret_remnants_" .. num,
+      corpse = "panglia_energy_roots_tesla_turret_remnants_" .. num,
       dying_explosion = "laser-turret-explosion",
       energy_source = {type = "void"},
       folded_animation = emptyturretanim,
@@ -349,7 +349,7 @@ local function make_energy_roots_tesla_turret(num, seq)
               layers =
               {
                 {
-                  filename = entity .. "timeshift_energy_roots/cell_" .. num .. ".png",
+                  filename = entity .. "panglia_energy_roots/cell_" .. num .. ".png",
                   size = 128,
                   frame_count = 1,
                   repeat_count = 30,
@@ -357,7 +357,7 @@ local function make_energy_roots_tesla_turret(num, seq)
                   animation_speed = 0.2,
                 },
                 {
-                  filename = entity .. "timeshift_energy_roots/cell_glow.png",
+                  filename = entity .. "panglia_energy_roots/cell_glow.png",
                   size = 128,
                   frame_count = 8,
                   line_length = 8,
@@ -446,9 +446,9 @@ local function make_energy_roots_tesla_turret(num, seq)
 
     {
       type = "corpse",
-      name = "timeshift_energy_roots_tesla_turret_remnants_" .. num,
-      icon = icons .. "timeshift_energy_roots_tesla_turret_remnants.png",
-      localised_name = {"entity-name.timeshift_energy_roots_tesla_turret_remnants"},
+      name = "panglia_energy_roots_tesla_turret_remnants_" .. num,
+      icon = icons .. "panglia_energy_roots_tesla_turret_remnants.png",
+      localised_name = {"entity-name.panglia_energy_roots_tesla_turret_remnants"},
       flags = {"placeable-neutral", "not-on-map"},
       hidden_in_factoriopedia = true,
       subgroup = "defensive-structure-remnants",
@@ -463,9 +463,9 @@ local function make_energy_roots_tesla_turret(num, seq)
       remove_on_tile_placement = false,
       animation = 
       {
-        filename = entity .. "timeshift_energy_roots/cell_" .. num .. ".png",
+        filename = entity .. "panglia_energy_roots/cell_" .. num .. ".png",
         tint = {.6,.6,.6,.6},
-        --filename = entity .. "timeshift_energy_roots/cell_" .. num .. "_remnants.png",
+        --filename = entity .. "panglia_energy_roots/cell_" .. num .. "_remnants.png",
         size = 128,
         scale = 0.5,
       },

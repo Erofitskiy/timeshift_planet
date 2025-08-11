@@ -11,16 +11,16 @@ script.on_event(defines.events.on_chunk_generated, function(event)
 
     for _, entity in pairs(entities) do
         if entity.valid then
-            if entity.name == "timeshift_hidden_beacon" then
+            if entity.name == "panglia_hidden_beacon" then
                 local inventory = entity.get_module_inventory()
-                if inventory and inventory.can_insert{name = "timeshift_hidden_beacon_module"} then
-                    inventory.insert{name = "timeshift_hidden_beacon_module", count = 1}
+                if inventory and inventory.can_insert{name = "panglia_hidden_beacon_module"} then
+                    inventory.insert{name = "panglia_hidden_beacon_module", count = 1}
                 else
-                    log("Could not insert timeshift_module into timeshift_beacon at position " .. serpent.line(entity.position))
+                    log("Could not insert panglia_module into panglia_beacon at position " .. serpent.line(entity.position))
                 end
 
                 --Replace by custom tile
-                surface.set_tiles({ {name = "timeshiftplanet_hidden_beacon_tile", position = entity.position} })
+                surface.set_tiles({ {name = "panglia_hidden_beacon_tile", position = entity.position} })
 
                 --Remove decoratives
                 local decos = surface.find_entities_filtered{ position = entity.position, type = "simple-entity" }
@@ -40,9 +40,9 @@ script.on_event(defines.events.on_chunk_generated, function(event)
 
                 surface.destroy_decoratives{ position = entity.position }
 
-            elseif entity.name == "timeshift_energy_roots" then
-                if not storage.timeshift_generators then storage.timeshift_generators = {} end
-                table.insert(storage.timeshift_generators, {
+            elseif entity.name == "panglia_energy_roots" then
+                if not storage.panglia_generators then storage.panglia_generators = {} end
+                table.insert(storage.panglia_generators, {
                     entity = entity,
                 })
                 entity.minable_flag = false
@@ -77,7 +77,7 @@ end
 
 local function try_place_or_force_clear_turret(surface, center)
     local maxradius = 20
-    local pos = try_place_from_radius(surface, center, 3, maxradius, "timeshift_energy_roots_tesla_turret_1")
+    local pos = try_place_from_radius(surface, center, 3, maxradius, "panglia_energy_roots_tesla_turret_1")
     if pos then
         return pos
     else
@@ -90,7 +90,7 @@ local function try_place_or_force_clear_turret(surface, center)
 
         -- Filter out protected types
         for _, entity in pairs(candidates) do
-            if entity.valid and entity.name ~= "timeshift_energy_roots" and not string.find(entity.name, "timeshift_energy_roots_tesla_turret") and entity.name ~= "character" then
+            if entity.valid and entity.name ~= "panglia_energy_roots" and not string.find(entity.name, "panglia_energy_roots_tesla_turret") and entity.name ~= "character" then
                 local pos = entity.position
                 entity.destroy({do_cliff_correction = true, raise_destroy = true})
                 --return pos
@@ -104,18 +104,18 @@ end
 
 
 script.on_nth_tick(seconds_interval * 60, function()
-    if not storage.timeshift_generators then storage.timeshift_generators = {} end
-    for i, data in pairs(storage.timeshift_generators) do
+    if not storage.panglia_generators then storage.panglia_generators = {} end
+    for i, data in pairs(storage.panglia_generators) do
         local entity = data.entity
         if not (entity and entity.valid) then
-            table.remove(storage.timeshift_generators, i)
+            table.remove(storage.panglia_generators, i)
         elseif entity.energy_generated_last_tick and entity.energy_generated_last_tick > 10 then
             local surface = entity.surface
             local pos = try_place_or_force_clear_turret(surface, entity.position)
             if pos then
                 local turrNum = math.random(1, number_of_turret_vars)
                 local turret = surface.create_entity{
-                    name = "timeshift_energy_roots_tesla_turret_" .. turrNum,
+                    name = "panglia_energy_roots_tesla_turret_" .. turrNum,
                     position = pos,
                     force = entity.force
                 }

@@ -32,7 +32,7 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
 
             filename = entity .. "plant/"..name.."/"..name.."-trunk.png",
             flags = { "mipmap" },
-            --surface = "timeshift",
+            --surface = "panglia",
             width = width,
             height = height,
             x = x,
@@ -44,7 +44,7 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
           {
             filename = entity .. "plant/"..name.."/"..name.."-harvest.png",
             flags = { "mipmap" },
-            --surface = "timeshift",
+            --surface = "panglia",
             width = width,
             height = height,
             x = x,
@@ -63,7 +63,7 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
 
             filename = entity .. "plant/"..name.."/"..name.."-harvest.png",
             flags = { "mipmap" },
-            --surface = "timeshift",
+            --surface = "panglia",
             width = width,
             height = height,
             x = x,
@@ -75,7 +75,7 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
           {
             filename = entity .. "plant/"..name.."/"..name.."-harvest.png",
             flags = { "mipmap" },
-            --surface = "timeshift",
+            --surface = "panglia",
             width = width,
             height = height,
             x = x,
@@ -92,7 +92,7 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
         layers = {
           {
             filename = entity .. "plant/"..name.."/"..name.."-normal.png",
-            --surface = "timeshift",
+            --surface = "panglia",
             width = width,
             height = height,
             x = x,
@@ -104,7 +104,7 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
           {
             filename = entity .. "plant/"..name.."/"..name.."-harvest.png",
             flags = { "mipmap" },
-            --surface = "timeshift",
+            --surface = "panglia",
             width = width,
             height = height,
             x = x,
@@ -122,7 +122,7 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
         lines_per_file = 1,
         line_length = 1,
         flags = { "mipmap", "shadow" },
-        --surface = "timeshift",
+        --surface = "panglia",
         filenames =
         {
           entity .. "plant/"..name.."/"..name.."-harvest-shadow.png",
@@ -143,7 +143,7 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
         pictures = {
         filename = entity .. "plant/"..name.."/"..name.."-effect-map.png",
         --flags = { "mipmap" },
-        --surface = "timeshift",
+        --surface = "panglia",
         width = width,
         height = height,
         x = x,
@@ -169,7 +169,7 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
 
     variation.leaf_generation = {
       type = "create-particle",
-      particle_name = "timeshiftplanet-branbalite-leaf-particle",
+      particle_name = "panglia-branbalite-leaf-particle",
       offset_deviation =
       {
         {-0.8, -1.2},
@@ -196,7 +196,7 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
 
     variation.branch_generation = {
       type = "create-particle",
-      particle_name = "timeshiftplanet-branbalite-branch-particle",
+      particle_name = "panglia-branbalite-branch-particle",
       offset_deviation = {{-0.65, -1}, {0.65, 1}},
       initial_height = 1.7,
       initial_height_deviation = 0.8,
@@ -261,7 +261,7 @@ local make_particle = function(params)
 
 end
 
-local get_timeshift_tree_crop_particle_pictures = function(options)
+local get_panglia_tree_crop_particle_pictures = function(options)
   local options = options or {}
   return
   {
@@ -284,7 +284,7 @@ local get_timeshift_tree_crop_particle_pictures = function(options)
   }
 end
 
-local get_timeshift_tree_sap_particle_pictures = function(options)
+local get_panglia_tree_sap_particle_pictures = function(options)
   local options = options or {}
   return
   {
@@ -341,7 +341,7 @@ local gleba_tree_red_sap_trigger_effect = function()
       probability = 0.5,
       affects_target = false,
       show_in_tooltip = false,
-      particle_name = "timeshiftplanet-gleba-tree-sap-particle-trigger-red",
+      particle_name = "panglia-gleba-tree-sap-particle-trigger-red",
       offset_deviation = { { -0.02, -0.02 }, { 0.02, 0.02 } },
       initial_height = 0,
       initial_height_deviation = 0.01,
@@ -363,12 +363,12 @@ end
 data:extend({
   make_particle
   {
-    name = "timeshiftplanet-branbalite-leaf-particle",
+    name = "panglia-branbalite-leaf-particle",
     life_time = 120,
-    --pictures = get_timeshift_tree_sap_particle_pictures({tint = {162,45,72,255}, tint_as_overlay = true, scale = 0.95}), --#a22d48
-    --pictures = get_timeshift_tree_sap_particle_pictures({tint = {46,163,134,255}, tint_as_overlay = true, scale = 0.95}), --#2ea386
-    pictures = get_timeshift_tree_sap_particle_pictures({tint = {46, 145, 163,255}, tint_as_overlay = true, scale = 0.95}), --#2ea386
-    shadows =  get_timeshift_tree_sap_particle_pictures({tint = {0,0,0}, shift = util.by_pixel (1,0), scale = 0.95}),
+    --pictures = get_panglia_tree_sap_particle_pictures({tint = {162,45,72,255}, tint_as_overlay = true, scale = 0.95}), --#a22d48
+    --pictures = get_panglia_tree_sap_particle_pictures({tint = {46,163,134,255}, tint_as_overlay = true, scale = 0.95}), --#2ea386
+    pictures = get_panglia_tree_sap_particle_pictures({tint = {46, 145, 163,255}, tint_as_overlay = true, scale = 0.95}), --#2ea386
+    shadows =  get_panglia_tree_sap_particle_pictures({tint = {0,0,0}, shift = util.by_pixel (1,0), scale = 0.95}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow",
@@ -377,12 +377,12 @@ data:extend({
 
   make_particle
   {
-    name = "timeshiftplanet-branbalite-branch-particle",
+    name = "panglia-branbalite-branch-particle",
     life_time = 120,
-    --pictures = get_timeshift_tree_crop_particle_pictures({tint = {161,100,120,255}, tint_as_overlay = true, scale = 1.2}), --#a16478
-    --pictures = get_timeshift_tree_crop_particle_pictures({tint = {100,161,145,255}, tint_as_overlay = true, scale = 1.2}), --#64a191
-    pictures = get_timeshift_tree_crop_particle_pictures({tint = {100, 151, 161,255}, tint_as_overlay = true, scale = 1.2}), --#64a191
-    shadows =  get_timeshift_tree_crop_particle_pictures({tint = {0,0,0}, shift = util.by_pixel (1,0), scale = 1.2}),
+    --pictures = get_panglia_tree_crop_particle_pictures({tint = {161,100,120,255}, tint_as_overlay = true, scale = 1.2}), --#a16478
+    --pictures = get_panglia_tree_crop_particle_pictures({tint = {100,161,145,255}, tint_as_overlay = true, scale = 1.2}), --#64a191
+    pictures = get_panglia_tree_crop_particle_pictures({tint = {100, 151, 161,255}, tint_as_overlay = true, scale = 1.2}), --#64a191
+    shadows =  get_panglia_tree_crop_particle_pictures({tint = {0,0,0}, shift = util.by_pixel (1,0), scale = 1.2}),
     regular_trigger_effect_frequency = 4,
     regular_trigger_effect = gleba_tree_red_sap_trigger_effect(),
     ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
@@ -392,12 +392,12 @@ data:extend({
 
   make_particle
   {
-    name = "timeshiftplanet-branbalite-mining-particle",
+    name = "panglia-branbalite-mining-particle",
     life_time = 120,
-    --pictures = get_timeshift_tree_crop_particle_pictures({tint = {161,100,120,255}, tint_as_overlay = true, scale = 0.5}), --#a16478
-    --pictures = get_timeshift_tree_crop_particle_pictures({tint = {100,161,145,255}, tint_as_overlay = true, scale = 0.5}), --#64a191
-    pictures = get_timeshift_tree_crop_particle_pictures({tint = {100, 151, 161,255}, tint_as_overlay = true, scale = 0.5}), --#64a191
-    shadows =  get_timeshift_tree_crop_particle_pictures({tint = {0,0,0}, shift = util.by_pixel (1,0), scale = 0.5}),
+    --pictures = get_panglia_tree_crop_particle_pictures({tint = {161,100,120,255}, tint_as_overlay = true, scale = 0.5}), --#a16478
+    --pictures = get_panglia_tree_crop_particle_pictures({tint = {100,161,145,255}, tint_as_overlay = true, scale = 0.5}), --#64a191
+    pictures = get_panglia_tree_crop_particle_pictures({tint = {100, 151, 161,255}, tint_as_overlay = true, scale = 0.5}), --#64a191
+    shadows =  get_panglia_tree_crop_particle_pictures({tint = {0,0,0}, shift = util.by_pixel (1,0), scale = 0.5}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow"
@@ -405,12 +405,12 @@ data:extend({
 
   make_particle
   {
-    name = "timeshiftplanet-gleba-tree-sap-particle-trigger-red",
+    name = "panglia-gleba-tree-sap-particle-trigger-red",
     life_time = 60,
-    --pictures = get_timeshift_tree_sap_particle_pictures({tint = {107,36,31,255}, tint_as_overlay = true, scale = 0.8}), --#6b241f
-    --pictures = get_timeshift_tree_sap_particle_pictures({tint = {31,07,88,255}, tint_as_overlay = true, scale = 0.8}), --#1f6b58
-    pictures = get_timeshift_tree_sap_particle_pictures({tint = {7, 77, 89,255}, tint_as_overlay = true, scale = 0.8}), --#1f6b58
-    shadows =  get_timeshift_tree_sap_particle_pictures({tint = {0,0,0}, shift = util.by_pixel (1,0), scale = 0.8}),
+    --pictures = get_panglia_tree_sap_particle_pictures({tint = {107,36,31,255}, tint_as_overlay = true, scale = 0.8}), --#6b241f
+    --pictures = get_panglia_tree_sap_particle_pictures({tint = {31,07,88,255}, tint_as_overlay = true, scale = 0.8}), --#1f6b58
+    pictures = get_panglia_tree_sap_particle_pictures({tint = {7, 77, 89,255}, tint_as_overlay = true, scale = 0.8}), --#1f6b58
+    shadows =  get_panglia_tree_sap_particle_pictures({tint = {0,0,0}, shift = util.by_pixel (1,0), scale = 0.8}),
     draw_shadow_when_on_ground = false,
     ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     movement_modifier_when_on_ground = 0,
@@ -433,14 +433,14 @@ local function branbalitepics(num)
     {
       {
         size = 64,
-        filename = icons .. "timeshift_branbalite_" .. num .. ".png",
+        filename = icons .. "panglia_branbalite_" .. num .. ".png",
         scale = 0.5,
       },
       {
         draw_as_light = true,
         blend_mode = "additive",
         size = 64,
-        filename = icons .. "timeshift_branbalite_light_" .. num .. ".png",
+        filename = icons .. "panglia_branbalite_light_" .. num .. ".png",
         scale = 0.5,
         tint = {0.3, 0.3, 0.3, 0.3}
       }
@@ -452,20 +452,20 @@ end
 data:extend({
   {
     type = "item",
-    name = "timeshift_branbalite", -- is fruit AND seed
-    icon = icons .. "timeshift_branbalite_1.png",
-    subgroup = "timeshift-processes",
+    name = "panglia_branbalite", -- is fruit AND seed
+    icon = icons .. "panglia_branbalite_1.png",
+    subgroup = "panglia-processes",
     order = "aaa",
     inventory_move_sound = item_sounds.resource_inventory_move,
     pick_sound = item_sounds.resource_inventory_pickup,
     drop_sound = item_sounds.resource_inventory_move,
     stack_size = 50,
-    default_import_location = "timeshift",
+    default_import_location = "panglia",
     random_tint_color = item_tints.iron_rust,
     fuel_value = "1000GJ",
-    fuel_category = "timeshift_branbalite",
-    plant_result = "timeshift_branbalite_plant",
-    place_result = "timeshift_branbalite_plant",
+    fuel_category = "panglia_branbalite",
+    plant_result = "panglia_branbalite_plant",
+    place_result = "panglia_branbalite_plant",
     spoil_ticks = 25 * minute,
     spoil_result = "spoilage",
     weight = 10*kg,
@@ -479,37 +479,37 @@ data:extend({
   },
   {
     type = "fuel-category",
-    name = "timeshift_branbalite"
+    name = "panglia_branbalite"
   },
 -- NUTRIENTS FLUID
   {
     type = "fluid",
-    name = "timeshift_branbalite_slurry",
-    icon = icons .. "timeshift_branbalite_slurry.png",
-    subgroup = "timeshift-processes",
+    name = "panglia_branbalite_slurry",
+    icon = icons .. "panglia_branbalite_slurry.png",
+    subgroup = "panglia-processes",
     default_temperature = 15,
     max_temperature = 165,
     heat_capacity = "0.2kJ",
     base_color = {0.4, 0.4, 0.4},
     flow_color = {0.4, 0.4, 0.4},
-    order = "a[fluid]-a[water]-c[timeshift_branbalite_slurry]",
+    order = "a[fluid]-a[water]-c[panglia_branbalite_slurry]",
     gas_temperature = 15,
     auto_barrel = true,
     fuel_value = "3MJ",
-    --fuel_category = "timeshift_branbalite",
+    --fuel_category = "panglia_branbalite",
   },
   {
     type = "recipe",
-    name = "timeshift_branbalite_slurry",
+    name = "panglia_branbalite_slurry",
     category = "organic-or-chemistry",
     energy_required = 1,
     ingredients = {
       --{type = "item", name = "nutrients", amount = 7},
       --{type = "item", name = "bioflux", amount = 1},
-      {type = "item", name = "timeshift_branbalite", amount = 1},
+      {type = "item", name = "panglia_branbalite", amount = 1},
       {type = "fluid", name = "water", amount = 30},
     },
-    results = {{type = "fluid", name = "timeshift_branbalite_slurry", amount = 1}},
+    results = {{type = "fluid", name = "panglia_branbalite_slurry", amount = 1}},
     allow_productivity = true,
     enabled = false,
   },
@@ -519,13 +519,13 @@ data:extend({
 
 
 local plant = table.deepcopy(data.raw["plant"]["jellystem"])
-plant.name = "timeshift_branbalite_plant"
-plant.icon = icons .. "timeshift_branbalite_plant.png"
+plant.name = "panglia_branbalite_plant"
+plant.icon = icons .. "panglia_branbalite_plant.png"
 plant.minable =
 {
-  mining_particle = "timeshiftplanet-branbalite-mining-particle",
+  mining_particle = "panglia-branbalite-mining-particle",
   mining_time = 0.5,
-  results = {{type = "item", name = "timeshift_branbalite", amount_min = 1, amount_max = 4}},
+  results = {{type = "item", name = "panglia_branbalite", amount_min = 1, amount_max = 4}},
 }
 plant.autoplace = 
 {
@@ -533,15 +533,15 @@ plant.autoplace =
   --probability_expression = "gleba_select(gleba_copper_stromatolite - clamp(gleba_decorative_knockout, 0, 1), 1.3, 2, 0.2, 0, 1)", -- too common
   probability_expression = "min(place_every_n(15,15,1,1), 0.1 * fulgora_artificial_mask + 0.2 * (fulgora_decorative_machine_density - 1.5)) + max(0, 10 * (1.5 - distance))", -- lightning attractor
   tile_restriction = { --all ground looking tiles
-    "timeshiftplanet-midland-turquoise-bark",
-    "timeshiftplanet-midland-turquoise-bark-2",
-    "timeshiftplanet-midland-cracked-lichen-dark",
-    "timeshiftplanet-volcanic-ash-dark",
-    "timeshiftplanet-volcanic-ash-cracks",
-    "timeshiftplanet-volcanic-cracks",
-    "timeshiftplanet-volcanic-jagged-ground",
-    "timeshiftplanet-volcanic-soil-dark",
-    "timeshiftplanet-volcanic-soil-light",
+    "panglia-midland-turquoise-bark",
+    "panglia-midland-turquoise-bark-2",
+    "panglia-midland-cracked-lichen-dark",
+    "panglia-volcanic-ash-dark",
+    "panglia-volcanic-ash-cracks",
+    "panglia-volcanic-cracks",
+    "panglia-volcanic-jagged-ground",
+    "panglia-volcanic-soil-dark",
+    "panglia-volcanic-soil-light",
   }
 }
 plant.variations = gleba_tree_variations("branbalite", 8, 4, 1.3, 640, 560, util.by_pixel(52, -73))

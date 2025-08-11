@@ -15,7 +15,7 @@ data:extend(
     type = "item",
     name = "nano_forge",
     icon = icons .. "nano_forge.png",
-    subgroup = "timeshift-production-machine",
+    subgroup = "panglia-production-machine",
     order = "c[nano_forge]",
     inventory_move_sound = item_sounds.mechanical_inventory_move,
     pick_sound = item_sounds.mechanical_inventory_pickup,

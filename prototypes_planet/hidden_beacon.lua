@@ -1,5 +1,5 @@
 local resource_autoplace = require("resource-autoplace")
-resource_autoplace.initialize_patch_set("timeshift_hidden_beacon", true)
+resource_autoplace.initialize_patch_set("panglia_hidden_beacon", true)
 
 local hit_effects = require("__base__.prototypes.entity.hit-effects")
 local item_sounds = require("__base__.prototypes.item_sounds")
@@ -9,8 +9,8 @@ local space_age_item_sounds = require("__space-age__.prototypes.item_sounds")
 data:extend({
   {
     type = "beacon",
-    name = "timeshift_hidden_beacon",
-    icon = icons .. "timeshift_hidden_beacon.png",
+    name = "panglia_hidden_beacon",
+    icon = icons .. "panglia_hidden_beacon.png",
     flags = {"placeable-neutral", "not-upgradable", "not-blueprintable", "hide-alt-info", "not-flammable", "no-automated-item-removal", "no-automated-item-insertion", "no-copy-paste", "not-selectable-in-game"},
     is_military_target = false,
     --minable = {},
@@ -86,7 +86,7 @@ data:extend({
     },
     autoplace = resource_autoplace.resource_autoplace_settings
     {
-      name = "timeshift_hidden_beacon",
+      name = "panglia_hidden_beacon",
       order = "a",
       base_density = 20,
       has_starting_area_placement = true,
@@ -139,17 +139,17 @@ data:extend({
 
   {
     type = "module-category",
-    name = "timeshift_module"
+    name = "panglia_module"
   },
   {
     type = "module",
-    name = "timeshift_hidden_beacon_module",
+    name = "panglia_hidden_beacon_module",
     localised_description = {"item-description.speed-module"},
-    icon = icons .. "timeshift_hidden_beacon_module.png",
+    icon = icons .. "panglia_hidden_beacon_module.png",
     subgroup = "module",
     hidden = true,
     hidden_in_factoriopedia = true,
-    category = "timeshift_module",
+    category = "panglia_module",
     color_hint = { text = "S" },
     tier = 1,
     order = "a[speed]-b[speed-module-2]",

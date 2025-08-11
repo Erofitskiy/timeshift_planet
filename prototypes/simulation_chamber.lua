@@ -15,7 +15,7 @@ data:extend(
     type = "item",
     name = "simulation_chamber",
     icon = icons .. "simulation_chamber.png",
-    subgroup = "timeshift-production-machine",
+    subgroup = "panglia-production-machine",
     order = "d[simulation_chamber]",
     inventory_move_sound = item_sounds.mechanical_inventory_move,
     pick_sound = item_sounds.mechanical_inventory_pickup,
@@ -35,7 +35,7 @@ data:extend(
       {type = "item", name = "data-processor", amount = 1},
       {type = "item", name = "ai-tier-10", amount = 1},
       {type = "item", name = "cloning-vat", amount = 1},
-      {type = "fluid", name = "timeshift_branbalite_slurry", amount = 120},
+      {type = "fluid", name = "panglia_branbalite_slurry", amount = 120},
       -- TOADD core 10
     },
     --surface_conditions = {{ property = "moshine-exclusive", min = 1, max = 1}},

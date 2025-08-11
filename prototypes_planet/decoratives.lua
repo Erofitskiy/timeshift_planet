@@ -1,4 +1,4 @@
-local decora = "__timeshift_planet_assets__/graphics/decorative/"
+local decora = "__panglia_planet_assets__/graphics/decorative/"
 local hit_effects = require ("__base__.prototypes.entity.hit-effects")
 local base_sounds = require ("__base__.prototypes.entity.sounds")
 local base_tile_sounds = require("__base__/prototypes/tile/tile-sounds")
@@ -150,10 +150,10 @@ end
 data:extend({
 
   {
-    name = "timeshiftplanet-huge-volcanic-rock", --panglite
+    name = "panglia-huge-volcanic-rock", --panglite
     type = "simple-entity",
     flags = {"placeable-neutral", "placeable-off-grid"},
-    icon = icons .. "timeshiftplanet-huge-volcanic-rock.png",
+    icon = icons .. "panglia-huge-volcanic-rock.png",
     subgroup = "grass",
     order = "b[decorative]-l[rock]-a[vulcanus]-b[huge-volcanic-rock]",
     collision_box = {{-1.7, -1.3}, {1.7, 1.3}},
@@ -192,10 +192,10 @@ data:extend({
   },
 
   {
-    name = "timeshiftplanet-big-volcanic-rock", --panglite
+    name = "panglia-big-volcanic-rock", --panglite
     type = "simple-entity",
     flags = {"placeable-neutral", "placeable-off-grid"},
-    icon = icons .. "timeshiftplanet-big-volcanic-rock.png",
+    icon = icons .. "panglia-big-volcanic-rock.png",
     subgroup = "grass",
     order = "b[decorative]-l[rock]-a[vulcanus]-a[big-volcanic-rock]",
     collision_box = {{-0.75, -0.75}, {0.75, 0.75}},
@@ -237,7 +237,7 @@ data:extend({
 
 
   {
-    name = "timeshiftplanet-medium-volcanic-rock",
+    name = "panglia-medium-volcanic-rock",
     type = "optimized-decorative",
     order = "b[decorative]-l[rock]-c[medium]",
     collision_box = {{-1.1, -1.1}, {1.1, 1.1}},
@@ -259,7 +259,7 @@ data:extend({
 
 
   {
-    name = "timeshiftplanet-vulcanus-rock-decal-large",
+    name = "panglia-vulcanus-rock-decal-large",
     type = "optimized-decorative",
     order = "a[vulcanus]-b[decorative]-b[sand]",
     collision_box = {{-1.5, -1.5}, {1.5, 1.5}},
@@ -273,7 +273,7 @@ data:extend({
     pictures = get_decal_pictures(decora .. "vulcanus-rock-decal/vulcanus-rock-decal-", "large-", 256, 5)
   },
   {
-    name = "timeshiftplanet-vulcanus-crack-decal-large",
+    name = "panglia-vulcanus-crack-decal-large",
     type = "optimized-decorative",
     order = "a[vulcanus]-b[decorative]-b[sand]",
     collision_box = {{-1.5, -1.5}, {1.5, 1.5}},
@@ -289,7 +289,7 @@ data:extend({
     --pictures = rocksdecals,
   },
   {
-    name = "timeshiftplanet-vulcanus-crack-decal-huge-warm",
+    name = "panglia-vulcanus-crack-decal-huge-warm",
     type = "optimized-decorative",
     order = "a[vulcanus]-b[decorative]-b[sand]",
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
@@ -307,7 +307,7 @@ data:extend({
 
 
   {
-    name = "timeshiftplanet-small-volcanic-rock",
+    name = "panglia-small-volcanic-rock",
     type = "optimized-decorative",
     order = "b[decorative]-l[rock]-d[small]",
     collision_box = {{-0.3, -0.3}, {0.3, 0.3}},
@@ -485,7 +485,7 @@ data:extend({
   },
   --- TINY TINTABLE ROCKS
   {
-    name = "timeshiftplanet-tiny-volcanic-rock",
+    name = "panglia-tiny-volcanic-rock",
     type = "optimized-decorative",
     order = "b[decorative]-l[rock]-d[small]",
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
@@ -665,7 +665,7 @@ data:extend({
 
   --- ROCK CLUSTERS
   {
-    name = "timeshiftplanet-tiny-rock-cluster",
+    name = "panglia-tiny-rock-cluster",
     type = "optimized-decorative",
     order = "a[vulcanus]-b[decorative]-b[sand]",
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
@@ -699,7 +699,7 @@ data:extend({
 
 
   {
-    name = "timeshiftplanet-barnacles-decal",
+    name = "panglia-barnacles-decal",
     type = "optimized-decorative",
     order = "b[decorative]-b[red-desert-decal]",
     collision_box = {{-3.375, -2.3125}, {3.25, 2.3125}},
@@ -805,7 +805,7 @@ data:extend({
   },
 
   {
-    name = "timeshiftplanet-solo-barnacle",
+    name = "panglia-solo-barnacle",
     type = "optimized-decorative",
     order = "b[cover]-b[yellow-lichen]-a[7]",
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
@@ -821,7 +821,7 @@ data:extend({
   },
 
   {
-    name = "timeshiftplanet-green-cup",
+    name = "panglia-green-cup",
     type = "optimized-decorative",
     order = "XxX[decorative]-a[grass]-b[carpet]",
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},

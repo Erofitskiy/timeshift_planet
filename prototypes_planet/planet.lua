@@ -12,7 +12,7 @@ local tile_sounds = require("__space-age__/prototypes/tile/tile-sounds")
 local tile_graphics = require("__base__/prototypes/tile/tile-graphics")
 local tile_spritesheet_layout = tile_graphics.tile_spritesheet_layout
 
-planet_map_gen.timeshift = function()
+planet_map_gen.panglia = function()
   return
   {
     property_expression_names =
@@ -34,7 +34,7 @@ planet_map_gen.timeshift = function()
     },
     cliff_settings =
     {
-      name = "cliff-timeshift",
+      name = "cliff-panglia",
       cliff_elevation_interval = 170,
       cliff_elevation_0 = 0
     },
@@ -47,7 +47,7 @@ planet_map_gen.timeshift = function()
     },]]
     autoplace_controls =
     {
-      ["timeshift_hidden_beacon"] = {},
+      ["panglia_hidden_beacon"] = {},
       --["vulcanus_coal"] = {},
       --["sulfuric_acid_geyser"] = {},
       --["tungsten_ore"] = {},
@@ -62,32 +62,32 @@ planet_map_gen.timeshift = function()
         settings =
         {
           --nauvis tiles
-          ["timeshiftplanet-volcanic-soil-dark"] = {},
-          ["timeshiftplanet-volcanic-soil-light"] = {},
-          ["timeshiftplanet-volcanic-ash-soil"] = {},
+          ["panglia-volcanic-soil-dark"] = {},
+          ["panglia-volcanic-soil-light"] = {},
+          ["panglia-volcanic-ash-soil"] = {},
           --end of nauvis tiles
-          ["timeshiftplanet-volcanic-ash-flats"] = {},
-          ["timeshiftplanet-volcanic-ash-light"] = {},
-          ["timeshiftplanet-volcanic-ash-dark"] = {},
-          ["timeshiftplanet-volcanic-cracks"] = {},
-          ["timeshiftplanet-volcanic-cracks-warm"] = {},
-          ["timeshiftplanet-volcanic-folds"] = {},
-          ["timeshiftplanet-volcanic-folds-flat"] = {},
+          ["panglia-volcanic-ash-flats"] = {},
+          ["panglia-volcanic-ash-light"] = {},
+          ["panglia-volcanic-ash-dark"] = {},
+          ["panglia-volcanic-cracks"] = {},
+          ["panglia-volcanic-cracks-warm"] = {},
+          ["panglia-volcanic-folds"] = {},
+          ["panglia-volcanic-folds-flat"] = {},
           --["lava"] = {},
           --["lava-hot"] = {},
-          ["timeshiftplanet-volcanic-folds-warm"] = {},
-          ["timeshiftplanet-volcanic-pumice-stones"] = {},
-          ["timeshiftplanet-volcanic-cracks-hot"] = {},
-          ["timeshiftplanet-volcanic-jagged-ground"] = {},
-          ["timeshiftplanet-volcanic-smooth-stone"] = {},
-          ["timeshiftplanet-volcanic-smooth-stone-warm"] = {},
-          ["timeshiftplanet-volcanic-ash-cracks"] = {},
+          ["panglia-volcanic-folds-warm"] = {},
+          ["panglia-volcanic-pumice-stones"] = {},
+          ["panglia-volcanic-cracks-hot"] = {},
+          ["panglia-volcanic-jagged-ground"] = {},
+          ["panglia-volcanic-smooth-stone"] = {},
+          ["panglia-volcanic-smooth-stone-warm"] = {},
+          ["panglia-volcanic-ash-cracks"] = {},
 
-          ["timeshiftplanet-midland-turquoise-bark"] = {},
-          ["timeshiftplanet-midland-turquoise-bark-2"] = {},
-          ["timeshiftplanet-wetland-light-dead-skin"] = {},
-          ["timeshiftplanet-wetland-dead-skin"] = {},
-          ["timeshiftplanet-midland-cracked-lichen-dark"] = {},
+          ["panglia-midland-turquoise-bark"] = {},
+          ["panglia-midland-turquoise-bark-2"] = {},
+          ["panglia-wetland-light-dead-skin"] = {},
+          ["panglia-wetland-dead-skin"] = {},
+          ["panglia-midland-cracked-lichen-dark"] = {},
 
 
 
@@ -103,9 +103,9 @@ planet_map_gen.timeshift = function()
           --["v-brown-hairy-grass"] = {},
           --["v-red-pita"] = {},
           -- end of nauvis
-          ["timeshiftplanet-vulcanus-rock-decal-large"] = {},
-          ["timeshiftplanet-vulcanus-crack-decal-large"] = {},
-          ["timeshiftplanet-vulcanus-crack-decal-huge-warm"] = {},
+          ["panglia-vulcanus-rock-decal-large"] = {},
+          ["panglia-vulcanus-crack-decal-large"] = {},
+          ["panglia-vulcanus-crack-decal-huge-warm"] = {},
           --["vulcanus-dune-decal"] = {},
           --["vulcanus-sand-decal"] = {},
           --["vulcanus-lava-fire"] = {},
@@ -118,35 +118,35 @@ planet_map_gen.timeshift = function()
           --["crater-small"] = {},
           --["crater-large"] = {},
           --["pumice-relief-decal"] = {},
-          ["timeshiftplanet-small-volcanic-rock"] = {},
-          ["timeshiftplanet-medium-volcanic-rock"] = {},
-          ["timeshiftplanet-tiny-volcanic-rock"] = {},
-          ["timeshiftplanet-tiny-rock-cluster"] = {},
+          ["panglia-small-volcanic-rock"] = {},
+          ["panglia-medium-volcanic-rock"] = {},
+          ["panglia-tiny-volcanic-rock"] = {},
+          ["panglia-tiny-rock-cluster"] = {},
           --["small-sulfur-rock"] = {},
           --["tiny-sulfur-rock"] = {},
           --["sulfur-rock-cluster"] = {},
           --["waves-decal"] = {},
 
 
-          ["timeshiftplanet-barnacles-decal"] = {},
-          ["timeshiftplanet-green-cup"] = {},
-          ["timeshiftplanet-solo-barnacle"] = {},
+          ["panglia-barnacles-decal"] = {},
+          ["panglia-green-cup"] = {},
+          ["panglia-solo-barnacle"] = {},
         }
       },
       ["entity"] =
       {
         settings =
         {
-          ["timeshift_hidden_beacon"] = {},
-          ["timeshift_energy_roots"] = {},
+          ["panglia_hidden_beacon"] = {},
+          ["panglia_energy_roots"] = {},
           --["coal"] = {},
           --["calcite"] = {},
           --["sulfuric-acid-geyser"] = {},
           --["tungsten-ore"] = {},
-          ["timeshiftplanet-huge-volcanic-rock"] = {},
-          ["timeshiftplanet-big-volcanic-rock"] = {},
+          ["panglia-huge-volcanic-rock"] = {},
+          ["panglia-big-volcanic-rock"] = {},
           ["crater-cliff"] = {},
-          ["timeshift_branbalite_plant"] = {},
+          ["panglia_branbalite_plant"] = {},
           --["vulcanus-chimney"] = {},
           --["vulcanus-chimney-faded"] = {},
           --["vulcanus-chimney-cold"] = {},
@@ -167,7 +167,7 @@ local asteroid_util = require("__space-age__.prototypes.planet.asteroid-spawn-de
 data:extend({
   {
     type = "autoplace-control",
-    name = "timeshift_hidden_beacon",
+    name = "panglia_hidden_beacon",
     --localised_name = {"", "[entity=iron-ore] ", {"entity-name.iron-ore"}},
     richness = true,
     order = "a-a",
@@ -198,8 +198,8 @@ data:extend({
   {
     type = "planet",
     name = planet_name,
-    icon = icons .. "planet-timeshift.png",
-    starmap_icon = icons .. "starmap-planet-timeshift.png",
+    icon = icons .. "planet-panglia.png",
+    starmap_icon = icons .. "starmap-planet-panglia.png",
     starmap_icon_size = 2048,
 
     gravity_pull = 5,
@@ -208,14 +208,14 @@ data:extend({
     magnitude = 0.65,
     label_orientation = 0.35,
 
-    --pollutant_type = "timeshift_energy_roots_pollution",
+    --pollutant_type = "panglia_energy_roots_pollution",
     --gravity_pull = 10,
     --distance = 11,
     --orientation = 0.1,
     --magnitude = 1.5,
     order = "f[panglia]",
     subgroup = "planets",
-    map_gen_settings = planet_map_gen.timeshift(),
+    map_gen_settings = planet_map_gen.panglia(),
     pollutant_type = nil,
     solar_power_in_space = 600,
     platform_procession_set =
@@ -241,8 +241,8 @@ data:extend({
     asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba, 0.9),
     persistent_ambient_sounds =
     {
-      base_ambience = {filename = sounds .. "timeshift_ambiance_klankbeeld.ogg", volume = 0.8},
-      wind = {filename = sounds .. "atmosphere_timeshift.ogg", volume = 0.8},
+      base_ambience = {filename = sounds .. "panglia_ambiance_klankbeeld.ogg", volume = 0.8},
+      wind = {filename = sounds .. "atmosphere_panglia.ogg", volume = 0.8},
       crossfade =
       {
         order = {"wind", "base_ambience"},
@@ -297,10 +297,10 @@ data:extend({
         --{0.45, "__space-age__/graphics/lut/vulcanus-2-night.png"},
         --{0.55, "__space-age__/graphics/lut/vulcanus-2-night.png"},
         --{0.80, "__space-age__/graphics/lut/vulcanus-1-day.png"},
-        --{0.0, "__timeshift_planet__/graphics/lut/identity-lut.png"},
+        --{0.0, "__panglia_planet__/graphics/lut/identity-lut.png"},
         --{0.5, "__core__/graphics/color_luts/lut-night.png"},
-        {0.0, "__timeshift_planet__/graphics/lut/timeshift-day-lut.png"},
-        {0.5, "__timeshift_planet__/graphics/lut/timeshift-night-lut.png"},
+        {0.0, "__panglia_planet__/graphics/lut/panglia-day-lut.png"},
+        {0.5, "__panglia_planet__/graphics/lut/panglia-night-lut.png"},
       },
 
       terrain_tint_effect =

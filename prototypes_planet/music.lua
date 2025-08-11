@@ -9,7 +9,7 @@ function make_musictrack(name, type)
       type = "ambient-sound",
       name = name,
       track_type = track_type,
-      planet = "timeshift",
+      planet = "panglia",
       sound =
       {
         filename = musicpath .. name .. ".ogg",
