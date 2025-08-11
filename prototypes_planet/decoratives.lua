@@ -150,7 +150,7 @@ end
 data:extend({
 
   {
-    name = "timeshiftplanet-huge-volcanic-rock", --raxinite
+    name = "timeshiftplanet-huge-volcanic-rock", --panglite
     type = "simple-entity",
     flags = {"placeable-neutral", "placeable-off-grid"},
     icon = icons .. "timeshiftplanet-huge-volcanic-rock.png",
@@ -166,14 +166,14 @@ data:extend({
       mining_time = 2,
       results =
       {
-        {type = "item", name = "raxinite", amount_min = 22, amount_max = 45},
+        {type = "item", name = "panglite", amount_min = 22, amount_max = 45},
         {type = "item", name = "iron-ore", amount_min = 0, amount_max = 10},
         {type = "item", name = "copper-ore", amount_min = 0, amount_max = 8},
       },
     },
     map_color = {137, 118, 95},
     count_as_rock_for_filtered_deconstruction = true,
-    mined_sound = sound_variations(tssounds .. "raxinite", 8, 0.7),
+    mined_sound = sound_variations(tssounds .. "panglite", 8, 0.7),
     impact_category = "stone",
     render_layer = "object",
     max_health = 2000,
@@ -192,7 +192,7 @@ data:extend({
   },
 
   {
-    name = "timeshiftplanet-big-volcanic-rock", --raxinite
+    name = "timeshiftplanet-big-volcanic-rock", --panglite
     type = "simple-entity",
     flags = {"placeable-neutral", "placeable-off-grid"},
     icon = icons .. "timeshiftplanet-big-volcanic-rock.png",
@@ -214,7 +214,7 @@ data:extend({
       mining_time = 1,
       results =
       {
-        {type = "item", name = "raxinite", amount_min = 12, amount_max = 30},
+        {type = "item", name = "panglite", amount_min = 12, amount_max = 30},
         {type = "item", name = "iron-ore", amount_min = 0, amount_max = 7},
         {type = "item", name = "copper-ore", amount_min = 0, amount_max = 5},
         --{type = "item", name = "tungsten-ore", amount_min = 2, amount_max = 8}
@@ -229,7 +229,7 @@ data:extend({
     },
     map_color = {137, 118, 95},
     count_as_rock_for_filtered_deconstruction = true,
-    mined_sound = sound_variations(tssounds .. "raxinite", 8, 0.7),
+    mined_sound = sound_variations(tssounds .. "panglite", 8, 0.7),
     impact_category = "stone",
     pictures = bigrockpics,
   },

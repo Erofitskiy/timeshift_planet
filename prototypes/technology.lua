@@ -46,21 +46,21 @@ data:extend({
 
   {
     type = "technology",
-    name = "timeshift_nutrients_slurry",
-    icon = techicons .. "timeshift_nutrients_slurry.png",
+    name = "timeshift_branbalite_slurry",
+    icon = techicons .. "timeshift_branbalite_slurry.png",
     icon_size = 256,
     effects =
     {
       {
         type = "unlock-recipe",
-        recipe = "timeshift_nutrients_slurry"
+        recipe = "timeshift_branbalite_slurry"
       },
     },
     prerequisites = {"agriculture"},
     research_trigger =
     {
       type = "mine-entity",
-      entity = "timeshift_nutrients_plant"
+      entity = "timeshift_branbalite_plant"
     }
   },
 
@@ -226,7 +226,7 @@ data:extend({
 
 
 if data.raw["technology"]["cloning-vat-technology"] then
- table.insert(data.raw["technology"]["cloning-vat-technology"].prerequisites, "timeshift_nutrients_slurry")
+ table.insert(data.raw["technology"]["cloning-vat-technology"].prerequisites, "timeshift_branbalite_slurry")
  table.insert(data.raw["technology"]["timeshift_simulation_chamber"].prerequisites, "cloning-vat-technology")
 end
 if data.raw["technology"]["thinking-brain-technology"] then

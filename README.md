@@ -8,6 +8,6 @@
 - The simulation chamber contains graphics from [Yuoki Industries](https://mods.factorio.com/mod/Yuoki) (CC BY-NC-SA) and other YuokiTani images shared on the forum
 - The simulation chamber contains graphics from [Exotic Space Industries](https://mods.factorio.com/mod/exotic-space-industries) by PreLeyZero (GNU LGPLv3)
 - 5 icons take elements from [Periodic Madness](https://mods.factorio.com/mod/periodic-madness) by Mr.SmoothieHuman
-- Raxinite entities (the circular rocks) are derived from 2 backgrounds from Final Fantasy IX (Moguri Mod) (Final Fantasy IX is a property of Square Enix, assets used under the premise of [fair use](https://en.wikipedia.org/wiki/Fair_use)). Another background is used for bits of the Limine plant.
+- Panglite entities (the circular rocks) are derived from 2 backgrounds from Final Fantasy IX (Moguri Mod) (Final Fantasy IX is a property of Square Enix, assets used under the premise of [fair use](https://en.wikipedia.org/wiki/Fair_use)). Another background is used for bits of the Branbalite plant.
 - Sound ambiance by klankbeeld (CC BY)
 - Energy roots sound is "Black Smoke" by Silicon_Transmitter (CC BY-NC-SA)

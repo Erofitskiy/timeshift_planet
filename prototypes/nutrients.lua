@@ -169,7 +169,7 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
 
     variation.leaf_generation = {
       type = "create-particle",
-      particle_name = "timeshiftplanet-jellystem-leaf-particle",
+      particle_name = "timeshiftplanet-branbalite-leaf-particle",
       offset_deviation =
       {
         {-0.8, -1.2},
@@ -196,7 +196,7 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
 
     variation.branch_generation = {
       type = "create-particle",
-      particle_name = "timeshiftplanet-jellystem-branch-particle",
+      particle_name = "timeshiftplanet-branbalite-branch-particle",
       offset_deviation = {{-0.65, -1}, {0.65, 1}},
       initial_height = 1.7,
       initial_height_deviation = 0.8,
@@ -363,7 +363,7 @@ end
 data:extend({
   make_particle
   {
-    name = "timeshiftplanet-jellystem-leaf-particle",
+    name = "timeshiftplanet-branbalite-leaf-particle",
     life_time = 120,
     --pictures = get_timeshift_tree_sap_particle_pictures({tint = {162,45,72,255}, tint_as_overlay = true, scale = 0.95}), --#a22d48
     --pictures = get_timeshift_tree_sap_particle_pictures({tint = {46,163,134,255}, tint_as_overlay = true, scale = 0.95}), --#2ea386
@@ -377,7 +377,7 @@ data:extend({
 
   make_particle
   {
-    name = "timeshiftplanet-jellystem-branch-particle",
+    name = "timeshiftplanet-branbalite-branch-particle",
     life_time = 120,
     --pictures = get_timeshift_tree_crop_particle_pictures({tint = {161,100,120,255}, tint_as_overlay = true, scale = 1.2}), --#a16478
     --pictures = get_timeshift_tree_crop_particle_pictures({tint = {100,161,145,255}, tint_as_overlay = true, scale = 1.2}), --#64a191
@@ -392,7 +392,7 @@ data:extend({
 
   make_particle
   {
-    name = "timeshiftplanet-jellystem-mining-particle",
+    name = "timeshiftplanet-branbalite-mining-particle",
     life_time = 120,
     --pictures = get_timeshift_tree_crop_particle_pictures({tint = {161,100,120,255}, tint_as_overlay = true, scale = 0.5}), --#a16478
     --pictures = get_timeshift_tree_crop_particle_pictures({tint = {100,161,145,255}, tint_as_overlay = true, scale = 0.5}), --#64a191
@@ -426,14 +426,34 @@ data:extend({
 
 
 
-
+local function branbalitepics(num)
+  return 
+  {
+    layers =
+    {
+      {
+        size = 64,
+        filename = icons .. "timeshift_branbalite_" .. num .. ".png",
+        scale = 0.5,
+      },
+      {
+        draw_as_light = true,
+        blend_mode = "additive",
+        size = 64,
+        filename = icons .. "timeshift_branbalite_light_" .. num .. ".png",
+        scale = 0.5,
+        tint = {0.3, 0.3, 0.3, 0.3}
+      }
+    }
+  }
+end
 
 
 data:extend({
   {
     type = "item",
-    name = "timeshift_nutrients", -- is fruit AND seed
-    icon = icons .. "timeshift_nutrients.png",
+    name = "timeshift_branbalite", -- is fruit AND seed
+    icon = icons .. "timeshift_branbalite_1.png",
     subgroup = "timeshift-processes",
     order = "aaa",
     inventory_move_sound = item_sounds.resource_inventory_move,
@@ -443,121 +463,53 @@ data:extend({
     default_import_location = "timeshift",
     random_tint_color = item_tints.iron_rust,
     fuel_value = "1000GJ",
-    fuel_category = "timeshift_nutrients",
-    plant_result = "timeshift_nutrients_plant",
-    place_result = "timeshift_nutrients_plant",
+    fuel_category = "timeshift_branbalite",
+    plant_result = "timeshift_branbalite_plant",
+    place_result = "timeshift_branbalite_plant",
     spoil_ticks = 25 * minute,
     spoil_result = "spoilage",
     weight = 10*kg,
     pictures =
     {
-      {
-        layers =
-        {
-          {
-            size = 64,
-            filename = icons .. "timeshift_nutrients.png",
-            scale = 0.5,
-          },
-          {
-            draw_as_light = true,
-            blend_mode = "additive",
-            size = 64,
-            filename = icons .. "timeshift_nutrients_light.png",
-            scale = 0.5,
-            tint = {0.3, 0.3, 0.3, 0.3}
-          }
-        }
-      },
-      {
-        layers =
-        {
-          {
-            size = 64,
-            filename = icons .. "timeshift_nutrients_2.png",
-            scale = 0.5,
-          },
-          {
-            draw_as_light = true,
-            blend_mode = "additive",
-            size = 64,
-            filename = icons .. "timeshift_nutrients_light_2.png",
-            scale = 0.5,
-            tint = {0.3, 0.3, 0.3, 0.3}
-          }
-        }
-      },
-      {
-        layers =
-        {
-          {
-            size = 64,
-            filename = icons .. "timeshift_nutrients_3.png",
-            scale = 0.5,
-          },
-          {
-            draw_as_light = true,
-            blend_mode = "additive",
-            size = 64,
-            filename = icons .. "timeshift_nutrients_light_3.png",
-            scale = 0.5,
-            tint = {0.3, 0.3, 0.3, 0.3}
-          }
-        }
-      },
-      {
-        layers =
-        {
-          {
-            size = 64,
-            filename = icons .. "timeshift_nutrients_4.png",
-            scale = 0.5,
-          },
-          {
-            draw_as_light = true,
-            blend_mode = "additive",
-            size = 64,
-            filename = icons .. "timeshift_nutrients_light_4.png",
-            scale = 0.5,
-            tint = {0.3, 0.3, 0.3, 0.3}
-          }
-        }
-      },
+      branbalitepics(1),
+      branbalitepics(2),
+      branbalitepics(3),
+      branbalitepics(4),
     },
   },
   {
     type = "fuel-category",
-    name = "timeshift_nutrients"
+    name = "timeshift_branbalite"
   },
 -- NUTRIENTS FLUID
   {
     type = "fluid",
-    name = "timeshift_nutrients_slurry",
-    icon = icons .. "timeshift_nutrients_slurry.png",
+    name = "timeshift_branbalite_slurry",
+    icon = icons .. "timeshift_branbalite_slurry.png",
     subgroup = "timeshift-processes",
     default_temperature = 15,
     max_temperature = 165,
     heat_capacity = "0.2kJ",
     base_color = {0.4, 0.4, 0.4},
     flow_color = {0.4, 0.4, 0.4},
-    order = "a[fluid]-a[water]-c[timeshift_nutrients_slurry]",
+    order = "a[fluid]-a[water]-c[timeshift_branbalite_slurry]",
     gas_temperature = 15,
     auto_barrel = true,
     fuel_value = "3MJ",
-    --fuel_category = "timeshift_nutrients",
+    --fuel_category = "timeshift_branbalite",
   },
   {
     type = "recipe",
-    name = "timeshift_nutrients_slurry",
+    name = "timeshift_branbalite_slurry",
     category = "organic-or-chemistry",
     energy_required = 1,
     ingredients = {
       --{type = "item", name = "nutrients", amount = 7},
       --{type = "item", name = "bioflux", amount = 1},
-      {type = "item", name = "timeshift_nutrients", amount = 1},
+      {type = "item", name = "timeshift_branbalite", amount = 1},
       {type = "fluid", name = "water", amount = 30},
     },
-    results = {{type = "fluid", name = "timeshift_nutrients_slurry", amount = 1}},
+    results = {{type = "fluid", name = "timeshift_branbalite_slurry", amount = 1}},
     allow_productivity = true,
     enabled = false,
   },
@@ -567,13 +519,13 @@ data:extend({
 
 
 local plant = table.deepcopy(data.raw["plant"]["jellystem"])
-plant.name = "timeshift_nutrients_plant"
-plant.icon = icons .. "timeshift_nutrients_plant.png"
+plant.name = "timeshift_branbalite_plant"
+plant.icon = icons .. "timeshift_branbalite_plant.png"
 plant.minable =
 {
-  mining_particle = "timeshiftplanet-jellystem-mining-particle",
+  mining_particle = "timeshiftplanet-branbalite-mining-particle",
   mining_time = 0.5,
-  results = {{type = "item", name = "timeshift_nutrients", amount_min = 1, amount_max = 4}},
+  results = {{type = "item", name = "timeshift_branbalite", amount_min = 1, amount_max = 4}},
 }
 plant.autoplace = 
 {
@@ -592,7 +544,7 @@ plant.autoplace =
     "timeshiftplanet-volcanic-soil-light",
   }
 }
-plant.variations = gleba_tree_variations("jellystem", 8, 4, 1.3, 640, 560, util.by_pixel(52, -73))
+plant.variations = gleba_tree_variations("branbalite", 8, 4, 1.3, 640, 560, util.by_pixel(52, -73))
 
 plant.colors = {
   {r = 255, g = 255, b =  255},

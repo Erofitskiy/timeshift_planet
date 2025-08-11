@@ -201,7 +201,7 @@ data:extend({
         { flow_direction = "input", direction = defines.direction.west, position = {-3, 0} },
       },
       production_type = "input",
-      filter = "timeshift_nutrients_slurry",
+      filter = "timeshift_branbalite_slurry",
       minimum_temperature = 0,
     },
     energy_source =

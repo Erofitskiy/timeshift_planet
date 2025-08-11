@@ -309,8 +309,8 @@ data:extend({
 
   {
     type = "item",
-    name = "raxinite",
-    icon = icons .. "raxinite-1.png",
+    name = "panglite",
+    icon = icons .. "panglite-1.png",
     subgroup = "timeshift-processes",
     order = "aaa",
     inventory_move_sound = item_sounds.metal_barrel_inventory_move,
@@ -322,9 +322,9 @@ data:extend({
     weight = 20*kg,
     pictures =
     {
-      {size = 64, filename = icons .. "raxinite-1.png", scale = 0.5},
-      {size = 64, filename = icons .. "raxinite-2.png", scale = 0.5},
-      {size = 64, filename = icons .. "raxinite-3.png", scale = 0.5},
+      {size = 64, filename = icons .. "panglite-1.png", scale = 0.5},
+      {size = 64, filename = icons .. "panglite-2.png", scale = 0.5},
+      {size = 64, filename = icons .. "panglite-3.png", scale = 0.5},
     },
   },
 
