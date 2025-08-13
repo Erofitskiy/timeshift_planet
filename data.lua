@@ -15,7 +15,7 @@ require "prototypes_planet.music"
 
 require "prototypes.technology"
 require "prototypes.items_recipes"
-require "prototypes.nutrients"
+require "prototypes.plant"
 --require "prototypes.nano_forge"
 require "prototypes.simulation_chamber"
 require "prototypes.compatibility"

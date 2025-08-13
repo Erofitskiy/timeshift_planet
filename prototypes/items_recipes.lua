@@ -5,6 +5,10 @@ local space_age_item_sounds = require("__space-age__.prototypes.item_sounds")
 local seconds = 60
 local minutes = 60 * seconds
 
+
+
+
+
 data:extend({
 
 
@@ -15,19 +19,145 @@ data:extend({
     group = "intermediate-products",
     order = "pb"
   },
-
   {
     type = "item-subgroup",
     name = "panglia-production-machine",
     group = "production",
     order = "e3"
   },
---- items
   {
     type = "recipe-category",
     name = "simulation_chamber"
   },
+  {
+    type = "fuel-category",
+    name = "panglia_branbalite"
+  },
+})
 
+
+
+
+------------------------------------------------------
+---------- BRANBALITE (cyan plant/slurry) ------------
+------------------------------------------------------
+
+
+local function branbalitepics(num)
+  return 
+  {
+    layers =
+    {
+      {
+        size = 64,
+        filename = icons .. "panglia_branbalite_" .. num .. ".png",
+        scale = 0.5,
+      },
+      {
+        draw_as_light = true,
+        blend_mode = "additive",
+        size = 64,
+        filename = icons .. "panglia_branbalite_light_" .. num .. ".png",
+        scale = 0.5,
+        tint = {0.3, 0.3, 0.3, 0.3}
+      }
+    }
+  }
+end
+
+data:extend({
+  {
+    type = "item",
+    name = "panglia_branbalite", -- is fruit AND seed
+    icon = icons .. "panglia_branbalite_1.png",
+    subgroup = "panglia-processes",
+    order = "aaa",
+    inventory_move_sound = item_sounds.resource_inventory_move,
+    pick_sound = item_sounds.resource_inventory_pickup,
+    drop_sound = item_sounds.resource_inventory_move,
+    stack_size = 50,
+    default_import_location = "panglia",
+    random_tint_color = item_tints.iron_rust,
+    fuel_value = "1000GJ",
+    fuel_category = "panglia_branbalite",
+    plant_result = "panglia_branbalite_plant",
+    place_result = "panglia_branbalite_plant",
+    spoil_ticks = 25 * minute,
+    spoil_result = "spoilage",
+    weight = 10*kg,
+    pictures =
+    {
+      branbalitepics(1),
+      branbalitepics(2),
+      branbalitepics(3),
+      branbalitepics(4),
+    },
+  },
+-- NUTRIENTS FLUID
+  {
+    type = "fluid",
+    name = "panglia_branbalite_slurry",
+    icon = icons .. "panglia_branbalite_slurry.png",
+    subgroup = "panglia-processes",
+    default_temperature = 15,
+    max_temperature = 165,
+    heat_capacity = "0.2kJ",
+    base_color = {0.4, 0.4, 0.4},
+    flow_color = {0.4, 0.4, 0.4},
+    order = "a[fluid]-a[water]-c[panglia_branbalite_slurry]",
+    gas_temperature = 15,
+    auto_barrel = true,
+    fuel_value = "3MJ",
+    --fuel_category = "panglia_branbalite",
+  },
+  {
+    type = "recipe",
+    name = "panglia_branbalite_slurry",
+    category = "organic-or-chemistry",
+    energy_required = 1,
+    ingredients = {
+      --{type = "item", name = "nutrients", amount = 7},
+      --{type = "item", name = "bioflux", amount = 1},
+      {type = "item", name = "panglia_branbalite", amount = 1},
+      {type = "fluid", name = "water", amount = 30},
+    },
+    results = {{type = "fluid", name = "panglia_branbalite_slurry", amount = 40}},
+    subgroup = "panglia-processes",
+    order = "a[oil-processing]-c[coal-liquefaction]",
+    allow_productivity = true,
+    enabled = false,
+    allow_decomposition = false
+  },
+  {
+    type = "recipe",
+    name = "panglia_branbalite_slurry_to_crudeoil",
+    icon = icons .. "panglia_branbalite_slurry_to_crudeoil.png",
+    category = "oil-processing",
+    enabled = false,
+    energy_required = 15,
+    ingredients =
+    {
+      {type = "fluid", name = "panglia_branbalite_slurry", amount = 65},
+      {type = "fluid", name = "steam", amount = 35}
+    },
+    results =
+    {
+      {type = "fluid", name = "crude-oil", amount = 90},
+      {type = "fluid", name = "water", amount = 10}
+    },
+    allow_productivity = true,
+    subgroup = "panglia-processes",
+    order = "a[oil-processing]-c[coal-liquefaction]",
+    allow_decomposition = false
+  },
+
+
+
+})
+
+
+
+data:extend({
 
 
 -- NANOBOTS
@@ -303,10 +433,6 @@ data:extend({
     map_color = {255, 255, 255},
   },
 
-
-
-
-
   {
     type = "item",
     name = "panglia_panglite",
@@ -336,11 +462,85 @@ data:extend({
     name = "panglia_panglite_multiplication",
     icon = icons .. "panglia_panglite_multiplication.png",
     category = "smelting",
+    enabled = false,
     auto_recycle = false,
     energy_required = 28,
     ingredients = {{type = "item", name = "panglia_panglite", amount = 1}},
     results = {{type="item", name="panglia_panglite", amount = 2}},
     allow_productivity = false,
+    show_amount_in_title = false,
+  },
+
+
+
+  {
+    type = "recipe",
+    name = "panglia_panglite_fiber",
+    icon = icons .. "panglia_panglite_fiber.png",
+    category = "chemistry",
+    enabled = false,
+    auto_recycle = false,
+    energy_required = 50,
+    ingredients = {
+      {type = "item", name = "panglia_panglite", amount = 6},
+      {type = "fluid", name = "sulfuric-acid", amount = 40},
+    },
+    results = {{type="item", name="panglia_panglite_fiber", amount = 1}},
+    allow_productivity = false,
+    show_amount_in_title = false,
+    crafting_machine_tint =
+    {
+      primary = {r = 1.000, g = 0.995, b = 0.089, a = 1.000}, -- #fffd16ff
+      secondary = {r = 1.000, g = 0.974, b = 0.691, a = 1.000}, -- #fff8b0ff
+      tertiary = {r = 0.723, g = 0.638, b = 0.714, a = 1.000}, -- #b8a2b6ff
+      quaternary = {r = 0.954, g = 1.000, b = 0.350, a = 1.000}, -- #f3ff59ff
+    }
+  },
+
+  {
+    type = "item",
+    name = "panglia_panglite_fiber",
+    icon = icons .. "panglia_panglite_fiber.png",
+    subgroup = "panglia-processes",
+    order = "aaa",
+    inventory_move_sound = item_sounds.resource_inventory_move,
+    pick_sound = item_sounds.resource_inventory_pickup,
+    drop_sound = item_sounds.resource_inventory_move,
+    stack_size = 50,
+    default_import_location = "panglia",
+    random_tint_color = { 1.0, 0.83, 0.7, 1.0 },
+    weight = 20*kg,
+  },
+
+
+  {
+    type = "recipe",
+    name = "panglia_universe_precursor",
+    energy_required = 40,
+    category = "chemistry",
+    ingredients =
+    {
+      {type = "fluid", name = "panglia_branbalite_slurry", amount = 40},
+      {type = "item", name = "panglia_panglite_fiber", amount = 2},
+    },
+    results = {{type = "item", name = "universe_precursor", amount = 1}},
+    allow_productivity = false,
+    enabled = false,
+  },
+
+
+  {
+    type = "recipe",
+    name = "panglia_low_density_structure_from_panglite_fiber",
+    energy_required = 60,
+    category = "crafting",
+    ingredients =
+    {
+      {type = "item", name = "panglia_panglite_fiber", amount = 1},
+    },
+    results = {{type = "item", name = "low-density-structure", amount = 2}},
+    allow_productivity = true,
+    enabled = false,
     show_amount_in_title = false,
   },
 

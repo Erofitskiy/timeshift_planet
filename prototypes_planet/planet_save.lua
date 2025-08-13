@@ -284,7 +284,7 @@ data:extend({
   },
   {
     type = "planet",
-    name = planet_name,
+    name = "panglia",
     icon = "__space-age__/graphics/icons/gleba.png",
     starmap_icon = "__space-age__/graphics/icons/starmap-planet-gleba.png",
     starmap_icon_size = 512,
@@ -449,10 +449,10 @@ data:extend({
   },
   {
     type = "space-connection",
-    name = "gleba-" .. planet_name,
+    name = "gleba-" .. "panglia",
     subgroup = "planet-connections",
     from = "gleba",
-    to = planet_name,
+    to = "panglia",
     order = "a",
     length = 100,
     asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus)

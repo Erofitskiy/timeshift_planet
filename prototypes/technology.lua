@@ -12,7 +12,7 @@ data:extend({
     {
       {
         type = "unlock-space-location",
-        space_location = planet_name,
+        space_location = "panglia",
         use_icon_overlay_constant = true
       },
     },
@@ -44,8 +44,34 @@ data:extend({
     {
       type = "mine-entity",
       entity = "panglia_branbalite_plant"
-    }
+    },
   },
+
+  {
+    type = "technology",
+    name = "panglia_branbalite_slurry_to_crudeoil",
+    icon = techicons .. "panglia_branbalite_slurry_to_crudeoil.png",
+    icon_size = 256,
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "panglia_branbalite_slurry_to_crudeoil"
+      },
+    },
+    prerequisites = {"panglia_branbalite_slurry"},
+    research_trigger =
+    {
+      type = "craft-fluid",
+      fluid = "panglia_branbalite_slurry",
+      amount = 50,
+    },
+  },
+
+
+
+
+
   {
     type = "technology",
     name = "panglia_panglite_multiplication",
@@ -65,6 +91,7 @@ data:extend({
       entity = "panglia-huge-panglite-rock"
     }
   },
+
   {
     type = "technology",
     name = "panglia_advanced_optics_nanotech",
@@ -82,80 +109,32 @@ data:extend({
     }
   },
 
-
---[[
   {
     type = "technology",
-    name = "panglia_nano_tech",
-    icon = techicons .. "panglia_nano_tech.png",
-    icon_size = 256,
-    effects =
-    {
-    },
-    prerequisites = {"panglia_advanced_optics"},
-
-    unit =
-    {
-      count = 50,
-      ingredients =
-      {
-        {"automation-science-pack", 1},
-      },
-      time = 60
-    }
-  },]]
---[[
-  {
-    type = "technology",
-    name = "panglia_nano_forge",
-    icon = techicons .. "panglia_nano_forge.png",
+    name = "panglia_panglite_fiber",
+    icon = techicons .. "panglia_panglite_fiber.png",
     icon_size = 256,
     effects =
     {
       {
         type = "unlock-recipe",
-        recipe = "nano_forge"
+        recipe = "panglia_panglite_fiber"
       },
-    },
-    prerequisites = {"panglia_nano_tech"},
-
-    unit =
-    {
-      count = 50,
-      ingredients =
-      {
-        {"automation-science-pack", 1},
-      },
-      time = 60
-    }
-  },
-
-
-  {
-    type = "technology",
-    name = "panglia_nanobots_hive",
-    icon = techicons .. "panglia_nanobots_hive.png",
-    icon_size = 256,
-    effects =
-    {
       {
         type = "unlock-recipe",
-        recipe = "nanobots_hive"
+        recipe = "panglia_low_density_structure_from_panglite_fiber"
       },
     },
-    prerequisites = {"panglia_nano_forge"},
-
-    unit =
+    prerequisites = {"panglia_panglite_multiplication"},
+    research_trigger =
     {
+      type = "craft-item",
+      item = "panglia_panglite",
       count = 50,
-      ingredients =
-      {
-        {"automation-science-pack", 1},
-      },
-      time = 60
     }
   },
-]]
+
+
   {
     type = "technology",
     name = "panglia_dna_manipulation",
@@ -244,13 +223,17 @@ data:extend({
 
 
 
+if data.raw["technology"]["matter_printer-technology"] then
+  table.insert(data.raw["technology"]["matter_printer-technology"].prerequisites, "panglia_advanced_optics_nanotech")
+  table.insert(data.raw["technology"]["matter_printer-technology"].prerequisites, "panglia_panglite_fiber")
+  table.insert(data.raw["technology"]["matter_printer-technology"].effects, {type = "unlock-recipe", recipe = "panglia_universe_precursor"})
+end
+
 if data.raw["technology"]["cloning-vat-technology"] then
  table.insert(data.raw["technology"]["cloning-vat-technology"].prerequisites, "panglia_branbalite_slurry")
  table.insert(data.raw["technology"]["panglia_simulation_chamber"].prerequisites, "cloning-vat-technology")
 end
+
 if data.raw["technology"]["thinking-brain-technology"] then
   data.raw["technology"]["thinking-brain-technology"].prerequisites = {"panglia_simulation_matrix"}
-end
-if data.raw["technology"]["matter_printer-technology"] then
-  table.insert(data.raw["technology"]["matter_printer-technology"].prerequisites, "panglia_advanced_optics_nanotech")
 end

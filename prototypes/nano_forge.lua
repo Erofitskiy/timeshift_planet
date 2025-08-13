@@ -22,8 +22,8 @@ data:extend(
     drop_sound = item_sounds.mechanical_inventory_move,
     place_result = "nano_forge",
     stack_size = 10,
-    default_import_location = planet_name,
-    weight = 100 * kg
+    default_import_location = "panglia",
+    weight = 100 * kg,
   },
   {
     type = "recipe",
@@ -44,6 +44,79 @@ data:extend(
   },
 
 
+--[[
+  {
+    type = "technology",
+    name = "panglia_nano_tech",
+    icon = techicons .. "panglia_nano_tech.png",
+    icon_size = 256,
+    effects =
+    {
+    },
+    prerequisites = {"panglia_advanced_optics"},
+
+    unit =
+    {
+      count = 50,
+      ingredients =
+      {
+        {"automation-science-pack", 1},
+      },
+      time = 60
+    }
+  },]]
+--[[
+  {
+    type = "technology",
+    name = "panglia_nano_forge",
+    icon = techicons .. "panglia_nano_forge.png",
+    icon_size = 256,
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "nano_forge"
+      },
+    },
+    prerequisites = {"panglia_nano_tech"},
+
+    unit =
+    {
+      count = 50,
+      ingredients =
+      {
+        {"automation-science-pack", 1},
+      },
+      time = 60
+    }
+  },
+
+
+  {
+    type = "technology",
+    name = "panglia_nanobots_hive",
+    icon = techicons .. "panglia_nanobots_hive.png",
+    icon_size = 256,
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "nanobots_hive"
+      },
+    },
+    prerequisites = {"panglia_nano_forge"},
+
+    unit =
+    {
+      count = 50,
+      ingredients =
+      {
+        {"automation-science-pack", 1},
+      },
+      time = 60
+    }
+  },
+]]
 
 
 {

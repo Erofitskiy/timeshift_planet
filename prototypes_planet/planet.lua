@@ -197,7 +197,7 @@ data:extend({
 
   {
     type = "planet",
-    name = planet_name,
+    name = "panglia",
     icon = icons .. "planet-panglia.png",
     starmap_icon = icons .. "starmap-planet-panglia.png",
     starmap_icon_size = 2048,
@@ -234,7 +234,7 @@ data:extend({
       ["day-night-cycle"] = 5 * minute,
       ["magnetic-field"] = 56,
       ["solar-power"] = 80,
-      pressure = 1400, --must be 1000 >< 2000 for agricultural tower
+      pressure = 1401, --must be 1000 >< 2000 for agricultural tower
       gravity = 14
     },
     asteroid_spawn_influence = 1,
@@ -325,10 +325,10 @@ data:extend({
   },
   {
     type = "space-connection",
-    name = "gleba-" .. planet_name,
+    name = "gleba-" .. "panglia",
     subgroup = "planet-connections",
     from = "gleba",
-    to = planet_name,
+    to = "panglia",
     order = "a",
     length = 100,
     asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus)

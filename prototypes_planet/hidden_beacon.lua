@@ -152,7 +152,7 @@ data:extend({
     category = "panglia_module",
     color_hint = { text = "S" },
     tier = 1,
-    order = "a[speed]-b[speed-module-2]",
+    --order = "a[speed]-b[speed-module-2]",
     inventory_move_sound = item_sounds.module_inventory_move,
     pick_sound = item_sounds.module_inventory_pickup,
     drop_sound = item_sounds.module_inventory_move,

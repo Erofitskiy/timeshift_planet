@@ -6,10 +6,10 @@ if data.raw["agricultural-tower"]["processing-grid"] and data.raw["agricultural-
 end
 
 
-if data.raw.item["universe_precursor"] then
-	data.raw.item["universe_precursor"].subgroup = "panglia-processes"
-  data.raw.item["universe_precursor"].order = "a[universe_precursor]"
-end
+--if data.raw.item["universe_precursor"] then
+--	data.raw.item["universe_precursor"].subgroup = "panglia-processes"
+--  data.raw.item["universe_precursor"].order = "a[universe_precursor]"
+--end
 
 if data.raw.item["matter_printer"] then
 	data.raw.item["matter_printer"].subgroup = "panglia-production-machine"
@@ -22,6 +22,18 @@ end
 if data.raw.item["thinking-brain"] then
 	data.raw.item["thinking-brain"].subgroup = "panglia-production-machine"
   data.raw.item["thinking-brain"].order = "e[universe_precursor]"
+end
+
+
+if data.raw.recipe["matter_printer"] then
+  data.raw.recipe["matter_printer"].ingredients =
+  {
+    {type = "item", name = "assembling-machine-3", amount = 3},
+    {type = "item", name = "processing-unit", amount = 10},
+    {type = "item", name = "productivity-module-2", amount = 10},
+    {type = "item", name = "uranium-235", amount = 5},
+    {type = "item", name = "panglia_panglite_fiber", amount = 5},
+  }
 end
 
 if data.raw.recipe["thinking-brain"] then

@@ -22,7 +22,7 @@ data:extend(
     drop_sound = item_sounds.mechanical_inventory_move,
     place_result = "simulation_chamber",
     stack_size = 10,
-    default_import_location = planet_name,
+    default_import_location = "panglia",
     weight = 100 * kg
   },
   {
