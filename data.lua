@@ -1,4 +1,3 @@
-planet_name = "panglia"
 icons = "__panglia_planet__/graphics/icons/"
 entity = "__panglia_planet__/graphics/entity/"
 techicons = "__panglia_planet__/graphics/technology/"
