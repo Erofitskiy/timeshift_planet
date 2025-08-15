@@ -466,3 +466,96 @@ plant.map_color = {45,207,235,230}
 
 data:extend({plant})
 
+
+
+
+
+
+
+data:extend({
+  {
+    type = "plant",
+    name = "processing-grid-process-dna",
+    icon = icons .. "processing-grid-process-dna.png",
+    flags = {"placeable-neutral"},
+    minable =
+    {
+      mining_particle = "wooden-particle",
+      mining_time = 0.2,
+      results = {{type = "item", name = "datacell-dna-sequenced", amount = 1}},
+      mining_trigger =
+      {
+        {
+          type = "direct",
+          action_delivery =
+          {
+            {
+              type = "instant",
+              target_effects = {
+                {
+                  type = "play-sound",
+                  sound = sound_variations("__Moshine__/sound/entity/agricultural-tower/cervo", 13, 0.9),
+                  damage_type_filters = "fire"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    mining_sound = sound_variations("__Moshine__/sound/entity/agricultural-tower/cervo", 13, 0.9), --sound_variations("__space-age__/sound/mining/axe-mining-yumako-tree", 5, 0.6),
+    mined_sound = sound_variations("__Moshine__/sound/entity/agricultural-tower/cervo", 13, 0.9), --sound_variations("__space-age__/sound/mining/mined-yumako-tree", 6, 0.3),
+    growth_ticks = 10 * minutes,
+    max_health = 50,
+    collision_box = {{-0.3, -0.3}, {0.3, 0.3}},
+    selection_box = {{-1, -1}, {1, 1}},
+    sticker_box = {{-1, -1}, {1, 1}},
+    drawing_box_vertical_extension = 0.8,
+    impact_category = "tree",
+    autoplace =
+    {
+      probability_expression = 0,
+      tile_restriction = {"processing-tile"},
+    },
+    tile_buildability_rules = {
+      {
+        area = {{-0.5, -0.5}, {0.5, 0.5}},
+        required_tiles = {layers = {ground_tile = true}},
+      }
+    },
+    stateless_visualisation_variations =
+    {
+      {
+        animation = {
+          sheets = {
+            {
+              variation_count = 1,
+              filenames = {"__Moshine__/graphics/entity/quantum-computer/plant.png"},
+              size = 128,
+              lines_per_file = 25,
+              frame_count = 100,
+              animation_speed = 0.15,
+              scale = 0.5,
+              draw_as_glow = true,
+              frame_sequence = { 1, 2, 3, 1, 4, 5, 6, 1, 7, 8, 9, 10, 10, 11, 12, 1, 1, 13, 14, 15, 15, 13, 16, 17, 1, 18, 1, 19, 19, 20, 21, 22, 1, 22, 23, 1, 24, 25, 1, 12, 5, 6, 1, 15, 11, 7, 1, 8, 5, 4 ,
+                1, 1, 3, 1, 11, 5, 6, 1, 22, 8, 9, 1, 10, 1, 12, 1, 1, 3, 4, 1, 1, 13, 16, 17, 1, 16, 1, 1, 1, 1, 1, 22, 1, 22, 7, 1, 24, 6, 1, 1, 1, 1, 1, 1, 7, 7, 1, 11, 5, 1
+              }
+            },
+          }
+        }
+      }
+    },
+    pictures =
+    {
+      layers =
+      {
+        {
+          filename = "__Moshine__/graphics/empty.png",
+          width = 1,
+          height = 1,
+        }
+      }
+    },
+    map_color = {255, 255, 255},
+  },
+})

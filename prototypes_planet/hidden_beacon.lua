@@ -116,9 +116,9 @@ data:extend({
       sound =
       {
         filename = sounds .. "fast_forward1.ogg",
-        volume = 0.5,
+        volume = 0.3,
         --variations = sound_variations("__base__/sound/beacon", 1, 0.1),
-        audible_distance_modifier = 0.3,
+        audible_distance_modifier = 0.8,
         persistent = true,
       },
       max_sounds_per_prototype = 1
@@ -146,13 +146,13 @@ data:extend({
     name = "panglia_hidden_beacon_module",
     localised_description = {"item-description.speed-module"},
     icon = icons .. "panglia_hidden_beacon_module.png",
-    subgroup = "module",
     hidden = true,
     hidden_in_factoriopedia = true,
+    --subgroup = "module",
+    --order = "a[speed]-b[speed-module-2]",
     category = "panglia_module",
     color_hint = { text = "S" },
     tier = 1,
-    --order = "a[speed]-b[speed-module-2]",
     inventory_move_sound = item_sounds.module_inventory_move,
     pick_sound = item_sounds.module_inventory_pickup,
     drop_sound = item_sounds.module_inventory_move,

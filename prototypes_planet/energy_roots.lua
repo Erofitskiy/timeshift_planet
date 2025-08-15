@@ -208,6 +208,8 @@ data:extend({
     {
       type = "electric",
       usage_priority = "secondary-output",
+      render_no_power_icon = false,
+      render_no_network_icon = false,
     },
     horizontal_animation = multidir_anim,
     vertical_animation = multidir_anim,
