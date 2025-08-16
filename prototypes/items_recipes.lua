@@ -107,17 +107,23 @@ data:extend({
     name = "panglia_panglite_fiber",
     icon = icons .. "panglia_panglite_fiber.png",
     --subgroup = "panglia-processes",
-    category = "chemistry",
+    --category = "chemistry",
+    subgroup = "panglia-processes",
+    order = "a[base]-cc",
+    category = "centrifuging",
     enabled = false,
     auto_recycle = false,
-    energy_required = 50,
+    energy_required = 70,
     ingredients = {
-      {type = "item", name = "panglia_panglite", amount = 6},
-      {type = "fluid", name = "sulfuric-acid", amount = 40},
+      {type = "item", name = "panglia_panglite", amount = 4},
+      --{type = "fluid", name = "sulfuric-acid", amount = 40},
+      {type = "item", name = "uranium-238", amount = 1},
     },
     results = {
-      {type = "item", name = "panglia_panglite_fiber", amount = 1}
+      {type = "item", name = "panglia_panglite_fiber", amount = 1},
+      {type = "item", name = "uranium-235", amount = 1},
     },
+    always_show_products = true,
     allow_productivity = false,
     show_amount_in_title = false,
     crafting_machine_tint =
@@ -134,8 +140,9 @@ data:extend({
     icon = icons .. "panglia_low_density_structure_from_panglite_fiber.png",
     subgroup = "panglia-processes",
     order = "a[base]-cd",
-    energy_required = 60,
-    category = "crafting-with-fluid",
+    energy_required = 2,
+    --category = "crafting-with-fluid",
+    category = "chemistry",
     ingredients = {
       {type = "item", name = "panglia_panglite_fiber", amount = 1},
       {type = "fluid", name = "steam", amount = 10},
@@ -218,7 +225,7 @@ data:extend({
     heat_capacity = "0.2kJ",
     base_color = {0.4, 0.4, 0.4},
     flow_color = {0.4, 0.4, 0.4},
-    order = "a[fluid]-a[water]-c[panglia_branbalite_slurry]",
+    --order = "a[fluid]-a[water]-c[panglia_branbalite_slurry]",
     gas_temperature = 15,
     auto_barrel = true,
     fuel_value = "1MJ",
@@ -282,7 +289,9 @@ data:extend({
       {type = "fluid", name = "panglia_branbalite_slurry", amount = 40},
       {type = "item", name = "panglia_panglite_fiber", amount = 2},
     },
-    results = {{type = "item", name = "universe_precursor", amount = 1}},
+    results = {
+      {type = "item", name = "universe_precursor", amount = 1}
+    },
     allow_productivity = false,
     enabled = false,
   },
@@ -345,6 +354,12 @@ data:extend({
 
 })
 
+--log(serpent.block(data.raw.unit["big-wriggler-pentapod-premature"]))
+
+local monster = table.deepcopy(data.raw.unit["big-wriggler-pentapod-premature"])
+monster.name = "panglia_monster_1"
+
+data:extend({monster})
 
 ------------------ mutants
 data:extend({
@@ -377,7 +392,7 @@ data:extend({
           {
             {
               type = "create-entity",
-              entity_name = "big-wriggler-pentapod-premature",
+              entity_name = "panglia_monster_1",
               affects_target = true,
               show_in_tooltip = true,
               as_enemy = true,
@@ -394,7 +409,7 @@ data:extend({
                   {
                     {
                       type = "create-entity",
-                      entity_name = "big-wriggler-pentapod-premature",
+                      entity_name = "panglia_monster_1",
                       affects_target = true,
                       show_in_tooltip = false,
                       as_enemy = true,
