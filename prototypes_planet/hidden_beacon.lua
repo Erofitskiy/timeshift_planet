@@ -18,12 +18,12 @@ data:extend({
     max_health = 200000,
     corpse = "beacon-remnants",
     dying_explosion = "beacon-explosion",
-    collision_box = {{0, 0}, {0, 0}},
-    selection_box = {{0, 0}, {0, 0}},
+    collision_box = {{0, 0}, {0.45, 0.45}},
+    selection_box = {{0, 0}, {0.45, 0.45}},
     collision_mask = {layers={}, not_colliding_with_itself=true},
     damaged_trigger_effect = hit_effects.entity(),
     drawing_box_vertical_extension = 0.7,
-    allowed_effects = {"consumption", "speed", "pollution"},
+    allowed_effects = {"speed"},
     graphics_set = {
       module_icons_suppressed = true,
       animation_progress = 1,
@@ -133,7 +133,7 @@ data:extend({
     {
       {inventory_index = defines.inventory.beacon_modules, shift = {0, 0}, multi_row_initial_height_modifier = -0.3, max_icons_per_row = 2}
     },
-    map_color = {1, 1, 0},
+    map_color = {33, 0, 37},
   },
 
 
@@ -158,7 +158,7 @@ data:extend({
     drop_sound = item_sounds.module_inventory_move,
     stack_size = 1,
     weight = 20 * kg,
-    effect = {speed = 3, consumption = 3, pollution = 3, quality = -0.5},
+    effect = {speed = 5, consumption = 5, pollution = 5, quality = -0.5},
     --beacon_tint =
     --{
     --  primary = {0.441, 0.714, 1.000, 1.000}, -- #70b6ffff

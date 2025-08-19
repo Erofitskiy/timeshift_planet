@@ -19,12 +19,17 @@ data:extend({
     prerequisites = {},
     unit =
     {
-      count = 1,
+      count = 800,
       ingredients =
       {
         {"automation-science-pack", 1},
+        {"logistic-science-pack", 1},
+        {"chemical-science-pack", 1},
+        {"utility-science-pack", 1},
+        {"space-science-pack", 1},
+        {"agricultural-science-pack", 1}
       },
-      time = 1
+      time = 60
     }
   },
   {
@@ -100,12 +105,12 @@ data:extend({
     effects =
     {
     },
-    prerequisites = {"panglia_planet_discovery_panglia", "planet-discovery-moshine"},
+    prerequisites = {"panglia_planet_discovery_panglia"},
     research_trigger =
     {
       type = "craft-item",
-      item = "glass",
-      count = 10
+      item = "panglia_panglite",
+      count = 10,
     }
   },
 
@@ -130,7 +135,7 @@ data:extend({
     {
       type = "craft-item",
       item = "panglia_panglite",
-      count = 50,
+      count = 100,
     }
   },
 
@@ -238,3 +243,20 @@ end
 if data.raw["technology"]["thinking-brain-technology"] then
   data.raw["technology"]["thinking-brain-technology"].prerequisites = {"panglia_simulation_matrix"}
 end
+
+
+
+if mods["moshine"] then
+  table.insert(data.raw["technology"]["panglia_advanced_optics_nanotech"].prerequisites, "planet-discovery-moshine")
+  data.raw["technology"]["panglia_advanced_optics_nanotech"].research_trigger = {
+    type = "craft-item",
+    item = "glass",
+    count = 10
+  }
+end
+
+
+
+--if mods["moshine"] then
+--  table.insert(data.raw["technology"]["panglia_planet_discovery_panglia"].prerequisites, "panglia_simulation_matrix")
+--end

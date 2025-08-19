@@ -113,14 +113,14 @@ data:extend({
     category = "centrifuging",
     enabled = false,
     auto_recycle = false,
-    energy_required = 70,
+    energy_required = 700,
     ingredients = {
-      {type = "item", name = "panglia_panglite", amount = 4},
+      {type = "item", name = "panglia_panglite", amount = 40},
       --{type = "fluid", name = "sulfuric-acid", amount = 40},
       {type = "item", name = "uranium-238", amount = 1},
     },
     results = {
-      {type = "item", name = "panglia_panglite_fiber", amount = 1},
+      {type = "item", name = "panglia_panglite_fiber", amount = 10},
       {type = "item", name = "uranium-235", amount = 1},
     },
     always_show_products = true,
@@ -456,7 +456,7 @@ data:extend({
     results = {
       {type = "item", name = "datacell-dna-raw", amount = 1, probability = 1},
       --{type = "item", name = "hard-drive", amount = 1, probability = 0.99}
-      {type = "item", name = "uranium-235", amount = 1, probability = 1},
+      {type = "item", name = "uranium-238", amount = 1, probability = 1},
       {type = "item", name = "panglia_cloned_specimen_body_0", amount = 1, probability = 0.05},
       {type = "item", name = "mutated_monster_egg", amount = 1, probability = 0.95},
     },

@@ -12,6 +12,7 @@ script.on_event(defines.events.on_chunk_generated, function(event)
     for _, entity in pairs(entities) do
         if entity.valid then
             if entity.name == "panglia_hidden_beacon" then
+                --entity.teleport({x = entity.position.x + 0.5, y = entity.position.y + 0.5})
                 local inventory = entity.get_module_inventory()
                 if inventory and inventory.can_insert{name = "panglia_hidden_beacon_module"} then
                     inventory.insert{name = "panglia_hidden_beacon_module", count = 1}
