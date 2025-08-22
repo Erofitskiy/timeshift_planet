@@ -42,6 +42,7 @@ data:extend(
     results = {{type = "item", name = "simulation_chamber", amount = 1}},
     allow_productivity = false,
     enabled = false,
+    auto_recycle = true,
   },
 
 

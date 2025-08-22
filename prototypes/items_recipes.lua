@@ -76,12 +76,12 @@ data:extend({
     category = "smelting",
     enabled = false,
     auto_recycle = false,
-    energy_required = 28,
+    energy_required = 0.1 * beacon_multiplier,
     ingredients = {
-      {type = "item", name = "panglia_panglite", amount = 1}
+      {type = "item", name = "panglia_panglite", amount = 5}
     },
     results = {
-      {type = "item", name = "panglia_panglite", amount = 2}
+      {type = "item", name = "panglia_panglite", amount = 6}
     },
     allow_productivity = false,
     show_amount_in_title = false,
@@ -113,7 +113,7 @@ data:extend({
     category = "centrifuging",
     enabled = false,
     auto_recycle = false,
-    energy_required = 700,
+    energy_required = 5 * beacon_multiplier,
     ingredients = {
       {type = "item", name = "panglia_panglite", amount = 40},
       --{type = "fluid", name = "sulfuric-acid", amount = 40},
@@ -128,10 +128,10 @@ data:extend({
     show_amount_in_title = false,
     crafting_machine_tint =
     {
-      primary = {r = 1.000, g = 0.995, b = 0.089, a = 1.000}, -- #fffd16ff
-      secondary = {r = 1.000, g = 0.974, b = 0.691, a = 1.000}, -- #fff8b0ff
-      tertiary = {r = 0.723, g = 0.638, b = 0.714, a = 1.000}, -- #b8a2b6ff
-      quaternary = {r = 0.954, g = 1.000, b = 0.350, a = 1.000}, -- #f3ff59ff
+      primary = {240, 168, 56, 255}, -- #f0a938ff
+      secondary = {240, 168, 56, 255},
+      tertiary = {240, 168, 56, 255},
+      quaternary = {240, 168, 56, 255},
     }
   },
   {
@@ -140,7 +140,7 @@ data:extend({
     icon = icons .. "panglia_low_density_structure_from_panglite_fiber.png",
     subgroup = "panglia-processes",
     order = "a[base]-cd",
-    energy_required = 2,
+    energy_required = 0.1 * beacon_multiplier,
     --category = "crafting-with-fluid",
     category = "chemistry",
     ingredients = {
@@ -264,7 +264,7 @@ data:extend({
     order = "b[otherres]-aa",
     category = "oil-processing",
     enabled = false,
-    energy_required = 15,
+    energy_required = 0.5 * beacon_multiplier,
     ingredients = {
       {type = "fluid", name = "panglia_branbalite_slurry", amount = 65},
       {type = "fluid", name = "steam", amount = 35}
@@ -282,7 +282,7 @@ data:extend({
     icon = icons .. "panglia_universe_precursor.png",
     subgroup = "panglia-processes",
     order = "b[otherres]-bb",
-    energy_required = 40,
+    energy_required = 0.5 * beacon_multiplier,
     category = "chemistry",
     ingredients =
     {
@@ -325,7 +325,7 @@ data:extend({
     subgroup = "panglia-processes",
     order = "c[cloning]-bb",
     category = "cloning",
-    energy_required = 10,
+    energy_required = 1 * beacon_multiplier,
     ingredients = {
       {type = "item", name = "hard-drive", amount = 1},
       --TODO add DNA source
@@ -445,7 +445,7 @@ data:extend({
     subgroup = "panglia-processes",
     order = "c[cloning]-ee",
     category = "cloning",
-    energy_required = 600,
+    energy_required = 30 * beacon_multiplier,
     ingredients = {
       --{type = "item", name = "hard-drive", amount = 1},
       {type = "item", name = "uranium-235", amount = 1},
@@ -481,7 +481,7 @@ data:extend({
     random_tint_color = item_tints.iron_rust,
     spoil_ticks = 1 * minute,
     spoil_result = "spoilage",
-    weight = 15*kg
+    weight = 2*kg
   },
 
 
@@ -494,7 +494,7 @@ data:extend({
     subgroup = "panglia-processes",
     order = "c[cloning]-gg",
     category = "simulation_chamber",
-    energy_required = 600,
+    energy_required = 30 * beacon_multiplier,
     ingredients = {
       {type = "item", name = "panglia_cloned_specimen_body_0", amount = 1},
     },
@@ -518,15 +518,15 @@ data:extend({
     icon = icons .. "panglia_cloned_specimen_body_1.png",
     subgroup = "panglia-processes",
     order = "c[cloning]-hh",
-    inventory_move_sound = item_sounds.resource_inventory_move,
-    pick_sound = item_sounds.resource_inventory_pickup,
-    drop_sound = item_sounds.resource_inventory_move,
+    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
+    pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
+    drop_sound = space_age_item_sounds.agriculture_inventory_move,
     stack_size = 1,
     default_import_location = "panglia",
     random_tint_color = item_tints.iron_rust,
     spoil_ticks = 1 * minute,
     spoil_result = "spoilage",
-    weight = 15*kg
+    weight = 4*kg
   },
 
 
@@ -537,7 +537,7 @@ data:extend({
     category = "simulation_chamber",
     subgroup = "panglia-processes",
     order = "c[cloning]-ii",
-    energy_required = 600,
+    energy_required = 60 * beacon_multiplier,
     ingredients = {
       {type = "item", name = "panglia_cloned_specimen_body_1", amount = 1},
     },
@@ -562,15 +562,15 @@ data:extend({
     icon = icons .. "panglia_cloned_specimen_body_2.png",
     subgroup = "panglia-processes",
     order = "c[cloning]-jj",
-    inventory_move_sound = item_sounds.resource_inventory_move,
-    pick_sound = item_sounds.resource_inventory_pickup,
-    drop_sound = item_sounds.resource_inventory_move,
+    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
+    pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
+    drop_sound = space_age_item_sounds.agriculture_inventory_move,
     stack_size = 1,
     default_import_location = "panglia",
     random_tint_color = item_tints.iron_rust,
     spoil_ticks = 2 * minutes,
     spoil_result = "spoilage",
-    weight = 10*kg,
+    weight = 50*kg,
   },
 
   {
@@ -580,7 +580,7 @@ data:extend({
     category = "simulation_chamber",
     subgroup = "panglia-processes",
     order = "c[cloning]-kk",
-    energy_required = 600,
+    energy_required = 30 * beacon_multiplier,
     ingredients = {
       {type = "item", name = "panglia_cloned_specimen_body_2", amount = 1},
     },
@@ -606,15 +606,15 @@ data:extend({
     icon = icons .. "panglia_cloned_specimen_body_3_genius.png",
     subgroup = "panglia-processes",
     order = "c[cloning]-ll",
-    inventory_move_sound = item_sounds.resource_inventory_move,
-    pick_sound = item_sounds.resource_inventory_pickup,
-    drop_sound = item_sounds.resource_inventory_move,
+    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
+    pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
+    drop_sound = space_age_item_sounds.agriculture_inventory_move,
     stack_size = 1,
     default_import_location = "panglia",
     random_tint_color = item_tints.iron_rust,
     spoil_ticks = 2 * minutes,
     spoil_result = "spoilage",
-    weight = 10*kg,
+    weight = 65*kg,
   },
   {
     type = "item",
@@ -622,15 +622,15 @@ data:extend({
     icon = icons .. "panglia_cloned_specimen_body_3_dumb.png",
     subgroup = "panglia-processes",
     order = "c[cloning]-mm",
-    inventory_move_sound = item_sounds.resource_inventory_move,
-    pick_sound = item_sounds.resource_inventory_pickup,
-    drop_sound = item_sounds.resource_inventory_move,
+    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
+    pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
+    drop_sound = space_age_item_sounds.agriculture_inventory_move,
     stack_size = 1,
     default_import_location = "panglia",
     random_tint_color = item_tints.iron_rust,
     spoil_ticks = 2 * minutes,
     spoil_result = "spoilage",
-    weight = 10*kg,
+    weight = 65*kg,
   },
 
 })

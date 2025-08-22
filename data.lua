@@ -4,6 +4,8 @@ techicons = "__panglia_planet__/graphics/technology/"
 sounds = "__panglia_planet_assets__/sounds/"
 tssounds = "__panglia_planet_assets__/sounds/"
 
+beacon_multiplier = 100
+
 require "prototypes_planet.hidden_beacon"
 require "prototypes_planet.terrain"
 require "prototypes_planet.decoratives"

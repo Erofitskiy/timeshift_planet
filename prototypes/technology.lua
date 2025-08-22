@@ -130,7 +130,7 @@ data:extend({
         recipe = "panglia_low_density_structure_from_panglite_fiber"
       },
     },
-    prerequisites = {"panglia_panglite_multiplication"},
+    prerequisites = {"panglia_panglite_multiplication", "uranium-processing"},
     research_trigger =
     {
       type = "craft-item",
@@ -160,10 +160,15 @@ data:extend({
     prerequisites = {"panglia_advanced_optics_nanotech", "cloning-vat-technology", "moshine-tech-processing-grid", "uranium-processing"},
     unit =
     {
-      count = 50,
+      count = 850,
       ingredients =
       {
         {"automation-science-pack", 1},
+        {"logistic-science-pack", 1},
+        {"chemical-science-pack", 1},
+        {"utility-science-pack", 1},
+        {"space-science-pack", 1},
+        {"agricultural-science-pack", 1}
       },
       time = 60
     }
@@ -188,10 +193,15 @@ data:extend({
     prerequisites = {"panglia_dna_manipulation", "matter_printer-technology"},
     unit =
     {
-      count = 50,
+      count = 900,
       ingredients =
       {
         {"automation-science-pack", 1},
+        {"logistic-science-pack", 1},
+        {"chemical-science-pack", 1},
+        {"utility-science-pack", 1},
+        {"space-science-pack", 1},
+        {"agricultural-science-pack", 1}
       },
       time = 60
     }
@@ -215,14 +225,11 @@ data:extend({
       },
     },
     prerequisites = {"panglia_simulation_chamber"},
-    unit =
+    research_trigger =
     {
-      count = 50,
-      ingredients =
-      {
-        {"automation-science-pack", 1},
-      },
-      time = 60
+      type = "craft-item",
+      item = "panglia_cloned_specimen_body_1",
+      count = 100,
     }
   },
 })
