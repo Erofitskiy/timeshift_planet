@@ -60,3 +60,8 @@ if data.raw.recipe["cloning-vat"] then
   }
   data.raw.recipe["cloning-vat"].category = "crafting-with-fluid"
 end
+
+
+if data.raw["assembling-machine"]["cloning-vat"] then
+  table.insert(data.raw["assembling-machine"]["cloning-vat"].allowed_module_categories, "panglia_module")
+end

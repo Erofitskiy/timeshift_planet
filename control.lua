@@ -132,25 +132,57 @@ end)
 -- Register event for when a rail is built
 script.on_event({defines.events.on_built_entity, defines.events.on_robot_built_entity, defines.events.script_raised_built, defines.events.script_raised_revive}, function(event)
     local entity = event.created_entity or event.entity
-    if entity and entity.valid and entity.type == "inserter" and entity.surface and entity.surface.name == "panglia" then
+    if entity and entity.valid and entity.surface then
 
         local surface = entity.surface
         local position = entity.position
-        local beacons = surface.find_entities_filtered{position = position, name = "panglia_hidden_beacon"}
-        if #beacons > 0 and not string.find(entity.name, "_panglia_fast_version") then
-            local force = entity.force
-            local dir = entity.direction
-            local owner = entity.last_user
-            local new_entity = surface.create_entity{
-                name = entity.name .. "_panglia_fast_version",
-                position = position,
-                force = force,
-                direction = dir,
-                fast_replace = true,
-                raise_built = true,
-                player = owner
-            }
-            entity.destroy()
+        local beacons = surface.find_entities_filtered{area = {{position.x-0.5,position.y-0.5},{position.x+0.5,position.y+0.5}}, name = "panglia_hidden_beacon"}
+        
+        if surface == "panglia" then
+            if #beacons > 0 and not string.find(entity.name, "_panglia_fast_version") then -- there's a hidden beacon
+
+                if entity.type == "inserter" or entity.type == "transport-belt" or entity.type == "underground-belt" or entity.type == "splitter" then
+                    local new_entity = surface.create_entity{
+                        name = entity.name .. "_panglia_fast_version",
+                        position = position,
+                        force = entity.force,
+                        direction = entity.direction,
+                        fast_replace = true,
+                        raise_built = true,
+                        player = entity.last_user,
+                    }
+                    if new_entity then
+                        entity.destroy()
+                    end
+                end
+            end
+
+            -- make everything a military target for pangroots
+            if entity and entity.valid and entity.force == "player" and entity.prototype.allow_run_time_change_of_is_military_target == true and entity.prototype.is_military_target == false then
+                game.print("is_military_target is true")
+                entity.is_military_target = true
+            end
+        end
+        if surface.name ~= "panglia" or (surface.name == "panglia" and #beacons == 0) then
+            if string.find(entity.name, "_panglia_fast_version") then
+                local new_entity = surface.create_entity{
+                    --name = entity.original_name,
+                    name = entity.name:gsub( "_panglia_fast_version", "") ,
+                    position = position,
+                    force = entity.force,
+                    direction = entity.direction,
+                    fast_replace = true,
+                    raise_built = true,
+                    player = entity.last_user,
+                }
+                if new_entity then
+                    entity.destroy()
+                end
+            end
         end
     end
+        
+
+
+
 end)
