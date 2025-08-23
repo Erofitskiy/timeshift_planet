@@ -125,3 +125,32 @@ script.on_nth_tick(seconds_interval * 60, function()
         end
     end
 end)
+
+
+
+
+-- Register event for when a rail is built
+script.on_event({defines.events.on_built_entity, defines.events.on_robot_built_entity, defines.events.script_raised_built, defines.events.script_raised_revive}, function(event)
+    local entity = event.created_entity or event.entity
+    if entity and entity.valid and entity.type == "inserter" and entity.surface and entity.surface.name == "panglia" then
+
+        local surface = entity.surface
+        local position = entity.position
+        local beacons = surface.find_entities_filtered{position = position, name = "panglia_hidden_beacon"}
+        if #beacons > 0 and not string.find(entity.name, "_panglia_fast_version") then
+            local force = entity.force
+            local dir = entity.direction
+            local owner = entity.last_user
+            local new_entity = surface.create_entity{
+                name = entity.name .. "_panglia_fast_version",
+                position = position,
+                force = force,
+                direction = dir,
+                fast_replace = true,
+                raise_built = true,
+                player = owner
+            }
+            entity.destroy()
+        end
+    end
+end)
