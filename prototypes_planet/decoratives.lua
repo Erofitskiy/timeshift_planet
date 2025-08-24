@@ -100,14 +100,48 @@ end
 
 
 
-local hugerockpics = {}
-for num = 1, 28 do
+local function spritesheets_to_pictures_panglia_lights(spritesheets)
+  local pictures = {}
+  for _, spritesheet in pairs(spritesheets) do
+    for i = 1, spritesheet.frame_count or 1, 1 do
+      
+      local layers = {}
+      table.insert(layers, util.sprite_load(spritesheet.path,
+        {
+          frame_index = i - 1,
+          scale = 0.5,
+          --dice_y = spritesheet.dice_y
+        })
+      )
+      table.insert(layers, util.sprite_load(spritesheet.path .. "-light",
+        {
+          frame_index = i - 1,
+          scale = 0.5,
+          --dice_y = spritesheet.dice_y,
+          draw_as_light = true,
+          blend_mode = "additive"
+        })
+      )
+      table.insert(pictures, {layers = layers})
+    end
+  end
+  return pictures
+end
+
+
+--local hugerockpics = {}
+--[[for num = 1, 28 do
   table.insert(hugerockpics,
   {
-    filename = decora .. "huge-panglite-rock/huge-panglite-rock-" .. num .. ".png",
-    width = 320,
-    height = 256,
-    scale = 0.5,
+    layers = {
+      {
+        filename = decora .. "huge-panglite-rock/huge-panglite-rock-" .. num .. ".png",
+        width = 320,
+        height = 256,
+        scale = 0.5,
+      }
+    }
+    
   })
 end
 
@@ -121,7 +155,7 @@ for num = 1, 27 do
     scale = 0.5,
   })
 end
-
+]]
 local mediumrocks = {}
 for num = 1, 12 do
   table.insert(mediumrocks,
@@ -190,7 +224,8 @@ data:extend({
       order = "a[landscape]-c[rock]-a[huge]",
       probability_expression = "vulcanus_rock_huge"
     },
-    pictures = hugerockpics,
+    --pictures = hugerockpics,
+    pictures = spritesheets_to_pictures_panglia_lights({{path = decora .. "huge-panglite-rock/huge-panglite-rock", frame_count = 28}}),
   },
 
   {
@@ -233,7 +268,8 @@ data:extend({
     count_as_rock_for_filtered_deconstruction = true,
     mined_sound = sound_variations(tssounds .. "panglite", 8, 0.7),
     impact_category = "stone",
-    pictures = bigrockpics,
+    --pictures = bigrockpics,
+    pictures = spritesheets_to_pictures_panglia_lights({{path = decora .. "big-panglite-rock/big-panglite-rock", frame_count = 27}}),
   },
 
   {

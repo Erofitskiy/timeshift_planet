@@ -70,12 +70,11 @@ for i, belt in pairs(data.raw["splitter"]) do
 end
 
 
-allow_run_time_change_of_is_military_target = true
 
-
-local entitytypes = {"accumulator", "agricultural-tower", "beacon", "boiler", "container", "logistic-container", "assembling-machine", "furnace", "rocket-silo", "display-panel", 
+-- make everything a military target for pangroots and egg monsters
+local entitytypes = {"accumulator", "agricultural-tower", "boiler", "container", "logistic-container", "assembling-machine", "furnace", "rocket-silo", "display-panel", 
 "electric-energy-interface", "electric-pole", "construction-robot", "logistic-robot", "lab", "lamp", "mining-drill", "offshore-pump", "pipe", "pipe-to-ground", "pump", "roboport",
- "solar-panel", "splitter", "underground-belt", "valve"}
+"solar-panel", "splitter", "underground-belt", "valve"}
 
 for i, entitytype in pairs(entitytypes) do
   for j, entity in pairs(data.raw[entitytype]) do
