@@ -231,7 +231,7 @@ data:extend({
     procession_graphic_catalogue = planet_catalogue_vulcanus,
     surface_properties =
     {
-      ["day-night-cycle"] = 5 * minute,
+      ["day-night-cycle"] = 4 * minute,
       ["magnetic-field"] = 56,
       ["solar-power"] = 80,
       pressure = 1401, --must be 1000 >< 2000 for agricultural tower
@@ -299,8 +299,15 @@ data:extend({
         --{0.80, "__space-age__/graphics/lut/vulcanus-1-day.png"},
         --{0.0, "__panglia_planet__/graphics/lut/identity-lut.png"},
         --{0.5, "__core__/graphics/color_luts/lut-night.png"},
-        {0.0, "__panglia_planet__/graphics/lut/panglia-day-lut.png"},
-        {0.5, "__panglia_planet__/graphics/lut/panglia-night-lut.png"},
+        {0.00, "__panglia_planet__/graphics/lut/panglia-day2-lut.png"},
+        {0.20, "__panglia_planet__/graphics/lut/panglia-day1-lut.png"},
+        {0.35, "__panglia_planet__/graphics/lut/panglia-afternoon1-lut.png"},
+        {0.40, "__panglia_planet__/graphics/lut/panglia-afternoon2-lut.png"},
+        {0.45, "__panglia_planet__/graphics/lut/panglia-night-lut.png"},
+        {0.55, "__panglia_planet__/graphics/lut/panglia-night-lut.png"},
+        {0.65, "__panglia_planet__/graphics/lut/panglia-dawn1-lut.png"},
+        {0.75, "__panglia_planet__/graphics/lut/panglia-dawn2-lut.png"},
+        {0.90, "__panglia_planet__/graphics/lut/panglia-day1-lut.png"},
       },
 
       terrain_tint_effect =
@@ -330,7 +337,7 @@ data:extend({
     from = "gleba",
     to = "panglia",
     order = "a",
-    length = 100,
+    length = 1000,
     asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus)
   },
   --[[{
