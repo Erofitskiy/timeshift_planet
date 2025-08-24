@@ -138,7 +138,7 @@ script.on_event({defines.events.on_built_entity, defines.events.on_robot_built_e
         local position = entity.position
         local beacons = surface.find_entities_filtered{area = {{position.x-0.5,position.y-0.5},{position.x+0.5,position.y+0.5}}, name = "panglia_hidden_beacon"}
         
-        if surface == "panglia" then
+        if surface.name == "panglia" then
             if #beacons > 0 and not string.find(entity.name, "_panglia_fast_version") then -- there's a hidden beacon
 
                 if entity.type == "inserter" or entity.type == "transport-belt" or entity.type == "underground-belt" or entity.type == "splitter" then
@@ -156,14 +156,12 @@ script.on_event({defines.events.on_built_entity, defines.events.on_robot_built_e
                     end
                 end
             end
-
-            -- make everything a military target for pangroots
-            if entity and entity.valid and entity.force == "player" and entity.prototype.allow_run_time_change_of_is_military_target == true and entity.prototype.is_military_target == false then
-                game.print("is_military_target is true")
+            -- make everything a military target for pangroots and egg monsters
+            if entity and entity.valid and entity.prototype.allow_run_time_change_of_is_military_target == true and entity.prototype.is_military_target == false then
                 entity.is_military_target = true
             end
         end
-        if surface.name ~= "panglia" or (surface.name == "panglia" and #beacons == 0) then
+        if entity and entity.valid and surface.name ~= "panglia" or (surface.name == "panglia" and #beacons == 0) then
             if string.find(entity.name, "_panglia_fast_version") then
                 local new_entity = surface.create_entity{
                     --name = entity.original_name,
@@ -181,8 +179,4 @@ script.on_event({defines.events.on_built_entity, defines.events.on_robot_built_e
             end
         end
     end
-        
-
-
-
 end)

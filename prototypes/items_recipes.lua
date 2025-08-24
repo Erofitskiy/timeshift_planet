@@ -33,6 +33,12 @@ data:extend({
     type = "fuel-category",
     name = "panglia_branbalite"
   },
+  {
+    type = "item-subgroup",
+    name = "panglia-sped-up-entities",
+    group = "other",
+    order = "zz"
+  },
 })
 
 
