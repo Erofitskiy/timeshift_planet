@@ -1,4 +1,15 @@
+# EARLY RELEASE, NOT COMPLETELY FINISHED
 
+Panglia is a planet that follows Moshine in the quest for even more intelligence.
+It's a strange alien planet that contains Branbalite, a phosphorescent plant, and panglite, a strange metal. Some zones are experiencing much faster time, which will allow you to experiment with cloning, then keep clones in simulations and upload them. You'll need to fill the huge electric needs with dangerous roots that expand and attack your base.
+
+It has custom music, unique terrain, a tech tree, 4 new machines...
+
+Right now, it requires Moshine.
+
+Feedback very welcome, here or discord @snouz
+
+This is very early access, the experience is probably not balanced yet.
 
 # Credits:
 - 29 tracks from artist Blear Moon / Serat (from albums [Flow Sessions](https://freemusicarchive.org/music/serat/flow-sessions), [Fallow](https://freemusicarchive.org/music/Blear_Moon/Fallow) and [Town of Two Houses](https://freemusicarchive.org/music/Blear_Moon/Town_of_Two_Houses)), (CC BY-NC / CC BY)
