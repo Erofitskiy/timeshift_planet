@@ -159,7 +159,7 @@ data:extend({
     drop_sound = item_sounds.module_inventory_move,
     stack_size = 1,
     weight = 20 * kg,
-    effect = {speed = beacon_multiplier, consumption = beacon_multiplier, pollution = 1, quality = -3},
+    effect = {speed = beacon_multiplier, consumption = 0.5, pollution = 1, quality = -2},
     --beacon_tint =
     --{
     --  primary = {0.441, 0.714, 1.000, 1.000}, -- #70b6ffff

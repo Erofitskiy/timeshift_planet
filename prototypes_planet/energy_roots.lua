@@ -247,13 +247,13 @@ data:extend({
     autoplace = resource_autoplace.resource_autoplace_settings{
       name = "panglia_energy_roots",
       order = "c", -- Other resources are "b"; oil won't get placed if something else is already there.
-      base_density = 3,
-      base_spots_per_km2 = 30,
+      base_density = 1,
+      base_spots_per_km2 = 50,
       random_probability = 1/10,
       random_spot_size_minimum = 0.01,
       random_spot_size_maximum = 0.01,
       has_starting_area_placement = true,
-      regular_rq_factor_multiplier = 1
+      regular_rq_factor_multiplier = 5
     },
     map_color = {1, 1, 0},
   },

@@ -16,7 +16,7 @@ data:extend({
         use_icon_overlay_constant = true
       },
     },
-    prerequisites = {},
+    prerequisites = {"agricultural-science-pack"},
     unit =
     {
       count = 800,
@@ -229,7 +229,7 @@ data:extend({
     {
       type = "craft-item",
       item = "panglia_cloned_specimen_body_1",
-      count = 100,
+      count = 1,
     }
   },
 })

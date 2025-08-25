@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.1.1
+Date: 2025-08-25
+  Bugfixes:
+    - Unhide clone recipes
+    - Made planet research unavailable from game start
+    - Sim tech is unlocked with one "baby", not 100
+    - Speed zones quality reduction: -20% instead of -30%
+    - Speed zones energy consumption: +50% instead of +10000% relative to speed
+    - Made power roots more common
+---------------------------------------------------------------------------------------------------
 Version: 0.1.0
 Date: 2025-08-25
   Info:

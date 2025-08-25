@@ -560,7 +560,8 @@ data:extend({
       tertiary = {r = 1, g = 1, b = 1, a = 1},
       quaternary = {r = 0, g = 0, b = 0, a = 0},
     },
-    hidden = true,
+    --hidden = true,
+    hide_from_player_crafting = true,
   },
   {
     type = "item",
@@ -603,7 +604,8 @@ data:extend({
       tertiary = {r = 0, g = 0, b = 0, a = 0},
       quaternary = {r = 1, g = 1, b = 1, a = 1},
     },
-    hidden = true,
+    --hidden = true,
+    hide_from_player_crafting = true,
   },
 
   {
