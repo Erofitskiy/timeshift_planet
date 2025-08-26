@@ -57,7 +57,7 @@ local multidir_anim = {
       line_length = 1,
       scale = 0.5,
     },
-    {
+    --[[{
       filename = entity .. "panglia_energy_roots/panglia_energy_roots_1_shadow.png",
       width = 704,
       height = 704,
@@ -65,7 +65,7 @@ local multidir_anim = {
       line_length = 1,
       scale = 0.5,
       draw_as_shadow = true,
-    },
+    },]]
     {
       filename = entity .. "panglia_energy_roots/panglia_energy_roots_1_glow.png",
       width = 704,
@@ -219,7 +219,7 @@ data:extend({
         name = "energy_root_pseudosmoke",
         north_position = {0,0}, --{0.9, 0.0},
         east_position = {0,0},--{-2.0, -2.0},
-        frequency = 0.5 / 32,
+        frequency = 0.2 / 32,
         starting_vertical_speed = 0, -- 0.08,
         starting_frame_deviation = 60,
         vertical_speed_slowdown = 0,
@@ -262,7 +262,7 @@ data:extend({
     name = "energy_root_pseudosmoke",
     duration = 300,
     fade_in_duration = 0,
-    fade_away_duration = 0,
+    fade_away_duration = 200,
     spread_duration = 0,-- 120,
     start_scale = 0.5,
     end_scale = 0.5,
@@ -278,17 +278,19 @@ data:extend({
       filename = entity .. "fire-smoke/fire-smoke-glow.png",
       flags = { "smoke" },
       blend_mode = "additive",
-      line_length = 5,
+      draw_as_glow = true,
       width = 704,
       height = 704,
-      frame_count = 25,
       --shift = {-0.265625, 0.8125},
       --priority = "high",
-      animation_speed = 0.1,
+      animation_speed = 0.2,
       scale = 0.5,
+      line_length = 5,
+      frame_count = 25,
+      frame_sequence = {1,1,1,1,2,1,1,3,1,4,1,1,1,1,5,6,7,1,1,8,1,9,1,1,10,1,1,11,6,7,1,1,1,8,1,9,1,9,1,1,1,9,10,1,11,1,12,1,1,19,1,1,12,1,13,1,1,1,1,1,1,14,1,1,1,15,16,1,17,1,22,1,23,1,24,1,25,1,18,1,1,19,1,1,1,20,1,1,21,1,1,1,22,1,1,23,23,1,1,1,24,1,1,1,25,1,1,1,1,2,1,2,1,3,1,4,1,1,13,1,1,14,1,1,15,1,16,1,1,17,1,18,1,1,1,5,6,1,7,1,1,1,8,1,9,10,1,11,12,1,1,1,19,1,1,20,1,20,1,21,1,1,1,22,1,1,23,1,24,1,25}
     },
-    glow_animation = nil --[[
-    {
+    --glow_animation = nil 
+    --[[{
       filename = entity .. "fire-smoke/fire-smoke-glow.png",
       flags = { "smoke" },
       blend_mode = "additive",
