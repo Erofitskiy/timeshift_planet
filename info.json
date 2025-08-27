@@ -4,16 +4,16 @@
   "description": "Panglia Planet",
   "author": "snouz",
   "homepage": "https://github.com/snouz/timeshift_planet",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "factorio_version": "2.0",
   "dependencies": [
     "base",
     "space-age",
-    "panglia_planet_assets",
+    "panglia_planet_assets >= 0.1.0",
     "Moshine",
     "thinking_brain",
     "matter_printer",
-    "Cloning-vat-building"
+    "Cloning-vat-building >= 1.0.3"
   ],
   "space_travel_required": true
 }

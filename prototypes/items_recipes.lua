@@ -7,7 +7,6 @@ local minutes = 60 * seconds
 
 
 
-
 ------------------------------------------------------
 --------------------- SUB-GROUPS ---------------------
 ------------------------------------------------------
@@ -82,7 +81,7 @@ data:extend({
     category = "smelting",
     enabled = false,
     auto_recycle = false,
-    energy_required = 0.1 * beacon_multiplier,
+    energy_required = 1 * beacon_multiplier,
     ingredients = {
       {type = "item", name = "panglia_panglite", amount = 5}
     },
@@ -91,6 +90,7 @@ data:extend({
     },
     allow_productivity = false,
     show_amount_in_title = false,
+    surface_conditions = panglia_only,
   },
 
   {
@@ -138,7 +138,8 @@ data:extend({
       secondary = {240, 168, 56, 255},
       tertiary = {240, 168, 56, 255},
       quaternary = {240, 168, 56, 255},
-    }
+    },
+    surface_conditions = panglia_only,
   },
   {
     type = "recipe",
@@ -160,6 +161,7 @@ data:extend({
     enabled = false,
     show_amount_in_title = false,
     --always_show_made_in = true,
+    surface_conditions = panglia_only,
   },
 
 })
@@ -234,7 +236,7 @@ data:extend({
     --order = "a[fluid]-a[water]-c[panglia_branbalite_slurry]",
     gas_temperature = 15,
     auto_barrel = true,
-    fuel_value = "1MJ",
+    fuel_value = "1GJ",
   },
   {
     type = "recipe",
@@ -253,7 +255,8 @@ data:extend({
     },
     allow_productivity = true,
     enabled = false,
-    allow_decomposition = false
+    allow_decomposition = false,
+    surface_conditions = panglia_only,
   },
 
 })
@@ -280,7 +283,8 @@ data:extend({
       {type = "fluid", name = "water", amount = 10}
     },
     allow_productivity = true,
-    allow_decomposition = false
+    allow_decomposition = false,
+    surface_conditions = panglia_only,
   },
   {
     type = "recipe",
@@ -300,6 +304,7 @@ data:extend({
     },
     allow_productivity = false,
     enabled = false,
+    surface_conditions = panglia_only,
   },
 })
 
@@ -468,6 +473,7 @@ data:extend({
     },
     allow_productivity = false,
     enabled = false,
+    surface_conditions = panglia_only,
   },
 
 
@@ -487,7 +493,7 @@ data:extend({
     random_tint_color = item_tints.iron_rust,
     spoil_ticks = 1 * minute,
     spoil_result = "spoilage",
-    weight = 2*kg
+    weight = 2*kg,
   },
 
 
@@ -517,6 +523,7 @@ data:extend({
       tertiary = {r = 0, g = 0, b = 0, a = 0}, -- #d9a892ff
       quaternary = {r = 0, g = 0, b = 0, a = 0}, -- #ff7e45ff
     },
+    surface_conditions = panglia_only,
   },
   {
     type = "item",
@@ -532,7 +539,7 @@ data:extend({
     random_tint_color = item_tints.iron_rust,
     spoil_ticks = 1 * minute,
     spoil_result = "spoilage",
-    weight = 4*kg
+    weight = 4*kg,
   },
 
 
@@ -562,6 +569,7 @@ data:extend({
     },
     --hidden = true,
     hide_from_player_crafting = true,
+    surface_conditions = panglia_only,
   },
   {
     type = "item",
@@ -606,6 +614,7 @@ data:extend({
     },
     --hidden = true,
     hide_from_player_crafting = true,
+    surface_conditions = panglia_only,
   },
 
   {

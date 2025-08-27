@@ -88,11 +88,11 @@ data:extend({
     {
       name = "panglia_hidden_beacon",
       order = "a",
-      base_density = 25,
+      base_density = 38,
       has_starting_area_placement = true,
-      regular_rq_factor_multiplier = 1.10,
+      regular_rq_factor_multiplier = 3.10,
       starting_rq_factor_multiplier = 1.5,
-      candidate_spot_count = 40,
+      candidate_spot_count = 60,
       --tile_restriction = autoplace_parameters.tile_restriction
     },
     radius_visualisation_picture =

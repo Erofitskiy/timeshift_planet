@@ -43,6 +43,7 @@ data:extend(
     allow_productivity = false,
     enabled = false,
     auto_recycle = true,
+    surface_conditions = panglia_only,
   },
 
 
@@ -233,5 +234,6 @@ data:extend(
     energy_usage = "210kW",
     crafting_categories = {"simulation_chamber"},
     fluid_boxes = {},
+    surface_conditions = panglia_only,
   },
 })

@@ -93,7 +93,7 @@ data:extend({
     --alert_icon_shift = util.by_pixel(0, -12),
     --alert_icon_scale = 0,
     effectivity = 1,
-    fluid_usage_per_tick = 0.5,
+    fluid_usage_per_tick = 0.1,
     allow_copy_paste = false,
     burns_fluid = true,
 
@@ -226,8 +226,8 @@ data:extend({
       }
     },
     impact_category = "metal-large",
-    open_sound = sounds.machine_open,
-    close_sound = sounds.machine_close,
+    open_sound = {filename = "__panglia_planet__/sounds/panderoot_open.ogg", volume = 1},
+    close_sound = {filename = "__panglia_planet__/sounds/panderoot_close.ogg", volume = 1},
     working_sound =
     {
       sound =

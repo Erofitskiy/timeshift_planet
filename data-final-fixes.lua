@@ -73,7 +73,7 @@ end
 
 -- make everything a military target for pangroots and egg monsters
 local entitytypes = {"accumulator", "agricultural-tower", "boiler", "container", "logistic-container", "assembling-machine", "furnace", "rocket-silo", "display-panel", 
-"electric-energy-interface", "electric-pole", "construction-robot", "logistic-robot", "lab", "lamp", "mining-drill", "offshore-pump", "pipe", "pipe-to-ground", "pump", "roboport",
+"electric-energy-interface", "electric-pole", "construction-robot", "logistic-robot", "lab", "lamp", "mining-drill", "offshore-pump", "roboport",
 "solar-panel", "splitter", "underground-belt", "valve"}
 
 for i, entitytype in pairs(entitytypes) do

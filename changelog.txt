@@ -1,8 +1,15 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.2
-Date: 2025-08-2
+Date: 2025-08-27
   Graphics:
-    - New Panderoots graphics and animation
+    - New Panderoots graphics and animation (and sounds)
+  Balance:
+    - Made most custom recipes exclusive to Panglia
+    - Simulation chamber can only be built on Panglia
+    - Made Panglite 10x slower to produce
+    - Panderoots won't attack pipes anymore
+    - Panderoots take 10* less fuel but produce 100* more electricity
+    - Made speed zones more common
   Locale:
     - Russian by Erofitskiy
 ---------------------------------------------------------------------------------------------------
@@ -11,7 +18,8 @@ Date: 2025-08-25
   Bugfixes:
     - Unhide clone recipes
     - Made planet research unavailable from game start
-    - Sim tech is unlocked with one "baby", not 100
+  Balance:
+    - Simulator tech is unlocked with one "baby", not 100
     - Speed zones quality reduction: -20% instead of -30%
     - Speed zones energy consumption: +50% instead of +10000% relative to speed
     - Made power roots more common
