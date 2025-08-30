@@ -650,4 +650,41 @@ data:extend({
     weight = 65*kg,
   },
 
+
+--[[
+  {
+    type = "item",
+    name = "panglia_sentient_processor",
+    icon = icons .. "panglia_sentient_processor.png",
+    subgroup = "panglia-processes",
+    order = "c[cloning]-nn",
+    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
+    pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
+    drop_sound = space_age_item_sounds.agriculture_inventory_move,
+    stack_size = 1,
+    default_import_location = "panglia",
+    random_tint_color = item_tints.iron_rust,
+    weight = 5*kg,
+  },
+  {
+    type = "recipe",
+    name = "panglia_sentient_processor",
+    icon = icons .. "panglia_sentient_processor.png",
+    subgroup = "panglia-processes",
+    order = "b[otherres]-nn",
+    energy_required = 2 * beacon_multiplier,
+    category = "thinkingbrain",
+    ingredients =
+    {
+      {type = "fluid", name = "panglia_cloned_specimen_body_3_dumb", amount = 1},
+      {type = "item", name = "quantum-processor", amount = 1},
+    },
+    results = {
+      {type = "item", name = "panglia_sentient_processor", amount = 1}
+    },
+    allow_productivity = false,
+    enabled = false,
+    surface_conditions = panglia_only,
+  },]]
+
 })

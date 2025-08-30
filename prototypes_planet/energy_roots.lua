@@ -275,7 +275,7 @@ data:extend({
     affected_by_wind = false,
     animation =
     {
-      filename = entity .. "fire-smoke/fire-smoke-glow.png",
+      filename = entity .. "panglia_energy_roots/panglia_energy_roots-gloweffect.png",
       flags = { "smoke" },
       blend_mode = "additive",
       draw_as_glow = true,
@@ -287,7 +287,7 @@ data:extend({
       scale = 0.5,
       line_length = 5,
       frame_count = 25,
-      frame_sequence = {1,1,1,1,2,1,1,3,1,4,1,1,1,1,5,6,7,1,1,8,1,9,1,1,10,1,1,11,6,7,1,1,1,8,1,9,1,9,1,1,1,9,10,1,11,1,12,1,1,19,1,1,12,1,13,1,1,1,1,1,1,14,1,1,1,15,16,1,17,1,22,1,23,1,24,1,25,1,18,1,1,19,1,1,1,20,1,1,21,1,1,1,22,1,1,23,23,1,1,1,24,1,1,1,25,1,1,1,1,2,1,2,1,3,1,4,1,1,13,1,1,14,1,1,15,1,16,1,1,17,1,18,1,1,1,5,6,1,7,1,1,1,8,1,9,10,1,11,12,1,1,1,19,1,1,20,1,20,1,21,1,1,1,22,1,1,23,1,24,1,25}
+      frame_sequence = {1,1,1,1,2,1,1,3,1,4,1,1,1,1,5,6,7,1,1,8,1,9,1,1,10,1,1,11,6,7,1,1,1,8,1,9,1,1,6,15,1,1,9,10,1,11,1,12,1,1,19,1,1,12,1,13,1,1,1,1,1,1,14,1,1,1,15,16,1,17,1,22,1,23,1,24,1,25,1,18,1,1,19,1,1,1,20,1,1,21,1,1,1,22,1,1,23,1,1,1,24,1,1,1,25,1,1,1,1,2,1,1,3,1,4,1,1,13,1,1,14,1,1,15,1,16,1,1,17,1,18,1,1,1,5,6,1,7,1,1,1,8,1,9,10,1,11,12,1,1,1,19,1,1,20,1,1,21,1,1,1,22,1,1,1,1,1,1,23,1,24,1,25}
     },
     --glow_animation = nil 
     --[[{
@@ -353,8 +353,10 @@ local function make_energy_roots_tesla_turret(num, seq)
               layers =
               {
                 {
-                  filename = entity .. "panglia_energy_roots/cell_" .. num .. ".png",
+                  filename = entity .. "panglia_energy_roots/cell.png", --_" .. num .. ".png",
                   size = 128,
+                  x = (num - 1) * 128,
+                  y = 0,
                   frame_count = 1,
                   repeat_count = 30,
                   scale = 0.5,
@@ -381,11 +383,11 @@ local function make_energy_roots_tesla_turret(num, seq)
       {
         {type = "electric", percent = 100},
         {type = "laser", percent = 99},
-        {type = "acid", percent = 90},
-        {type = "physical", percent = 10},
+        {type = "acid", percent = 99},
+        {type = "explosion", percent = 90},
+        {type = "fire", percent = 90},
         {type = "impact", percent = 10},
-        {type = "explosion", percent = 10},
-        {type = "fire", percent = 0},
+        {type = "physical", percent = 0},
       },
       attack_parameters =
       {
@@ -467,8 +469,10 @@ local function make_energy_roots_tesla_turret(num, seq)
       remove_on_tile_placement = false,
       animation = 
       {
-        filename = entity .. "panglia_energy_roots/cell_" .. num .. ".png",
-        tint = {.6,.6,.6,.6},
+        filename = entity .. "panglia_energy_roots/cell_remnants.png", --_" .. num .. ".png",
+        x = (num - 1) * 128,
+        y = 0,
+        --tint = {.6,.6,.6,.6},
         --filename = entity .. "panglia_energy_roots/cell_" .. num .. "_remnants.png",
         size = 128,
         scale = 0.5,

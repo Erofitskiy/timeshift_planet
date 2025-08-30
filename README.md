@@ -7,9 +7,15 @@ It has custom music, unique terrain, a tech tree, 4 new machines...
 
 Right now, it requires Moshine.
 
-Feedback very welcome, here or discord @snouz
+Feedback very welcome, here or discord @snouz. The things I'm most interested in tweaking based on feedback: 
+- recipe price, time and probability
+- the speed of speedy zones (can be cheaty for other parts of the game?)
+- resource input from the "universe incubator" (not too high that it can unbalance the game)
+- electrical balance using panderoots (root input vs machine needs) (the electricity needed has to be so high that the only reasonable way to obtain is with panderoots)
+- probability of panderoots and speedy zones
 
 This is very early access, the experience is probably not balanced yet.
+
 
 # Credits:
 - Locale: Russian by Erofitskiy

@@ -65,3 +65,11 @@ end
 if data.raw["assembling-machine"]["cloning-vat"] then
   table.insert(data.raw["assembling-machine"]["cloning-vat"].allowed_module_categories, "panglia_module")
 end
+
+
+if mods["quality-seeds"] then
+  if quality_seeds and quality_seeds.ignore_plants then
+    table.insert(quality_seeds.ignore_plants, "panglia_branbalite_plant")
+    table.insert(quality_seeds.ignore_plants, "processing-grid-process-dna")
+  end
+end

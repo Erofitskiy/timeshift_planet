@@ -531,12 +531,14 @@ data:extend({
             {
               variation_count = 1,
               filenames = {"__Moshine__/graphics/entity/quantum-computer/plant.png"},
-              size = 128,
+              width = 128,
+              height = 128,
               lines_per_file = 25,
               frame_count = 100,
               animation_speed = 0.15,
               scale = 0.5,
               draw_as_glow = true,
+              shift = {0,0},
               frame_sequence = { 1, 2, 3, 1, 4, 5, 6, 1, 7, 8, 9, 10, 10, 11, 12, 1, 1, 13, 14, 15, 15, 13, 16, 17, 1, 18, 1, 19, 19, 20, 21, 22, 1, 22, 23, 1, 24, 25, 1, 12, 5, 6, 1, 15, 11, 7, 1, 8, 5, 4 ,
                 1, 1, 3, 1, 11, 5, 6, 1, 22, 8, 9, 1, 10, 1, 12, 1, 1, 3, 4, 1, 1, 13, 16, 17, 1, 16, 1, 1, 1, 1, 1, 22, 1, 22, 7, 1, 24, 6, 1, 1, 1, 1, 1, 1, 7, 7, 1, 11, 5, 1
               }
