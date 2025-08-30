@@ -230,7 +230,36 @@ data:extend({
       type = "craft-item",
       item = "panglia_cloned_specimen_body_1",
       count = 1,
-    }
+    },
+  },
+
+  {
+    type = "technology",
+    name = "panglia_sentient_processor",
+    icon = techicons .. "panglia_sentient_processor.png",
+    icon_size = 256,
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "panglia_sentient_processor"
+      },
+    },
+    prerequisites = {"thinking-brain-technology", "quantum-processor"},
+    unit =
+    {
+      count = 1200,
+      ingredients =
+      {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1},
+        {"chemical-science-pack", 1},
+        {"utility-science-pack", 1},
+        {"space-science-pack", 1},
+        {"agricultural-science-pack", 1}
+      },
+      time = 60
+    },
   },
 })
 
