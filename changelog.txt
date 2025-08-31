@@ -1,8 +1,12 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.4
-Date: 2025-08
+Date: 2025-08-31
   Changes:
     - Added sentient processors
+    - Changed some names
+    - Panderoots overgrowths don't attack electric poles
+  Graphics:
+    - Changed the appearance of panderoots overgrowths and their explosion, removed their sound
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.3
 Date: 2025-08-30

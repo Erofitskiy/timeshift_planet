@@ -211,8 +211,9 @@ data:extend({
       render_no_power_icon = false,
       render_no_network_icon = false,
     },
-    horizontal_animation = multidir_anim,
-    vertical_animation = multidir_anim,
+    --horizontal_animation = multidir_anim,
+    --vertical_animation = multidir_anim,
+    integration_patch = multidir_anim,
     smoke =
     {
       {
@@ -304,7 +305,246 @@ data:extend({
     },]]
     --glow_fade_away_duration = 70,
     --vertical_speed_slowdown = opts.vertical_speed_slowdown
-  }
+  },
+
+
+  {
+    type = "explosion",
+    name = "panglia_energy_roots_tesla_turret_explosion",
+    localised_name = {"entity-name.panglia_energy_roots_tesla_turret_1"},
+    icon = icons .. "panglia_energy_roots_tesla_turret.png",
+    order = "a-a-c",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "explosions",
+    animations = util.empty_sprite(),
+    smoke = "smoke-explosion-particle",
+    smoke_count = 2,
+    smoke_slow_down_factor = 1,
+    sound = sounds.medium_explosion,
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-particle",
+            repeat_count = 20,
+            particle_name = "vulcanus-stone-particle-big",
+            only_when_visible = true,
+            initial_height = 0.5,
+            speed_from_center = 0.08,
+            speed_from_center_deviation = 0.15,
+            initial_vertical_speed = 0.08,
+            initial_vertical_speed_deviation = 0.15,
+            offset_deviation = { { -1.5, -1.5 }, { 1.5, 1.5 } },
+          },
+          {
+            type = "create-particle",
+            repeat_count = 20,
+            particle_name = "vulcanus-stone-particle-medium",
+            only_when_visible = true,
+            initial_height = 0.5,
+            speed_from_center = 0.08,
+            speed_from_center_deviation = 0.15,
+            initial_vertical_speed = 0.08,
+            initial_vertical_speed_deviation = 0.15,
+            offset_deviation = { { -1.5, -1.5 }, { 1.5, 1.5 } },
+          },
+          {
+            type = "create-particle",
+            repeat_count = 25,
+            particle_name = "vulcanus-stone-particle-small",
+            only_when_visible = true,
+            offset_deviation = { { -1.5, -1.5 }, { 1.5, 1.5 } },
+            initial_height = 1,
+            initial_height_deviation = 0.5,
+            initial_vertical_speed = 0.1,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.05,
+            speed_from_center_deviation = 0.05
+          },
+          {
+            type = "create-particle",
+            repeat_count = 50,
+            particle_name = "big-rock-stone-particle-tiny",
+            only_when_visible = true,
+            offset_deviation = { { -1.5, -1.5 }, { 1.5, 1.5 } },
+            initial_height = 1,
+            initial_height_deviation = 0.5,
+            initial_vertical_speed = 0.1,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.05,
+            speed_from_center_deviation = 0.05
+          },
+          {
+            type = "create-trivial-smoke",
+            repeat_count = 20,
+            smoke_name = "demolisher-mining-smoke",
+            only_when_visible = true,
+            initial_height = 0,
+            speed_from_center = 0.03,
+            offset_deviation = {{-1.75, -1.7}, {1.75, 1.75}},
+          },
+
+
+          {
+            type = "create-particle",
+            repeat_count = 4,
+            repeat_count_deviation = 0,
+            probability = 1,
+            affects_target = false,
+            show_in_tooltip = false,
+            particle_name = "tintable-water-particle",
+            tint = {86, 232, 201, 200},
+            offsets = {
+              { 0, 0 }
+            },
+            offset_deviation = {
+              left_top = { -0.09766, -0.09766 },
+              right_bottom = { 0.09766, 0.09766 }
+            },
+            initial_height = 1,
+            initial_height_deviation = 0,
+            initial_vertical_speed = 0.1,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.05,
+            speed_from_center_deviation = 0.01,
+            frame_speed = 0.5,
+            frame_speed_deviation = 0,
+            tail_length = 15,
+            tail_length_deviation = 1,
+            tail_width = 1,
+            rotate_offsets = false
+          },
+          {
+            type = "create-particle",
+            repeat_count = 2,
+            repeat_count_deviation = 0,
+            probability = 1,
+            affects_target = false,
+            show_in_tooltip = false,
+            particle_name = "tintable-water-particle",
+            tint = {86, 232, 201, 200},
+            offsets = {
+              { 0, 0 }
+            },
+            offset_deviation = {
+              left_top = { -0.4961, -0.3945 },
+              right_bottom = { 0.4961, 0.3945 }
+            },
+            initial_height = 0.7,
+            initial_height_deviation = 0.14,
+            initial_vertical_speed = 0.1,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.06,
+            speed_from_center_deviation = 0.01,
+            frame_speed = 0.3,
+            frame_speed_deviation = 0,
+            tail_length = 15,
+            tail_length_deviation = 1,
+            tail_width = 1,
+            rotate_offsets = false
+          },
+          {
+            type = "create-particle",
+            repeat_count = 5,
+            repeat_count_deviation = 0,
+            probability = 1,
+            affects_target = false,
+            show_in_tooltip = false,
+            particle_name = "tintable-water-particle",
+            tint = {86, 232, 201, 200},
+            offsets = {
+              { 0, 0 }
+            },
+            offset_deviation = {
+              left_top = { -0.1914, -0.2969 },
+              right_bottom = { 0.1914, 0.2969 }
+            },
+            initial_height = 0.3,
+            initial_height_deviation = 0.03,
+            initial_vertical_speed = 0.012,
+            initial_vertical_speed_deviation = 0,
+            speed_from_center = 0.1,
+            speed_from_center_deviation = 0,
+            frame_speed = 0.5,
+            frame_speed_deviation = 0,
+            tail_length = 10,
+            tail_length_deviation = 0,
+            tail_width = 1,
+            rotate_offsets = false
+          },
+          {
+            type = "create-particle",
+            repeat_count = 5,
+            repeat_count_deviation = 0,
+            probability = 1,
+            affects_target = false,
+            show_in_tooltip = false,
+            particle_name = "tintable-water-particle",
+            tint = {86, 232, 201, 200},
+            offsets = {
+              { 0, 0 }
+            },
+            offset_deviation = {
+              left_top = { -0.09766, -0.2969 },
+              right_bottom = { 0.09766, 0.2969 }
+            },
+            initial_height = 0.3,
+            initial_height_deviation = 0.03,
+            initial_vertical_speed = 0.021,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.07,
+            speed_from_center_deviation = 0.05,
+            frame_speed = 0.5,
+            frame_speed_deviation = 0,
+            tail_length = 10,
+            tail_length_deviation = 0,
+            tail_width = 1,
+            rotate_offsets = false
+          },
+          {
+            type = "create-particle",
+            repeat_count = 7,
+            repeat_count_deviation = 0,
+            probability = 1,
+            affects_target = false,
+            show_in_tooltip = false,
+            particle_name = "tintable-water-particle",
+            tint = {86, 232, 201, 200},
+            offsets = {
+              { 0, 0 }
+            },
+            offset_deviation = {
+              left_top = { -0.5, 0 },
+              right_bottom = { 0.5, 0 }
+            },
+            initial_height = 0.2,
+            initial_height_deviation = 0.5,
+            initial_vertical_speed = 0.051,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.05,
+            speed_from_center_deviation = 0.05,
+            frame_speed = 0.25,
+            frame_speed_deviation = 0,
+            tail_length = 7,
+            tail_length_deviation = 0,
+            tail_width = 1,
+            rotate_offsets = false
+          }
+        }
+      }
+    }
+  },
+
+
+
+
+
 
 })
 
@@ -330,19 +570,27 @@ local function make_energy_roots_tesla_turret(num, seq)
       preparing_speed = 0.7,
       folding_speed = 0.7,
       ending_attack_speed = 1 / (30 + 1),
-      working_sound =
+      --[[working_sound =
       {
         sound = {filename = "__space-age__/sound/entity/tesla-turret/tesla-turret-base.ogg", volume = 0.3},
         use_doppler_shift = false,
         fade_in_ticks = 4,
         fade_out_ticks = 20,
-      },
+      },]]
       corpse = "panglia_energy_roots_tesla_turret_remnants_" .. num,
-      dying_explosion = "laser-turret-explosion",
+      dying_explosion = "panglia_energy_roots_tesla_turret_explosion",
       energy_source = {type = "void"},
       folded_animation = emptyturretanim,
       glow_light_intensity = 0.5,
       random_animation_offset = true,
+      integration = 
+      {
+        filename = entity .. "panglia_energy_roots/cell_roots.png", --_" .. num .. ".png",
+        size = 128,
+        x = (num - 1) * 128,
+        y = 0,
+        scale = 0.5,
+      },
       graphics_set =
       {
         base_visualisation =
@@ -358,18 +606,30 @@ local function make_energy_roots_tesla_turret(num, seq)
                   x = (num - 1) * 128,
                   y = 0,
                   frame_count = 1,
-                  repeat_count = 30,
+                  repeat_count = 60,
                   scale = 0.5,
-                  animation_speed = 0.2,
+                  animation_speed = 0.15,
                 },
                 {
                   filename = entity .. "panglia_energy_roots/cell_glow.png",
                   size = 128,
-                  frame_count = 8,
-                  line_length = 8,
+                  x = (num - 1) * 128,
+                  y = 0,
+                  frame_count = 1,
+                  repeat_count = 60,
+                  scale = 0.5,
+                  animation_speed = 0.15,
+                  draw_as_glow = true,
+                  blend_mode = "additive",
+                },
+                {
+                  filename = entity .. "panglia_energy_roots/cell_electricity.png",
+                  size = 128,
+                  frame_count = 16,
+                  line_length = 16,
                   frame_sequence = seq,
                   scale = 0.5,
-                  animation_speed = 0.2,
+                  animation_speed = 0.15,
                   draw_as_glow = true,
                   blend_mode = "additive",
                 },
@@ -482,17 +742,22 @@ local function make_energy_roots_tesla_turret(num, seq)
   })
 end
 
-make_energy_roots_tesla_turret(1, {1,1,2,1,1,1,1,1,4,1,1,1,1,3,1,1,7,1,1,1,6,1,1,1,1,5,1,1,8,1})
-make_energy_roots_tesla_turret(2, {2,1,1,1,1,1,4,1,1,1,1,3,1,1,7,1,1,1,6,1,1,1,1,5,1,1,8,1,1,1})
-make_energy_roots_tesla_turret(3, {1,1,2,1,1,1,1,1,4,1,1,1,1,3,1,1,7,1,1,1,6,1,1,1,1,5,1,1,8,1})
-make_energy_roots_tesla_turret(4, {2,1,1,1,1,1,4,1,1,1,1,3,1,1,7,1,1,1,6,1,1,1,1,5,1,1,8,1,1,1})
-make_energy_roots_tesla_turret(5, {1,1,2,1,1,1,1,1,4,1,1,1,1,3,1,1,7,1,1,1,6,1,1,1,1,5,1,1,8,1})
-make_energy_roots_tesla_turret(6, {2,1,1,1,1,1,4,1,1,1,1,3,1,1,7,1,1,1,6,1,1,1,1,5,1,1,8,1,1,1})
-make_energy_roots_tesla_turret(7, {1,1,2,1,1,1,1,1,4,1,1,1,1,3,1,1,7,1,1,1,6,1,1,1,1,5,1,1,8,1})
-make_energy_roots_tesla_turret(8, {2,1,1,1,1,1,4,1,1,1,1,3,1,1,7,1,1,1,6,1,1,1,1,5,1,1,8,1,1,1})
-
-
-
+make_energy_roots_tesla_turret(1, {1,1,8,1,15,1,1,2,1,9,12,1,1,1,13,1,1,3,1,1,1,1,1,1,1,1,1,1,1,1,1,14,1,1,1,1,11,7,6,5,1,1,10,16,1,1,1,1,1,1,1,1,4,1,1,1,1,1,1,1})
+make_energy_roots_tesla_turret(2, {1,1,1,13,10,1,1,1,1,1,1,1,1,1,9,1,1,8,5,1,3,1,1,6,1,1,1,1,1,1,16,1,1,1,1,1,1,1,1,1,1,1,11,1,7,14,1,12,1,4,1,1,1,1,1,1,1,2,15,1})
+make_energy_roots_tesla_turret(3, {1,1,1,1,7,13,1,1,1,1,1,1,1,1,1,5,1,1,1,1,1,1,1,1,9,1,1,1,1,1,8,1,1,14,1,1,4,2,1,1,15,6,16,12,1,1,1,1,1,1,1,3,1,1,1,1,11,1,10,1})
+make_energy_roots_tesla_turret(4, {1,1,1,1,13,15,1,1,12,1,11,1,1,1,1,1,1,4,1,1,1,1,1,14,1,2,1,10,1,1,5,1,1,3,1,1,1,8,16,1,1,1,1,1,1,7,1,1,1,1,1,1,1,1,1,1,1,6,1,9})
+make_energy_roots_tesla_turret(5, {1,1,1,1,3,1,7,8,9,1,1,1,1,1,1,1,10,5,1,1,1,1,1,12,1,1,1,1,6,1,11,1,1,1,4,1,1,13,1,16,1,1,1,1,1,1,1,1,1,2,1,1,14,1,15,1,1,1,1,1})
+make_energy_roots_tesla_turret(6, {1,1,12,9,6,3,2,1,10,1,11,1,1,1,1,1,1,1,1,1,1,1,1,16,1,1,1,1,4,1,1,13,1,1,1,1,7,1,1,1,14,1,1,1,1,5,1,1,1,1,1,1,15,1,1,1,8,1,1,1})
+make_energy_roots_tesla_turret(7, {1,1,1,1,1,1,1,12,16,1,1,1,1,1,1,8,1,1,1,1,1,13,1,1,10,7,14,1,6,1,1,1,1,1,11,1,3,1,1,15,2,1,1,1,1,1,4,1,1,1,1,5,1,1,9,1,1,1,1,1})
+make_energy_roots_tesla_turret(8, {1,1,1,1,1,1,1,1,1,1,3,1,1,5,15,10,7,1,1,1,1,13,1,1,1,1,1,1,1,14,2,1,1,1,1,1,1,1,4,1,1,1,1,16,1,1,1,1,1,11,1,9,1,1,1,1,12,1,8,6})
+make_energy_roots_tesla_turret(9, {1,1,1,1,15,7,1,6,16,8,12,11,1,1,9,1,1,1,1,1,1,1,2,1,1,3,5,1,1,1,1,1,1,1,1,1,14,1,13,1,1,1,1,1,10,1,1,1,1,1,1,4,1,1,1,1,1,1,1,1})
+make_energy_roots_tesla_turret(10, {1,1,4,13,1,1,1,1,1,1,10,1,1,15,1,1,1,6,1,16,1,14,1,1,1,9,1,1,1,1,1,1,1,1,1,8,2,7,11,1,1,1,1,1,5,12,1,1,1,3,1,1,1,1,1,1,1,1,1,1})
+make_energy_roots_tesla_turret(11, {1,1,1,1,4,1,1,11,1,1,1,7,1,1,1,1,1,8,1,1,12,1,1,1,16,1,6,3,1,1,1,13,15,1,9,2,1,1,1,1,1,1,5,1,1,1,1,1,1,10,1,1,1,1,14,1,1,1,1,1})
+make_energy_roots_tesla_turret(12, {1,1,14,1,6,1,1,11,1,1,10,1,12,9,1,1,1,1,7,1,1,1,1,1,1,1,3,1,1,1,16,8,1,1,4,1,13,2,1,1,1,15,1,1,1,1,1,1,1,1,1,1,1,5,1,1,1,1,1,1})
+make_energy_roots_tesla_turret(13, {6,3,1,1,1,1,1,1,1,1,14,1,1,8,4,1,10,1,1,1,1,1,1,1,13,1,1,1,7,11,16,1,1,1,1,1,2,1,5,1,1,1,1,1,12,1,9,1,1,1,1,1,1,1,1,15,1,1,1,1})
+make_energy_roots_tesla_turret(14, {12,1,1,13,1,1,1,1,3,1,1,6,9,1,1,14,1,1,1,1,1,1,1,1,11,1,1,1,1,1,8,1,7,1,4,1,1,1,1,1,1,1,1,1,1,10,1,1,1,1,1,1,15,1,2,1,5,1,1,16})
+make_energy_roots_tesla_turret(15, {1,3,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,4,1,1,8,1,14,1,1,12,1,1,11,1,1,1,1,1,1,15,1,5,10,1,1,1,1,7,1,6,1,1,9,1,1,1,1,1,13,1,16,1,1,1})
+make_energy_roots_tesla_turret(16, {1,1,1,1,16,1,1,1,1,1,11,1,1,1,1,1,1,1,1,1,6,1,1,10,1,1,1,1,1,1,1,1,12,1,2,1,1,7,8,1,1,4,1,1,1,1,3,1,1,1,1,14,13,1,9,1,1,15,1,5})
 
 
 
