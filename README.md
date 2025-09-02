@@ -27,6 +27,7 @@ This is very early access, the experience is probably not balanced yet.
 - The simulation chamber contains graphics from [Exotic Space Industries](https://mods.factorio.com/mod/exotic-space-industries) by PreLeyZero (GNU LGPLv3)
 - 5 icons take elements from [Periodic Madness](https://mods.factorio.com/mod/periodic-madness) by Mr.SmoothieHuman
 - 3 icon (panglite fiber, brains) uses an icon by [Malcolm Riley](https://github.com/malcolmriley/unused-renders)
+- Datacell icon uses parts of petrak@ icon
 - Panglite entities (the circular rocks) are derived from 2 backgrounds from Final Fantasy IX (Moguri Mod) (Final Fantasy IX is a property of Square Enix, assets used under the premise of [fair use](https://en.wikipedia.org/wiki/Fair_use)). Another background is used for bits of the Branbalite plant. And another background is used in Panderoots and its overgrowths (turrets)
 - Sound ambiance by klankbeeld (CC BY)	
 - Energy roots sound is "Black Smoke" by Silicon_Transmitter (CC BY-NC-SA)

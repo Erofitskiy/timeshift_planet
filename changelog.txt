@@ -1,8 +1,10 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.5
 Date: 2025-09-
+  Changes:
+    - Added cryogenic packs to sentient processor tech
   Graphics:
-    - Reworked cloning-related icons
+    - Reworked cloning-related icons and datacell icons
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.4
 Date: 2025-08-31
