@@ -2,7 +2,10 @@
 Version: 0.1.5
 Date: 2025-09-
   Changes:
+    - Added extra infinite research to worker-robots-speed
+    - Added 1 extra research to worker-robots-storage
     - Added cryogenic packs to sentient processor tech
+    - Removed some recipe tooltips
   Graphics:
     - Reworked cloning-related icons and datacell icons
 ---------------------------------------------------------------------------------------------------

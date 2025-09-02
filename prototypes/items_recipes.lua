@@ -280,7 +280,7 @@ data:extend({
     },
     results = {
       {type = "fluid", name = "crude-oil", amount = 90},
-      {type = "fluid", name = "water", amount = 10}
+      {type = "fluid", name = "water", amount = 10, show_details_in_recipe_tooltip = false}
     },
     allow_productivity = true,
     allow_decomposition = false,
@@ -467,7 +467,7 @@ data:extend({
     results = {
       {type = "item", name = "datacell-dna-raw", amount = 1, probability = 1},
       --{type = "item", name = "hard-drive", amount = 1, probability = 0.99}
-      {type = "item", name = "uranium-238", amount = 1, probability = 1},
+      {type = "item", name = "uranium-238", amount = 1, probability = 1, show_details_in_recipe_tooltip = false},
       {type = "item", name = "panglia_cloned_specimen_body_0", amount = 1, probability = 0.05},
       {type = "item", name = "mutated_monster_egg", amount = 1, probability = 0.95},
     },
@@ -513,7 +513,7 @@ data:extend({
     results = 
     {
       {type = "item", name = "panglia_cloned_specimen_body_1", amount = 1, probability = 0.1},
-      {type = "item", name = "spoilage", amount = 2, probability = 1},
+      {type = "item", name = "spoilage", amount = 2, probability = 1, show_details_in_recipe_tooltip = false},
     },
     allow_productivity = false,
     enabled = false,
@@ -557,7 +557,7 @@ data:extend({
     results = 
     {
       {type = "item", name = "panglia_cloned_specimen_body_2", amount = 1, probability = 0.5},
-      {type = "item", name = "spoilage", amount = 1, probability = 0.5},
+      {type = "item", name = "spoilage", amount = 1, probability = 0.5, show_details_in_recipe_tooltip = false},
     },
     allow_productivity = true,
     enabled = false,
@@ -601,7 +601,7 @@ data:extend({
     },
     results = 
     {
-      {type = "item", name = "panglia_cloned_specimen_body_3_genius", amount = 1, probability = 0.1},
+      {type = "item", name = "panglia_cloned_specimen_body_3_genius", amount = 1, probability = 0.1, show_details_in_recipe_tooltip = false},
       {type = "item", name = "panglia_cloned_specimen_body_3_dumb", amount = 1, probability = 0.9},
     },
     allow_productivity = true,

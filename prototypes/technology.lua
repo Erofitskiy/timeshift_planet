@@ -262,6 +262,101 @@ data:extend({
       time = 60
     },
   },
+
+
+
+
+
+
+
+  {
+    type = "technology",
+    name = "panglia_worker-robots-speed",
+    icons = util.technology_icon_constant_movement_speed(techicons .. "panglia_worker-robots-speed.png"),
+    effects =
+    {
+      {
+        type = "worker-robot-speed",
+        modifier = 0.40
+      }
+    },
+    prerequisites = {"panglia_sentient_processor", "electromagnetic-science-pack"},
+    unit =
+    {
+      count_formula = "2^(L-3)*1000",
+      ingredients =
+      {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1},
+        {"chemical-science-pack", 1},
+        {"production-science-pack", 1},
+        {"utility-science-pack", 1},
+        {"space-science-pack", 1},
+        {"electromagnetic-science-pack", 1},
+      },
+      time = 60
+    },
+    max_level = "infinite",
+    upgrade = true
+  },
+
+  {
+    type = "technology",
+    name = "panglia_worker-robots-storage-1",
+    icons = util.technology_icon_constant_capacity(techicons .. "panglia_worker-robots-storage.png"),
+    effects =
+    {
+      {
+        type = "worker-robot-storage",
+        modifier = 1
+      }
+    },
+    prerequisites = {"panglia_sentient_processor", "worker-robots-storage-3"},
+    unit =
+    {
+      count = 450,
+      ingredients =
+      {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1},
+        {"chemical-science-pack", 1},
+        {"production-science-pack", 1},
+        {"utility-science-pack", 1}
+      },
+      time = 60
+    },
+    upgrade = true
+  },
+
+  {
+    type = "technology",
+    name = "panglia_worker-robots-storage-2",
+    icons = util.technology_icon_constant_capacity(techicons .. "panglia_worker-robots-storage.png"),
+    effects =
+    {
+      {
+        type = "worker-robot-storage",
+        modifier = 1
+      }
+    },
+    prerequisites = {"panglia_worker-robots-storage-1"},
+    unit =
+    {
+      count = 450,
+      ingredients =
+      {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1},
+        {"chemical-science-pack", 1},
+        {"production-science-pack", 1},
+        {"utility-science-pack", 1}
+      },
+      time = 60
+    },
+    upgrade = true
+  },
+
+
 })
 
 
