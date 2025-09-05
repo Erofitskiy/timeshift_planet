@@ -190,7 +190,7 @@ data:extend({
         recipe = "panglia_cloned_specimen_body_1_recipe"
       },
     },
-    prerequisites = {"panglia_dna_manipulation", "matter_printer-technology"},
+    prerequisites = {"moshine-tech-ai-tier-10", "panglia_dna_manipulation", "matter_printer-technology"},
     unit =
     {
       count = 900,

@@ -73,3 +73,47 @@ if mods["quality-seeds"] then
     table.insert(quality_seeds.ignore_plants, "processing-grid-process-dna")
   end
 end
+
+if mods["snouz_better_asteroid_collector"] then
+  data.raw["technology"]["snouz_better_asteroid_collector"].prerequisites = {"panglia_sentient_processor"}
+  data.raw["recipe"]["snouz_better_asteroid_collector"].ingredients =
+  {
+    {type = "item", name = "asteroid-collector", amount = 2},
+    {type = "item", name = "panglia_sentient_processor", amount = 1},
+    {type = "item", name = "electric-engine-unit", amount = 6};
+    {type = "fluid", name = "fluoroketone-cold", amount = 6, ignored_by_stats = 3},
+  }
+  data.raw["recipe"]["snouz_better_asteroid_collector"].results = {
+    {type = "item", name = "snouz_better_asteroid_collector", amount = 1},
+    {type = "fluid", name = "fluoroketone-hot", amount = 3, temperature = 180, ignored_by_stats = 3, ignored_by_productivity = 3}
+  }
+  data.raw["item"]["snouz_better_asteroid_collector"].default_import_location = "panglia"
+end
+
+if mods["snouz_long_electric_gun_turret"] then
+  data.raw["recipe"]["snouz_long_electric_gun_turret"].ingredients =
+  {
+    {type = "item", name = "gun-turret", amount = 2},
+    {type = "item", name = "supercapacitor", amount = 1},
+    {type = "item", name = "radar", amount = 1},
+    {type = "item", name = "panglia_panglite_fiber", amount = 5},
+  }
+  data.raw["item"]["snouz_long_electric_gun_turret"].default_import_location = "panglia"
+
+  data.raw["technology"]["snouz_long_electric_gun_turret"].prerequisites = {"panglia_panglite_fiber", "electromagnetic-plant"}
+  data.raw["technology"]["snouz_long_electric_gun_turret"].unit.ingredients =
+  {
+    {"automation-science-pack", 1},
+    {"logistic-science-pack", 1},
+    {"military-science-pack", 1},
+    {"chemical-science-pack", 1},
+    --{"production-science-pack", 1},
+    {"utility-science-pack", 1},
+    {"space-science-pack", 1},
+    --{"metallurgic-science-pack", 1},
+    {"electromagnetic-science-pack", 1},
+    --{"agricultural-science-pack", 1},
+    --{"cryogenic-science-pack", 1},
+    --{"promethium-science-pack", 1}
+  }
+end

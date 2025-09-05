@@ -1,10 +1,16 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.1.5
+Version: 0.2.0
 Date: 2025-09-
   Changes:
     - Added extra infinite research to worker-robots-speed
     - Added 1 extra research to worker-robots-storage
+    - Added Asteroid collector MK2 (as a submod) and changed its requirements
+    - Added Focussed gun turrets (as a submod) and make it require Panglite fiber
+  Balance:
     - Added cryogenic packs to sentient processor tech
+  Bugfixes:
+    - Simulation chamber tech now requires AI T10
+  UI:
     - Removed some recipe tooltips
   Graphics:
     - Reworked cloning-related icons and datacell icons
