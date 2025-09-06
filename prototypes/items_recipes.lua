@@ -289,15 +289,16 @@ data:extend({
   {
     type = "recipe",
     name = "panglia_universe_precursor",
-    icon = icons .. "panglia_universe_precursor.png",
+    icon = icons .. "panglia_universe_precursor_with_dust.png",
     subgroup = "panglia-processes",
     order = "b[otherres]-bb",
     energy_required = 0.5 * beacon_multiplier,
     category = "chemistry",
     ingredients =
     {
-      {type = "fluid", name = "panglia_branbalite_slurry", amount = 40},
+      {type = "fluid", name = "panglia_branbalite_slurry", amount = 2},
       {type = "item", name = "panglia_panglite_fiber", amount = 2},
+      {type = "item", name = "panglia_dust", amount = 50},
     },
     results = {
       {type = "item", name = "universe_precursor", amount = 1}

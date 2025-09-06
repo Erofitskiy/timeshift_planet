@@ -83,3 +83,112 @@ for i, entitytype in pairs(entitytypes) do
     end
   end
 end
+
+
+
+
+
+-- Based on GotLag's flare stack
+-------- CRUSHING -------
+
+
+local crushing_icon = {
+  icon = icons .. "crushing_icon.png",
+  icon_size = 64,
+  icon_mipmaps = 1,
+}
+
+pangliacrushing = {}
+
+-- returns icon/icons always in the form of a table of icons
+function pangliacrushing.get_icons(prototype)
+  if prototype.icons then
+    return table.deepcopy(prototype.icons)
+  else
+    return {
+      {
+        icon = prototype.icon,
+        icon_size = prototype.icon_size or 64,
+        icon_mipmaps = prototype.icon_mipmaps or 1,
+      },
+    }
+  end
+end
+
+-- generates a recipe to incinerate the specified non-fluid prototype
+function pangliacrushing.incinerateRecipe(item, category, weight)
+  local newicons = pangliacrushing.get_icons(item)
+  table.insert(newicons, crushing_icon)
+ 
+
+  local grouporder = "z"
+  local subgrouporder = "z"
+  local itemorder = item.order or "z"
+  if item.subgroup then
+    local subgroup = data.raw["item-subgroup"][item.subgroup]
+    if subgroup and subgroup.group then
+      subgrouporder = subgroup.order or "z"
+      local group = data.raw["item-group"][subgroup.name]
+      if group then
+        grouporder = group.order or "z"
+      end
+    end
+  end
+
+  local order = grouporder .. "-" .. subgrouporder .. "-" .. itemorder
+
+  local weight = item.weight or (1 * kg)
+  local number_from_weight = math.max(1, math.min(math.floor(weight/1000), 40))
+ 
+  data:extend({
+    {
+      type = "recipe",
+      name = category .. "-" .. item.name .. "-panglia_crushing",
+      localised_name = "(" .. category .. ") " .. item.name:gsub("^%l", string.upper) .. " crushing",
+      icons = newicons,
+      category = "panglia_crushing",
+      enabled = true,
+      --hidden_in_factoriopedia = true,
+      hide_from_player_crafting = true,
+      hide_from_signal_gui = true,
+      --hidden = true,
+      -- this is now done through incinerator crafting speed
+      -- energy_required = 1.0 / settings.startup["flare-stack-item-rate"].value,
+      energy_required = number_from_weight,
+      ingredients = {
+        { type = "item", name = item.name, amount = 1 },
+      },
+      results = {
+        { type = "item", name = "panglia_dust", amount = number_from_weight }
+      },
+      --icon_size = 64,
+      subgroup = "panglia_crushing",
+      order = item.order or "zzzz",
+      --order = "zz[panglia_crushing]",
+    },
+  })
+end
+
+-- non-item categories to incinerate too
+pangliacrushing.category_list = {
+  "item",
+  "capsule",
+  "ammo",
+  "gun",
+  "module",
+  "armor",
+  "mining-tool",
+  "repair-tool",
+  "tool",
+  "blueprint-book",
+  "blueprint",
+  "rail-planner",
+}
+
+for _, cat in pairs(pangliacrushing.category_list) do
+  if data.raw[cat] then
+    for _, proto in pairs(data.raw[cat]) do
+      pangliacrushing.incinerateRecipe(proto, cat)
+    end
+  end
+end

@@ -17,11 +17,11 @@ if data.raw.item["matter_printer"] then
 end
 if data.raw.item["cloning-vat"] then
 	data.raw.item["cloning-vat"].subgroup = "panglia-production-machine"
-  data.raw.item["cloning-vat"].order = "b[cloning-vat]"
+  data.raw.item["cloning-vat"].order = "c[cloning-vat]"
 end
 if data.raw.item["thinking-brain"] then
 	data.raw.item["thinking-brain"].subgroup = "panglia-production-machine"
-  data.raw.item["thinking-brain"].order = "e[universe_precursor]"
+  data.raw.item["thinking-brain"].order = "f[universe_precursor]"
 end
 
 

@@ -20,5 +20,6 @@ require "prototypes.items_recipes"
 require "prototypes.plant"
 --require "prototypes.nano_forge"
 require "prototypes.simulation_chamber"
+require "prototypes.crushing"
 require "prototypes.compatibility"
 

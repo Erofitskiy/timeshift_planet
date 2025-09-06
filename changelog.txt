@@ -2,6 +2,7 @@
 Version: 0.2.0
 Date: 2025-09-
   Changes:
+    - Added a crusher that makes dust from any item to re-inject in the universe incubator (precursor now requires dust)
     - Added extra infinite research to worker-robots-speed
     - Added 1 extra research to worker-robots-storage
     - Added Asteroid collector MK2 (as a submod) and changed its requirements

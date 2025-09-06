@@ -114,6 +114,37 @@ data:extend({
     }
   },
 
+
+
+  {
+    type = "technology",
+    name = "panglia_crusher",
+    icon = techicons .. "panglia_crusher.png",
+    icon_size = 256,
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "panglia_crusher"
+      },
+    },
+    prerequisites = {"matter_printer-technology"},
+    unit =
+    {
+      count = 1000,
+      ingredients =
+      {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1},
+        {"chemical-science-pack", 1},
+        {"utility-science-pack", 1},
+        {"space-science-pack", 1},
+      },
+      time = 60
+    },
+  },
+
+
   {
     type = "technology",
     name = "panglia_panglite_fiber",
