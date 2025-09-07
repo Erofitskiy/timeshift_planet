@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.0
-Date: 2025-09-
+Date: 2025-09-07
   Changes:
     - Added a crusher that makes dust from any item to re-inject in the universe incubator (precursor now requires dust)
     - Added extra infinite research to worker-robots-speed
