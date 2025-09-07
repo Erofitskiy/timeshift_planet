@@ -4,7 +4,7 @@ local hit_effects = require("__base__.prototypes.entity.hit-effects")
 
 local sounds = require("__base__.prototypes.entity.sounds")
 local item_sounds = require("__base__.prototypes.item_sounds")
-local ent_size = 3
+local ent_size = 4
 
 --require ("__space-age__.prototypes.entity.crusher-pictures"),
 
@@ -13,7 +13,7 @@ data:extend({
     type = "item-group",
     name = "panglia_crushing_group",
     order = "z-panglia_crushing_group",
-    icon = techicons .. "panglia_crushing_group.png",
+    icon = techicons .. "panglia_crusher.png",
     icon_size = 256,
   },
   {
@@ -145,19 +145,61 @@ data:extend({
       idle_animation = {
         layers = {
           {
+            filename = entity .. "crusher/crusher-base.png",
+            width = 320,
+            height = 320,
+            animation_speed = 0.5,
+            repeat_count = 48,
+            scale = 0.5,
+            --shift = util.by_pixel(2.5 -3, -5.0 +0.5),
+            --tint = {120,190,100}, --TEMPORARY
+          },
+          {
+            filename = entity .. "crusher/crusher-base-shadow.png",
+            width = 320,
+            height = 320,
+            animation_speed = 0.5,
+            repeat_count = 48,
+            scale = 0.5,
+            draw_as_shadow = true,
+            --shift = util.by_pixel(2.5 -3, -5.0 +0.5),
+            --tint = {120,190,100}, --TEMPORARY
+          },
+          {
             filename = "__space-age__/graphics/entity/crusher/crusher-horizontal.png",
             width = 200,
             height = 162,
             animation_speed = 0.5,
             repeat_count = 48,
             scale = 0.5,
-            shift = util.by_pixel(2.5, -5.0),
-            tint = {120,190,100}, --TEMPORARY
+            shift = util.by_pixel(2.5 +3, -5.0 -0.5),
+            --tint = {120,190,100}, --TEMPORARY
           }
         }
       },
       animation = {
         layers = {
+          {
+            filename = entity .. "crusher/crusher-base.png",
+            width = 320,
+            height = 320,
+            animation_speed = 0.5,
+            repeat_count = 48,
+            scale = 0.5,
+            --shift = util.by_pixel(2.5 -3, -5.0 +0.5),
+            --tint = {120,190,100}, --TEMPORARY
+          },
+          {
+            filename = entity .. "crusher/crusher-base-shadow.png",
+            width = 320,
+            height = 320,
+            animation_speed = 0.5,
+            repeat_count = 48,
+            scale = 0.5,
+            draw_as_shadow = true,
+            --shift = util.by_pixel(2.5 -3, -5.0 +0.5),
+            --tint = {120,190,100}, --TEMPORARY
+          },
           {
             filename = "__space-age__/graphics/entity/crusher/crusher-horizontal.png",
             width = 200,
@@ -166,8 +208,8 @@ data:extend({
             animation_speed = 0.5,
             frame_count = 48,
             scale = 0.5,
-            shift = util.by_pixel(2.5, -5.0),
-            tint = {120,190,100}, --TEMPORARY
+            shift = util.by_pixel(2.5 +3, -5.0 -0.5),
+            --tint = {120,190,100}, --TEMPORARY
           }
         }
       }
