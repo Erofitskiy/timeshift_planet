@@ -1,4 +1,4 @@
-
+local icons = "__panglia_planet__/graphics/icons/"
 
 for i, inserter in pairs(data.raw["inserter"]) do
   if not string.find(inserter.name, "_panglia_fast_version") then

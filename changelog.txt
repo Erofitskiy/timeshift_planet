@@ -1,4 +1,16 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.2
+Date: 2025-09
+  Changes:
+    -
+---------------------------------------------------------------------------------------------------
+Version: 0.2.1
+Date: 2025-09-09
+  Graphics:
+    - Changed hypercrusher's graphics
+  Compatibility:
+    - Potential fix for unknown compatibility issue (data-final-fixes.lua:96, "icons" being re-declared by another mod)
+---------------------------------------------------------------------------------------------------
 Version: 0.2.0
 Date: 2025-09-07
   Changes:

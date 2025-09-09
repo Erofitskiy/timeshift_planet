@@ -23,8 +23,9 @@ This is very early access, the experience is probably not balanced yet.
 - Includes [a piano cover of Final Fantasy IX's Branbal by Pablo Enver](https://www.youtube.com/watch?v=ciHHp7-qfwo) (used with permission)
 - The cosmic incubator, cloning vat and synaptic assembler graphics majorly contain parts of [Hurricane046 buildings](https://shorturl.at/AFcDm) (CC BY)
 - The cosmic incubator and simulation chamber contains parts from [Krastorio 1 and 2](https://mods.factorio.com/mod/Krastorio2Assets) (GNU LGPLv3)
-- The simulation chamber and hypercrusher contain graphics from [Yuoki Industries](https://mods.factorio.com/mod/Yuoki) (CC BY-NC-SA) and other YuokiTani images shared on the forum
+- The simulation chamber and hypercrusher contains graphics from [Yuoki Industries](https://mods.factorio.com/mod/Yuoki) (CC BY-NC-SA) and other YuokiTani images shared on the forum
 - The simulation chamber contains graphics from [Exotic Space Industries](https://mods.factorio.com/mod/exotic-space-industries) by PreLeyZero (GNU LGPLv3)
+- The hypercrusher uses some graphics from Hurricane046's buildings (CC BY license)
 - 6 icons take elements from [Periodic Madness](https://mods.factorio.com/mod/periodic-madness) by Mr.SmoothieHuman
 - 4 icon (panglite fiber, brains, panglia crusher) use icons by [Malcolm Riley](https://github.com/malcolmriley/unused-renders)
 - Datacell icon uses parts of petrak@ icon

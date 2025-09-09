@@ -172,9 +172,19 @@ data:extend({
             animation_speed = 0.5,
             repeat_count = 48,
             scale = 0.5,
-            shift = util.by_pixel(2.5 +3, -5.0 -0.5),
+            shift = util.by_pixel(2.5 +3, -5.0 -4.5),
             --tint = {120,190,100}, --TEMPORARY
-          }
+          },
+          {
+            filename = entity .. "crusher/crusher-base-top.png",
+            width = 320,
+            height = 320,
+            animation_speed = 0.5,
+            repeat_count = 48,
+            scale = 0.5,
+            --shift = util.by_pixel(2.5 -3, -5.0 +0.5),
+            --tint = {120,190,100}, --TEMPORARY
+          },
         }
       },
       animation = {
@@ -208,9 +218,19 @@ data:extend({
             animation_speed = 0.5,
             frame_count = 48,
             scale = 0.5,
-            shift = util.by_pixel(2.5 +3, -5.0 -0.5),
+            shift = util.by_pixel(2.5 +3, -5.0 -4.5),
             --tint = {120,190,100}, --TEMPORARY
-          }
+          },
+          {
+            filename = entity .. "crusher/crusher-base-top.png",
+            width = 320,
+            height = 320,
+            animation_speed = 0.5,
+            repeat_count = 48,
+            scale = 0.5,
+            --shift = util.by_pixel(2.5 -3, -5.0 +0.5),
+            --tint = {120,190,100}, --TEMPORARY
+          },
         }
       }
     }
