@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.5.6
+Date: 2026-06-
+  Bugfixes:
+    - Fixed module-category-defaults breaking speed zones (Thanks Gnavianus and Nycia_von_Kriztorvz)
+    - Fixes landfill and foundations being unbuildable on panglia water (Thanks Nycia_von_Kriztorvz)
+  Compatibility:
+    - Added Canal Excavator compatibility (Jurgyy)
+---------------------------------------------------------------------------------------------------
 Version: 0.5.5
 Date: 2025-10-23
   Bugfixes:
@@ -24,7 +32,7 @@ Version: 0.5.1
 Date: 2025-10-11
   Bugfixes:
     - Fixed some recipes being available from the start (thanks Qazerowl)
-  UI:
+  Gui:
     - Merged some icons together
   Graphics:
     - DNA computer process has its own color (green)
@@ -37,7 +45,7 @@ Date: 2025-10-06
     - Added 4 menu simulations
   Compatibility:
     - Generate igneous rocks and mixed rocks if you've generated panglia before v0.4.0
-  Sound:
+  Sounds:
     - Modified planet intro music
     - Panglite rocks now use specific panglite sounds
   Balancing:
@@ -114,7 +122,7 @@ Date: 2025-09-26
     - Hypercrusher tech icon change
   Compatibility:
     - Fixed Branbalite not being buildable when Metal & Stars is there
-  UI:
+  Gui:
     - Combined some icons in factoriopedia
     - Hidden the recipe category "crushing"
     - Changed branbalite's factoriopedia preview
@@ -141,7 +149,7 @@ Date: 2025-09-15
     - Panglite multiplication: remove quality, allow productivity
     - Hypercrusher can't have quality
     - disallowed base recipe for universe precursors on panglia and in space
-  UI:
+  Gui:
     - Changed dust icon and UI placement
     - Changed Hypercrusher icon
     - Made datacells subgroup, changed datacells to stats of moshine's (40 stacks, 5kg)
@@ -165,7 +173,7 @@ Date: 2025-09-07
     - Added cryogenic packs to sentient processor tech
   Bugfixes:
     - Simulation chamber tech now requires AI T10
-  UI:
+  Gui:
     - Removed some recipe tooltips
   Graphics:
     - Reworked cloning-related icons and datacell icons
