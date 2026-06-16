@@ -23,14 +23,14 @@ planet_map_gen.panglia = function()
       aux = "vulcanus_aux",
       cliffiness = "cliffiness_basic",
       cliff_elevation = "cliff_elevation_from_elevation",
-      ["entity:tungsten-ore:probability"] = "vulcanus_tungsten_ore_probability",
-      ["entity:tungsten-ore:richness"] = "vulcanus_tungsten_ore_richness",
-      ["entity:coal:probability"] = "vulcanus_coal_probability",
-      ["entity:coal:richness"] = "vulcanus_coal_richness",
-      ["entity:calcite:probability"] = "vulcanus_calcite_probability",
-      ["entity:calcite:richness"] = "vulcanus_calcite_richness",
-      ["entity:sulfuric-acid-geyser:probability"] = "vulcanus_sulfuric_acid_geyser_probability",
-      ["entity:sulfuric-acid-geyser:richness"] = "vulcanus_sulfuric_acid_geyser_richness",
+      --["entity:tungsten-ore:probability"] = "vulcanus_tungsten_ore_probability",
+      --["entity:tungsten-ore:richness"] = "vulcanus_tungsten_ore_richness",
+      --["entity:coal:probability"] = "vulcanus_coal_probability",
+      --["entity:coal:richness"] = "vulcanus_coal_richness",
+      --["entity:calcite:probability"] = "vulcanus_calcite_probability",
+      --["entity:calcite:richness"] = "vulcanus_calcite_richness",
+      --["entity:sulfuric-acid-geyser:probability"] = "vulcanus_sulfuric_acid_geyser_probability",
+      --["entity:sulfuric-acid-geyser:richness"] = "vulcanus_sulfuric_acid_geyser_richness",
     },
     cliff_settings =
     {
@@ -47,7 +47,7 @@ planet_map_gen.panglia = function()
     },]]
     autoplace_controls =
     {
-      ["panglia_hidden_beacon"] = {},
+      --["panglia_hidden_beacon"] = {},
       --["vulcanus_coal"] = {},
       --["sulfuric_acid_geyser"] = {},
       --["tungsten_ore"] = {},
@@ -88,6 +88,7 @@ planet_map_gen.panglia = function()
           ["panglia-wetland-light-dead-skin"] = {},
           ["panglia-wetland-dead-skin"] = {},
           ["panglia-midland-cracked-lichen-dark"] = {},
+          --["panglia_hidden_beacon_tile"] = {},
 
 
 
@@ -147,6 +148,8 @@ planet_map_gen.panglia = function()
           ["panglia-big-panglite-rock"] = {},
           ["crater-cliff"] = {},
           ["panglia_branbalite_plant"] = {},
+          ["panglia-big-rock"] = {},
+          ["panglia-huge-igneous-rock"] = {},
           --["vulcanus-chimney"] = {},
           --["vulcanus-chimney-faded"] = {},
           --["vulcanus-chimney-cold"] = {},
@@ -165,31 +168,27 @@ local effects = require("__core__.lualib.surface-render-parameter-effects")
 local asteroid_util = require("__space-age__.prototypes.planet.asteroid-spawn-definitions")
 
 data:extend({
-  {
+  --[[{
     type = "autoplace-control",
     name = "panglia_hidden_beacon",
-    --localised_name = {"", "[entity=iron-ore] ", {"entity-name.iron-ore"}},
+    localised_name = {"autoplace-control-description.panglia_hidden_beacon"},
     richness = true,
-    order = "a-a",
-    category = "terrain"
-  },
-
-  {
-    type = "autoplace-control",
-    name = "calcite",
-    --localised_name = {"", "[entity=calcite] ", {"entity-name.calcite"}},
-    richness = true,
-    order = "b-c",
-    category = "resource"
-  },
-
-
-
+    order = "z-a",
+    category = "terrain",
+    can_be_disabled = false
+  },]]
 
   {
     type = "surface-property",
     name = "temperature-celcius",
     default_value = 15,
+    hidden_in_factoriopedia = true,
+    hidden = true,
+  },
+  {
+    type = "surface-property",
+    name = "panglia_timeshift",
+    default_value = 0,
     hidden_in_factoriopedia = true,
     hidden = true,
   },
@@ -204,9 +203,10 @@ data:extend({
 
     gravity_pull = 5,
     distance = 22,
-    orientation = 0.185,
+    orientation = 0.187,
     magnitude = 0.65,
-    label_orientation = 0.35,
+    label_orientation = 0.25,
+    draw_orbit = false,
 
     --pollutant_type = "panglia_energy_roots_pollution",
     --gravity_pull = 10,
@@ -217,7 +217,7 @@ data:extend({
     subgroup = "planets",
     map_gen_settings = planet_map_gen.panglia(),
     pollutant_type = nil,
-    solar_power_in_space = 600,
+    solar_power_in_space = 190,
     platform_procession_set =
     {
       arrival = {"planet-to-platform-b"},
@@ -233,9 +233,10 @@ data:extend({
     {
       ["day-night-cycle"] = 4 * minute,
       ["magnetic-field"] = 56,
-      ["solar-power"] = 80,
+      ["solar-power"] = 40,
       pressure = 1401, --must be 1000 >< 2000 for agricultural tower
-      gravity = 14
+      gravity = 14.01,
+      panglia_timeshift = 1,
     },
     asteroid_spawn_influence = 1,
     asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba, 0.9),

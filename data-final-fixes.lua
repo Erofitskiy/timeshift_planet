@@ -1,3 +1,8 @@
+if data.raw["lab"]["neural_computer"] then
+  table.insert(data.raw["lab"]["neural_computer"].inputs, "datacell-dna-raw")
+  table.insert(data.raw["lab"]["neural_computer"].inputs, "datacell-dna-sequenced")
+end
+
 local icons = "__panglia_planet__/graphics/icons/"
 
 for i, inserter in pairs(data.raw["inserter"]) do
@@ -34,7 +39,7 @@ for i, belt in pairs(data.raw["transport-belt"]) do
     data:extend({newbelt})
   end
 end
-
+--[[
 for i, belt in pairs(data.raw["underground-belt"]) do
   if not string.find(belt.name, "_panglia_fast_version") then
     local newbelt = table.deepcopy(belt)
@@ -51,6 +56,7 @@ for i, belt in pairs(data.raw["underground-belt"]) do
     data:extend({newbelt})
   end
 end
+]]
 
 for i, belt in pairs(data.raw["splitter"]) do
   if not string.find(belt.name, "_panglia_fast_version") then
@@ -148,10 +154,10 @@ function pangliacrushing.incinerateRecipe(item, category, weight)
       icons = newicons,
       category = "panglia_crushing",
       enabled = true,
-      --hidden_in_factoriopedia = true,
       hide_from_player_crafting = true,
       hide_from_signal_gui = true,
-      --hidden = true,
+      hidden = true,
+      hidden_in_factoriopedia = true,
       -- this is now done through incinerator crafting speed
       -- energy_required = 1.0 / settings.startup["flare-stack-item-rate"].value,
       energy_required = number_from_weight,
@@ -191,4 +197,67 @@ for _, cat in pairs(pangliacrushing.category_list) do
       pangliacrushing.incinerateRecipe(proto, cat)
     end
   end
+end
+
+
+local function add_tech_unit(tech, count, time, ingredients)
+  if data.raw["technology"][tech] and count and time and ingredients then
+    data.raw["technology"][tech].unit =
+    {
+      count = count,
+      ingredients = ingredients,
+      time = time,
+    }
+  end
+end
+
+
+add_tech_unit("panglia_dna_manipulation", 10, 145*500,     {{"datacell-ai-model-data", 1},{"datacell-solved-equation", 1},{"datacell-dna-raw", 1},} )
+add_tech_unit("panglia_simulation_chamber", 40, 1658*500,  {{"datacell-ai-model-data", 1},{"datacell-solved-equation", 1},{"datacell-dna-raw", 1},{"datacell-dna-sequenced", 1},} )
+add_tech_unit("panglia_sentient_processor", 200, 1008*500, {{"datacell-raw-data", 1},{"datacell-ai-model-data", 1},{"datacell-solved-equation", 1},{"datacell-dna-raw", 1},{"datacell-dna-sequenced", 1},} )
+add_tech_unit("panglia_worker-robots-storage-1", 800, 10000, {{"datacell-raw-data", 1},{"datacell-ai-model-data", 1},{"datacell-solved-equation", 1},{"datacell-dna-sequenced", 1},} )
+add_tech_unit("panglia_worker-robots-storage-2", 1600, 10000, {{"datacell-raw-data", 1},{"datacell-ai-model-data", 1},{"datacell-solved-equation", 1},{"datacell-dna-sequenced", 1},} )
+
+data.raw["technology"]["panglia_worker-robots-speed"].unit =
+{
+  count_formula = "2^(L-3)*1000",
+  ingredients =
+  {
+    {"datacell-raw-data", 1},
+    {"datacell-ai-model-data", 1},
+    {"datacell-solved-equation", 1},
+    {"datacell-dna-sequenced", 1},
+  },
+  time = 6000
+}
+
+
+--make panglite impossible to make higher quality
+if data.raw["recipe"]["matter_printer-recycling"] and data.raw["recipe"]["matter_printer-recycling"].results then
+  data.raw["recipe"]["matter_printer-recycling"].results = {
+    {
+      amount = 0.25,
+      extra_count_fraction = 0.25,
+      name = "neural_computer",
+      type = "item"
+    },
+    {
+      amount = 0.25,
+      extra_count_fraction = 0.25,
+      name = "electromagnetic-plant",
+      type = "item"
+    },
+    {
+      amount = 2.5,
+      extra_count_fraction = 0.5,
+      name = "electronic-circuit",
+      type = "item"
+    },
+    {
+      amount = 12.5,
+      extra_count_fraction = 0.5,
+      name = "glass",
+      type = "item"
+    }
+  }
 end

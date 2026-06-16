@@ -1,0 +1,20 @@
+{
+    "entity": [
+        [
+            "underground-belt_panglia_fast_version",
+            "underground-belt"
+        ],
+        [
+            "fast-underground-belt_panglia_fast_version",
+            "fast-underground-belt"
+        ],
+        [
+            "express-underground-belt_panglia_fast_version",
+            "express-underground-belt"
+        ],
+        [
+            "turbo-underground-belt_panglia_fast_version",
+            "turbo-underground-belt"
+        ]
+    ]
+}

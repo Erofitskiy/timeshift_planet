@@ -12,6 +12,7 @@ local tile_spritesheet_layout = tile_graphics.tile_spritesheet_layout
 
 local tile_lightening = 28
 vulcanus_tile_offset = 40
+local resource_autoplace = require("resource-autoplace")
 
 local function transition_masks()
   return {
@@ -1277,6 +1278,17 @@ data:extend({
     subgroup = "panglia-tiles",
     collision_mask = tile_collision_masks.ground(),
     --autoplace = { probability_expression = "fulgora_tile_ruin_machinery" },
+    --[[autoplace = resource_autoplace.resource_autoplace_settings
+    {
+      name = "panglia_hidden_beacon",
+      order = "a",
+      base_density = 38,
+      has_starting_area_placement = true,
+      regular_rq_factor_multiplier = 3.10,
+      starting_rq_factor_multiplier = 1.5,
+      candidate_spot_count = 60,
+      --tile_restriction = autoplace_parameters.tile_restriction
+    },]]
     layer = 12,
     --map_color={0, 0, 255},
     --vehicle_friction_modifier = 4,
@@ -1291,8 +1303,8 @@ data:extend({
       material_background =
       {
         picture = terrain .. "panglia_hidden_beacon_tile.png",
-        line_length = 4,
-        count = 16,
+        line_length = 1,
+        count = 1,
         scale = 0.5
       },
       material_texture_width_in_tiles = 10,
@@ -1314,3 +1326,15 @@ data:extend({
 
 table.insert(water_tile_type_names, "panglia-wetland-light-dead-skin")
 table.insert(water_tile_type_names, "panglia-wetland-dead-skin")
+
+
+
+if data.raw["item"]["landfill"] and data.raw["item"]["landfill"].place_as_tile and data.raw["item"]["landfill"].place_as_tile.tile_condition then
+  table.insert(data.raw["item"]["landfill"].place_as_tile.tile_condition, "panglia-wetland-light-dead-skin")
+  table.insert(data.raw["item"]["landfill"].place_as_tile.tile_condition, "panglia-wetland-dead-skin")
+end
+
+if data.raw["item"]["foundation"] and data.raw["item"]["foundation"].place_as_tile and data.raw["item"]["foundation"].place_as_tile.tile_condition then
+  table.insert(data.raw["item"]["foundation"].place_as_tile.tile_condition, "panglia-wetland-light-dead-skin")
+  table.insert(data.raw["item"]["foundation"].place_as_tile.tile_condition, "panglia-wetland-dead-skin")
+end

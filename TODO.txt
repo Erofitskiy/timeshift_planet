@@ -1,3 +1,16 @@
-add anti-recycler that takes any item and turn it into universe precursor
+do planetary data
 
-add hull wall mod
+add telescope on moshine orbit for planetary data, uses huge amount of solar energy.
+
+
+
+add data pipes to cloning vat, add recipes to turn eggs into dna data, then dna datacell recipe is in processor
+
+time warp data - processor that takes forever even with ai cores
+
+
+make datacell with sentient processor for latest techs
+
+(make defense drone)
+
+computer recipe tints

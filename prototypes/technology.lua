@@ -16,7 +16,7 @@ data:extend({
         use_icon_overlay_constant = true
       },
     },
-    prerequisites = {"agricultural-science-pack"},
+    prerequisites = {"agricultural-science-pack", "foundry"},
     unit =
     {
       count = 800,
@@ -54,14 +54,56 @@ data:extend({
 
   {
     type = "technology",
-    name = "panglia_branbalite_slurry_to_crudeoil",
-    icon = techicons .. "panglia_branbalite_slurry_to_crudeoil.png",
+    name = "panglia_panglite_multiplication",
+    icon = techicons .. "panglia_panglite_multiplication.png",
     icon_size = 256,
     effects =
     {
       {
         type = "unlock-recipe",
-        recipe = "panglia_branbalite_slurry_to_crudeoil"
+        recipe = "panglia_panglite"
+      },
+    },
+    prerequisites = {"panglia_planet_discovery_panglia"},
+    research_trigger =
+    {
+      type = "mine-entity",
+      entity = "panglia-huge-panglite-rock"
+    }
+  },
+
+  --[[{
+    type = "technology",
+    name = "panglia_branbalite_slurry_to_crudeoil",
+    icon = techicons .. "panglia_branbalite_slurry_to_crudeoil.png",
+    icon_size = 256,
+    effects =
+    {
+      --{
+      --  type = "unlock-recipe",
+      --  recipe = "panglia_branbalite_slurry_to_crudeoil"
+      --},
+    },
+    prerequisites = {"panglia_branbalite_slurry"},
+    research_trigger =
+    {
+      type = "craft-fluid",
+      fluid = "panglia_branbalite_slurry",
+      amount = 50,
+    },
+  },]]
+
+
+  {
+    type = "technology",
+    name = "panglia_branbalite_slurry_to_lubricant",
+    icon = techicons .. "panglia_branbalite_slurry_to_lubricant.png",
+    icon_size = 256,
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "panglia_branbalite_slurry_to_lubricant"
       },
     },
     prerequisites = {"panglia_branbalite_slurry"},
@@ -74,28 +116,87 @@ data:extend({
   },
 
 
-
-
-
   {
     type = "technology",
-    name = "panglia_panglite_multiplication",
-    icon = techicons .. "panglia_panglite_multiplication.png",
+    name = "panglia_igneous_rock_to_lava",
+    icon = techicons .. "panglia_igneous_rock_to_lava.png",
     icon_size = 256,
     effects =
     {
       {
         type = "unlock-recipe",
-        recipe = "panglia_panglite_multiplication"
+        recipe = "panglia_igneous_rock_to_lava"
       },
     },
     prerequisites = {"panglia_planet_discovery_panglia"},
     research_trigger =
     {
       type = "mine-entity",
-      entity = "panglia-huge-panglite-rock"
-    }
+      entity = "panglia-huge-igneous-rock"
+    },
   },
+
+  {
+    type = "technology",
+    name = "panglia_universe_precursor_volcanic",
+    icon = techicons .. "panglia_universe_precursor_volcanic.png",
+    icon_size = 256,
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "panglia_universe_precursor_volcanic"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "panglia_universe_precursor_volcanic_result"
+      },
+    },
+    prerequisites = {"panglia_igneous_rock_to_lava", "matter_printer-technology", "panglia_branbalite_slurry_to_lubricant"},
+    unit =
+    {
+      count = 800,
+      ingredients =
+      {
+        --{"automation-science-pack", 1},
+        --{"logistic-science-pack", 1},
+        --{"military-science-pack", 1},
+        --{"chemical-science-pack", 1},
+        --{"production-science-pack", 1},
+        --{"utility-science-pack", 1},
+        {"space-science-pack", 1},
+        {"metallurgic-science-pack", 1},
+        {"electromagnetic-science-pack", 1},
+        --{"agricultural-science-pack", 1},
+        --{"cryogenic-science-pack", 1},
+        --{"promethium-science-pack", 1}
+      },
+      time = 60
+    },
+  },
+
+  {
+    type = "technology",
+    name = "panglia_branbalite_slurry_to_rocket_fuel",
+    icon = techicons .. "panglia_branbalite_slurry_to_rocket_fuel.png",
+    icon_size = 256,
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "panglia_branbalite_slurry_to_rocket_fuel"
+      },
+    },
+    prerequisites = {"panglia_branbalite_slurry", "panglia_universe_precursor_volcanic"},
+    research_trigger =
+    {
+      type = "craft-fluid",
+      fluid = "panglia_branbalite_slurry",
+      amount = 1000,
+    },
+  },
+
+
 
   {
     type = "technology",
@@ -104,16 +205,67 @@ data:extend({
     icon_size = 256,
     effects =
     {
+      --{
+      --  type = "unlock-recipe",
+      --  recipe = "datacell-dna-raw"
+      --},
     },
-    prerequisites = {"panglia_planet_discovery_panglia"},
+    prerequisites = {"panglia_planet_discovery_panglia", "moshine-tech-data-processor-building"},
     research_trigger =
     {
       type = "craft-item",
       item = "panglia_panglite",
-      count = 10,
+      count = 100,
     }
   },
 
+
+
+
+
+  {
+    type = "technology",
+    name = "panglia_panglite_fiber",
+    icon = techicons .. "panglia_panglite_fiber.png",
+    icon_size = 256,
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "panglia_panglite_fiber"
+      },
+    },
+    prerequisites = {"panglia_panglite_multiplication"},
+    research_trigger =
+    {
+      type = "craft-item",
+      item = "panglia_panglite",
+      count = 1000,
+    }
+  },
+
+
+
+  {
+    type = "technology",
+    name = "panglia_advanced_circuit_from_panglite_fiber",
+    icon = techicons .. "panglia_advanced_circuit_from_panglite_fiber.png",
+    icon_size = 256,
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "panglia_advanced_circuit_from_panglite_fiber"
+      },
+    },
+    prerequisites = {"panglia_panglite_fiber"},
+    research_trigger =
+    {
+      type = "craft-item",
+      item = "panglia_panglite_fiber",
+      amount = 50,
+    },
+  },
 
 
   {
@@ -125,10 +277,14 @@ data:extend({
     {
       {
         type = "unlock-recipe",
-        recipe = "panglia_crusher"
+        recipe = "panglia_crusher",
       },
+      {
+        type = "unlock-recipe",
+        recipe = "panglia_dust",
+      }
     },
-    prerequisites = {"matter_printer-technology"},
+    prerequisites = {"matter_printer-technology", "panglia_branbalite_slurry", "panglia_advanced_circuit_from_panglite_fiber"},
     unit =
     {
       count = 1000,
@@ -144,31 +300,62 @@ data:extend({
     },
   },
 
-
   {
     type = "technology",
-    name = "panglia_panglite_fiber",
-    icon = techicons .. "panglia_panglite_fiber.png",
+    name = "panglia_low_density_structure_from_panglite_fiber",
+    icon = techicons .. "panglia_low_density_structure_from_panglite_fiber.png",
     icon_size = 256,
     effects =
     {
       {
         type = "unlock-recipe",
-        recipe = "panglia_panglite_fiber"
-      },
-      {
-        type = "unlock-recipe",
         recipe = "panglia_low_density_structure_from_panglite_fiber"
       },
     },
-    prerequisites = {"panglia_panglite_multiplication", "uranium-processing"},
+    prerequisites = {"panglia_panglite_fiber"},
     research_trigger =
     {
       type = "craft-item",
-      item = "panglia_panglite",
-      count = 100,
-    }
+      item = "panglia_panglite_fiber",
+      amount = 100,
+    },
   },
+
+
+
+  {
+    type = "technology",
+    name = "panglia_universe_precursor",
+    icon = techicons .. "panglia_universe_precursor.png",
+    icon_size = 256,
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "panglia_universe_precursor"
+      },
+    },
+    prerequisites = {"panglia_panglite_fiber", "panglia_universe_precursor_volcanic", "panglia_crusher"},
+    research_trigger =
+    {
+      type = "craft-item",
+      item = "panglia_panglite_fiber",
+      amount = 200,
+    },
+  },
+
+
+------------------------------------------------
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -181,27 +368,20 @@ data:extend({
     {
       {
         type = "unlock-recipe",
-        recipe = "datacell-dna-raw"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "panglia_cloned_specimen_body_0_recipe"
+        recipe = "panglia_cloned_specimen_body_0"
       },
     },
-    prerequisites = {"panglia_advanced_optics_nanotech", "cloning-vat-technology", "moshine-tech-processing-grid", "uranium-processing"},
+    prerequisites = {"cloning-vat-technology", "moshine-tech-processing-grid", "uranium-processing"},
     unit =
     {
-      count = 850,
+      count = 10,
       ingredients =
       {
-        {"automation-science-pack", 1},
-        {"logistic-science-pack", 1},
-        {"chemical-science-pack", 1},
-        {"utility-science-pack", 1},
-        {"space-science-pack", 1},
-        {"agricultural-science-pack", 1}
+        {"datacell-ai-model-data", 1},
+        {"datacell-solved-equation", 1},
+        {"datacell-dna-raw", 1},
       },
-      time = 60
+      time = 145*500
     }
   },
 
@@ -218,23 +398,21 @@ data:extend({
       },
       {
         type = "unlock-recipe",
-        recipe = "panglia_cloned_specimen_body_1_recipe"
+        recipe = "panglia_cloned_specimen_body_1"
       },
     },
     prerequisites = {"moshine-tech-ai-tier-10", "panglia_dna_manipulation", "matter_printer-technology"},
     unit =
     {
-      count = 900,
+      count = 40,
       ingredients =
       {
-        {"automation-science-pack", 1},
-        {"logistic-science-pack", 1},
-        {"chemical-science-pack", 1},
-        {"utility-science-pack", 1},
-        {"space-science-pack", 1},
-        {"agricultural-science-pack", 1}
+        {"datacell-ai-model-data", 1},
+        {"datacell-solved-equation", 1},
+        {"datacell-dna-raw", 1},
+        {"datacell-dna-sequenced", 1},
       },
-      time = 60
+      time = 1658*500,
     }
   },
 
@@ -248,11 +426,11 @@ data:extend({
     {
       {
         type = "unlock-recipe",
-        recipe = "panglia_cloned_specimen_body_2_recipe"
+        recipe = "panglia_cloned_specimen_body_2"
       },
       {
         type = "unlock-recipe",
-        recipe = "panglia_cloned_specimen_body_3_recipe"
+        recipe = "panglia_cloned_specimen_body_3"
       },
     },
     prerequisites = {"panglia_simulation_chamber"},
@@ -279,19 +457,17 @@ data:extend({
     prerequisites = {"thinking-brain-technology", "quantum-processor"},
     unit =
     {
-      count = 1200,
+      count = 200,
       ingredients =
       {
-        {"automation-science-pack", 1},
-        {"logistic-science-pack", 1},
-        {"chemical-science-pack", 1},
-        {"utility-science-pack", 1},
-        {"space-science-pack", 1},
-        {"agricultural-science-pack", 1},
-        {"cryogenic-science-pack", 1}
+        {"datacell-raw-data", 1},
+        {"datacell-ai-model-data", 1},
+        {"datacell-solved-equation", 1},
+        {"datacell-dna-raw", 1},
+        {"datacell-dna-sequenced", 1},
       },
-      time = 60
-    },
+      time = 1008*500,
+    }
   },
 
 
@@ -317,15 +493,12 @@ data:extend({
       count_formula = "2^(L-3)*1000",
       ingredients =
       {
-        {"automation-science-pack", 1},
-        {"logistic-science-pack", 1},
-        {"chemical-science-pack", 1},
-        {"production-science-pack", 1},
-        {"utility-science-pack", 1},
-        {"space-science-pack", 1},
-        {"electromagnetic-science-pack", 1},
+        {"datacell-raw-data", 1},
+        {"datacell-ai-model-data", 1},
+        {"datacell-solved-equation", 1},
+        {"datacell-dna-sequenced", 1},
       },
-      time = 60
+      time = 6000
     },
     max_level = "infinite",
     upgrade = true
@@ -345,16 +518,15 @@ data:extend({
     prerequisites = {"panglia_sentient_processor", "worker-robots-storage-3"},
     unit =
     {
-      count = 450,
+      count = 800,
       ingredients =
       {
-        {"automation-science-pack", 1},
-        {"logistic-science-pack", 1},
-        {"chemical-science-pack", 1},
-        {"production-science-pack", 1},
-        {"utility-science-pack", 1}
+        {"datacell-raw-data", 1},
+        {"datacell-ai-model-data", 1},
+        {"datacell-solved-equation", 1},
+        {"datacell-dna-sequenced", 1},
       },
-      time = 60
+      time = 10000
     },
     upgrade = true
   },
@@ -373,16 +545,15 @@ data:extend({
     prerequisites = {"panglia_worker-robots-storage-1"},
     unit =
     {
-      count = 450,
+      count = 1600,
       ingredients =
       {
-        {"automation-science-pack", 1},
-        {"logistic-science-pack", 1},
-        {"chemical-science-pack", 1},
-        {"production-science-pack", 1},
-        {"utility-science-pack", 1}
+        {"datacell-raw-data", 1},
+        {"datacell-ai-model-data", 1},
+        {"datacell-solved-equation", 1},
+        {"datacell-dna-sequenced", 1},
       },
-      time = 60
+      time = 10000
     },
     upgrade = true
   },
@@ -394,13 +565,17 @@ data:extend({
 
 if data.raw["technology"]["matter_printer-technology"] then
   table.insert(data.raw["technology"]["matter_printer-technology"].prerequisites, "panglia_advanced_optics_nanotech")
-  table.insert(data.raw["technology"]["matter_printer-technology"].prerequisites, "panglia_panglite_fiber")
-  table.insert(data.raw["technology"]["matter_printer-technology"].effects, {type = "unlock-recipe", recipe = "panglia_universe_precursor"})
+  table.insert(data.raw["technology"]["matter_printer-technology"].prerequisites, "panglia_panglite_multiplication")
 end
+  --table.insert(data.raw["technology"]["panglia_crusher"].effects, {type = "unlock-recipe", recipe = "panglia_universe_precursor"})
 
 if data.raw["technology"]["cloning-vat-technology"] then
- table.insert(data.raw["technology"]["cloning-vat-technology"].prerequisites, "panglia_branbalite_slurry")
- table.insert(data.raw["technology"]["panglia_simulation_chamber"].prerequisites, "cloning-vat-technology")
+  table.insert(data.raw["technology"]["cloning-vat-technology"].prerequisites, "panglia_branbalite_slurry")
+  table.insert(data.raw["technology"]["cloning-vat-technology"].prerequisites, "panglia_advanced_optics_nanotech")
+  table.insert(data.raw["technology"]["panglia_simulation_chamber"].prerequisites, "cloning-vat-technology")
+  table.insert(data.raw["technology"]["cloning-vat-technology"].effects,
+    {type = "unlock-recipe", recipe = "datacell-dna-raw"}
+  )
 end
 
 if data.raw["technology"]["thinking-brain-technology"] then
@@ -409,14 +584,12 @@ end
 
 
 
-if mods["moshine"] then
-  table.insert(data.raw["technology"]["panglia_advanced_optics_nanotech"].prerequisites, "planet-discovery-moshine")
-  data.raw["technology"]["panglia_advanced_optics_nanotech"].research_trigger = {
-    type = "craft-item",
-    item = "glass",
-    count = 10
-  }
-end
+--table.insert(data.raw["technology"]["panglia_advanced_optics_nanotech"].prerequisites, "planet-discovery-moshine")
+--data.raw["technology"]["panglia_advanced_optics_nanotech"].research_trigger = {
+--  type = "craft-item",
+--  item = "glass",
+--  count = 10
+--}
 
 
 

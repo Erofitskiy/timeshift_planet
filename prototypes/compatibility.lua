@@ -1,5 +1,8 @@
 
-
+if data.raw["lab"]["neural_computer"] then
+  table.insert(data.raw["lab"]["neural_computer"].inputs, "datacell-dna-raw")
+  table.insert(data.raw["lab"]["neural_computer"].inputs, "datacell-dna-sequenced")
+end
 
 if data.raw["agricultural-tower"]["processing-grid"] and data.raw["agricultural-tower"]["processing-grid"].accepted_seeds then
 	table.insert(data.raw["agricultural-tower"]["processing-grid"].accepted_seeds, "datacell-dna-raw")
@@ -28,11 +31,19 @@ end
 if data.raw.recipe["matter_printer"] then
   data.raw.recipe["matter_printer"].ingredients =
   {
-    {type = "item", name = "assembling-machine-3", amount = 3},
-    {type = "item", name = "processing-unit", amount = 10},
-    {type = "item", name = "productivity-module-2", amount = 10},
-    {type = "item", name = "uranium-235", amount = 5},
-    {type = "item", name = "panglia_panglite_fiber", amount = 5},
+    {type = "item", name = "neural_computer", amount = 1},
+    {type = "item", name = "electromagnetic-plant", amount = 1},
+    {type = "item", name = "electronic-circuit", amount = 10},
+    --{type = "item", name = "productivity-module", amount = 10},
+    --{type = "item", name = "uranium-235", amount = 5},
+    {type = "item", name = "panglia_panglite", amount = 10},
+    {type = "item", name = "glass", amount = 50},
+  }
+end
+if data.raw.recipe["universe_precursor"] then
+  data.raw.recipe["universe_precursor"].surface_conditions = {
+    {property = "panglia_timeshift", min = 0, max = 0},
+    {property = "gravity", min = 0.01}
   }
 end
 
@@ -90,6 +101,32 @@ if mods["snouz_better_asteroid_collector"] then
   data.raw["item"]["snouz_better_asteroid_collector"].default_import_location = "panglia"
 end
 
+if mods["snouz_space_platform_hull"] then
+  data.raw["recipe"]["snouz_wall_hull"].ingredients = 
+  {
+    {type = "item", name = "stone-wall", amount = 1},
+    {type = "item", name = "panglia_panglite_fiber", amount = 5},
+    {type = "item", name = "space-platform-foundation", amount = 1},
+  }
+  data.raw["item"]["snouz_wall_hull"].default_import_location = "panglia"
+  data.raw["technology"]["snouz_wall_hull"].prerequisites = {"panglia_panglite_fiber"}
+  data.raw["technology"]["snouz_wall_hull"].unit.ingredients =
+  {
+    {"automation-science-pack", 1},
+    {"logistic-science-pack", 1},
+    {"military-science-pack", 1},
+    {"chemical-science-pack", 1},
+    {"production-science-pack", 1},
+    {"utility-science-pack", 1},
+    {"space-science-pack", 1},
+    --{"metallurgic-science-pack", 1},
+    --{"electromagnetic-science-pack", 1},
+    --{"agricultural-science-pack", 1},
+    --{"cryogenic-science-pack", 1},
+    --{"promethium-science-pack", 1}
+  }
+end
+
 if mods["snouz_long_electric_gun_turret"] then
   data.raw["recipe"]["snouz_long_electric_gun_turret"].ingredients =
   {
@@ -116,4 +153,67 @@ if mods["snouz_long_electric_gun_turret"] then
     --{"cryogenic-science-pack", 1},
     --{"promethium-science-pack", 1}
   }
+end
+
+
+
+
+data.raw["tool"]["datacell-empty"].subgroup = "moshine-datacells"
+data.raw["tool"]["datacell-empty"].order = "a[moshine]-aa"
+data.raw["tool"]["datacell-raw-data"].subgroup = "moshine-datacells"
+data.raw["tool"]["datacell-raw-data"].order = "a[moshine]-bb"
+data.raw["recipe"]["datacell-raw-data"].subgroup = "moshine-datacells"
+data.raw["recipe"]["datacell-raw-data"].order = "a[moshine]-bc"
+data.raw["recipe"]["datacell-remove-raw-data"].subgroup = "moshine-datacells"
+data.raw["recipe"]["datacell-remove-raw-data"].order = "a[moshine]-bd"
+
+data.raw["tool"]["datacell-ai-model-data"].subgroup = "moshine-datacells"
+data.raw["tool"]["datacell-ai-model-data"].order = "a[moshine]-cc"
+data.raw["recipe"]["datacell-ai-model-data"].subgroup = "moshine-datacells"
+data.raw["recipe"]["datacell-ai-model-data"].order = "a[moshine]-cd"
+
+data.raw["tool"]["datacell-equation"].subgroup = "moshine-datacells"
+data.raw["tool"]["datacell-equation"].order = "a[moshine]-dd"
+data.raw["recipe"]["datacell-equation"].subgroup = "moshine-datacells"
+data.raw["recipe"]["datacell-equation"].order = "a[moshine]-de"
+
+data.raw["tool"]["datacell-solved-equation"].subgroup = "moshine-datacells"
+data.raw["tool"]["datacell-solved-equation"].order = "a[moshine]-ee"
+
+if data.raw["technology"]["thinking-brain-technology"] then
+  data.raw["technology"]["thinking-brain-technology"].unit =
+  {
+    count = 400,
+    ingredients =
+    {
+      {"datacell-raw-data", 1},
+      {"datacell-ai-model-data", 1},
+      {"datacell-solved-equation", 1},
+      {"datacell-dna-raw", 1},
+      {"datacell-dna-sequenced", 1},
+    },
+    time = 900*500,
+  }
+end
+
+if mods["canal-excavator"] then
+  data:extend({{
+    type = "mod-data",
+    name = "canex-panglia-config",
+    data_type = "canex-surface-config",
+    data = {
+      surfaceName = "panglia",
+      localisation = {"space-location-name.panglia"},
+      oreStartingAmount = 10,
+      mining_time = 1,
+      tint = {r = 113, g = 144, b = 125},
+      mineResult = {
+        {type="item", name = "stone", probability = 0.6, amount = 1},
+        {type="item", name = "panglia_panglite", probability = 0.2, amount = 1},
+        {type="item", name = "iron-ore", probability = 0.1, amount = 1},
+        {type="item", name = "copper-ore", probability = 0.1, amount = 1},
+        {type="item", name = "uranium-238", probability = 0.0005, amount = 1},
+      }
+    }
+  }})
 end

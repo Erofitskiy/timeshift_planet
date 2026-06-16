@@ -19,8 +19,20 @@ function make_musictrack(name, type)
   })
 end
 
-
-make_musictrack("mashup_Serat_Distant_Fields_Pablo_Enver_FF9_Branbal", "hero-track")
+data:extend({
+  {
+    type = "ambient-sound",
+    name = "mashup_Serat_Distant_Fields_Pablo_Enver_FF9_Branbal",
+    track_type = "hero-track",
+    planet = "panglia",
+    sound =
+    {
+      filename = "__panglia_planet__/sounds/mashup_Serat_Distant_Fields_Pablo_Enver_FF9_Branbal.ogg",
+      volume = 1,
+    }
+  },
+})
+--make_musictrack("mashup_Serat_Distant_Fields_Pablo_Enver_FF9_Branbal", "hero-track")
 
 make_musictrack("01_Serat_-_Flow_Sessions_-_Nord_Weg")
 make_musictrack("03_Serat_-_Flow_Sessions_-_Distant_Fields")

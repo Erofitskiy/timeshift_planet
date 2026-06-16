@@ -42,15 +42,32 @@ script.on_event(defines.events.on_chunk_generated, function(event)
                 surface.destroy_decoratives{ position = entity.position }
 
             elseif entity.name == "panglia_energy_roots" then
-                if not storage.panglia_generators then storage.panglia_generators = {} end
-                table.insert(storage.panglia_generators, {
-                    entity = entity,
-                })
-                entity.minable_flag = false
-                entity.destructible = false
-                entity.rotatable = false
-                --local rand = math.random(0, 1)
-                --if rand == 0 then entity.direction = defines.direction.north else entity.direction = defines.direction.east end
+
+                local pos = entity.position
+                local radius = 30
+                local neighbors = surface.find_entities_filtered{
+                    area = { {pos.x - radius, pos.y - radius}, {pos.x + radius, pos.y + radius}},
+                    name = "panglia_energy_roots"
+                }
+                for _, other in pairs(neighbors) do
+                    if other.valid and other ~= entity then
+                        -- Found a duplicate in range → remove this one
+                        entity.destroy()
+                        break
+                    end
+                end
+
+                if entity and entity.valid then
+                    if not storage.panglia_generators then storage.panglia_generators = {} end
+                    table.insert(storage.panglia_generators, {
+                        entity = entity,
+                    })
+                    entity.minable_flag = false
+                    entity.destructible = false
+                    entity.rotatable = false
+                    --local rand = math.random(0, 1)
+                    --if rand == 0 then entity.direction = defines.direction.north else entity.direction = defines.direction.east end
+                end
             end
         end
     end
@@ -129,7 +146,6 @@ end)
 
 
 
--- Register event for when a rail is built
 script.on_event({defines.events.on_built_entity, defines.events.on_robot_built_entity, defines.events.script_raised_built, defines.events.script_raised_revive}, function(event)
     local entity = event.created_entity or event.entity
     if entity and entity.valid and entity.surface then
@@ -141,7 +157,7 @@ script.on_event({defines.events.on_built_entity, defines.events.on_robot_built_e
         if surface.name == "panglia" then
             if #beacons > 0 and not string.find(entity.name, "_panglia_fast_version") then -- there's a hidden beacon
 
-                if entity.type == "inserter" or entity.type == "transport-belt" or entity.type == "underground-belt" or entity.type == "splitter" then
+                if entity.type == "inserter" or entity.type == "transport-belt" or entity.type == "splitter" then
                     local new_entity = surface.create_entity{
                         name = entity.name .. "_panglia_fast_version",
                         position = position,

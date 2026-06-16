@@ -55,6 +55,9 @@ data:extend({
       {type = "item", name = "steel-furnace", amount = 1},
       {type = "item", name = "crusher", amount = 1},
       {type = "item", name = "chemical-plant", amount = 1},
+
+      {type = "item", name = "advanced-circuit", amount = 5},
+      {type = "item", name = "panglia_panglite_fiber", amount = 10},
     },
     --surface_conditions = {{ property = "moshine-exclusive", min = 1, max = 1}},
     results = {{type = "item", name = "panglia_crusher", amount = 1}},
@@ -64,21 +67,6 @@ data:extend({
     surface_conditions = panglia_only,
   },
 
-
-
-  {
-    type = "item",
-    name = "panglia_dust",
-    icon = icons .. "panglia_dust.png",
-    icon_size = 64,
-    subgroup = "panglia-processes",
-    order = "zzzzzz[panglia_dust]",
-    inventory_move_sound = item_sounds.resource_inventory_move,
-    pick_sound = item_sounds.resource_inventory_pickup,
-    drop_sound = item_sounds.resource_inventory_move,
-    stack_size = 100,
-    weight = 1 * kg,
-  },
 
 
 
@@ -106,7 +94,7 @@ data:extend({
     {
       {inventory_index = defines.inventory.furnace_modules, shift = {0, 0.8}}
     },
-    allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"},
+    allowed_effects = {"consumption", "speed", "productivity", "pollution"},
     effect_receiver = {uses_module_effects = false, uses_beacon_effects = true, uses_surface_effects = true},
     resistances =
     {

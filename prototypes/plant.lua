@@ -445,6 +445,8 @@ plant.autoplace =
   }
 }
 plant.variations = gleba_tree_variations("branbalite", 8, 4, 1.3, 640, 560, util.by_pixel(52, -73))
+plant.surface_conditions = nil
+plant.order = "zaaaa"
 
 plant.colors = {
   {r = 255, g = 255, b =  255},
@@ -463,6 +465,27 @@ plant.agricultural_tower_tint =
 }
 plant.growth_ticks = 2 * minutes
 plant.map_color = {45,207,235,230}
+
+plant.factoriopedia_simulation = 
+{
+  planet = "panglia",
+  hide_factoriopedia_gradient = true,
+  init =
+  [[
+    game.simulation.camera_zoom = 1.4
+    game.simulation.camera_position = {-0.5, 0}
+    for x = -10, 9, 1 do
+      for y = -4, 4 do
+        game.surfaces[1].set_tiles{{position = {x, y}, name = "panglia-volcanic-cracks"}}
+      end
+    end
+
+    game.surfaces[1].create_entity{name = "panglia_branbalite_plant", position = {x=-2.54, y=-0.76}, tick_grown = 1}
+    game.surfaces[1].create_entity{name = "panglia_branbalite_plant", position = {x=-4.68, y=1.83}, tick_grown = 1000}
+    game.surfaces[1].create_entity{name = "panglia_branbalite_plant", position = {x=-0.10, y=0.67}, tick_grown = 10000}
+    game.surfaces[1].create_entity{name = "panglia_branbalite_plant", position = {x=4.80, y=1.69}, tick_grown = 1}
+  ]]
+}
 
 data:extend({plant})
 
@@ -494,7 +517,7 @@ data:extend({
               target_effects = {
                 {
                   type = "play-sound",
-                  sound = sound_variations("__Moshine__/sound/entity/agricultural-tower/cervo", 13, 0.9),
+                  sound = sound_variations("__panglia_planet_assets__/sounds/entity/agricultural-tower/cervo", 13, 0.9),
                   damage_type_filters = "fire"
                 }
               }
@@ -503,8 +526,8 @@ data:extend({
         }
       }
     },
-    mining_sound = sound_variations("__Moshine__/sound/entity/agricultural-tower/cervo", 13, 0.9), --sound_variations("__space-age__/sound/mining/axe-mining-yumako-tree", 5, 0.6),
-    mined_sound = sound_variations("__Moshine__/sound/entity/agricultural-tower/cervo", 13, 0.9), --sound_variations("__space-age__/sound/mining/mined-yumako-tree", 6, 0.3),
+    mining_sound = sound_variations("__panglia_planet_assets__/sounds/entity/agricultural-tower/cervo", 13, 0.9), --sound_variations("__space-age__/sound/mining/axe-mining-yumako-tree", 5, 0.6),
+    mined_sound = sound_variations("__panglia_planet_assets__/sounds/entity/agricultural-tower/cervo", 13, 0.9), --sound_variations("__space-age__/sound/mining/mined-yumako-tree", 6, 0.3),
     growth_ticks = 10 * minutes,
     max_health = 50,
     collision_box = {{-0.3, -0.3}, {0.3, 0.3}},
@@ -515,7 +538,7 @@ data:extend({
     autoplace =
     {
       probability_expression = 0,
-      tile_restriction = {"processing-tile"},
+      tile_restriction = {"webbed_processor_tile"},
     },
     tile_buildability_rules = {
       {
@@ -530,7 +553,7 @@ data:extend({
           sheets = {
             {
               variation_count = 1,
-              filenames = {"__Moshine__/graphics/entity/quantum-computer/plant.png"},
+              filenames = {"__panglia_planet__/graphics/entity/plant/processing-grid-process-dna/processing-grid-process-dna.png"},
               width = 128,
               height = 128,
               lines_per_file = 25,
@@ -552,7 +575,7 @@ data:extend({
       layers =
       {
         {
-          filename = "__Moshine__/graphics/empty.png",
+          filename = "__core__/graphics/empty.png",
           width = 1,
           height = 1,
         }

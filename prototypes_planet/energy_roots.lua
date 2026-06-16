@@ -92,7 +92,7 @@ data:extend({
     dying_explosion = "steam-engine-explosion",
     --alert_icon_shift = util.by_pixel(0, -12),
     --alert_icon_scale = 0,
-    effectivity = 1,
+    effectivity = 40000,
     fluid_usage_per_tick = 0.1,
     allow_copy_paste = false,
     burns_fluid = true,
@@ -227,8 +227,8 @@ data:extend({
       }
     },
     impact_category = "metal-large",
-    open_sound = {filename = "__panglia_planet__/sounds/panderoot_open.ogg", volume = 1},
-    close_sound = {filename = "__panglia_planet__/sounds/panderoot_close.ogg", volume = 1},
+    open_sound = {filename = tssounds .. "panderoot_open.ogg", volume = 1},
+    close_sound = {filename = tssounds .. "panderoot_close.ogg", volume = 1},
     working_sound =
     {
       sound =
@@ -543,6 +543,12 @@ data:extend({
 
 
 
+  {
+    type = "ammo-category",
+    name = "tesla_energy_roots",
+    icon = "__space-age__/graphics/icons/ammo-category/tesla.png",
+    subgroup = "ammo-category"
+  },
 
 
 
@@ -553,6 +559,8 @@ data:extend({
 
 
 local function make_energy_roots_tesla_turret(num, seq)
+  local hidden = true
+  if num == 1 then hidden = false end
   data:extend({
     {
       type = "electric-turret",
@@ -560,6 +568,8 @@ local function make_energy_roots_tesla_turret(num, seq)
       icon = icons .. "panglia_energy_roots_tesla_turret.png",
       localised_name = {"entity-name.panglia_energy_roots_tesla_turret"},
       flags = {"placeable-player", "placeable-enemy"},
+      subgroup = "enemies",
+      order = "t-[panglia]-a" .. num,
       max_health = 750,
       collision_box = {{-0.2, -0.2 }, {0.2, 0.2}},
       selection_box = {{-0.5, -0.5 }, {0.5, 0.5}},
@@ -583,6 +593,8 @@ local function make_energy_roots_tesla_turret(num, seq)
       folded_animation = emptyturretanim,
       glow_light_intensity = 0.5,
       random_animation_offset = true,
+      hidden = hidden,
+      hidden_in_factoriopedia = hidden,
       integration = 
       {
         filename = entity .. "panglia_energy_roots/cell_roots.png", --_" .. num .. ".png",
@@ -658,7 +670,7 @@ local function make_energy_roots_tesla_turret(num, seq)
         fire_penalty = 0.9,
         source_direction_count = 64,
         source_offset = {0, 0}, -- {0, -0.55},
-        ammo_category = "tesla",
+        ammo_category = "tesla_energy_roots",
         ammo_type =
         {
           energy_consumption = "0J",

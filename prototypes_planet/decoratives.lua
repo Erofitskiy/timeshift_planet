@@ -189,7 +189,7 @@ data:extend({
     flags = {"placeable-neutral", "placeable-off-grid"},
     icon = icons .. "panglia-huge-panglite-rock.png",
     subgroup = "grass",
-    order = "b[decorative]-l[rock]-a[vulcanus]-b[huge-panglite-rock]",
+    order = "d[panglia]-a[decorative]",
     collision_box = {{-1.7, -1.3}, {1.7, 1.3}},
     selection_box = {{-2, -1.5}, {2, 1.5}},
     damaged_trigger_effect = hit_effects.rock(),
@@ -200,16 +200,17 @@ data:extend({
       mining_time = 2,
       results =
       {
-        {type = "item", name = "panglia_panglite", amount_min = 20, amount_max = 45},
-        {type = "item", name = "iron-ore", amount_min = 0, amount_max = 10},
-        {type = "item", name = "copper-ore", amount_min = 0, amount_max = 8},
-        {type = "item", name = "coal", amount_min = 0, amount_max = 5},
-        {type = "item", name = "stone", amount_min = 0, amount_max = 3},
+        {type = "item", name = "panglia_panglite", amount_min = 20, amount_max = 37},
+        --{type = "item", name = "iron-ore", amount_min = 0, amount_max = 10},
+        --{type = "item", name = "copper-ore", amount_min = 0, amount_max = 8},
+        --{type = "item", name = "coal", amount_min = 0, amount_max = 5},
+        --{type = "item", name = "stone", amount_min = 0, amount_max = 3},
       },
     },
     map_color = {137, 118, 95},
     count_as_rock_for_filtered_deconstruction = true,
     mined_sound = sound_variations(tssounds .. "panglite", 8, 0.7),
+    mining_sound = sound_variations(tssounds .. "panglite", 8, 0.7),
     impact_category = "stone",
     render_layer = "object",
     max_health = 2000,
@@ -234,7 +235,7 @@ data:extend({
     flags = {"placeable-neutral", "placeable-off-grid"},
     icon = icons .. "panglia-big-panglite-rock.png",
     subgroup = "grass",
-    order = "b[decorative]-l[rock]-a[vulcanus]-a[big-panglite-rock]",
+    order = "d[panglia]-b[decorative]",
     collision_box = {{-0.75, -0.75}, {0.75, 0.75}},
     selection_box = {{-1.0, -1.0}, {1.0, 0.75}},
     damaged_trigger_effect = hit_effects.rock(),
@@ -251,7 +252,7 @@ data:extend({
       mining_time = 1,
       results =
       {
-        {type = "item", name = "panglia_panglite", amount_min = 10, amount_max = 32},
+        {type = "item", name = "panglia_panglite", amount_min = 5, amount_max = 16},
         --{type = "item", name = "iron-ore", amount_min = 0, amount_max = 7},
         --{type = "item", name = "copper-ore", amount_min = 0, amount_max = 5},
         --{type = "item", name = "tungsten-ore", amount_min = 2, amount_max = 8}
@@ -267,9 +268,108 @@ data:extend({
     map_color = {137, 118, 95},
     count_as_rock_for_filtered_deconstruction = true,
     mined_sound = sound_variations(tssounds .. "panglite", 8, 0.7),
+    mining_sound = sound_variations(tssounds .. "panglite", 8, 0.7),
     impact_category = "stone",
     --pictures = bigrockpics,
     pictures = spritesheets_to_pictures_panglia_lights({{path = decora .. "big-panglite-rock/big-panglite-rock", frame_count = 27}}),
+  },
+
+
+  {
+    name = "panglia-huge-igneous-rock", --panglite
+    type = "simple-entity",
+    flags = {"placeable-neutral", "placeable-off-grid"},
+    icon = icons .. "panglia-huge-igneous-rock-entity.png",
+    subgroup = "grass",
+    order = "d[panglia]-c[decorative]",
+    collision_box = {{-1.3, -1.3}, {1.3, 1.3}},
+    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    damaged_trigger_effect = hit_effects.rock(),
+    dying_trigger_effect = decorative_trigger_effects.huge_rock(),
+    minable =
+    {
+      mining_particle = "stone-particle",
+      mining_time = 1,
+      results =
+      {
+        {type = "item", name = "panglia_igneous_rock", amount_min = 26, amount_max = 153},
+      },
+    },
+    map_color = {137, 118, 95},
+    count_as_rock_for_filtered_deconstruction = true,
+    mined_sound = sound_variations("__space-age__/sound/mining/mined-iceberg", 4, 0.7),
+    mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-iceberg", 7, 0.5),
+    impact_category = "stone",
+    render_layer = "object",
+    max_health = 2000,
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 100
+      }
+    },
+    autoplace =
+    {
+      order = "d[ground-surface]-k[lava]",
+      probability_expression = "0.1 * (vulcanus_elev <= 0) * (vulcanus_elev > 2)\z
+                                + 0.005 * min(1, max(lava_basalts_range, lava_mountains_range, lava_hot_basalts_range, lava_hot_mountains_range))"
+    },
+    --pictures = hugerockpics,
+    pictures = spritesheets_to_pictures_panglia_lights({{path = decora .. "huge-igneous-rock/huge-igneous-rock", frame_count = 17}}),
+  },
+
+  {
+    name = "panglia-big-rock", --simple rock
+    type = "simple-entity",
+    flags = {"placeable-neutral", "placeable-off-grid"},
+    icon = icons .. "panglia-big-rock.png",
+    subgroup = "grass",
+    order = "d[panglia]-d[decorative]",
+    collision_box = {{-0.75, -0.75}, {0.75, 0.75}},
+    selection_box = {{-1.0, -1.0}, {1.0, 0.75}},
+    damaged_trigger_effect = hit_effects.rock(),
+    render_layer = "object",
+    max_health = 300,
+    --[[autoplace = {
+      order = "a[landscape]-c[rock]-b[big]",
+      probability_expression = "vulcanus_rock_big"
+    },]]
+    autoplace = {
+      order = "a[rock]-a[huge]",
+      probability_expression = "icebergs * 0.003",
+    },
+    dying_trigger_effect = decorative_trigger_effects.big_rock(),
+    minable =
+    {
+      mining_particle = "stone-particle",
+      mining_time = 1,
+      results =
+      {
+        --{type = "item", name = "panglia_igneous_rock", amount_min = 12, amount_max = 73},
+        --{type = "item", name = "panglia_panglite", amount_min = 10, amount_max = 32},
+        {type = "item", name = "iron-ore", amount_min = 0, amount_max = 41},
+        {type = "item", name = "copper-ore", amount_min = 0, amount_max = 25},
+        {type = "item", name = "stone", amount_min = 0, amount_max = 17},
+        {type = "item", name = "uranium-238", amount_min = 0, amount_max = 10, probability = 0.4},
+
+      }
+    },
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 100
+      }
+    },
+    map_color = {135, 128, 71},
+    count_as_rock_for_filtered_deconstruction = true,
+    --mined_sound = sound_variations(tssounds .. "panglite", 8, 0.7),
+    mined_sound = sound_variations("__space-age__/sound/mining/mined-iceberg", 4, 0.7),
+    mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-iceberg", 7, 0.5),
+    impact_category = "stone",
+    --pictures = bigrockpics,
+    pictures = spritesheets_to_pictures_panglia_lights({{path = decora .. "panglia-big-rock/panglia-big-rock", frame_count = 25}}),
   },
 
   {

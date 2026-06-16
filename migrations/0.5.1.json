@@ -1,0 +1,15 @@
+{
+  "recipe":
+  [
+    ["panglia_dust_dummy_recipe", "panglia_dust"],
+    ["panglia_panglite_multiplication", "panglia_panglite"],
+    ["panglia_cloned_specimen_body_0_recipe", "panglia_cloned_specimen_body_0"],
+    ["panglia_cloned_specimen_body_1_recipe", "panglia_cloned_specimen_body_1"],
+    ["panglia_cloned_specimen_body_2_recipe", "panglia_cloned_specimen_body_2"],
+    ["panglia_cloned_specimen_body_3_recipe", "panglia_cloned_specimen_body_3"]
+  ],
+  "item":
+  [
+    ["panglia_cloned_specimen_body_3_dumb", "panglia_cloned_specimen_body_3"]
+  ]
+}
